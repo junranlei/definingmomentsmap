@@ -5,9 +5,14 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Media;
 use frontend\models\MediaSearch;
+use frontend\models\HistoricalFact;
+use frontend\models\HistoricalMediaLink;
+use yii\data\ActiveDataProvider;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * MediaController implements the CRUD actions for Media model.
@@ -41,6 +46,94 @@ class MediaController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+     /**
+     * Lists all media models from histId with create .
+     * @return mixed
+     */
+    public function actionHistlist()
+    {
+        $searchModel = new MediaSearch();
+        $histId = Yii::$app->request->queryParams["histId"];
+        $historicalFact = HistoricalFact::findOne($histId);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $historicalFact->getMedia(),
+        ]);
+
+        $model = new Media();
+        $model->ownerId=Yii::$app->user->identity->id;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //save historicalfact media relationship
+            $histMediaLink = new HistoricalMediaLink();
+            $histMediaLink->histId = $histId;
+            $histMediaLink->mediaId = $model->id;
+            $histMediaLink->save();
+            $id = $model->id;
+            //save uploaded file if there is any
+            if($model->files = UploadedFile::getInstance($model, 'files')){
+                if (!is_dir('uploads/'.$id)) {
+                    mkdir('uploads/'.$id, 0755, true);
+                }
+                $model->files->saveAs('uploads/'.$id.'/' . $model->files->baseName . '.' . $model->files->extension);
+                $newfile = $model->files->baseName . '.' . $model->files->extension;
+                $model->nameOrUrl = $newfile;              
+                $model->save();
+                
+            }
+            return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$histId]);
+        }
+
+        return $this->render('histlist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'histId'=>$histId,
+        ]);
+    }
+
+         /**
+     * Lists all media models from histId with create .
+     * @return mixed
+     */
+    public function actionHistlistupdate($id)
+    {
+        $searchModel = new MediaSearch();
+        $histId = Yii::$app->request->queryParams["histId"];
+        $historicalFact = HistoricalFact::findOne($histId);
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $historicalFact->getMedia(),
+        ]);
+
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //save uploaded file if there is any
+            if($model->files = UploadedFile::getInstance($model, 'files')){
+                if (!is_dir('uploads/'.$id)) {
+                    mkdir('uploads/'.$id, 0755, true);
+                }
+                $model->files->saveAs('uploads/'.$id.'/' . $model->files->baseName . '.' . $model->files->extension);
+                $newfile = $model->files->baseName . '.' . $model->files->extension;
+                $model->nameOrUrl = $newfile;
+                $model->save();
+                
+            }
+            
+            return $this->render('histlistupdate', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'model'=>$model,
+                'histId'=>$histId,
+            ]);
+        }
+
+        return $this->render('histlistupdate', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model'=>$model,
+            'histId'=>$histId,
         ]);
     }
 
@@ -87,6 +180,19 @@ class MediaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if($model->files = UploadedFile::getInstance($model, 'files')){
+                if (!is_dir('uploads/'.$id)) {
+                    mkdir('uploads/'.$id, 0755, true);
+                }
+                $model->files->saveAs('uploads/'.$id.'/' . $model->files->baseName . '.' . $model->files->extension);
+                $newfile = $model->files->baseName . '.' . $model->files->extension;
+                $model->nameOrUrl = $newfile;
+                $model->save();
+                /*if(!strstr($relatedFiles,$newfile)){
+                    if(trim($relatedFiles)!="") $relatedFiles=$relatedFiles. ";";
+                    $model->relatedFiles = $relatedFiles.$newfile;
+                }*/
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -104,9 +210,19 @@ class MediaController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        //delete associated historicalfact media links
+        $histMediaLinks = $model->historicalMediaLinks;
+        foreach($histMediaLinks as $histLink){
+            if($histLink!=null){
+                $histLink->delete();
+            }
+        }
 
-        return $this->redirect(['index']);
+        $model->delete();
+        $histId = Yii::$app->request->queryParams["histId"];
+
+        return $this->redirect(['histlist', 'histId' => $histId]);
     }
 
     /**

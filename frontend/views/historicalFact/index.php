@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\HistoricalfactSearch */
@@ -35,7 +36,23 @@ $this->params['breadcrumbs'][] = $this->title;
             //'urls:ntext',
             //'mainMediaId',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{update}{delete}',
+            'urlCreator' => function( $action, $model, $key, $index ){
+
+                if ($action == "update") {
+
+                    return Url::to(['update', 'id' => $model->id]);
+
+                }
+
+                if ($action == "delete") {
+
+                    return Url::to(['delete', 'id' => $model->id]);
+
+                }
+
+            }],
         ],
     ]); ?>
 

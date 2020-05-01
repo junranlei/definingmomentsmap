@@ -33,7 +33,7 @@ class HistoricalAssign extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['histId', 'userId', 'updatedTime', 'type', 'notes'], 'required'],
+            [['histId', 'userId', 'type'], 'required'],
             [['histId', 'userId', 'type'], 'integer'],
             [['assignedTime', 'updatedTime'], 'safe'],
             [['notes'], 'string'],

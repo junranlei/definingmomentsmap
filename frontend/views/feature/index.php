@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'description:ntext',
-            'geojson:ntext',
+            //'geojson:ntext',
             'visible',
             //'histId',
 

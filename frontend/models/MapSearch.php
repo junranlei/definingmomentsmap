@@ -17,7 +17,7 @@ class MapSearch extends Map
     public function rules()
     {
         return [
-            [['id', 'right2Add'], 'integer'],
+            [['right2Add'], 'integer'],
             [['title', 'description', 'timeCreated', 'timeUpdated'], 'safe'],
         ];
     }

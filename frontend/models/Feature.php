@@ -18,6 +18,7 @@ use Yii;
  */
 class Feature extends \yii\db\ActiveRecord
 {
+    
     /**
      * {@inheritdoc}
      */
@@ -32,11 +33,10 @@ class Feature extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'geojson', 'visible', 'histId'], 'required'],
-            [['id', 'visible', 'histId'], 'integer'],
+            [['title', 'visible', 'histId'], 'required'],
+            [['visible', 'histId'], 'integer'],
             [['description', 'geojson'], 'string'],
             [['title'], 'string', 'max' => 255],
-            [['id'], 'unique'],
             [['histId'], 'exist', 'skipOnError' => true, 'targetClass' => HistoricalFact::className(), 'targetAttribute' => ['histId' => 'id']],
         ];
     }

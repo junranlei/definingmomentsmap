@@ -17,7 +17,7 @@ class LayerSearch extends Layer
     public function rules()
     {
         return [
-            [['id', 'type', 'visible', 'mapId'], 'integer'],
+            [['type', 'visible', 'mapId'], 'integer'],
             [['title', 'description', 'nameOrUrl', 'date', 'dateEnded'], 'safe'],
         ];
     }

@@ -33,7 +33,7 @@ class MapAssign extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mapId', 'userId', 'updatedTime', 'type', 'qrCode'], 'required'],
+            [['mapId', 'userId', 'type'], 'required'],
             [['mapId', 'userId', 'type'], 'integer'],
             [['assignedTime', 'updatedTime'], 'safe'],
             [['qrCode'], 'string', 'max' => 255],

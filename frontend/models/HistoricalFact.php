@@ -40,12 +40,11 @@ class HistoricalFact extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'date', 'dateEnded', 'urls', 'mainMediaId'], 'required'],
-            [['id', 'mainMediaId'], 'integer'],
+            [['title', 'description', 'date'], 'required'],
+            [['mainMediaId'], 'integer'],
             [['description', 'urls'], 'string'],
             [['date', 'dateEnded', 'timeCreated'], 'safe'],
             [['title'], 'string', 'max' => 255],
-            [['id'], 'unique'],
         ];
     }
 

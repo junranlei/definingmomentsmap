@@ -8,6 +8,7 @@ use frontend\models\Feature;
 
 /**
  * FeatureSearch represents the model behind the search form of `app\models\Feature`.
+ * @property int $histId
  */
 class FeatureSearch extends Feature
 {
@@ -17,7 +18,7 @@ class FeatureSearch extends Feature
     public function rules()
     {
         return [
-            [['id', 'visible', 'histId'], 'integer'],
+            [['visible', 'histId'], 'integer'],
             [['title', 'description', 'geojson'], 'safe'],
         ];
     }

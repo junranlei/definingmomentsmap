@@ -12,7 +12,6 @@ use Yii;
  * @property string $description
  * @property int $type
  * @property string $nameOrUrl
- * @property int $histId
  * @property int $right2Link
  * @property int $ownerId
  *
@@ -21,6 +20,9 @@ use Yii;
  */
 class Media extends \yii\db\ActiveRecord
 {
+
+    /** upload files */
+    public $files;
     /**
      * {@inheritdoc}
      */
@@ -35,11 +37,11 @@ class Media extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'type', 'nameOrUrl', 'histId', 'right2Link', 'ownerId'], 'required'],
-            [['id', 'type', 'histId', 'right2Link', 'ownerId'], 'integer'],
+            [['title', 'type', 'right2Link', 'ownerId'], 'required'],
+            [['type', 'right2Link', 'ownerId'], 'integer'],
             [['description'], 'string'],
             [['title', 'nameOrUrl'], 'string', 'max' => 255],
-            [['id'], 'unique'],
+            [['files'], 'file', 'skipOnEmpty' => true],
         ];
     }
 
@@ -54,7 +56,6 @@ class Media extends \yii\db\ActiveRecord
             'description' => 'Description',
             'type' => 'Type',
             'nameOrUrl' => 'Name Or Url',
-            'histId' => 'Hist ID',
             'right2Link' => 'Right2 Link',
             'ownerId' => 'Owner ID',
         ];

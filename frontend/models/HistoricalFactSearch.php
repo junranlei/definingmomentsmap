@@ -17,7 +17,7 @@ class HistoricalfactSearch extends Historicalfact
     public function rules()
     {
         return [
-            [['id', 'mainMediaId'], 'integer'],
+            [['mainMediaId'], 'integer'],
             [['title', 'description', 'date', 'dateEnded', 'timeCreated', 'urls'], 'safe'],
         ];
     }

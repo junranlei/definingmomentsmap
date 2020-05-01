@@ -35,12 +35,11 @@ class Map extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'timeUpdated', 'right2Add'], 'required'],
-            [['id', 'right2Add'], 'integer'],
+            [['title', 'description', 'right2Add'], 'required'],
+            [['right2Add'], 'integer'],
             [['description'], 'string'],
             [['timeCreated', 'timeUpdated'], 'safe'],
             [['title'], 'string', 'max' => 255],
-            [['id'], 'unique'],
         ];
     }
 

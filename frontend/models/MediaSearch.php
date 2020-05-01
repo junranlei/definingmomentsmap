@@ -17,7 +17,7 @@ class MediaSearch extends Media
     public function rules()
     {
         return [
-            [['id', 'type', 'histId', 'right2Link', 'ownerId'], 'integer'],
+            [['type', 'histId', 'right2Link', 'ownerId'], 'integer'],
             [['title', 'description', 'nameOrUrl'], 'safe'],
         ];
     }

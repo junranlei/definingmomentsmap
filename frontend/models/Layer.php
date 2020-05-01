@@ -35,12 +35,11 @@ class Layer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'type', 'nameOrUrl', 'visible', 'mapId', 'date', 'dateEnded'], 'required'],
-            [['id', 'type', 'visible', 'mapId'], 'integer'],
+            [['title', 'description', 'type', 'visible', 'mapId', 'date'], 'required'],
+            [['type', 'visible', 'mapId'], 'integer'],
             [['description'], 'string'],
             [['date', 'dateEnded'], 'safe'],
             [['title', 'nameOrUrl'], 'string', 'max' => 255],
-            [['id'], 'unique'],
             [['mapId'], 'exist', 'skipOnError' => true, 'targetClass' => Map::className(), 'targetAttribute' => ['mapId' => 'id']],
         ];
     }

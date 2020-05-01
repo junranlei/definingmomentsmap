@@ -45,6 +45,54 @@ class FeatureController extends Controller
     }
 
     /**
+     * Lists all Feature models from histId with create.
+     * @return mixed
+     */
+    public function actionHistlist()
+    {
+        $searchModel = new FeatureSearch();
+        $searchModel->histId=Yii::$app->request->queryParams["histId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = new Feature();
+        $model->histId = $searchModel->histId;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$model->histId]);
+        }
+
+        return $this->render('histlist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Feature models from histId with update one .
+     * @return mixed
+     */
+    public function actionHistlistupdate($id)
+    {
+        $searchModel = new FeatureSearch();
+        $searchModel->histId=Yii::$app->request->queryParams["histId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('histlistupdate', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'model' => $model,
+            ]);
+        }
+
+        return $this->render('histlistupdate', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Displays a single Feature model.
      * @param integer $id
      * @return mixed
@@ -106,7 +154,9 @@ class FeatureController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        $histId = Yii::$app->request->queryParams["histId"];
+
+        return $this->redirect(['histlist', 'histId' => $histId]);
     }
 
     /**

@@ -1,6 +1,10 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Tabs;
+
+use frontend\models\Feature;
+use frontend\models\Media;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Historicalfact */
