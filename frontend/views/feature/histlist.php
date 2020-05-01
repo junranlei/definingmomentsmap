@@ -64,42 +64,21 @@ echo Tabs::widget([
         [
 
             'label' => 'Historical Fact',
-
             'url' => Url::to(['historicalfact/update','id'=>$searchModel->histId]),
-
-            //'active' => true
 
         ],
 
         [
 
             'label' => 'Feature',
-
-            //'content' => $this->render('//feature/update', [
-            //    'model' => new Feature(),
-            //]),
-            //'content' => $this->render('//feature/list', [
-            //        'histModel' => $model,
-            //]),
             'content'=>$content,
-            
-
             'active' => true
-
-         
 
         ],
 
         [
-
             'label' => 'Media',
-
             'url' => Url::to(['media/histlist','histId'=>$searchModel->histId]),
-
-            
-
-         
-
         ]
 
     ],
