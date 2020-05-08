@@ -20,7 +20,10 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "kartik-v/yii2-datecontrol": "@dev",
         "kartik-v/yii2-widgets": "@dev",
-        "davidjeddy/yii2-leaflet-draw-plugin": "*"
+        "davidjeddy/yii2-leaflet-draw-plugin": "*",
+        "2amigos/yii2-leaflet-geosearch-plugin": "~1.0",
+        "2amigos/yii2-leaflet-geocoder-plugin": "~1.0",
+        "unclead/yii2-multiple-input": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

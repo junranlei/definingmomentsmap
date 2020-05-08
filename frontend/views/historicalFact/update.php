@@ -10,7 +10,7 @@ use frontend\models\Media;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Historicalfact */
 
-$this->title = 'Update Historicalfact: ' . $model->title;
+$this->title = 'Update Historical fact: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Historical Fact', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

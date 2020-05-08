@@ -14,7 +14,7 @@ use Yii;
  * @property string $nameOrUrl
  * @property int $right2Link
  * @property int $ownerId
- *
+ * @property int $permission2upload
  * @property HistoricalMediaLink[] $historicalMediaLinks
  * @property HistoricalFact[] $hists
  */
@@ -23,6 +23,8 @@ class Media extends \yii\db\ActiveRecord
 
     /** upload files */
     public $files;
+    public $isMainMedia;
+    public $permission2upload;
     /**
      * {@inheritdoc}
      */
@@ -42,7 +44,19 @@ class Media extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['title', 'nameOrUrl'], 'string', 'max' => 255],
             [['files'], 'file', 'skipOnEmpty' => true],
+            [['isMainMedia','permission2upload'], 'safe'],
+            ['permission2upload', 'validatePermission', 'skipOnEmpty' => false, 'skipOnError' => false]
         ];
+    }
+
+    public function validatePermission($attribute, $params)
+    {
+        if ($this->$attribute!=1) {
+
+            $this->addError($attribute, 'You must have the permission to publish in order to save this media.');
+            return false;
+        }
+    
     }
 
     /**
@@ -58,6 +72,8 @@ class Media extends \yii\db\ActiveRecord
             'nameOrUrl' => 'Name Or Url',
             'right2Link' => 'Right2 Link',
             'ownerId' => 'Owner ID',
+            'isMainMedia'=>'Set as Main media',
+            'permission2upload'=>'Permission to publish this media online'
         ];
     }
 

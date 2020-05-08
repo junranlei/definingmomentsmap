@@ -22,10 +22,12 @@ $types=[ 1 => 'Image', 2 => 'Video' ];
 <div class="media-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>
+    <h1>Link to other media</h1>
+    ".Html::beginForm(['media/linkother','histId'=>$histId], 'post')."
     ". GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'dataProvider' => $dataProviderLink,
+        'filterModel' => $searchModelLink,
+        'id' => 'linkgrid',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -44,38 +46,13 @@ $content="
                 'format' => 'raw',  
                 'label' => 'Media',   
                 'value' => function ($data) {
-                     
-                    $headers = @get_headers($data['nameOrUrl']); 
-                    $isUrl = False;
-                    
-                    // Use condition to check the existence of URL 
-                    if($headers && strpos( $headers[0], '200')) { 
-                        $isUrl=True; 
-                    } 
-                    if($data['type']==1){
-                        if($isUrl){     
-                            return Html::img($data['nameOrUrl'],
-                            ['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
-                        
-                        }else{
-                    
-                            return Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],
-                            ['width' => '80px', 'style'=>'display:block; margin:0 auto;']); 
-                        }
-                               
-                    }else if($data['type']==2){ 
-                        if($isUrl){     
-                            return '<video width="80px" height="60px" controls style="display:block; margin:0 auto;">
-                            <source src="'.$data['nameOrUrl'] .'" type="video/mp4">
-                            </video> ';
-                        
-                        }else{
-                            return '<video width="80px" height="60px" controls style="display:block; margin:0 auto;">
-                            <source src="'.Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'] .'" type="video/mp4">
-                            </video> ';
-                        
-                        }           
-                    }   
+                    if($data['type']==1)
+                        return Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],
+                        ['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
+                    else if($data['type']==2)
+                        return '<video width="80px" height="60px" controls style="display:block; margin:0 auto;">
+                        <source src="'.Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'] .'" type="video/mp4">
+                        </video> ';    
                 },
             ],
            // 'nameOrUrl',
@@ -83,8 +60,15 @@ $content="
             //'right2Link',
             //'ownerId',
             
-            ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{delete}',
+            //['class' => 'yii\grid\ActionColumn',
+            ['class' => 'yii\grid\CheckboxColumn'],
+
+            /*[
+                'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function($data) {         
+                    return ['value' => $data['id']];               
+                },        
+            ]*/
+            /*'template' => '{update}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
 
                 if ($action == "update") {
@@ -98,9 +82,10 @@ $content="
 
                 }
 
-            }],
+            }],*/
         ],
-    ])."";
+    ]).Html::submitButton('Link', ['class' => 'btn btn-success', 'id' =>'link']).""
+    .Html::endForm()."";
 
 echo Tabs::widget([
     'items' => [
@@ -120,12 +105,13 @@ echo Tabs::widget([
             'items' => [
                 [
                     'label' => 'Create/update media',
-                    'content' => $content,
-                    'active' => true,
+                    'url' => Url::to(['media/histlist','histId'=>$histId]),
+                    
                 ],
                 [
                     'label' => 'Link to other media',
-                    'url' => Url::to(['media/linkother','histId'=>$histId]),
+                    'content' => $content,
+                    'active' => true,
                 ],
             ]
         ]
@@ -135,17 +121,7 @@ echo Tabs::widget([
 ]);
 
 ?>
-</div>
 
-<div class="media-create">
-
-    <h1>Create Media</h1>
-    <?php $newMedia = new Media();
-        //$newFeature->histId=$searchModel->histId;
-    ?>
-    <?= $this->render('_form', [
-        'model' => $newMedia,
-    ]) ?>
 
 </div>
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use unclead\multipleinput\MultipleInput;
 
 use kartik\datecontrol\Module;
 use kartik\datecontrol\DateControl;
@@ -32,7 +33,7 @@ use kartik\datecontrol\DateControl;
 
     <?php //= $form->field($model, 'timeCreated')->textInput() ?>
 
-    <?= $form->field($model, 'urls')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'urls')->widget(MultipleInput::className()) ?>
 
     <?= $form->field($model, 'mainMediaId')->textInput() ?>
 

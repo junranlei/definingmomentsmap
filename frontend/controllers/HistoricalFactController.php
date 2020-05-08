@@ -85,11 +85,20 @@ class HistoricalfactController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //print serialize(Yii::$app->request->post());
+        $POST = Yii::$app->request->post();
+        if(Yii::$app->request->post()!=null){
+            //print_r($POST);
+            $urls =$POST['HistoricalFact']['urls'];
+            $urlsString = implode(";",$urls);
+            $POST['HistoricalFact']['urls'] = $urlsString;
+            //print_r($POST);
+        }
+        if ($model->load($POST) && $model->save()) {
+            $model->urls = explode(";",$model->urls);
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
+        $model->urls = explode(";",$model->urls);
         return $this->render('update', [
             'model' => $model,
         ]);

@@ -38,7 +38,7 @@ $content="
             //'histId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
+            'template' => '{update}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index ){
 
                 if ($action == "update") {

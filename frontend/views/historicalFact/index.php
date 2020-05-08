@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel frontend\models\HistoricalfactSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Historicalfacts';
+$this->title = 'Historical Facts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="historicalfact-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Historicalfact', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Historical Fact', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'mainMediaId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
+            'template' => '{update}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index ){
 
                 if ($action == "update") {

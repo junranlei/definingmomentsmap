@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Media;
 use frontend\models\MediaSearch;
+use frontend\models\OtherMediaSearch;
 use frontend\models\HistoricalFact;
 use frontend\models\HistoricalMediaLink;
 use yii\data\ActiveDataProvider;
@@ -56,14 +57,27 @@ class MediaController extends Controller
     public function actionHistlist()
     {
         $searchModel = new MediaSearch();
+        $searchModel->search(Yii::$app->request->queryParams);
         $histId = Yii::$app->request->queryParams["histId"];
         $historicalFact = HistoricalFact::findOne($histId);
         
-        $dataProvider = new ActiveDataProvider([
-            'query' => $historicalFact->getMedia(),
-        ]);
+        
+        if(isset(Yii::$app->request->queryParams['MediaSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia()->andFilterWhere(Yii::$app->request->queryParams['MediaSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia(),
+            ]);   
+        //$dataProvider->pagination->pageSize=20;
+
 
         $model = new Media();
+        //if there is no main media in historical fact yet, make the newest created media one
+        if($historicalFact->mainMediaId==null){
+            $model->isMainMedia=1;
+        }
         $model->ownerId=Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //save historicalfact media relationship
@@ -83,6 +97,11 @@ class MediaController extends Controller
                 $model->save();
                 
             }
+            //save mainmediaid is ismainmedia is 1
+            if($model->isMainMedia==1){
+                $historicalFact->mainMediaId = $model->id;
+                $historicalFact->save();
+            }
             return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$histId]);
         }
 
@@ -92,6 +111,57 @@ class MediaController extends Controller
             'histId'=>$histId,
         ]);
     }
+
+     /**
+     * Lists all unlinked media models from histId, link selected.
+     * @return mixed
+     */
+    public function actionLinkother()
+    {
+        
+        $histId = Yii::$app->request->queryParams["histId"];
+        $searchModelLink = new MediaSearch();
+        $searchModelLink->search(Yii::$app->request->queryParams);
+        $query = Media::find();
+        $historicalFact = HistoricalFact::findOne($histId);
+        
+        if(isset(Yii::$app->request->queryParams['MediaSearch']))
+            $dataProviderLink = new ActiveDataProvider([
+                'query' => Media::find()                  
+                    ->where([
+                        'not in',
+                        'id',
+                        $historicalFact->getMedia()->addSelect('id')])
+                    ->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(Yii::$app->request->queryParams['MediaSearch']),
+            ]);
+        else
+            $dataProviderLink = new ActiveDataProvider([
+                'query' => Media::find()
+                    ->where([
+                        'not in',
+                        'id',
+                        $historicalFact->getMedia()->addSelect('id')])
+                    ->andFilterWhere(['right2Link' => 1])
+            ]);
+
+            
+        $selection = (array)Yii::$app->request->post('selection'); 
+        foreach ($selection as $item) {
+            //item is media id
+            $histMediaLink = new HistoricalMediaLink();
+            $histMediaLink->histId = $histId;
+            $histMediaLink->mediaId = $item;
+            $histMediaLink->save();
+        }
+        
+        return $this->render('linkother', [
+            'searchModelLink' => $searchModelLink,
+            'dataProviderLink' => $dataProviderLink,
+            'histId'=>$histId,
+        ]);
+    }
+
 
          /**
      * Lists all media models from histId with create .
@@ -106,9 +176,14 @@ class MediaController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => $historicalFact->getMedia(),
         ]);
+        //echo serialize(Yii::$app->request->post()); return;
 
         $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //check if this is mainmedia
+        if($historicalFact->mainMediaId==$id){
+            $model->isMainMedia=1;
+        }
+        if ($model->load(Yii::$app->request->post())&& $model->save()) {
             //save uploaded file if there is any
             if($model->files = UploadedFile::getInstance($model, 'files')){
                 if (!is_dir('uploads/'.$id)) {
@@ -120,7 +195,12 @@ class MediaController extends Controller
                 $model->save();
                 
             }
-            
+            //save mainmediaid is ismainmedia is 1
+            if($model->isMainMedia){
+                $historicalFact->mainMediaId = $model->id;
+                $historicalFact->save();
+            }
+
             return $this->render('histlistupdate', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,

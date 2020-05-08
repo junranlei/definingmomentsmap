@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa6e965069b95d438f4f61dae491a128",
+    "content-hash": "9a4be7d7313a6bd52fa143d2f9b645d3",
     "packages": [
         {
             "name": "2amigos/yii2-leaflet-extension",
@@ -67,11 +67,133 @@
             "time": "2017-03-26T18:39:13+00:00"
         },
         {
+            "name": "2amigos/yii2-leaflet-geocoder-plugin",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-leaflet-geocoder-plugin.git",
+                "reference": "19918f94eb6760b9e02b5333311a630b1a33f8ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-leaflet-geocoder-plugin/zipball/19918f94eb6760b9e02b5333311a630b1a33f8ef",
+                "reference": "19918f94eb6760b9e02b5333311a630b1a33f8ef",
+                "shasum": ""
+            },
+            "require": {
+                "2amigos/yii2-leaflet-extension": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\leaflet\\plugins\\geocoder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 LeafLet Plugin to provide support for address lookup with dropdown list of results to Leaflet.",
+            "homepage": "http://yiiwheels.com/extension/leaflet-geocoder-plugin",
+            "keywords": [
+                "2amigos",
+                "extension",
+                "leaflet",
+                "maps",
+                "plugin",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2019-04-06T16:13:43+00:00"
+        },
+        {
+            "name": "2amigos/yii2-leaflet-geosearch-plugin",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-leaflet-geosearch-plugin.git",
+                "reference": "632c846c0f3f8ce06959f3e6f3694c570717a02f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-leaflet-geosearch-plugin/zipball/632c846c0f3f8ce06959f3e6f3694c570717a02f",
+                "reference": "632c846c0f3f8ce06959f3e6f3694c570717a02f",
+                "shasum": ""
+            },
+            "require": {
+                "2amigos/yii2-leaflet-extension": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\leaflet\\plugins\\geosearch\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 LeafLet Plugin to provide support for address lookup (a.k.a. geocoding / geoseaching) to Leaflet.",
+            "homepage": "http://yiiwheels.com/extension/leaflet-geosearch-plugin",
+            "keywords": [
+                "2amigos",
+                "extension",
+                "leaflet",
+                "maps",
+                "plugin",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2016-09-10T19:48:39+00:00"
+        },
+        {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -131,7 +253,7 @@
             "version": "v1.0.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Leaflet/Leaflet.git",
+                "url": "https://github.com/Leaflet/Leaflet.git",
                 "reference": "ed36a04aefd12cb92c78074fe63a8e460db1d464"
             },
             "dist": {
@@ -2137,6 +2259,55 @@
                 "shim"
             ],
             "time": "2020-02-27T09:26:54+00:00"
+        },
+        {
+            "name": "unclead/yii2-multiple-input",
+            "version": "2.22.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unclead/yii2-multiple-input.git",
+                "reference": "cc89d57b083ae82fec3f4dc547e6c936fa1719bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unclead/yii2-multiple-input/zipball/cc89d57b083ae82fec3f4dc547e6c936fa1719bd",
+                "reference": "cc89d57b083ae82fec3f4dc547e6c936fa1719bd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": ">=2.0.13"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "unclead\\multipleinput\\examples\\": "examples/",
+                    "unclead\\multipleinput\\": "src/",
+                    "unclead\\multipleinput\\tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Tupikov",
+                    "email": "unclead.nsk@gmail.com"
+                }
+            ],
+            "description": "Widget for handle multiple inputs for an attribute of Yii2 framework model",
+            "keywords": [
+                "yii2",
+                "yii2 array input",
+                "yii2 multiple field",
+                "yii2 multiple input",
+                "yii2 tabular input"
+            ],
+            "time": "2019-12-14T10:41:23+00:00"
         },
         {
             "name": "yiisoft/yii2",

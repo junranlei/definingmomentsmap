@@ -60,7 +60,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
             'date' => 'Date',
             'dateEnded' => 'Date Ended',
             'timeCreated' => 'Time Created',
-            'urls' => 'Urls',
+            'urls' => 'URLs',
             'mainMediaId' => 'Main Media ID',
         ];
     }

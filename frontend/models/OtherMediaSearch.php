@@ -9,7 +9,7 @@ use frontend\models\Media;
 /**
  * MediaSearch represents the model behind the search form of `app\models\Media`.
  */
-class MediaSearch extends Media
+class OtherMediaSearch extends Media
 {
     public $histId;
     /**

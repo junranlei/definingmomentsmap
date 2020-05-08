@@ -42,13 +42,38 @@ $content="
                 'format' => 'raw',   
                 'label' => 'Media',    
                 'value' => function ($data) {
-                    if($data['type']==1)
-                        return Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],
-                        ['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
-                    else if($data['type']==2)
-                        return '<video width="80px" height="60px" controls style="display:block; margin:0 auto;">
-                        <source src="'.Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'] .'" type="video/mp4">
-                        </video> ';    
+                     
+                    $headers = @get_headers($data['nameOrUrl']); 
+                    $isUrl = False;
+                    
+                    // Use condition to check the existence of URL 
+                    if($headers && strpos( $headers[0], '200')) { 
+                        $isUrl=True; 
+                    } 
+                    if($data['type']==1){
+                        if($isUrl){     
+                            return Html::img($data['nameOrUrl'],
+                            ['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
+                        
+                        }else{
+                    
+                            return Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],
+                            ['width' => '80px', 'style'=>'display:block; margin:0 auto;']); 
+                        }
+                               
+                    }else if($data['type']==2){ 
+                        if($isUrl){     
+                            return '<video width="80px" height="60px" controls style="display:block; margin:0 auto;">
+                            <source src="'.$data['nameOrUrl'] .'" type="video/mp4">
+                            </video> ';
+                        
+                        }else{
+                            return '<video width="80px" height="60px" controls style="display:block; margin:0 auto;">
+                            <source src="'.Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'] .'" type="video/mp4">
+                            </video> ';
+                        
+                        }           
+                    }   
                 },
     
             ],
@@ -58,7 +83,7 @@ $content="
             //'ownerId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
+            'template' => '{update}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
                 if ($action == "update") {
                     return Url::to(['media/histlistupdate', 'id' => $model->id, 'histId' => $histId]);
@@ -78,15 +103,26 @@ echo Tabs::widget([
         [
             'label' => 'Historical Fact',
             'url' => Url::to(['historicalfact/update','id'=>$histId]),
+            'active' => false,
         ],
         [
             'label' => 'Feature',
             'url' => Url::to(['feature/histlist','histId'=>$histId]),
+            'active' => false,
         ],
         [
-            'label' => 'Media',
-            'content' => $content,
-            'active' => true      
+            'label' => 'Media',                 
+            'items' => [
+                [
+                    'label' => 'Create/update media',
+                    'content' => $content,
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Link to other media',
+                    'url' => Url::to(['media/linkother','histId'=>$histId]),
+                ],
+            ]
         ]
     ],
 ]);
