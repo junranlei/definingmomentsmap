@@ -67,6 +67,15 @@ class Map extends \yii\db\ActiveRecord
     {
         return $this->hasMany(HistoricalMapLink::className(), ['mapId' => 'id']);
     }
+    /**
+     * Gets query for [[Layers]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLayers()
+    {
+        return $this->hasMany(Layer::className(), ['mapId' => 'id']);
+    }
 
     /**
      * Gets query for [[Hists]].

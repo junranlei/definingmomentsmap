@@ -45,7 +45,22 @@ class HistoricalFact extends \yii\db\ActiveRecord
             [['description', 'urls'], 'string'],
             [['date', 'dateEnded', 'timeCreated'], 'safe'],
             [['title'], 'string', 'max' => 255],
+            ['urls', 'validateUrls', 'skipOnEmpty' => true, 'skipOnError' => false]
         ];
+    }
+    public function validateUrls($attribute, $params)
+    {
+        if ($this->$attribute) {
+            $urls = $this->$attribute;
+            $urlArray = explode(";",$urls);
+            foreach($urlArray as $url){
+                if (!filter_var($url, FILTER_VALIDATE_URL)){
+                    $this->addError($attribute, $this->$attribute.' is not a valid URL, make sure to include scheme, eg http://, https:// or ftp://, please check.');
+                    return false;
+                }
+            }
+        }
+    
     }
 
     /**

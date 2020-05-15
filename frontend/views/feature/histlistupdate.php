@@ -31,7 +31,7 @@ $content="
 
             'id',
             'title',
-            'description:ntext',
+            //'description:ntext',
             'visible',
 
             ['class' => 'yii\grid\ActionColumn',

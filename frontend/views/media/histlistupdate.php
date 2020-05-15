@@ -29,7 +29,7 @@ $content="
             ['class' => 'yii\grid\SerialColumn'],
             'id',
             'title',
-            'description:ntext',
+            //'description:ntext',
             [
                 'label' => 'Type',          
                 'value' => function ($model, $key, $index, $column) use ($types)

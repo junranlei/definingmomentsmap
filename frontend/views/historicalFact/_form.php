@@ -35,7 +35,7 @@ use kartik\datecontrol\DateControl;
 
     <?= $form->field($model, 'urls')->widget(MultipleInput::className()) ?>
 
-    <?= $form->field($model, 'mainMediaId')->textInput() ?>
+    <?php // $form->field($model, 'mainMediaId')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

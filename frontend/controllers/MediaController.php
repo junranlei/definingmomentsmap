@@ -74,10 +74,7 @@ class MediaController extends Controller
 
 
         $model = new Media();
-        //if there is no main media in historical fact yet, make the newest created media one
-        if($historicalFact->mainMediaId==null){
-            $model->isMainMedia=1;
-        }
+        
         $model->ownerId=Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //save historicalfact media relationship
@@ -96,6 +93,19 @@ class MediaController extends Controller
                 $model->nameOrUrl = $newfile;              
                 $model->save();
                 
+            }
+            //save isUrl
+            $headers = @get_headers($model->nameOrUrl); 
+            $isUrl = False;        
+            // Use condition to check the existence of URL 
+            if($headers && strpos( $headers[0], '200')) { 
+                $isUrl=True; 
+                $model->isUrl = 1;
+                $model->save();
+            } 
+            //if there is no main media in historical fact yet, make the newest created media one
+            if($historicalFact->mainMediaId==null){
+                $model->isMainMedia=1;
             }
             //save mainmediaid is ismainmedia is 1
             if($model->isMainMedia==1){
@@ -122,7 +132,6 @@ class MediaController extends Controller
         $histId = Yii::$app->request->queryParams["histId"];
         $searchModelLink = new MediaSearch();
         $searchModelLink->search(Yii::$app->request->queryParams);
-        $query = Media::find();
         $historicalFact = HistoricalFact::findOne($histId);
         
         if(isset(Yii::$app->request->queryParams['MediaSearch']))
@@ -145,7 +154,8 @@ class MediaController extends Controller
                     ->andFilterWhere(['right2Link' => 1])
             ]);
 
-            
+        $dataProviderLink->pagination->pageSize=10;
+
         $selection = (array)Yii::$app->request->post('selection'); 
         foreach ($selection as $item) {
             //item is media id
@@ -172,10 +182,16 @@ class MediaController extends Controller
         $searchModel = new MediaSearch();
         $histId = Yii::$app->request->queryParams["histId"];
         $historicalFact = HistoricalFact::findOne($histId);
-        
-        $dataProvider = new ActiveDataProvider([
-            'query' => $historicalFact->getMedia(),
-        ]);
+
+        if(isset(Yii::$app->request->queryParams['MediaSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia()->andFilterWhere(Yii::$app->request->queryParams['MediaSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia(),
+            ]);
+       
         //echo serialize(Yii::$app->request->post()); return;
 
         $model = $this->findModel($id);
@@ -194,6 +210,18 @@ class MediaController extends Controller
                 $model->nameOrUrl = $newfile;
                 $model->save();
                 
+            }
+             //save isUrl
+             $headers = @get_headers($model->nameOrUrl); 
+             $isUrl = False;        
+             // Use condition to check the existence of URL 
+             if($headers && strpos( $headers[0], '200')) { 
+                 $isUrl=True; 
+                 $model->isUrl = 1;
+                 $model->save();
+             } 
+            if($historicalFact->mainMediaId==$id){
+                $model->isMainMedia=1;
             }
             //save mainmediaid is ismainmedia is 1
             if($model->isMainMedia){

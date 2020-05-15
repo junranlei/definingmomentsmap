@@ -1,6 +1,8 @@
 <?php
 
 namespace frontend\models;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 use Yii;
 
@@ -12,8 +14,10 @@ use Yii;
  * @property string $description
  * @property int $type
  * @property string $nameOrUrl
+ * @property string $creator
  * @property int $right2Link
  * @property int $ownerId
+ * @property int $isUrl
  * @property int $permission2upload
  * @property HistoricalMediaLink[] $historicalMediaLinks
  * @property HistoricalFact[] $hists
@@ -40,11 +44,11 @@ class Media extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'type', 'right2Link', 'ownerId'], 'required'],
-            [['type', 'right2Link', 'ownerId'], 'integer'],
-            [['description'], 'string'],
-            [['title', 'nameOrUrl'], 'string', 'max' => 255],
+            [['type', 'right2Link', 'ownerId', 'isUrl'], 'integer'],
+            [['description','creator'], 'string'],
+            [['title', 'nameOrUrl','creator'], 'string', 'max' => 255],
             [['files'], 'file', 'skipOnEmpty' => true],
-            [['isMainMedia','permission2upload'], 'safe'],
+            [['isMainMedia','permission2upload', 'isUrl'], 'safe'],
             ['permission2upload', 'validatePermission', 'skipOnEmpty' => false, 'skipOnError' => false]
         ];
     }
@@ -73,6 +77,7 @@ class Media extends \yii\db\ActiveRecord
             'right2Link' => 'Right2 Link',
             'ownerId' => 'Owner ID',
             'isMainMedia'=>'Set as Main media',
+            'creator'=>'Creator',
             'permission2upload'=>'Permission to publish this media online'
         ];
     }
@@ -95,5 +100,37 @@ class Media extends \yii\db\ActiveRecord
     public function getHists()
     {
         return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMediaLink', ['mediaId' => 'id']);
+    }
+    /**
+     * Get media display html from nameOrUrl and type fields
+     * @property int $width px
+     * @return String
+     */
+    public function getMediaUrl($width="80", $height="60"){
+        if($this->type==1){
+            if($this->isUrl){     
+                return Html::img($this->nameOrUrl,
+                ['width' => $width, 'style'=>'display:block; margin:0 auto;']);
+            
+            }else{
+        
+                return Html::img(Url::base().'/uploads/'.$this->id.'/'.$this->nameOrUrl,
+                ['width' => $width, 'style'=>'display:block; margin:0 auto;']); 
+            }
+                   
+        }else if($this->type==2){ 
+            if($this->isUrl){     
+                return '<video width='.$width.' height='.$height.' controls style="display:block; margin:0 auto;">
+                <source src="'.$this->nameOrUrl .'" type="video/mp4">
+                </video> ';
+            
+            }else{
+                return '<video width='.$width.' height='.$height.' controls style="display:block; margin:0 auto;">
+                <source src="'.Url::base().'/uploads/'.$this->id.'/'.$this->nameOrUrl .'" type="video/mp4">
+                </video> ';
+            
+            }           
+        } 
+        return "";  
     }
 }

@@ -12,15 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
+    <?php // $form->field($model, 'id')->textInput() ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?php // $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'timeCreated')->textInput() ?>
 
-    <?= $form->field($model, 'timeUpdated')->textInput() ?>
+    <?php // $form->field($model, 'timeUpdated')->textInput() ?>
 
     <?= $form->field($model, 'right2Add')->textInput() ?>
 

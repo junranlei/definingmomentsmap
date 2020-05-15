@@ -32,7 +32,7 @@ $content="
 
             'id',
             'title',
-            'description:ntext',
+            //'description:ntext',
             //'geojson:ntext',
             'visible',
             //'histId',

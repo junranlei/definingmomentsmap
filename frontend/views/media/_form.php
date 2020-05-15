@@ -63,6 +63,8 @@ use yii\helpers\Url;
     <?= $form->field($model, 'type')->dropDownList(
             ['1' => 'Image', '2' => 'Video']) ?>
 
+    <?= $form->field($model, 'creator')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'nameOrUrl')->textInput(['maxlength' => true]) ?>
 
     <?= Html::activeLabel($model,'right2Link') ?>

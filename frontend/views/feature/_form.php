@@ -57,8 +57,7 @@ document.getElementById("Save2").onclick = function(e) {
     var data = marker.toGeoJSON();
     var tempjson = ['.$model->geojson.'];
     var concatGeojson = data;
-    if(tempjson!=[]){
-        //currentGeojson = L.geoJson(tempjson);
+    if(tempjson!=[]&&tempjson[0]!=null){
         //merge two geojson
         concatGeojson = concatGeoJSON(tempjson[0], data);
     }
@@ -79,20 +78,7 @@ function concatGeoJSON(g1, g2){
 ?>
 
 <?php
-// first lets setup the center of our map
-    //$center = new \dosamigos\leaflet\types\LatLng(['lat' => -26.117, 'lng' => 137.133]);
 
-    // now lets create a marker that we are going to place on our map
-    //$marker = new \dosamigos\leaflet\layers\Marker(['latLng' => $center, 'popupContent' => 'Hi!']);
-
-    // The Tile Layer (very important)
-    /*$tileLayer = new \dosamigos\leaflet\layers\TileLayer([
-       'urlTemplate' => 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-        'clientOptions' => [
-            'attribution' => '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            //'subdomains'  => [ '1' ,'2' ,'3' ,'4' ],
-        ]
-    ]);*/
 
     // lets use nominating service
     $nominatim = new ServiceNominatim();
@@ -129,11 +115,7 @@ function concatGeoJSON(g1, g2){
         ]
     ]);
 
-    // now our component and we are going to configure it
-    //$leaflet = new \dosamigos\leaflet\LeafLet([
-    //    'center' => $center, // set the center
-    //    'zoom'=> 4
-    //]);
+
     // initialize our leafLet component
     $leaflet = new LeafLet([
         'name' => 'geoMap',
@@ -150,7 +132,6 @@ function concatGeoJSON(g1, g2){
         ]
     ]);
 
-    
 
 	// init the 2amigos leaflet plugin provided by the package
     $drawFeature = new \davidjeddy\leaflet\plugins\draw\Draw();
@@ -171,14 +152,9 @@ function concatGeoJSON(g1, g2){
     $drawFeature->setName("drawfeature_name");
     $geoCoderPlugin->setName("geocoder_name");
 
-    // Different layers can be added to our map using the `addLayer` function.
-    //$leaflet->addLayer($tileLayer);          // add the tile layer   
-    // add the marker
-    //$leaflet->addLayer($marker);
     $leaflet->installPlugin($drawFeature);  // add draw plugin
     $leaflet->installPlugin($geoCoderPlugin); //add geocoder plugin   
 
-    // we could also do
     echo $leaflet->widget(['options' => ['style' => 'min-height: 500px']]);
     ?>
 

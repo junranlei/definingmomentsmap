@@ -45,6 +45,54 @@ class LayerController extends Controller
     }
 
     /**
+     * Lists all Layer models for one map via mapId.
+     * @return mixed
+     */
+    public function actionMaplist()
+    {
+        $searchModel = new LayerSearch();
+        $searchModel->mapId=Yii::$app->request->queryParams["mapId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = new Layer();
+        $model->mapId = $searchModel->mapId;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['maplistupdate', 'id' => $model->id, 'mapId'=>$model->mapId]);
+        }
+
+        return $this->render('maplist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Layer models for one map via mapId with update one layer.
+     * @return mixed
+     */
+    public function actionMaplistupdate($id)
+    {
+        $searchModel = new LayerSearch();
+        $searchModel->mapId=Yii::$app->request->queryParams["mapId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('maplistupdate', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'model' => $model,
+            ]);
+        }
+
+        return $this->render('maplistupdate', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Displays a single Layer model.
      * @param integer $id
      * @return mixed

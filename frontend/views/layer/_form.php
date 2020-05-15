@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'visible')->textInput() ?>
 
-    <?= $form->field($model, 'mapId')->textInput() ?>
+    <?php // $form->field($model, 'mapId')->textInput() ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 
