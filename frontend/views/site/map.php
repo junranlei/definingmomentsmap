@@ -1,12 +1,10 @@
 <?php
-
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\widgets\ActiveForm;
 use yii\web\JsExpression;
 use yii\helpers\Json;
 use yii\helpers\Url;
-
-use frontend\models\Media;
+use yii\grid\GridView;
 
 use dosamigos\leaflet\layers\TileLayer;
 use dosamigos\leaflet\LeafLet;
@@ -15,46 +13,63 @@ use dosamigos\leaflet\layers\Marker;
 use dosamigos\leaflet\plugins\geocoder\ServiceNominatim;
 use dosamigos\leaflet\plugins\geocoder\GeoCoder;
 use dosamigos\leaflet\plugins\markercluster\MarkerCluster;
+use kartik\date\DatePicker;
 
+use frontend\models\HistoricalFact;
+use frontend\models\Feature;
+use frontend\models\Media;
 
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Map */
-
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Maps', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+$this->title = Yii::$app->name;
 ?>
-<div class="map-view">
+<style>
+.datepicker {
+z-index: 1000000  !important;
+}
+</style>
+<div class="site-index">
+<?php $form = ActiveForm::begin([
+        'method' => 'get',
+        'action' => ['map'],
+    ]); ?>
+<div class="form-group">
+    <div class="row">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'description:ntext',
-            'timeCreated',
-            'timeUpdated',
-            'right2Add',
-        ],
+    <div class="col-md-6">
+    <?= $form->field($searchModel, 'keyword') ?>
+    </div>
+    <div class="col-md-3">
+    <?= $form->field($searchModel, 'date')->widget(DatePicker::classname(), [
+        
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ], 
+        
     ]) ?>
+    </div>
+    <div class="col-md-3">
+    <?=  $form->field($searchModel, 'dateEnded')->widget(DatePicker::classname(), [
+        
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ],
+    ])  ?>
+    </div>
+   </div>
+   <div class="row">
+        <div class="col-md-8"> </div>
+                <!--<div class="col-md-offset-8 col-md-12">-->
+        <div class="col-md-4" style="text-align:right;padding-right:10">
+            <?= Html::submitButton('Search Historical Facts', ['class' => 'btn btn-success']) ?>
+            <?= Html::button('Reset', ['class' => 'btn btn-danger','onclick'=>'window.location="'.Url::to(['site/map']).'"']) ?>
+        </div>
+   </div>
+</div>
+<?php ActiveForm::end(); ?>
 
 </div>
-
 <?php
 // lets use nominating service
 $nominatim = new ServiceNominatim();
@@ -111,12 +126,12 @@ $geoCoderPlugin->setName("geocoder_name");
 // install the plugin
 $leafLet->installPlugin($geoCoderPlugin);
 
-$layers = $model->layers;
-$hists = $model->hists;
+//$hists = (New Historicalfact)->find()->all();
+$hists = $dataProvider->getModels();
 $layersvar=[];
-foreach($layers as $layer){
+/*foreach($layers as $layer){
     $layersvar[$layer->title]=$layer->nameOrUrl;
-}
+}*/
 $featuresvar=[];
 $featureobjsvar=[];
 foreach($hists as $hist){
@@ -147,8 +162,8 @@ foreach($hists as $hist){
 
 $this->registerJs(
     "var layersvar = ".\yii\helpers\Json::htmlEncode($layersvar).";".
-    "var featuresvar = ".\yii\helpers\Json::htmlEncode($featuresvar).";".
-    "var histsvar = ".\yii\helpers\Json::htmlEncode($hists).";".
+    //"var featuresvar = ".\yii\helpers\Json::htmlEncode($featuresvar).";".
+    //"var histsvar = ".\yii\helpers\Json::htmlEncode($hists).";".
     "var featureobjsvar = ".\yii\helpers\Json::htmlEncode($featureobjsvar).";"
     
 );
@@ -156,7 +171,6 @@ $this->registerJs(
 
 
 $this->registerJs(<<<JS
-//alert(JSON.stringify(featureobjsvar));alert(histsvar[0]["id"]);
     var mapsPlaceholder = [];
 
     L.Map.addInitHook(function () {
@@ -201,10 +215,10 @@ $this->registerJs(<<<JS
     var observer = new MutationObserver(function (mutations, me) {
         var map2 = mapsPlaceholder.pop();
         if (map2) {
-            if(i){
+            /*if(i){
                 L.control.layers(basemaps2).addTo(map2);
                 basemaps2[key1].addTo(map2);
-            }
+            }*/
             addCluster(map2, featureobjsvar);
             //L.control.layers(basemaps).addTo(map2);
             //basemaps.Topography.addTo(map2);
@@ -212,7 +226,6 @@ $this->registerJs(<<<JS
             for (var i = 0; i < geocoder_inputs.length; i++) {
                 geocoder_inputs[i].placeholder='place name or lat,lng';
             } 
-
             me.disconnect(); // stop observing
             return;
         }
@@ -230,10 +243,10 @@ $this->registerJs(<<<JS
         initialize: function (latlngs, options) {
             this._originalInitialize(latlngs, options);
             this._latlng = this.getBounds().getCenter(); // Define the polygon "center".
-            //alert(this._latlng);
+            
         },
 
-        getLatLng: function () {//alert(this._latlng);
+        getLatLng: function () {
             //this._latlng = this.getBounds().getCenter(); 
             return this._latlng;
         },
@@ -256,7 +269,6 @@ $this->registerJs(<<<JS
             return this._latlng;
         },
 
-        // dummy method.
         setLatLng: function () {}
     });
 
@@ -273,7 +285,6 @@ $this->registerJs(<<<JS
             return this._latlng;
         },
 
-        // dummy method.
         setLatLng: function () {}
     });
 
@@ -298,18 +309,17 @@ $this->registerJs(<<<JS
                 var geojsonFeature = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[[-0.17754077911376956,51.52588012932929],[-0.15299320220947268,51.52545292321852]]}},{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[131.37451171875003,-24.468483631307038]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[121.37695312500001,-30.372875188118016],[118.27880859375001,-29.172627582366303],[116.80664062500001,-26.35249785815401],[118.27880859375001,-23.907265771227095],[121.81640625000001,-22.105998799750566],[124.78271484375001,-23.907265771227095],[126.56250000000001,-26.74561038219901],[124.78271484375001,-29.172627582366303],[121.37695312500001,-30.372875188118016]]]}}]};
                 var geojsonLayer = new L.geoJson(geojsonObject,{
 
-                    onEachFeature: function(feature, layer) {//alert(feature.geometry.type);
-                        if (feature.geometry.type === "Polygon") {//alert(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1));
+                    onEachFeature: function(feature, layer) {
+                        if (feature.geometry.type === "Polygon") {
                             var clusterable = new L.PolygonClusterable(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1))
-                            //.bindPopup('<img src="/defining2/frontend/web/uploads/6/IMG_4561.jpg" alt="" style="display:block; margin:0 auto;" width="80px"/><a href=#>feature</a>:'+key2+"hist:"+key1)
                             .bindPopup(mediaHtml+histLink)
                             .addTo(markerClusterLayer);
-                        }else if(feature.geometry.type === "LineString") {//alert(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1));
+                        }else if(feature.geometry.type === "LineString") {
                             var clusterable = new L.PolylineClusterable(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates))
                             //.bindPopup("feature:"+key2+"hist:"+key1)
                             .bindPopup(mediaHtml+histLink)
                             .addTo(markerClusterLayer);
-                        }else if(feature.geometry.type === "Point") {//alert(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1));
+                        }else if(feature.geometry.type === "Point") {
                             var clusterable = new L.MarkerClusterable(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates))
                             .bindPopup(mediaHtml+histLink)
                             .addTo(markerClusterLayer);
@@ -331,9 +341,56 @@ echo $leafLet->widget(['options' => ['id'=>'map','style' => 'min-height: 500px']
 
 
 ?>
+<br/><br/>
+<p>
+        <?= Html::a('Create Historical Fact', ['create'], ['class' => 'btn btn-success']) ?>
+ </p>
+<?= GridView::widget([
+        'dataProvider' => $listDataProvider,
+        //'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'title',
+            //'description:ntext',
+            'date',
+            'dateEnded',
+            //'timeCreated',
+            //'urls:ntext',
+            //'mainMediaId',
+
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view}&nbsp;{update}',
+            'buttons' => [
+                'view' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="view historcial fact"></span>', $url, ['target' => "_blank"]);
+                },
+                'update' => function ($url, $model) {
+
+                    return Html::a('<span class="glyphicon glyphicon-map-marker" title="view linked maps"></span>',$url, ['target' => "_blank"]);
+                },
+                        
+            ],
+            'urlCreator' => function( $action, $model, $key, $index ){
+
+                if ($action == "view") {
+
+                    return Url::to(['historicalfact/view', 'id' => $model->id], ['target' => "_blank"]);
+                    
+
+                }
+                if ($action == "update") {
+
+                    return Url::to(['map/histlinkedmaps', 'histId' => $model->id], ['target' => "_blank"]);
+                    
+
+                }
+
+            }
+            ],
+        ],
+    ]); ?>
+
 
 </div>
-
-<?php 
-
-?>

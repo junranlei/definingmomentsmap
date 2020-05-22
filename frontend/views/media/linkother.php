@@ -114,6 +114,11 @@ echo Tabs::widget([
                     'active' => true,
                 ],
             ]
+        ],
+        [
+            'label' => 'Linked Maps',
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
+            'active' => false,
         ]
 
     ],

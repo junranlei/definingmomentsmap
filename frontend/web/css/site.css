@@ -123,3 +123,11 @@ form div.required label.control-label:after {
     content:" * ";
     color:red;
   }
+.tooltipstyle {
+    border-bottom: 1px dashed #888; 
+    cursor:help;
+}
+form div.required .tooltipstyle:after {
+    content:" * ";
+    color:red;
+}

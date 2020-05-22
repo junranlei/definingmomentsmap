@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\bootstrap\Tabs;
 use yii\helpers\Url;
+use yii\widgets\DetailView;
 
 use frontend\models\Layer;
 
@@ -14,6 +15,8 @@ use frontend\models\Layer;
 
 $this->title = 'Layers';
 $this->params['breadcrumbs'][] = $this->title;
+$mapId = $searchModel->mapId;
+
 ?>
 <div class="layer-index">
 <?php
@@ -36,7 +39,7 @@ $content="
             //'date',
             //'dateEnded',
 
-            [   'class' => 'yii\grid\ActionColumn',
+            ['class' => 'yii\grid\ActionColumn',
                 'template' => '{update}&nbsp;{view}&nbsp;{delete}',
                 'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
                     if ($action == "update") {
@@ -66,7 +69,7 @@ echo Tabs::widget([
 
         [
             'label' => 'Map',
-            'url' => Url::to(['map/update','id'=>$searchModel->mapId]),
+            'url' => Url::to(['map/update','id'=>$mapId]),
 
         ],
         [
@@ -91,14 +94,34 @@ echo Tabs::widget([
 
 </div>
 
-<div class="layer-create">
+<div class="layer-view">
 
-<h1>Create Layer</h1>
-<?php $newLayer = new Layer();
-        $newLayer->mapId=$searchModel->mapId;
-    ?>
-<?= $this->render('_form', [
-    'model' => $newLayer,
-]) ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['maplistupdate', 'id' => $model->id, 'mapId' => $mapId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'mapId' => $mapId], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'title',
+            'description:ntext',
+            'type',
+            'nameOrUrl',
+            'visible',
+            'mapId',
+            'date',
+            'dateEnded',
+        ],
+    ]) ?>
 
 </div>

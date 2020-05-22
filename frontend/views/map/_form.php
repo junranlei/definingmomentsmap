@@ -16,13 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?php // $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'timeCreated')->textInput() ?>
+    <?php // $form->field($model, 'timeCreated')->textInput() ?>
 
     <?php // $form->field($model, 'timeUpdated')->textInput() ?>
 
-    <?= $form->field($model, 'right2Add')->textInput() ?>
+    <?= Html::activeLabel($model,'right2Add') ?>
+    <?= $form->field($model, 'right2Add')->checkBox(array('label'=>'', 
+    'uncheckValue'=>0,'checked'=>($model->right2Add==1)?true:false)) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

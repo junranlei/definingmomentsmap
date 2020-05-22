@@ -1,7 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\Tabs;
+use yii\helpers\Url;
+use yii\grid\GridView;
+use yii\widgets\DetailView;
+
 use yii\web\JsExpression;
 use yii\helpers\Json;
 
@@ -12,36 +16,121 @@ use dosamigos\leaflet\layers\Marker;
 use dosamigos\leaflet\plugins\geocoder\ServiceNominatim;
 use dosamigos\leaflet\plugins\geocoder\GeoCoder;
 
+use frontend\models\HistoricalFact;
+use frontend\models\Media;
+use frontend\models\Feature;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Feature */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $searchModel app\models\FeatureSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Features';
+$this->params['breadcrumbs'][] = $this->title;
+$histId = $searchModel->histId;
 ?>
+<div class="feature-index">
+<?php
+$content="
+    <h1>". Html::encode($this->title) ."</h1>
 
-<div class="feature-form">
+    ". GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-    <?php $form = ActiveForm::begin(); ?>
+            'id',
+            'title',
+            //'description:ntext',
+            'visible',
 
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+            'urlCreator' => function( $action, $model, $key, $index ){
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+                if ($action == "update") {
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+                    return Url::to(['feature/histlistupdate', 'id' => $model->id, 'histId' => $model->histId]);
 
-    <?= Html::activeLabel($model,'visible') ?>
-    <?= $form->field($model, 'visible')->checkBox(array('label'=>'', 
-    'uncheckValue'=>0,'checked'=>($model->visible==1)?true:false)) ?>
+                }
+                if ($action == "view") {
 
-    <?= $form->field($model, 'histId')->hiddenInput()->label(false) ?>
+                    return Url::to(['feature/histlistview', 'id' => $model->id, 'histId' => $model->histId]);
 
-    <?= $form->field($model, 'geojson')->hiddenInput(['id'=>'geojson'])->label(false) ?>
+                }
+                if ($action == "delete") {
 
-    <div class="form-group">
-        <?= Html::submitButton('Save draw feature', ['class' => 'btn btn-success', 'id'=>'Save']) ?>
-        <?= Html::submitButton('Save search point', ['class' => 'btn btn-success', 'id'=>'Save2']) ?>
-    </div>
+                    return Url::to(['feature/delete', 'id' => $model->id, 'histId' => $model->histId]);
 
-    <?php ActiveForm::end(); ?>
+                }
+            }],
+        ],
+    ])."";
+
+echo Tabs::widget([
+
+    'items' => [
+
+        [
+
+            'label' => 'Historical Fact',
+            'url' => Url::to(['historicalfact/update','id'=>$histId]),
+
+        ],
+
+        [
+
+            'label' => 'Feature',
+            'content'=>$content,
+            'active' => true
+
+        ],
+
+        [
+
+            'label' => 'Media',
+            'url' => Url::to(['media/histlist','histId'=>$histId]),
+        ],
+
+        [
+            'label' => 'Linked Maps',
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
+        ]
+
+    ],
+
+]);
+
+?>
+</div>
+
+<div class="feature-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId'=>$histId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id,'histId'=>$histId], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'title',
+            'description:ntext',
+            'geojson:ntext',
+            'visible',
+            'histId',
+        ],
+    ]) ?>
 
 </div>
 <?php
@@ -153,11 +242,10 @@ function concatGeoJSON(g1, g2){
     $drawFeature->setName("drawfeature_name");
     $geoCoderPlugin->setName("geocoder_name");
 
-
+    // Different layers can be added to our map using the `addLayer` function.
     $leaflet->installPlugin($drawFeature);  // add draw plugin
     $leaflet->installPlugin($geoCoderPlugin); //add geocoder plugin   
 
-
+    // we could also do
     echo $leaflet->widget(['options' => ['style' => 'min-height: 500px']]);
     ?>
-

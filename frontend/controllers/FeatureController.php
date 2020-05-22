@@ -93,6 +93,25 @@ class FeatureController extends Controller
     }
 
     /**
+     * Lists all Feature models from histId with view one .
+     * @return mixed
+     */
+    public function actionHistlistview($id)
+    {
+        $searchModel = new FeatureSearch();
+        $searchModel->histId=Yii::$app->request->queryParams["histId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = $this->findModel($id);
+
+        return $this->render('histlistview', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Displays a single Feature model.
      * @param integer $id
      * @return mixed

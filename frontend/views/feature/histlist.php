@@ -38,12 +38,18 @@ $content="
             //'histId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{delete}',
+            'template' => '{update}&nbsp;{view}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index ){
 
                 if ($action == "update") {
 
                     return Url::to(['feature/histlistupdate', 'id' => $model->id, 'histId' => $model->histId]);
+
+                }
+
+                if ($action == "view") {
+
+                    return Url::to(['feature/histlistview', 'id' => $model->id, 'histId' => $model->histId]);
 
                 }
 
@@ -79,7 +85,13 @@ echo Tabs::widget([
         [
             'label' => 'Media',
             'url' => Url::to(['media/histlist','histId'=>$searchModel->histId]),
+        ],
+
+        [
+            'label' => 'Linked Maps',
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$searchModel->histId]),
         ]
+
 
     ],
 

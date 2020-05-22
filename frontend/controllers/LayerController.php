@@ -51,11 +51,12 @@ class LayerController extends Controller
     public function actionMaplist()
     {
         $searchModel = new LayerSearch();
-        $searchModel->mapId=Yii::$app->request->queryParams["mapId"];
+        $mapId = Yii::$app->request->queryParams["mapId"];
+        $searchModel->mapId=$mapId;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $model = new Layer();
-        $model->mapId = $searchModel->mapId;
+        $model->mapId = $mapId;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['maplistupdate', 'id' => $model->id, 'mapId'=>$model->mapId]);
         }
@@ -63,6 +64,7 @@ class LayerController extends Controller
         return $this->render('maplist', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'mapId'=>$mapId
         ]);
     }
 
@@ -73,7 +75,8 @@ class LayerController extends Controller
     public function actionMaplistupdate($id)
     {
         $searchModel = new LayerSearch();
-        $searchModel->mapId=Yii::$app->request->queryParams["mapId"];
+        $mapId = Yii::$app->request->queryParams["mapId"];
+        $searchModel->mapId= $mapId;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $model = $this->findModel($id);
@@ -82,6 +85,7 @@ class LayerController extends Controller
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
                 'model' => $model,
+                'mapId'=>$mapId
             ]);
         }
 
@@ -89,6 +93,27 @@ class LayerController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
+            'mapId'=>$mapId
+        ]);
+    }
+    /**
+     * Lists all Layer models for one map via mapId with view one layer.
+     * @return mixed
+     */
+    public function actionMaplistview($id)
+    {
+        $searchModel = new LayerSearch();
+        $mapId = Yii::$app->request->queryParams["mapId"];
+        $searchModel->mapId= $mapId;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = $this->findModel($id);
+
+        return $this->render('maplistview', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+            'mapId'=>$mapId
         ]);
     }
 

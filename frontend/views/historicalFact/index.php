@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'description:ntext',
+            //'description:ntext',
             'date',
             'dateEnded',
             //'timeCreated',
@@ -37,22 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'mainMediaId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{delete}',
-            'urlCreator' => function( $action, $model, $key, $index ){
 
-                if ($action == "update") {
-
-                    return Url::to(['update', 'id' => $model->id]);
-
-                }
-
-                if ($action == "delete") {
-
-                    return Url::to(['delete', 'id' => $model->id]);
-
-                }
-
-            }],
+            ],
         ],
     ]); ?>
 

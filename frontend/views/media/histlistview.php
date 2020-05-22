@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\bootstrap\Tabs;
 use yii\helpers\Url;
+use yii\widgets\DetailView;
 
 use frontend\models\HistoricalFact;
 use frontend\models\Media;
@@ -17,18 +18,16 @@ use frontend\models\Feature;
 $this->title = 'Media';
 $this->params['breadcrumbs'][] = $this->title;
 $types=[ 1 => 'Image', 2 => 'Video' ];
-
 ?>
 <div class="media-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>
+    <h1>". Html::encode($this->title) ."</h1>   
     ". GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'title',
             //'description:ntext',
@@ -41,8 +40,8 @@ $content="
             ],
             [
                 'attribute' => 'nameOrUrl',  
-                'format' => 'raw',  
-                'label' => 'Media',   
+                'format' => 'raw',   
+                'label' => 'Media',    
                 'value' => function ($data) {
                      
                     $headers = @get_headers($data['nameOrUrl']); 
@@ -77,28 +76,25 @@ $content="
                         }           
                     }   
                 },
+    
             ],
-           // 'nameOrUrl',
+            //'nameOrUrl',
             //'histId',
             //'right2Link',
             //'ownerId',
-            
+
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{update}&nbsp;{view}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
-
                 if ($action == "update") {
-
                     return Url::to(['media/histlistupdate', 'id' => $model->id, 'histId' => $histId]);
 
                 }
                 if ($action == "view") {
-
                     return Url::to(['media/histlistview', 'id' => $model->id, 'histId' => $histId]);
 
                 }
                 if ($action == "delete") {
-
                     return Url::to(['media/delete', 'id' => $model->id, 'histId' => $histId]);
 
                 }
@@ -119,12 +115,11 @@ echo Tabs::widget([
             'url' => Url::to(['feature/histlist','histId'=>$histId]),
             'active' => false,
         ],
-
         [
-            'label' => 'Media',                 
+            'label' => 'Media', 
             'items' => [
                 [
-                    'label' => 'Create/update media',
+                    'label' => 'View media',
                     'content' => $content,
                     'active' => true,
                 ],
@@ -139,23 +134,43 @@ echo Tabs::widget([
             'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
             'active' => false,
         ]
-
     ],
-
 ]);
 
 ?>
 </div>
+<div class="media-view">
 
-<div class="media-create">
+    <h1><?= Html::encode($this->title) ?></h1>
 
-    <h1>Create Media</h1>
-    <?php $newMedia = new Media();
-        //$newFeature->histId=$searchModel->histId;
-    ?>
-    <?= $this->render('_form', [
-        'model' => $newMedia,
+    <p>
+        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId' => $histId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id,'histId' => $histId], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+    <h2 align="center">
+    <?php if($model->type==1){ ?>
+        <?= $model->getMediaUrl($width="400px") ?> 
+    <?php }else if($model->type==2){ ?>
+        <?= $model->getMediaUrl($width="320px", $height="240px") ?> 
+    <?php } ?>
+    </h2>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'title',
+            'description:ntext',
+            'type',
+            'nameOrUrl',
+            'right2Link',
+            'ownerId',
+        ],
     ]) ?>
 
 </div>
-

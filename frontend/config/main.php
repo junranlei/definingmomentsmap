@@ -9,17 +9,30 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    //'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    //usuario
+    'bootstrap' => ['user'],
+    'modules' => [
+        //usuario
+        'user' => [
+            'class' => Da\User\Module::className(),
+            'administrators' => ['admin'],
+            'enableRegistration'=>true,
+            'allowPasswordRecovery'=>true,
+            'generatePasswords' => true,
+            'enableEmailConfirmation'=>true
+        ]
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        'user' => [
+        /*'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-        ],
+        ],*/
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',

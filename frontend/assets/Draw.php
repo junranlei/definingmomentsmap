@@ -119,6 +119,7 @@ class Draw extends Plugin
                 //props.content = 'my content';
                 drawnItems.addLayer(layer);
             });
+            if(document.getElementById('Save')!=null)
             document.getElementById('Save').onclick = function(e) {
                 // Extract GeoJson from featureGroup
                 var data = drawnItems.toGeoJSON();

@@ -174,7 +174,7 @@ class MediaController extends Controller
 
 
          /**
-     * Lists all media models from histId with create .
+     * Lists all media models from histId with update .
      * @return mixed
      */
     public function actionHistlistupdate($id)
@@ -238,6 +238,41 @@ class MediaController extends Controller
         }
 
         return $this->render('histlistupdate', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model'=>$model,
+            'histId'=>$histId,
+        ]);
+    }
+
+             /**
+     * Lists all media models from histId with view .
+     * @return mixed
+     */
+    public function actionHistlistview($id)
+    {
+        $searchModel = new MediaSearch();
+        $histId = Yii::$app->request->queryParams["histId"];
+        $historicalFact = HistoricalFact::findOne($histId);
+
+        if(isset(Yii::$app->request->queryParams['MediaSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia()->andFilterWhere(Yii::$app->request->queryParams['MediaSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia(),
+            ]);
+       
+        //echo serialize(Yii::$app->request->post()); return;
+
+        $model = $this->findModel($id);
+        //check if this is mainmedia
+        if($historicalFact->mainMediaId==$id){
+            $model->isMainMedia=1;
+        }
+       
+        return $this->render('histlistview', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model'=>$model,

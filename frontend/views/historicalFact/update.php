@@ -42,6 +42,11 @@ echo Tabs::widget([
             'label' => 'Media',
             'url' => Url::to(['media/histlist','histId'=>$model->id]),
 
+        ],
+
+        [
+            'label' => 'Linked Maps',
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$model->id]),
         ]
 
     ],

@@ -1,10 +1,13 @@
 <?php
 
 namespace frontend\controllers;
+use yii\data\ActiveDataProvider;
 
 use Yii;
 use frontend\models\Map;
 use frontend\models\MapSearch;
+use frontend\models\HistoricalFact;
+use frontend\models\HistoricalMapLink;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -41,6 +44,26 @@ class MapController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Map models.
+     * @return mixed
+     */
+    public function actionHistlinkedmaps()
+    {
+        $histId = Yii::$app->request->queryParams["histId"];
+        $historicalFact = HistoricalFact::findOne($histId);
+        $searchModel = new MapSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $historicalFact->getMaps(),
+        ]);   
+
+        return $this->render('histlinkedmaps', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'histId'=>$histId
         ]);
     }
 

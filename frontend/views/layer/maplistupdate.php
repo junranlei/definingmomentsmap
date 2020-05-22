@@ -38,7 +38,24 @@ $content="
             //'date',
             //'dateEnded',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+                'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
+                    if ($action == "update") {
+                        return Url::to(['layer/maplistupdate', 'id' => $model->id, 'mapId' => $mapId]);
+
+                    }
+                    if ($action == "view") {
+                        return Url::to(['layer/maplistview', 'id' => $model->id, 'mapId' => $mapId]);
+
+                    }
+                    if ($action == "delete") {
+                        return Url::to(['layer/delete', 'id' => $model->id, 'mapId' => $mapId]);
+
+                    }
+
+                }
+            ],
         ],
     ]).""; 
     
@@ -59,6 +76,12 @@ echo Tabs::widget([
             'label' => 'Layers',
             'content'=>$content,
             'active' => true
+
+        ],
+        [
+
+            'label' => 'Historical Facts',
+            'url' => Url::to(['historicalfact/maplist','mapId'=>$searchModel->mapId]),
 
         ],
 

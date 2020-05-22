@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * HistoricalfactController implements the CRUD actions for Historicalfact model.
@@ -28,6 +29,18 @@ class HistoricalfactController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['update'],
+                'rules' => [
+                    [
+                        'actions' => ['update'],
+                        'allow' => true,
+                        'roles' => ['SysAdmin'],
+                    ],
+                    
                 ],
             ],
         ];

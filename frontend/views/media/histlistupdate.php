@@ -83,10 +83,14 @@ $content="
             //'ownerId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{delete}',
+            'template' => '{update}&nbsp;{view}&nbsp;{delete}',
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
                 if ($action == "update") {
                     return Url::to(['media/histlistupdate', 'id' => $model->id, 'histId' => $histId]);
+
+                }
+                if ($action == "view") {
+                    return Url::to(['media/histlistview', 'id' => $model->id, 'histId' => $histId]);
 
                 }
                 if ($action == "delete") {
@@ -123,6 +127,11 @@ echo Tabs::widget([
                     'url' => Url::to(['media/linkother','histId'=>$histId]),
                 ],
             ]
+        ],
+        [
+            'label' => 'Linked Maps',
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
+            'active' => false,
         ]
     ],
 ]);
