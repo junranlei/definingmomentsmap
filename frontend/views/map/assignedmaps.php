@@ -48,20 +48,18 @@ echo Tabs::widget([
 
         [
             'label' => 'All Maps',
-            'content'=>$content,
-            'active' => true
+            'url' => Url::to(['map/index']),
+            
 
         ],
         [
-
             'label' => 'My Maps',
             'url' => Url::to(['map/mymaps']),
-
         ],
         [
-
             'label' => 'Assigned Maps',
-            'url' => Url::to(['map/assignedmaps']),
+            'content'=>$content,
+            'active' => true
 
         ],
 

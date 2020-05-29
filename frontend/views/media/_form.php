@@ -60,6 +60,8 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'source')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'type')->dropDownList(
             ['1' => 'Image', '2' => 'Video']) ?>
 

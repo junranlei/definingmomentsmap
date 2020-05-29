@@ -58,7 +58,7 @@ class HistoricalmapSearch extends Historicalfact
 
         $this->load($params);
 
-
+        
         if($this->keyword!=null && trim($this->keyword)!='')
             $query->andWhere('title like "%' . $this->keyword . '%" or description like "%' . $this->keyword . '%"');
         

@@ -38,8 +38,10 @@ $content="
             'date',
             'dateEnded',
             'timeCreated',
+            //'right2Link',
+            //'publicPermission',
             'urls:ntext',
-            'mainMediaId',
+            //'mainMediaId',
         ],
     ])."";
 

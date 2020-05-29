@@ -103,6 +103,7 @@ class FeatureController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $model = $this->findModel($id);
+        
 
         return $this->render('histlistview', [
             'searchModel' => $searchModel,

@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\models;
+use Da\User\Model\User;
 
 use Yii;
 

@@ -17,8 +17,8 @@ class MapSearch extends Map
     public function rules()
     {
         return [
-            [['right2Add'], 'integer'],
-            [['title', 'description', 'timeCreated', 'timeUpdated'], 'safe'],
+            [['right2Add','publicPermission'], 'integer'],
+            [['title', 'description', 'timeCreated', 'timeUpdated','publicPermission'], 'safe'],
         ];
     }
 
@@ -62,6 +62,7 @@ class MapSearch extends Map
             'timeCreated' => $this->timeCreated,
             'timeUpdated' => $this->timeUpdated,
             'right2Add' => $this->right2Add,
+            'publicPermission' => $this->publicPermission,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

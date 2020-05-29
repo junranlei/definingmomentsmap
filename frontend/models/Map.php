@@ -13,7 +13,8 @@ use Yii;
  * @property string $timeCreated
  * @property string $timeUpdated
  * @property int $right2Add
- *
+ * @property int $publicPermission
+ * @property int $status
  * @property HistoricalMapLink[] $historicalMapLinks
  * @property HistoricalFact[] $hists
  * @property MapAssign[] $mapAssigns
@@ -36,7 +37,7 @@ class Map extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'right2Add'], 'required'],
-            [['right2Add'], 'integer'],
+            [['right2Add','publicPermission', 'status'], 'integer'],
             [['description'], 'string'],
             [['timeCreated', 'timeUpdated'], 'safe'],
             [['title'], 'string', 'max' => 255],
@@ -54,7 +55,8 @@ class Map extends \yii\db\ActiveRecord
             'description' => 'Description',
             'timeCreated' => 'Time Created',
             'timeUpdated' => 'Time Updated',
-            'right2Add' => 'Right2 Add',
+            'right2Add' => 'right2Add-Others can add historical facts',
+            'publicPermission'=>'Everyone Can Edit'
         ];
     }
 

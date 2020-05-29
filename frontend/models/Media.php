@@ -12,6 +12,7 @@ use Yii;
  * @property int $id
  * @property string $title
  * @property string $description
+ * @property string $source
  * @property int $type
  * @property string $nameOrUrl
  * @property string $creator
@@ -45,8 +46,8 @@ class Media extends \yii\db\ActiveRecord
         return [
             [['title', 'type', 'right2Link', 'ownerId'], 'required'],
             [['type', 'right2Link', 'ownerId', 'isUrl'], 'integer'],
-            [['description','creator'], 'string'],
-            [['title', 'nameOrUrl','creator'], 'string', 'max' => 255],
+            [['description'], 'string'],
+            [['title', 'nameOrUrl','creator','source'], 'string', 'max' => 255],
             [['files'], 'file', 'skipOnEmpty' => true],
             [['isMainMedia','permission2upload', 'isUrl'], 'safe'],
             ['permission2upload', 'validatePermission', 'skipOnEmpty' => false, 'skipOnError' => false]
@@ -72,9 +73,10 @@ class Media extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'description' => 'Description',
-            'type' => 'Type',
+            'Source'=>'Source',
+            'type' => 'Media Type',
             'nameOrUrl' => 'Name Or Url',
-            'right2Link' => 'Right2 Link',
+            'right2Link' => 'Others Can Link This Media',
             'ownerId' => 'Owner ID',
             'isMainMedia'=>'Set as Main media',
             'creator'=>'Creator',

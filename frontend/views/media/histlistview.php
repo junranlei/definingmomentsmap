@@ -166,10 +166,11 @@ echo Tabs::widget([
             'id',
             'title',
             'description:ntext',
+            'source',
             'type',
             'nameOrUrl',
-            'right2Link',
-            'ownerId',
+            //'right2Link',
+            //'ownerId',
         ],
     ]) ?>
 

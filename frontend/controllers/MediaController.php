@@ -271,7 +271,7 @@ class MediaController extends Controller
         if($historicalFact->mainMediaId==$id){
             $model->isMainMedia=1;
         }
-       
+
         return $this->render('histlistview', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -342,6 +342,30 @@ class MediaController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+    /**
+     * unlink an Media model from hist.
+     * If unlink is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUnlink($id)
+    {
+        $model = $this->findModel($id);
+        $histId = Yii::$app->request->queryParams["histId"];
+        //delete associated historicalfact media link
+        $histMediaLink = HistoricalMediaLink::findOne(['mediaId'=>$id,'histId'=>$histId]);
+
+        if($histMediaLink!=null){
+            $histMediaLink->delete();
+        }
+
+
+        //$model->delete();
+        
+
+        return $this->redirect(['histlist', 'histId' => $histId]);
     }
 
     /**

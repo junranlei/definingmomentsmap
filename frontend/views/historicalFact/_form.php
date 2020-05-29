@@ -38,7 +38,7 @@ $this->registerJs($js);
     <?= $form->field($model, 'title',['labelOptions' =>['title'=>'This is a test tooltip',
     'data-toggle'=>'tooltip',
     'class' => 'tooltipstyle']])->textInput(['maxlength' => true]) ?>
-
+<?php //->textInput(['maxlength' => true,'placeholder'=>"title text"])?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= Html::dropDownList(
         'selectFormat', //name
@@ -69,10 +69,20 @@ $this->registerJs($js);
             'todayHighlight' => true
         ],
     ])  ?>
+    
+    <?= Html::activeLabel($model,'right2Link') ?>
+    <?= $form->field($model, 'right2Link')->checkBox(array('label'=>'', 
+    'uncheckValue'=>0,'checked'=>($model->right2Link==1)?true:false)) ?>
+
+    <?= Html::activeLabel($model,'publicPermission') ?>
+    <?= $form->field($model, 'publicPermission')->checkBox(array('label'=>'', 
+    'uncheckValue'=>0,'checked'=>($model->publicPermission==1)?true:false)) ?>
 
     <?php //= $form->field($model, 'timeCreated')->textInput() ?>
 
-    <?= $form->field($model, 'urls')->widget(MultipleInput::className()) ?>
+    <?= $form->field($model, 'urls')->widget(MultipleInput::className())
+    //,['columns' =>[['name' => 'url','options' => ['placeholder'=>'url text']]]]) 
+    ?>
 
     <?php // $form->field($model, 'mainMediaId')->textInput() ?>
 
@@ -84,6 +94,7 @@ $this->registerJs($js);
     <?php ActiveForm::end(); ?>
 
 </div>
+
 
 <script>
 

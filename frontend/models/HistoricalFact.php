@@ -15,6 +15,9 @@ use Yii;
  * @property string $timeCreated
  * @property string $urls
  * @property int $mainMediaId
+ * @property int $right2Link
+ * @property int $publicPermission
+ * @property int $status
  *
  * @property Feature[] $features
  * @property HistoricalAssign[] $historicalAssigns
@@ -41,7 +44,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'date'], 'required'],
-            [['mainMediaId'], 'integer'],
+            [['mainMediaId','right2Link','publicPermission','status'], 'integer'],
             [['description', 'urls'], 'string'],
             [['date', 'dateEnded', 'timeCreated'], 'safe'],
             [['title'], 'string', 'max' => 255],
@@ -52,13 +55,15 @@ class HistoricalFact extends \yii\db\ActiveRecord
     {
         if ($this->$attribute) {
             $urls = $this->$attribute;
-            $urlArray = explode(";",$urls);
-            foreach($urlArray as $url){
-                if (!filter_var($url, FILTER_VALIDATE_URL)){
-                    $this->addError($attribute, $this->$attribute.' is not a valid URL, make sure to include scheme, eg http://, https:// or ftp://, please check.');
-                    return false;
+            //if($urls!=null&&sizeof($urls)>0){
+                $urlArray = explode(";",$urls);
+                foreach($urlArray as $url){
+                    if (!filter_var($url, FILTER_VALIDATE_URL)){
+                        $this->addError($attribute, $this->$attribute.' is not a valid URL, make sure to include scheme, eg http://, https:// or ftp://, please check.');
+                        return false;
+                    }
                 }
-            }
+            //}
         }
     
     }
@@ -77,6 +82,9 @@ class HistoricalFact extends \yii\db\ActiveRecord
             'timeCreated' => 'Time Created',
             'urls' => 'URLs',
             'mainMediaId' => 'Main Media ID',
+            'right2Link' => 'Others Can Link This Historical Fact',
+            //'right2Link' => 'Permission to add this fact to other map',
+            'publicPermission'=>'Everyone Can Edit'
         ];
     }
 

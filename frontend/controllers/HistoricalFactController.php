@@ -7,6 +7,9 @@ use frontend\models\Historicalfact;
 use frontend\models\HistoricalfactSearch;
 use frontend\models\HistoricalMapLink;
 use frontend\models\Map;
+use frontend\models\MapAssign;
+use frontend\models\User;
+use frontend\models\HistoricalAssign;
 use yii\data\ActiveDataProvider;
 
 use yii\web\Controller;
@@ -60,6 +63,61 @@ class HistoricalfactController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+       /**
+     * Lists all my hist models with tabs to other options.
+     * @return mixed
+     */
+    public function actionMyhists()
+    {
+        $searchModel = new Historicalfact();
+        //$params = Yii::$app->request->queryParams;
+        //$params['MapSearch']['publicPermission']=1;
+        $histAssign = new HistoricalAssign();
+        $userId = Yii::$app->user->identity->id;
+        $user = User::findOne($userId);
+        if(isset(Yii::$app->request->queryParams['HistoricalfactSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMyhists()
+                ->andFilterWhere(Yii::$app->request->queryParams['HistoricalfactSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMyhists()
+            ]);
+        return $this->render('myhists', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+     /**
+     * Lists all assigned hist models with tabs to other options.
+     * @return mixed
+     */
+    public function actionAssignedhists()
+    {
+        $searchModel = new Historicalfact();
+        //$params = Yii::$app->request->queryParams;
+        //$params['MapSearch']['publicPermission']=1;
+        $histAssign = new HistoricalAssign();
+        $userId = Yii::$app->user->identity->id;
+        $user = User::findOne($userId);
+        if(isset(Yii::$app->request->queryParams['HistoricalfactSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getAssignedhists()
+                ->andFilterWhere(Yii::$app->request->queryParams['HistoricalfactSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getAssignedhists()
+            ]);
+        return $this->render('assignedhists', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Lists all Historicalfact models for one map via mapId.
      * @return mixed
@@ -236,8 +294,23 @@ class HistoricalfactController extends Controller
     public function actionCreate()
     {
         $model = new Historicalfact();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $userId = Yii::$app->user->identity->id;
+        $POST = Yii::$app->request->post();
+        if($POST!=null){
+            $urls =$POST['HistoricalFact']['urls'];
+            if(count($urls)){
+                $urlsString = implode(";",$urls);
+                $POST['HistoricalFact']['urls'] = $urlsString;
+            }else{
+                $POST['HistoricalFact']['urls'] = NULL;
+            }
+        }
+        if ($model->load($POST) && $model->save()) {
+            $histAssign = new HistoricalAssign();
+            $histAssign->histId = $model->id;
+            $histAssign->userId = $userId;
+            $histAssign->type = 1;
+            $histAssign->save();
             return $this->redirect(['update', 'id' => $model->id]);
         }
 
@@ -258,7 +331,7 @@ class HistoricalfactController extends Controller
         $model = $this->findModel($id);
         //print serialize(Yii::$app->request->post());
         $POST = Yii::$app->request->post();
-        if(Yii::$app->request->post()!=null){
+        if($POST!=null){
             //print_r($POST);
             $urls =$POST['HistoricalFact']['urls'];
             if(count($urls)){

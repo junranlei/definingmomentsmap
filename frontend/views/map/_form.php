@@ -26,6 +26,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'right2Add')->checkBox(array('label'=>'', 
     'uncheckValue'=>0,'checked'=>($model->right2Add==1)?true:false)) ?>
 
+    <?= Html::activeLabel($model,'publicPermission') ?>
+    <?= $form->field($model, 'publicPermission')->checkBox(array('label'=>'', 
+    'uncheckValue'=>0,'checked'=>($model->publicPermission==1)?true:false)) ?>
+    
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

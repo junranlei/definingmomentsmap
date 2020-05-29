@@ -31,6 +31,7 @@ $content="
             //'description:ntext',
             'type',
             'nameOrUrl',
+            'externalId',
             //'visible',
             //'mapId',
             //'date',

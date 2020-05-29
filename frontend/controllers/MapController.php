@@ -8,6 +8,8 @@ use frontend\models\Map;
 use frontend\models\MapSearch;
 use frontend\models\HistoricalFact;
 use frontend\models\HistoricalMapLink;
+use frontend\models\MapAssign;
+use frontend\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -33,15 +35,71 @@ class MapController extends Controller
     }
 
     /**
-     * Lists all Map models.
+     * Lists all public Map models with tabs to other options.
      * @return mixed
      */
     public function actionIndex()
     {
         $searchModel = new MapSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $params = Yii::$app->request->queryParams;
+        //$params['MapSearch']['publicPermission']=1;
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all my Map models with tabs to other options.
+     * @return mixed
+     */
+    public function actionMymaps()
+    {
+        $searchModel = new MapSearch();
+        //$params = Yii::$app->request->queryParams;
+        //$params['MapSearch']['publicPermission']=1;
+        $mapAssign = new MapAssign();
+        $userId = Yii::$app->user->identity->id;
+        $user = User::findOne($userId);
+        if(isset(Yii::$app->request->queryParams['MapSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMymaps()
+                ->andFilterWhere(Yii::$app->request->queryParams['mapSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMymaps()
+            ]);
+        return $this->render('mymaps', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+     /**
+     * Lists all assigned Map models with tabs to other options.
+     * @return mixed
+     */
+    public function actionAssignedmaps()
+    {
+        $searchModel = new MapSearch();
+        //$params = Yii::$app->request->queryParams;
+        //$params['MapSearch']['publicPermission']=1;
+        $mapAssign = new MapAssign();
+        $userId = Yii::$app->user->identity->id;
+        $user = User::findOne($userId);
+        if(isset(Yii::$app->request->queryParams['MapSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getAssignedmaps()
+                ->andFilterWhere(Yii::$app->request->queryParams['mapSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getAssignedmaps()
+            ]);
+        return $this->render('assignedmaps', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

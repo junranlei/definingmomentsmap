@@ -17,16 +17,32 @@ return [
         //usuario
         'user' => [
             'class' => Da\User\Module::className(),
+            'classMap' => [
+                'User' => frontend\models\User::class,
+                'Profile' => frontend\models\Profile::class,
+            ],
             'administrators' => ['admin'],
             'enableRegistration'=>true,
             'allowPasswordRecovery'=>true,
             'generatePasswords' => true,
-            'enableEmailConfirmation'=>true
-        ]
+            'enableEmailConfirmation'=>true,
+            'controllerMap' => [
+                'profile' => [
+                    'class' => 'frontend\controllers\ProfileController',
+                ],
+            ]
+        ],   
     ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@Da/User/resources/views/profile' => '@app/views/profile',
+                ],
+            ],
         ],
         /*'user' => [
             'identityClass' => 'common\models\User',

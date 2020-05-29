@@ -49,7 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'timeCreated',
             'timeUpdated',
-            'right2Add',
+            //'right2Add',
+            //'publicPermission'
         ],
     ]) ?>
 
@@ -111,11 +112,17 @@ $geoCoderPlugin->setName("geocoder_name");
 // install the plugin
 $leafLet->installPlugin($geoCoderPlugin);
 
+//Get data
 $layers = $model->layers;
 $hists = $model->hists;
 $layersvar=[];
+$n=0;
 foreach($layers as $layer){
-    $layersvar[$layer->title]=$layer->nameOrUrl;
+    $layersvar[$n]["url"]=trim($layer->nameOrUrl);
+    $layersvar[$n]["layername"]=trim($layer->externalId);
+    $layersvar[$n]["displaytitle"]=trim($layer->title);
+    $n++;
+    //$layersvar[trim($layer->title)]=trim($layer->nameOrUrl);
 }
 $featuresvar=[];
 $featureobjsvar=[];
@@ -144,7 +151,7 @@ foreach($hists as $hist){
     }
     
 }
-
+// prepare JS variable 
 $this->registerJs(
     "var layersvar = ".\yii\helpers\Json::htmlEncode($layersvar).";".
     "var featuresvar = ".\yii\helpers\Json::htmlEncode($featuresvar).";".
@@ -154,7 +161,7 @@ $this->registerJs(
 );
 
 
-
+// creater JS 
 $this->registerJs(<<<JS
 //alert(JSON.stringify(featureobjsvar));alert(histsvar[0]["id"]);
     var mapsPlaceholder = [];
@@ -165,18 +172,24 @@ $this->registerJs(<<<JS
     var basemaps2={};
     var layer1;
     var key1;
-    var i=0;
+    var j=0;
     for(var key in layersvar){
-        if(i==0){
-            layer1 = L.tileLayer.wms(layersvar[key], {
-                    layers: key
+        if(j==0){
+            
+            layer1 = L.tileLayer.wms(layersvar[key]["url"], {
+                layers: layersvar[key]["layername"]
             });
             key1=key;
+            basemaps2[layersvar[key]["displaytitle"]] = layer1;
+        }else{
+            basemaps2[layersvar[key]["displaytitle"]]=L.tileLayer.wms(layersvar[key]["url"], {
+                layers: layersvar[key]["layername"]
+            });
         }
-        basemaps2[key]=L.tileLayer.wms(layersvar[key], {
+        /*basemaps2[key]=L.tileLayer.wms(layersvar[key], {
                     layers: key
-        });
-        i++;
+        });*/
+        j++;
 
     }
     var basemaps = {
@@ -201,9 +214,9 @@ $this->registerJs(<<<JS
     var observer = new MutationObserver(function (mutations, me) {
         var map2 = mapsPlaceholder.pop();
         if (map2) {
-            if(i){
+            if(j){
                 L.control.layers(basemaps2).addTo(map2);
-                basemaps2[key1].addTo(map2);
+                layer1.addTo(map2);
             }
             addCluster(map2, featureobjsvar);
             //L.control.layers(basemaps).addTo(map2);
@@ -256,7 +269,6 @@ $this->registerJs(<<<JS
             return this._latlng;
         },
 
-        // dummy method.
         setLatLng: function () {}
     });
 
@@ -273,7 +285,6 @@ $this->registerJs(<<<JS
             return this._latlng;
         },
 
-        // dummy method.
         setLatLng: function () {}
     });
 
@@ -298,18 +309,17 @@ $this->registerJs(<<<JS
                 var geojsonFeature = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"LineString","coordinates":[[-0.17754077911376956,51.52588012932929],[-0.15299320220947268,51.52545292321852]]}},{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[131.37451171875003,-24.468483631307038]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[121.37695312500001,-30.372875188118016],[118.27880859375001,-29.172627582366303],[116.80664062500001,-26.35249785815401],[118.27880859375001,-23.907265771227095],[121.81640625000001,-22.105998799750566],[124.78271484375001,-23.907265771227095],[126.56250000000001,-26.74561038219901],[124.78271484375001,-29.172627582366303],[121.37695312500001,-30.372875188118016]]]}}]};
                 var geojsonLayer = new L.geoJson(geojsonObject,{
 
-                    onEachFeature: function(feature, layer) {//alert(feature.geometry.type);
-                        if (feature.geometry.type === "Polygon") {//alert(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1));
+                    onEachFeature: function(feature, layer) {
+                        if (feature.geometry.type === "Polygon") {
                             var clusterable = new L.PolygonClusterable(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1))
-                            //.bindPopup('<img src="/defining2/frontend/web/uploads/6/IMG_4561.jpg" alt="" style="display:block; margin:0 auto;" width="80px"/><a href=#>feature</a>:'+key2+"hist:"+key1)
                             .bindPopup(mediaHtml+histLink)
                             .addTo(markerClusterLayer);
-                        }else if(feature.geometry.type === "LineString") {//alert(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1));
+                        }else if(feature.geometry.type === "LineString") {
                             var clusterable = new L.PolylineClusterable(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates))
                             //.bindPopup("feature:"+key2+"hist:"+key1)
                             .bindPopup(mediaHtml+histLink)
                             .addTo(markerClusterLayer);
-                        }else if(feature.geometry.type === "Point") {//alert(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates, 1));
+                        }else if(feature.geometry.type === "Point") {
                             var clusterable = new L.MarkerClusterable(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates))
                             .bindPopup(mediaHtml+histLink)
                             .addTo(markerClusterLayer);

@@ -126,6 +126,7 @@ $geoCoderPlugin->setName("geocoder_name");
 // install the plugin
 $leafLet->installPlugin($geoCoderPlugin);
 
+//Get Data
 //$hists = (New Historicalfact)->find()->all();
 $hists = $dataProvider->getModels();
 $layersvar=[];
@@ -159,7 +160,7 @@ foreach($hists as $hist){
     }
     
 }
-
+//Prepare JS variable
 $this->registerJs(
     "var layersvar = ".\yii\helpers\Json::htmlEncode($layersvar).";".
     //"var featuresvar = ".\yii\helpers\Json::htmlEncode($featuresvar).";".
@@ -169,7 +170,7 @@ $this->registerJs(
 );
 
 
-
+//Create JS
 $this->registerJs(<<<JS
     var mapsPlaceholder = [];
 
@@ -222,6 +223,7 @@ $this->registerJs(<<<JS
             addCluster(map2, featureobjsvar);
             //L.control.layers(basemaps).addTo(map2);
             //basemaps.Topography.addTo(map2);
+            //placeholder on map search bar
             geocoder_inputs = document.getElementsByClassName('leaflet-geocoder-input');
             for (var i = 0; i < geocoder_inputs.length; i++) {
                 geocoder_inputs[i].placeholder='place name or lat,lng';

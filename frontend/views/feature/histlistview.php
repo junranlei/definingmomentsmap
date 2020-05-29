@@ -126,9 +126,9 @@ echo Tabs::widget([
             'id',
             'title',
             'description:ntext',
-            'geojson:ntext',
+            //'geojson:ntext',
             'visible',
-            'histId',
+            //'histId',
         ],
     ]) ?>
 
@@ -147,6 +147,7 @@ document.getElementById("Save2").onclick = function(e) {
     var tempjson = ['.$model->geojson.'];
     var concatGeojson = data;
     if(tempjson!=[]&&tempjson[0]!=null){
+        //currentGeojson = L.geoJson(tempjson);
         //merge two geojson
         concatGeojson = concatGeoJSON(tempjson[0], data);
     }

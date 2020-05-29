@@ -12,6 +12,7 @@ use Yii;
  * @property string $description
  * @property int $type
  * @property string $nameOrUrl
+ * @property string $externalId
  * @property int $visible
  * @property int $mapId
  * @property string $date
@@ -38,8 +39,8 @@ class Layer extends \yii\db\ActiveRecord
             [['title', 'description', 'type', 'visible', 'mapId', 'date'], 'required'],
             [['type', 'visible', 'mapId'], 'integer'],
             [['description'], 'string'],
-            [['date', 'dateEnded'], 'safe'],
-            [['title', 'nameOrUrl'], 'string', 'max' => 255],
+            [['date', 'dateEnded','externalId'], 'safe'],
+            [['title', 'nameOrUrl','externalId'], 'string', 'max' => 255],
             [['mapId'], 'exist', 'skipOnError' => true, 'targetClass' => Map::className(), 'targetAttribute' => ['mapId' => 'id']],
         ];
     }
@@ -51,10 +52,11 @@ class Layer extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Display Title',
             'description' => 'Description',
             'type' => 'Type',
-            'nameOrUrl' => 'Name Or Url',
+            'nameOrUrl' => 'Service Url',
+            'externalId' => 'Service Layer Name',
             'visible' => 'Visible',
             'mapId' => 'Map ID',
             'date' => 'Date',

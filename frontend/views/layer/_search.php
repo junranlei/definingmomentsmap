@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nameOrUrl') ?>
 
+    <?= $form->field($model, 'externalId') ?>
+
     <?php // echo $form->field($model, 'visible') ?>
 
     <?php // echo $form->field($model, 'mapId') ?>

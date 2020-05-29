@@ -155,9 +155,39 @@ function concatGeoJSON(g1, g2){
 
 
     $leaflet->installPlugin($drawFeature);  // add draw plugin
-    $leaflet->installPlugin($geoCoderPlugin); //add geocoder plugin   
+    $leaflet->installPlugin($geoCoderPlugin); //add geocoder plugin  
+    
+//Create JS
+$this->registerJs(<<<JS
+    var mapsPlaceholder = [];
+
+    L.Map.addInitHook(function () {
+        mapsPlaceholder.push(this); // Use whatever global scope variable you like.
+    });
+
+    // set up the mutation observer observe when map is ready
+    var observer = new MutationObserver(function (mutations, me) {
+        var map2 = mapsPlaceholder.pop();
+        if (map2) {
+            //placeholder on map search bar
+            geocoder_inputs = document.getElementsByClassName('leaflet-geocoder-input');
+            for (var i = 0; i < geocoder_inputs.length; i++) {
+                geocoder_inputs[i].placeholder='place name or lat,lng';
+            } 
+            me.disconnect(); // stop observing
+            return;
+        }
+    });
+    // start observing
+    observer.observe(document, {
+        childList: true,
+        subtree: true
+    });
+JS
+);
 
 
+    // we could also do
     echo $leaflet->widget(['options' => ['style' => 'min-height: 500px']]);
     ?>
 

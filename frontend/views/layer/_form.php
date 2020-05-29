@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nameOrUrl')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'externalId')->textInput(['maxlength' => true]) ?>
+
     <?= Html::activeLabel($model,'visible') ?>
     <?= $form->field($model, 'visible')->checkBox(array('label'=>'', 
     'uncheckValue'=>0,'checked'=>($model->visible==1)?true:false)) ?>

@@ -6,21 +6,22 @@ use yii\bootstrap\Tabs;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\MapSearch */
+/* @var $searchModel frontend\models\HistoricalfactSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Maps';
+$this->title = 'Historical Facts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="map-index">
+<div class="historicalfact-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Map', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Historical Fact', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <?php
 $content= '<br/>'.
     GridView::widget([
@@ -32,11 +33,15 @@ $content= '<br/>'.
             'id',
             'title',
             //'description:ntext',
-            'timeCreated',
-            'timeUpdated',
-            //'right2Add',
+            'date',
+            'dateEnded',
+            //'timeCreated',
+            //'urls:ntext',
+            //'mainMediaId',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+           
+            ],
         ],
     ]); ?>
 
@@ -47,22 +52,18 @@ echo Tabs::widget([
     'items' => [
 
         [
-            'label' => 'All Maps',
+            'label' => 'All Historical Facts',
+            'url' => Url::to(['historicalfact/index']),
+
+        ],
+        [
+            'label' => 'My Historical Facts',
+            'url' => Url::to(['historicalfact/myhists']),         
+        ],
+        [
+            'label' => 'Assigned Historical Facts',
             'content'=>$content,
-            'active' => true
-
-        ],
-        [
-
-            'label' => 'My Maps',
-            'url' => Url::to(['map/mymaps']),
-
-        ],
-        [
-
-            'label' => 'Assigned Maps',
-            'url' => Url::to(['map/assignedmaps']),
-
+            'active' => true         
         ],
 
     ],

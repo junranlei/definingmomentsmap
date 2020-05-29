@@ -34,6 +34,7 @@ $content= '<br/>'.
             //'description:ntext',
             'timeCreated',
             'timeUpdated',
+            //'publicPermission',
             //'right2Add',
 
             ['class' => 'yii\grid\ActionColumn'],
@@ -48,14 +49,15 @@ echo Tabs::widget([
 
         [
             'label' => 'All Maps',
-            'content'=>$content,
-            'active' => true
+            'url' => Url::to(['map/index']),
+            
 
         ],
         [
 
             'label' => 'My Maps',
-            'url' => Url::to(['map/mymaps']),
+            'content'=>$content,
+            'active' => true
 
         ],
         [

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\bootstrap\Tabs;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -21,7 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <?php
+$content= '<br/>'.
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -37,10 +40,39 @@ $this->params['breadcrumbs'][] = $this->title;
             //'mainMediaId',
 
             ['class' => 'yii\grid\ActionColumn',
-
+           
             ],
         ],
     ]); ?>
 
+<?php
 
+echo Tabs::widget([
+
+    'items' => [
+
+        [
+            'label' => 'All Historical Facts',
+            'content'=>$content,
+            'active' => true
+
+        ],
+        [
+
+            'label' => 'My Historical Facts',
+            'url' => Url::to(['historicalfact/myhists']),
+
+        ],
+        [
+
+            'label' => 'Assigned Historical Facts',
+            'url' => Url::to(['historicalfact/assignedhists']),
+
+        ],
+
+    ],
+
+]);
+
+?>
 </div>
