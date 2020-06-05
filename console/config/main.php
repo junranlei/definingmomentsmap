@@ -20,6 +20,15 @@ return [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',
           ],
+        'migrate' => [
+            'class'               => 'yii\console\controllers\MigrateController',
+            'migrationPath' => null,
+            'migrationNamespaces' => [
+              # Other migration namespaces
+               //'app\consoles\migrations',
+                //'bedezign\yii2\audit\migrations',
+            ],
+        ],
     ],
     'components' => [
         'log' => [
@@ -32,4 +41,10 @@ return [
         ],
     ],
     'params' => $params,
+    'modules' => [
+        //'audit' => ['class' => 'bedezign\yii2\audit\Audit'],
+        //'db' => 'db', 
+        'audit' => 'bedezign\yii2\audit\Audit',
+    ],
+    
 ];

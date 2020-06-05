@@ -14,6 +14,7 @@ use yii\data\ActiveDataProvider;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\db\Query;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -38,10 +39,18 @@ class HistoricalfactController extends Controller
                 'class' => AccessControl::className(),
                 'only' => ['update'],
                 'rules' => [
-                    [
+                    /*[
                         'actions' => ['update'],
                         'allow' => true,
                         'roles' => ['SysAdmin'],
+                    ],*/
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['updateHist'],
+                        'roleParams' => function() {
+                            return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
                     ],
                     
                 ],
@@ -272,6 +281,34 @@ class HistoricalfactController extends Controller
             'mapId'=>$mapId,
         ]);
     }
+    /**
+     * list for selecting assigned user
+     * @param string $q search term
+     * @return array list of user id and text
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+
+    public function actionUserlist($q = null, $id = null){
+        //$visitors = ArrayHelper::map(Visitor::find()->orderBy('name')->all(),'id', 'name'); 
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new Query;
+            $query->select('id, username AS text')
+                ->from('user')
+                ->orderBy('username')
+                //->where(['like', 'name', $q])
+                ->where('username like :q', [':q' => '%'.$q.'%'])
+                ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        }
+        elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => User::find($id)->username];
+        }
+        return $out;
+    }
 
     /**
      * Displays a single Historicalfact model.
@@ -344,6 +381,7 @@ class HistoricalfactController extends Controller
         }
         if ($model->load($POST) && $model->save()) {
             //$model->urls = explode(";",$model->urls);
+          
             return $this->redirect(['update', 'id' => $model->id]);
         }
         if(trim($model->urls!="")&&$model->urls!=NULL)

@@ -33,7 +33,7 @@ $content="
             //'description:ntext',
             'type',
             'nameOrUrl',
-            'externalId',
+            //'externalId',
             //'visible',
             //'mapId',
             //'date',

@@ -28,7 +28,9 @@
         "bower-asset/leaflet.markercluster": "~1.0",
         "2amigos/yii2-usuario": "~1.0",
         "yiisoft/yii2-jui": "^2.0",
-        "kartik-v/yii2-widget-datepicker": "@dev"
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "bedezign/yii2-audit": "^1.0",
+        "kartik-v/yii2-widget-select2": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

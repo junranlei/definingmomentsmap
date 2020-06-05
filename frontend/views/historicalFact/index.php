@@ -29,7 +29,6 @@ $content= '<br/>'.
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'title',
             //'description:ntext',
@@ -40,7 +39,7 @@ $content= '<br/>'.
             //'mainMediaId',
 
             ['class' => 'yii\grid\ActionColumn',
-           
+            'template' => '{view}',
             ],
         ],
     ]); ?>

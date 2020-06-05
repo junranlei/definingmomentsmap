@@ -36,7 +36,9 @@ $content= '<br/>'.
             'timeUpdated',
             //'right2Add',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view}',
+            ],
         ],
     ]); ?>
 

@@ -39,7 +39,7 @@ class Map extends \yii\db\ActiveRecord
             [['title', 'description', 'right2Add'], 'required'],
             [['right2Add','publicPermission', 'status'], 'integer'],
             [['description'], 'string'],
-            [['timeCreated', 'timeUpdated'], 'safe'],
+            [['timeCreated', 'timeUpdated','assignedUsers'], 'safe'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -107,5 +107,42 @@ class Map extends \yii\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Users]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers2()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id'], 
+            function($query) {
+            $query->onCondition(['type' =>2]);
+        });
+    }
+
+        /**
+     * @return string
+     */
+    public function getAssignedUsers()
+    {
+        $users =  $this->users2;
+        $ds = "";
+        foreach($users as $user){
+            if($user!=null&&$user->username!=null){
+                if($ds!="")$ds=$ds.",";
+                $ds = $ds.$user->username;
+            }
+        }
+        return $ds;
+    }
+    
+    /**
+     * @return string
+     */
+    public function setAssignedUsers($ds)
+    {
+        $this->assignedUsers = $ds;
     }
 }

@@ -17,6 +17,7 @@ use Yii;
  * @property int $mainMediaId
  * @property int $right2Link
  * @property int $publicPermission
+ * @property string $assignedUsers
  * @property int $status
  *
  * @property Feature[] $features
@@ -37,6 +38,13 @@ class HistoricalFact extends \yii\db\ActiveRecord
         return 'historicalFact';
     }
 
+    public function behaviors()
+    {
+        return [
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -46,7 +54,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
             [['title', 'description', 'date'], 'required'],
             [['mainMediaId','right2Link','publicPermission','status'], 'integer'],
             [['description', 'urls'], 'string'],
-            [['date', 'dateEnded', 'timeCreated'], 'safe'],
+            [['date', 'dateEnded', 'timeCreated','assignedUsers'], 'safe'],
             [['title'], 'string', 'max' => 255],
             ['urls', 'validateUrls', 'skipOnEmpty' => true, 'skipOnError' => false]
         ];
@@ -116,6 +124,41 @@ class HistoricalFact extends \yii\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('historicalAssign', ['histId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Users]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers2()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('historicalAssign', ['histId' => 'id'], 
+            function($query) {
+            $query->onCondition(['type' =>2]);
+        });
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssignedUsers()
+    {
+        $users =  $this->users2;
+        $ds = "";
+        foreach($users as $user){
+            if($ds!="")$ds=$ds.",";
+            $ds = $ds.$user->username;
+        }
+        return $ds;
+    }
+    
+    /**
+     * @return string
+     */
+    public function setAssignedUsers($ds)
+    {
+        $this->assignedUsers = $ds;
     }
 
     /**

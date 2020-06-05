@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /* @var $model frontend\models\Historicalfact */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Historicalfacts', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Historical Facts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -19,17 +19,19 @@ $content="
     <h1>". Html::encode($this->title) ."</h1>
 
     <p>
-        ". Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ." ".
-         Html::a('Delete', ['delete', 'id' => $model->id], [
+        ";
+if (\Yii::$app->user->can('updateHist',['hist' => $model])) 
+    $content=$content.Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary'])." "
+    .Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ."
-    </p>
+     </p>";
 
-    ". DetailView::widget([
+    $content=$content. DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',

@@ -10,9 +10,11 @@ use frontend\models\HistoricalFact;
 use frontend\models\HistoricalMapLink;
 use frontend\models\MapAssign;
 use frontend\models\User;
+use yii\db\Query;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * MapController implements the CRUD actions for Map model.
@@ -29,6 +31,21 @@ class MapController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['update','create','import'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['update'],
+                        'roles' => ['updateMap'],
+                        'roleParams' => function() {
+                            return ['map' => Map::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
+                    ],
+                    
                 ],
             ],
         ];
@@ -146,8 +163,14 @@ class MapController extends Controller
     public function actionCreate()
     {
         $model = new Map();
+        $userId = Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $mapAssign = new MapAssign();
+            $mapAssign->mapId = $model->id;
+            $mapAssign->userId = $userId;
+            $mapAssign->type = 1;
+            $mapAssign->save();
             return $this->redirect(['update', 'id' => $model->id]);
         }
 
@@ -168,6 +191,7 @@ class MapController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['update', 'id' => $model->id]);
         }
 
@@ -188,6 +212,35 @@ class MapController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * list for selecting assigned user
+     * @param string $q search term
+     * @return array list of user id and text
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+
+    public function actionUserlist($q = null, $id = null){
+        //$visitors = ArrayHelper::map(Visitor::find()->orderBy('name')->all(),'id', 'name'); 
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new Query;
+            $query->select('id, username AS text')
+                ->from('user')
+                ->orderBy('username')
+                //->where(['like', 'name', $q])
+                ->where('username like :q', [':q' => '%'.$q.'%'])
+                ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        }
+        elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => User::find($id)->username];
+        }
+        return $out;
     }
 
     /**
