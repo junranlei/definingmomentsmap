@@ -22,6 +22,9 @@ $types=[ 1 => 'Image', 2 => 'Video' ];
 <?php
 $content="
     <h1>". Html::encode($this->title) ."</h1>   
+    <p>"
+        .Html::a('Create Media', ['histlistcreate','histId'=>$histId], ['class' => 'btn btn-success']).
+    "</p>
     ". GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -136,7 +139,7 @@ echo Tabs::widget([
     'items' => [
         [
             'label' => 'Historical Fact',
-            'url' => Url::to(['historicalfact/update','id'=>$histId]),
+            'url' => Url::to(['historicalfact/view','id'=>$histId]),
             'active' => false,
         ],
         [
@@ -169,9 +172,7 @@ echo Tabs::widget([
 ?>
 </div>
 <div class="media-create">
-    <p>
-        <?= Html::a('Create Media', ['histlist','histId'=>$histId], ['class' => 'btn btn-success']) ?>
-    </p>
+
     <h1>Update Media <?= Html::encode($model->title) ?></h1>   
     <?= $this->render('_form', [
         'model' => $model,

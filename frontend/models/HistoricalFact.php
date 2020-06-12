@@ -52,6 +52,8 @@ class HistoricalFact extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'date'], 'required'],
+            ['date', 'date','format' => 'yyyy-mm-dd'],
+            ['dateEnded', 'date','format' => 'yyyy-mm-dd'],
             [['mainMediaId','right2Link','publicPermission','status'], 'integer'],
             [['description', 'urls'], 'string'],
             [['date', 'dateEnded', 'timeCreated','assignedUsers'], 'safe'],
@@ -147,8 +149,10 @@ class HistoricalFact extends \yii\db\ActiveRecord
         $users =  $this->users2;
         $ds = "";
         foreach($users as $user){
-            if($ds!="")$ds=$ds.",";
-            $ds = $ds.$user->username;
+            if($user!=null&&$user->username!=null){
+                if($ds!="")$ds=$ds.",";
+                $ds = $ds.$user->username;
+            }
         }
         return $ds;
     }

@@ -25,6 +25,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
+use Da\User\Model\User;
 
 /**
  * @property int $user_id

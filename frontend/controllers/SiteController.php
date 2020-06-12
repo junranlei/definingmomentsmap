@@ -77,7 +77,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //return $this->render('index');
+        $searchModel = new HistoricalmapSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $listDataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $listDataProvider->pagination->pageSize=10;
+        return $this->render('map', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'listDataProvider'=>$listDataProvider
+        ]);
     }
 
     /**
@@ -97,6 +106,7 @@ class SiteController extends Controller
             'listDataProvider'=>$listDataProvider
         ]);
     }
+
 
     /**
      * Logs in a user.

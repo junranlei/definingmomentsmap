@@ -16,15 +16,14 @@ use frontend\models\Feature;
 
 $this->title = 'Features';
 $this->params['breadcrumbs'][] = $this->title;
-$histId = $searchModel->histId;
 ?>
 <div class="feature-index">
 <?php
 $content="
     <h1>". Html::encode($this->title) ."</h1>
-    <p>
-    ".Html::a('Create Feature', ['histlistcreate','histId'=>$searchModel->histId], ['class' => 'btn btn-success']) 
-    ."</p>
+
+    
+
     ". GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -34,7 +33,9 @@ $content="
             'id',
             'title',
             //'description:ntext',
+            //'geojson:ntext',
             'visible',
+            //'histId',
 
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{update}&nbsp;{view}&nbsp;{delete}',
@@ -45,11 +46,13 @@ $content="
                     return Url::to(['feature/histlistupdate', 'id' => $model->id, 'histId' => $model->histId]);
 
                 }
+
                 if ($action == "view") {
 
                     return Url::to(['feature/histlistview', 'id' => $model->id, 'histId' => $model->histId]);
 
                 }
+
                 if ($action == "delete") {
 
                     return Url::to(['feature/delete', 'id' => $model->id, 'histId' => $model->histId]);
@@ -67,7 +70,7 @@ echo Tabs::widget([
         [
 
             'label' => 'Historical Fact',
-            'url' => Url::to(['historicalfact/view','id'=>$histId]),
+            'url' => Url::to(['historicalfact/view','id'=>$searchModel->histId]),
 
         ],
 
@@ -80,15 +83,15 @@ echo Tabs::widget([
         ],
 
         [
-
             'label' => 'Media',
-            'url' => Url::to(['media/histlist','histId'=>$histId]),
+            'url' => Url::to(['media/histlist','histId'=>$searchModel->histId]),
         ],
 
         [
             'label' => 'Linked Maps',
-            'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$searchModel->histId]),
         ]
+
 
     ],
 
@@ -98,12 +101,13 @@ echo Tabs::widget([
 </div>
 
 <div class="feature-create">
-    
 
-    <h1>Update Feature <?= Html::encode($model->title) ?></h1>
-
+    <h1>Create Feature</h1>
+    <?php $newFeature = new Feature();
+        $newFeature->histId=$searchModel->histId;
+    ?>
     <?= $this->render('_form', [
-        'model' => $model,
+        'model' => $newFeature,
     ]) ?>
 
 </div>

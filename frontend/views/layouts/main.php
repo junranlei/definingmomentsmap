@@ -37,15 +37,15 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        //['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Home', 'url' => ['/site/map']],
+        ['label' => 'Home', 'url' => ['/site/index']],
+        //['label' => 'Home', 'url' => ['/site/map']],
         ['label' => 'Historical Facts', 'url' => ['/historicalfact/index']],
         ['label' => 'Maps', 'url' => ['/map/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/registration/register']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
     } else {
         $menuItems[] = '<li>'

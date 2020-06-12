@@ -91,7 +91,7 @@ echo Tabs::widget([
     'items' => [
         [
             'label' => 'Historical Fact',
-            'url' => Url::to(['historicalfact/update','id'=>$histId]),
+            'url' => Url::to(['historicalfact/view','id'=>$histId]),
             'active' => false,
         ],
         [

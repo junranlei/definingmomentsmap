@@ -17,7 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="historicalfact-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>".
+    <h1>". Html::encode($this->title) ."</h1> <p>
+    ". Html::a('Create Historical Fact', ['create'], ['class' => 'btn btn-success']) ."
+</p>".
 GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -34,38 +36,49 @@ GridView::widget([
             //'mainMediaId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{view}&nbsp;{update}&nbsp;{delete}',
+            'template' => '{view}&nbsp{unlink}&nbsp;',
             'buttons' => [
-                'view' => function ($url, $model) {
+                /*'view' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-pencil" title="Update"></span>', $url);
-                },
-                'update' => function ($url, $model) {
+                },*/
+                'view' => function ($url, $model) {
 
-                    return Html::a('<span class="glyphicon glyphicon-map-marker" title="Update more"></span>',$url, ['target' => "_blank"]);
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>',$url, ['target' => "_blank"]);
                 },
-                        'delete' => function ($url, $model) {
+                'unlink' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-link" title= "unlink"></span>', $url,['data' => [
+                        'confirm' => 'Are you sure you want to unlink this item? ',
+                        'method' => 'post',
+                    ]]);
+                }
+                /*        'delete' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-trash" title= "Delete"></span>', $url);
-                },
+                },*/
             ],
             'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
 
-                if ($action == "view") {
+                /*if ($action == "view") {
 
                     return Url::to(['maplistupdate', 'id' => $model->id, 'mapId'=>$mapId]);
 
+                }*/
+
+                if ($action == "view") {
+
+                    return Url::to(['historicalfact/view', 'id' => $model->id], ['target' => "_blank"]);
+
+                }
+                if ($action == "unlink") {
+
+                    return Url::to(['historicalfact/unlink', 'id' => $model->id, 'mapId' => $mapId]);
+
                 }
 
-                if ($action == "update") {
-
-                    return Url::to(['historicalfact/update', 'id' => $model->id], ['target' => "_blank"]);
-
-                }
-
-                if ($action == "delete") {
+                /*if ($action == "delete") {
 
                     return Url::to(['delete', 'id' => $model->id]);
 
-                }
+                }*/
 
             }],
         ],
@@ -78,7 +91,7 @@ echo Tabs::widget([
 
         [
             'label' => 'Map',
-            'url' => Url::to(['map/update','id'=>$mapId]),
+            'url' => Url::to(['map/view','id'=>$mapId]),
             'active' => false,
         ],
         [
@@ -112,14 +125,14 @@ echo Tabs::widget([
 ?>
 </div>
 
-<div class="historicalfact-create">
+<!--<div class="historicalfact-create">
 
 <h1>Create Historical Fact</h1>
 <?php 
 //$newHist = new Historicalfact();        
 ?>
-    <?= $this->render('_form', [
+    <?php /* $this->render('_form', [
         'model' => $model,
-    ]) ?>
+    ]) */ ?>
 
-</div>
+</div>-->

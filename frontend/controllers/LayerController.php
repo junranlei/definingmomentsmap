@@ -8,6 +8,8 @@ use frontend\models\LayerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use frontend\models\Map;
 
 /**
  * LayerController implements the CRUD actions for Layer model.
@@ -24,6 +26,32 @@ class LayerController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['maplist','maplistview'],
+                        'allow' => true,
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['maplistcreate'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['maplistupdate','delete'],
+                        'roles' => ['updateMap'],
+                        'roleParams' => function() {
+                            $layer=$this->findModel(Yii::$app->request->get('id'));
+                            $mapId=$layer->map->id;
+                            return ['map' => Map::findOne(['id' => $mapId])];
+                        },
+                    ],
+                    
                 ],
             ],
         ];
@@ -62,6 +90,30 @@ class LayerController extends Controller
         }
 
         return $this->render('maplist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'mapId'=>$mapId
+        ]);
+    }
+
+    /**
+     * Lists all Layer models for one map via mapId with create.
+     * @return mixed
+     */
+    public function actionMaplistcreate()
+    {
+        $searchModel = new LayerSearch();
+        $mapId = Yii::$app->request->queryParams["mapId"];
+        $searchModel->mapId=$mapId;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = new Layer();
+        $model->mapId = $mapId;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['maplistupdate', 'id' => $model->id, 'mapId'=>$model->mapId]);
+        }
+
+        return $this->render('maplistcreate', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'mapId'=>$mapId

@@ -20,7 +20,7 @@ $content="
 
     <p>
         ";
-if (\Yii::$app->user->can('updateHist',['hist' => $model])) 
+//if (\Yii::$app->user->can('updateHist',['hist' => $model])) 
     $content=$content.Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary'])." "
     .Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

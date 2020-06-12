@@ -35,11 +35,21 @@ class MapController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['update','create','import'],
+                //'only' => ['update','create','import'],
                 'rules' => [
                     [
+                        'actions' => ['view','index','histlinkedmaps'],
                         'allow' => true,
-                        'actions' => ['update'],
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['mymaps','assignedmaps','create'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update','delete','userlist'],
                         'roles' => ['updateMap'],
                         'roleParams' => function() {
                             return ['map' => Map::findOne(['id' => Yii::$app->request->get('id')])];
@@ -78,8 +88,10 @@ class MapController extends Controller
         //$params = Yii::$app->request->queryParams;
         //$params['MapSearch']['publicPermission']=1;
         $mapAssign = new MapAssign();
+
         $userId = Yii::$app->user->identity->id;
         $user = User::findOne($userId);
+
         if(isset(Yii::$app->request->queryParams['MapSearch']))
             $dataProvider = new ActiveDataProvider([
                 'query' => $user->getMymaps()
@@ -107,7 +119,8 @@ class MapController extends Controller
         $mapAssign = new MapAssign();
         $userId = Yii::$app->user->identity->id;
         $user = User::findOne($userId);
-        if(isset(Yii::$app->request->queryParams['MapSearch']))
+        
+        if(isset(Yii::$app->request->queryParams['MapSearch'])&&$user!=null)
             $dataProvider = new ActiveDataProvider([
                 'query' => $user->getAssignedmaps()
                 ->andFilterWhere(Yii::$app->request->queryParams['mapSearch']),
@@ -163,9 +176,10 @@ class MapController extends Controller
     public function actionCreate()
     {
         $model = new Map();
-        $userId = Yii::$app->user->identity->id;
+        if(Yii::$app->user->identity!=null&&Yii::$app->user->identity->id!=null)
+            $userId = Yii::$app->user->identity->id;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()&&$user!=null) {
             $mapAssign = new MapAssign();
             $mapAssign->mapId = $model->id;
             $mapAssign->userId = $userId;
@@ -191,7 +205,35 @@ class MapController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //assigned user block
+            $post = Yii::$app->request->post();
+            $assignedUsers = $post['Map']['assignedUsers'];
+            //delete old vds
+            $existingAus = MapAssign::find()
+                                ->where(['mapId' => $id])
+                                ->all();
+            foreach($existingAus as $au){
+                $au->delete();
+            }
+            if(is_array($assignedUsers))
+            foreach($assignedUsers as $ds){
+                
+                //is number find the user by id
+                $existingDs = User::find()
+                        ->where(['id' => trim($ds)])
+                        ->one(); 
+                //link it to user by adding to historicalAssign table
+                if($existingDs!=null&&$existingDs->id!=null){
+                    $newVds = new MapAssign();
+                    $newVds->mapId = $id;
+                    $newVds->userId = $existingDs->id;
+                    $newVds->type=2;
+                    $newVds->save();
+                }
+                
+            }
 
+            //assigned user block
             return $this->redirect(['update', 'id' => $model->id]);
         }
 

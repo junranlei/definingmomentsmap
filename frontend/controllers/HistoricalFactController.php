@@ -33,11 +33,12 @@ class HistoricalfactController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'unlink' => ['POST'],
                 ],
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['update'],
+                //'only' => ['update'],
                 'rules' => [
                     /*[
                         'actions' => ['update'],
@@ -45,11 +46,29 @@ class HistoricalfactController extends Controller
                         'roles' => ['SysAdmin'],
                     ],*/
                     [
+                        'actions' => ['view','index','maplist'],
                         'allow' => true,
-                        'actions' => ['update'],
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['myhists','assignedhists','create'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update','maplistupdate','userlist','unlink','delete'],
                         'roles' => ['updateHist'],
                         'roleParams' => function() {
                             return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['linkother'],
+                        'roles' => ['updateMap'],
+                        'roleParams' => function() {
+                            return ['map' => Map::findOne(['id' => Yii::$app->request->get('mapId')])];
                         },
                     ],
                     
@@ -229,7 +248,7 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Lists all Layer models for one map via mapId with update one layer.
+     * Lists all hist models for one map via mapId with update one hist.
      * @return mixed
      */
     public function actionMaplistupdate($id)
@@ -381,7 +400,38 @@ class HistoricalfactController extends Controller
         }
         if ($model->load($POST) && $model->save()) {
             //$model->urls = explode(";",$model->urls);
-          
+
+            //assigned user block
+            $post = Yii::$app->request->post();
+            $assignedUsers = $post['HistoricalFact']['assignedUsers'];
+            //delete old vds
+            $existingAus = HistoricalAssign::find()
+                                ->where(['histId' => $id])
+                                ->all();
+            foreach($existingAus as $au){
+                $au->delete();
+            }
+            if(is_array($assignedUsers))
+            foreach($assignedUsers as $ds){
+                
+                //is number find the user by id
+                $existingDs = User::find()
+                        ->where(['id' => trim($ds)])
+                        ->one(); 
+                //link it to user by adding to historicalAssign table
+                if($existingDs!=null&&$existingDs->id!=null){
+                    $newVds = new HistoricalAssign();
+                    $newVds->histId = $id;
+                    $newVds->userId = $existingDs->id;
+                    $newVds->type=2;
+                    $newVds->save();
+                }
+                
+            }
+
+            //assigned user block
+
+            
             return $this->redirect(['update', 'id' => $model->id]);
         }
         if(trim($model->urls!="")&&$model->urls!=NULL)
@@ -389,6 +439,30 @@ class HistoricalfactController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+    /**
+     * unlink an hist model from map.
+     * If unlink is successful, the browser will be redirected to the 'maplist' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUnlink($id)
+    {
+        $model = $this->findModel($id);
+        $mapId = Yii::$app->request->queryParams["mapId"];
+        //delete associated historicalfact media link
+        $histMapLink = HistoricalMapLink::findOne(['histId'=>$id,'mapId'=>$mapId]);
+
+        if($histMapLink!=null){
+            $histMapLink->delete();
+        }
+
+
+        //$model->delete();
+        
+
+        return $this->redirect(['maplist', 'mapId' => $mapId]);
     }
 
     /**

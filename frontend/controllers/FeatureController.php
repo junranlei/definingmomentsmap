@@ -8,6 +8,9 @@ use frontend\models\FeatureSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use frontend\models\Historicalfact;
+
 
 /**
  * FeatureController implements the CRUD actions for Feature model.
@@ -26,6 +29,37 @@ class FeatureController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                //'only' => ['update'],
+                'rules' => [
+                    /*[
+                        'actions' => ['update'],
+                        'allow' => true,
+                        'roles' => ['SysAdmin'],
+                    ],*/
+                    [
+                        'actions' => ['histlist','histlistview'],
+                        'allow' => true,
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['histlistcreate'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['histlistupdate'],
+                        'roles' => ['updateHist'],
+                        'roleParams' => function() {
+                            $feature=$this->findModel(Yii::$app->request->get('id'));
+                            $histId=$feature->hist->id;
+                            return ['hist' => Historicalfact::findOne(['id' => $histId])];
+                        },
+                    ]
+                ],
+            ]
         ];
     }
 
@@ -45,7 +79,7 @@ class FeatureController extends Controller
     }
 
     /**
-     * Lists all Feature models from histId with create.
+     * Lists all Feature models from histId.
      * @return mixed
      */
     public function actionHistlist()
@@ -61,6 +95,28 @@ class FeatureController extends Controller
         }
 
         return $this->render('histlist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Feature models from histId with create.
+     * @return mixed
+     */
+    public function actionHistlistcreate()
+    {
+        $searchModel = new FeatureSearch();
+        $searchModel->histId=Yii::$app->request->queryParams["histId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $model = new Feature();
+        $model->histId = $searchModel->histId;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$model->histId]);
+        }
+
+        return $this->render('histlistcreate', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

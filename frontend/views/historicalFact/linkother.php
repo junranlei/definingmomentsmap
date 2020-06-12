@@ -62,7 +62,7 @@ echo Tabs::widget([
 
         [
             'label' => 'Map',
-            'url' => Url::to(['map/update','id'=>$mapId]),
+            'url' => Url::to(['map/view','id'=>$mapId]),
             'active' => false,
         ],
         [

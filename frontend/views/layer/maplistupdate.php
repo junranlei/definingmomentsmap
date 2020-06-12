@@ -20,9 +20,11 @@ $mapId = $searchModel->mapId;
 <div class="layer-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>".
-
-     GridView::widget([
+    <h1>". Html::encode($this->title) ."</h1>
+    <p>
+    ".Html::a('Create Layer', ['maplistcreate','mapId'=>$searchModel->mapId], ['class' => 'btn btn-success']).
+    "</p>"
+     .GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -69,7 +71,7 @@ echo Tabs::widget([
 
         [
             'label' => 'Map',
-            'url' => Url::to(['map/update','id'=>$mapId]),
+            'url' => Url::to(['map/view','id'=>$mapId]),
 
         ],
         [
@@ -96,9 +98,7 @@ echo Tabs::widget([
 
 <div class="layer-create">
 
-<p>
-    <?= Html::a('Create Layer', ['maplist','mapId'=>$mapId], ['class' => 'btn btn-success']) ?>
-</p>
+
 
 <h1>Update Layer <?= Html::encode($model->title) ?></h1>
 <?= $this->render('_form', [

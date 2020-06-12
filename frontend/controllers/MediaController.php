@@ -14,6 +14,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * MediaController implements the CRUD actions for Media model.
@@ -32,6 +33,39 @@ class MediaController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                //'only' => ['update'],
+                'rules' => [
+                    [
+                        'actions' => ['histlist','histlistview'],
+                        'allow' => true,
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['histlistupdate','histlistcreate'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    /*
+                    [
+                        'allow' => true,
+                        'actions' => ['histlistkupdate'],
+                        'roles' => ['updateMedia'],
+                        'roleParams' => function() {
+                            return ['media' => Media::findOne(['id' => $id])];
+                        },
+                    ],*/
+                    [
+                        'allow' => true,
+                        'actions' => ['linkother','unlink'],
+                        'roles' => ['updateHist'],
+                        'roleParams' => function() {
+                            return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('histId')])];
+                        },
+                    ]
+                ],
+            ]
         ];
     }
 
@@ -51,7 +85,7 @@ class MediaController extends Controller
     }
 
      /**
-     * Lists all media models from histId with create .
+     * Lists all media models from histId.
      * @return mixed
      */
     public function actionHistlist()
@@ -74,8 +108,8 @@ class MediaController extends Controller
 
 
         $model = new Media();
-        
-        $model->ownerId=Yii::$app->user->identity->id;
+        if(Yii::$app->user->identity!=null&&Yii::$app->user->identity->id!=null)
+            $model->ownerId=Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //save historicalfact media relationship
             $histMediaLink = new HistoricalMediaLink();
@@ -116,6 +150,79 @@ class MediaController extends Controller
         }
 
         return $this->render('histlist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'histId'=>$histId,
+        ]);
+    }
+
+
+     /**
+     * Lists all media models from histId with create .
+     * @return mixed
+     */
+    public function actionHistlistcreate()
+    {
+        $searchModel = new MediaSearch();
+        $searchModel->search(Yii::$app->request->queryParams);
+        $histId = Yii::$app->request->queryParams["histId"];
+        $historicalFact = HistoricalFact::findOne($histId);
+        
+        
+        if(isset(Yii::$app->request->queryParams['MediaSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia()->andFilterWhere(Yii::$app->request->queryParams['MediaSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $historicalFact->getMedia(),
+            ]);   
+        //$dataProvider->pagination->pageSize=20;
+
+
+        $model = new Media();
+        if(Yii::$app->user->identity!=null&&Yii::$app->user->identity->id!=null)
+            $model->ownerId=Yii::$app->user->identity->id;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //save historicalfact media relationship
+            $histMediaLink = new HistoricalMediaLink();
+            $histMediaLink->histId = $histId;
+            $histMediaLink->mediaId = $model->id;
+            $histMediaLink->save();
+            $id = $model->id;
+            //save uploaded file if there is any
+            if($model->files = UploadedFile::getInstance($model, 'files')){
+                if (!is_dir('uploads/'.$id)) {
+                    mkdir('uploads/'.$id, 0755, true);
+                }
+                $model->files->saveAs('uploads/'.$id.'/' . $model->files->baseName . '.' . $model->files->extension);
+                $newfile = $model->files->baseName . '.' . $model->files->extension;
+                $model->nameOrUrl = $newfile;              
+                $model->save();
+                
+            }
+            //save isUrl
+            $headers = @get_headers($model->nameOrUrl); 
+            $isUrl = False;        
+            // Use condition to check the existence of URL 
+            if($headers && strpos( $headers[0], '200')) { 
+                $isUrl=True; 
+                $model->isUrl = 1;
+                $model->save();
+            } 
+            //if there is no main media in historical fact yet, make the newest created media one
+            if($historicalFact->mainMediaId==null){
+                $model->isMainMedia=1;
+            }
+            //save mainmediaid is ismainmedia is 1
+            if($model->isMainMedia==1){
+                $historicalFact->mainMediaId = $model->id;
+                $historicalFact->save();
+            }
+            return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$histId]);
+        }
+
+        return $this->render('histlistcreate', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'histId'=>$histId,

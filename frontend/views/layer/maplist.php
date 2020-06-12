@@ -18,9 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="layer-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>".
-
-     GridView::widget([
+    <h1>". Html::encode($this->title) ."</h1>
+    <p>
+    ".Html::a('Create Layer', ['maplistcreate','mapId'=>$searchModel->mapId], ['class' => 'btn btn-success']).
+    "</p>"
+    .GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -67,7 +69,7 @@ echo Tabs::widget([
 
         [
             'label' => 'Map',
-            'url' => Url::to(['map/update','id'=>$searchModel->mapId]),
+            'url' => Url::to(['map/view','id'=>$searchModel->mapId]),
 
         ],
         [
@@ -92,14 +94,3 @@ echo Tabs::widget([
 
 </div>
 
-<div class="layer-create">
-
-<h1>Create Layer</h1>
-<?php $newLayer = new Layer();
-        $newLayer->mapId=$searchModel->mapId;
-    ?>
-<?= $this->render('_form', [
-    'model' => $newLayer,
-]) ?>
-
-</div>

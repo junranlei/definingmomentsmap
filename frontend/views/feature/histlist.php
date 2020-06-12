@@ -22,7 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
 $content="
     <h1>". Html::encode($this->title) ."</h1>
 
-    
+    <p>
+        ".Html::a('Create Feature', ['histlistcreate','histId'=>$searchModel->histId], ['class' => 'btn btn-success']) 
+    ."</p>
 
     ". GridView::widget([
         'dataProvider' => $dataProvider,
@@ -70,7 +72,7 @@ echo Tabs::widget([
         [
 
             'label' => 'Historical Fact',
-            'url' => Url::to(['historicalfact/update','id'=>$searchModel->histId]),
+            'url' => Url::to(['historicalfact/view','id'=>$searchModel->histId]),
 
         ],
 
@@ -100,14 +102,4 @@ echo Tabs::widget([
 ?>
 </div>
 
-<div class="feature-create">
 
-    <h1>Create Feature</h1>
-    <?php $newFeature = new Feature();
-        $newFeature->histId=$searchModel->histId;
-    ?>
-    <?= $this->render('_form', [
-        'model' => $newFeature,
-    ]) ?>
-
-</div>

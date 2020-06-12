@@ -25,7 +25,9 @@ $histId = $searchModel->histId;
 <?php
 $content="
     <h1>". Html::encode($this->title) ."</h1>
-
+    <p>
+    ".Html::a('Create Feature', ['histlistcreate','histId'=>$searchModel->histId], ['class' => 'btn btn-success']) 
+    ."</p>
     ". GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -67,7 +69,7 @@ echo Tabs::widget([
         [
 
             'label' => 'Historical Fact',
-            'url' => Url::to(['historicalfact/update','id'=>$histId]),
+            'url' => Url::to(['historicalfact/view','id'=>$histId]),
 
         ],
 
