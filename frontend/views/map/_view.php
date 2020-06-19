@@ -30,15 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+    <p>      
+        
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -49,7 +43,38 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'timeCreated',
             'timeUpdated',
-            //'right2Add',
+            [
+                'attribute'=>'Owner',
+                'format'=>'raw',
+                'value'=>function ($model)
+                {
+                    //return implode(', ', \yii\helpers\ArrayHelper::map($model->users1, 'id', 'username'));
+                    $users1=$model->users1;
+                    $users1links="";
+                    foreach($users1 as $user){
+                        if($users1links!="")
+                            $users1links=$users1links.",";
+                        $users1links= $users1links.Html::a($user->username, ['user/profile', 'id' => $user->id], ['target' => '_blank']);
+                    }
+                    return $users1links;
+                }
+            ],
+            [
+                'attribute'=>'Assigned',
+                'format'=>'raw',
+                'value'=>function ($model)
+                {
+                    //return implode(', ', \yii\helpers\ArrayHelper::map($model->users1, 'id', 'username'));
+                    $users2=$model->users2;
+                    $users2links="";
+                    foreach($users2 as $user){
+                        if($users2links!="")
+                            $users2links=$users2links.", ";
+                        $users2links= $users2links.Html::a($user->username, ['user/profile', 'id' => $user->id], ['target' => '_blank']);
+                    }
+                    return $users2links;
+                }
+            ],
             //'publicPermission'
         ],
     ]) ?>
@@ -139,11 +164,11 @@ foreach($hists as $hist){
     
 
     foreach($features as $feature){
-        $histLink = Html::a($hist->title.'-'.$feature->title, ['historicalfact/update', 'id' => $hist->id],['target'=>'_blank']);
+        $histLink = Html::a($hist->title.'-'.$feature->title, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
         $featuresvar[$hist->id][$feature->id]=$feature->geojson;
         $featureobjsvar[$hist->id][$feature->id]["geojson"]=$feature->geojson;
         $featureobjsvar[$hist->id][$feature->id]["mainId"]=$hist->mainMediaId;
-        $featureobjsvar[$hist->id][$feature->id]["mediaHtml"]=Html::a($mediaHtml, ['historicalfact/update', 'id' => $hist->id],['target'=>'_blank']);
+        $featureobjsvar[$hist->id][$feature->id]["mediaHtml"]=Html::a($mediaHtml, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
         $featureobjsvar[$hist->id][$feature->id]["histLink"]=$histLink;
 
 

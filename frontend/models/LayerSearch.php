@@ -18,7 +18,7 @@ class LayerSearch extends Layer
     {
         return [
             [['type', 'visible', 'mapId'], 'integer'],
-            [['title', 'description', 'nameOrUrl', 'date', 'dateEnded'], 'safe'],
+            [['title', 'description', 'nameOrUrl', 'date'], 'safe'],
         ];
     }
 
@@ -63,7 +63,6 @@ class LayerSearch extends Layer
             'visible' => $this->visible,
             'mapId' => $this->mapId,
             'date' => $this->date,
-            'dateEnded' => $this->dateEnded,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

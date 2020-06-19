@@ -148,11 +148,11 @@ foreach($hists as $hist){
     
 
     foreach($features as $feature){
-        $histLink = Html::a($hist->title.'-'.$feature->title, ['historicalfact/update', 'id' => $hist->id],['target'=>'_blank']);
+        $histLink = Html::a($hist->title.'-'.$feature->title, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
         $featuresvar[$hist->id][$feature->id]=$feature->geojson;
         $featureobjsvar[$hist->id][$feature->id]["geojson"]=$feature->geojson;
         $featureobjsvar[$hist->id][$feature->id]["mainId"]=$hist->mainMediaId;
-        $featureobjsvar[$hist->id][$feature->id]["mediaHtml"]=Html::a($mediaHtml, ['historicalfact/update', 'id' => $hist->id],['target'=>'_blank']);
+        $featureobjsvar[$hist->id][$feature->id]["mediaHtml"]=Html::a($mediaHtml, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
         $featureobjsvar[$hist->id][$feature->id]["histLink"]=$histLink;
 
 

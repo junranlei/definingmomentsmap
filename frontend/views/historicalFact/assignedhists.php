@@ -40,6 +40,7 @@ $content= '<br/>'.
             //'mainMediaId',
 
             ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view}&nbsp{update}&nbsp;',
            
             ],
         ],

@@ -25,7 +25,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'timeUpdated') ?>
 
-    <?php // echo $form->field($model, 'right2Add') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -10,6 +10,8 @@
  */
 
 use yii\helpers\Html;
+use yii\bootstrap\Tabs;
+use yii\helpers\Url;
 
 /**
  * @var \yii\web\View          $this
@@ -18,55 +20,89 @@ use yii\helpers\Html;
 
 $this->title = empty($profile->name) ? Html::encode($profile->user->username) : Html::encode($profile->name);
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
-testdfd
+ <?php
+$content= '<br/>
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <?= Html::img(
+            <div class="col-sm-6 col-md-4">';
+            $content= $content. Html::img(
                     $profile->getAvatarUrl(230),
                     [
                         'class' => 'img-rounded img-responsive',
                         'alt' => $profile->user->username,
                     ]
-                ) ?>
+                ).'
             </div>
             <div class="col-sm-6 col-md-8">
-                <h4><?= $this->title ?></h4>
-                <ul style="padding: 0; list-style: none outside none;">
-                    <?php if (!empty($profile->location)): ?>
-                        <li>
+                <h4>'. $this->title .'</h4>
+                <ul style="padding: 0; list-style: none outside none;">';
+                    if (!empty($profile->location)): 
+                        $content= $content.'<li>
                             <i class="glyphicon glyphicon-map-marker text-muted"></i>
-                            <?= Html::encode($profile->location) ?>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (!empty($profile->website)): ?>
-                        <li>
+                            '. Html::encode($profile->location) .'
+                        </li>';
+                    endif; 
+                    if (!empty($profile->website)): 
+                        $content= $content.'<li>
                             <i class="glyphicon glyphicon-globe text-muted"></i>
-                            <?= Html::a(Html::encode($profile->website), Html::encode($profile->website)) ?>
-                        </li>
-                    <?php endif; ?>
-                    <?php if (!empty($profile->public_email)): ?>
-                        <li>
+                            '. Html::a(Html::encode($profile->website), Html::encode($profile->website)) .'
+                        </li>';
+                    endif; 
+                    if (!empty($profile->public_email)): 
+                        $content= $content.'<li>
                             <i class="glyphicon glyphicon-envelope text-muted"></i>
-                            <?= Html::a(
+                            '. Html::a(
                                 Html::encode($profile->public_email),
                                 'mailto:' .
                                 Html::encode($profile->public_email)
-                            )
-                            ?>
-                        </li>
-                    <?php endif; ?>
-                    <li>
+                            ).'
+                            
+                        </li>';
+                    endif; 
+                    $content= $content.'<li>
                         <i class="glyphicon glyphicon-time text-muted"></i>
-                        <?= Yii::t('usuario', 'Joined on {0, date}', $profile->user->created_at) ?>
+                        '.Yii::t('usuario', 'Joined on {0, date}', $profile->user->created_at) .'
                     </li>
-                </ul>
-                <?php if (!empty($profile->bio)): ?>
-                    <p><?= Html::encode($profile->bio) ?></p>
-                <?php endif; ?>
-            </div>
+                </ul>';
+                if (!empty($profile->bio)): 
+                    '$content= $content.<p>'.Html::encode($profile->bio) .'</p>';
+                endif;
+            $content= $content.'</div>
         </div>
     </div>
-</div>
+</div>';
+?>
+<?php
+
+echo Tabs::widget([
+
+    'items' => [
+        [
+
+            'label' => 'Profile',
+            'content'=>$content,
+            'active' => true         
+
+        ],
+        [
+
+            'label' => 'Historical Facts',
+            'url' => Url::to(['profile/myhists','id'=>$profile->user_id]),        
+
+        ],
+
+        [
+            'label' => 'Maps',
+            'url' => Url::to(['profile/mymaps','id'=>$profile->user_id]),
+
+        ],
+        
+
+    ],
+
+]);
+
+?>

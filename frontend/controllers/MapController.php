@@ -30,7 +30,7 @@ class MapController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'disable' => ['POST'],
                 ],
             ],
             'access' => [
@@ -49,14 +49,33 @@ class MapController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['update','delete','userlist'],
+                        'actions' => ['update','userlist'],
                         'roles' => ['updateMap'],
                         'roleParams' => function() {
                             return ['map' => Map::findOne(['id' => Yii::$app->request->get('id')])];
                         },
                     ],
-                    
+                    [
+                        'allow' => true,
+                        'actions' => ['disable'],
+                        'roles' => ['disableMap'],
+                        'roleParams' => function() {
+                            return ['map' => Map::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
+                    ]  
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    if($action->id=="disable")
+                        $message='You are not the owner of the map';
+                    else if(in_array($action->id,['update','userlist']))
+                        $message='You are not the owner or assigned user of the map, and the map is not open for everyone to edit.';
+                    throw new ForbiddenHttpException($message);
+         
+                }
             ],
         ];
     }
@@ -179,7 +198,7 @@ class MapController extends Controller
         if(Yii::$app->user->identity!=null&&Yii::$app->user->identity->id!=null)
             $userId = Yii::$app->user->identity->id;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()&&$user!=null) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()&&$userId!=null) {
             $mapAssign = new MapAssign();
             $mapAssign->mapId = $model->id;
             $mapAssign->userId = $userId;
@@ -249,10 +268,12 @@ class MapController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDisable($id)
     {
-        $this->findModel($id)->delete();
-
+        //$this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=0;
+        $model->save();
         return $this->redirect(['index']);
     }
 

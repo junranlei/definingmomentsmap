@@ -17,7 +17,7 @@ class MapSearch extends Map
     public function rules()
     {
         return [
-            [['right2Add','publicPermission'], 'integer'],
+            [['publicPermission'], 'integer'],
             [['title', 'description', 'timeCreated', 'timeUpdated','publicPermission'], 'safe'],
         ];
     }
@@ -61,7 +61,6 @@ class MapSearch extends Map
             'id' => $this->id,
             'timeCreated' => $this->timeCreated,
             'timeUpdated' => $this->timeUpdated,
-            'right2Add' => $this->right2Add,
             'publicPermission' => $this->publicPermission,
         ]);
 

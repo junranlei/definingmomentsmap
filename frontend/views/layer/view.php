@@ -37,7 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'visible',
             'mapId',
             'date',
-            'dateEnded',
         ],
     ]) ?>
 

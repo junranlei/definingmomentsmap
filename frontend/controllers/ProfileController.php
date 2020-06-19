@@ -4,12 +4,13 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\Module;
 use yii\db\ActiveRecord;
-use Da\User\Model\User;
+//use Da\User\Model\User;
 use Da\User\Event\UserEvent;
 use Da\User\Query\UserQuery;
 use Da\User\Search\UserSearch;
 use Da\User\Query\ProfileQuery;
 use Da\User\Model\Profile;
+use frontend\models\User;
 use Da\User\Service\UserCreateService;
 use Da\User\Traits\ContainerAwareTrait;
 use Da\User\Traits\ModuleAwareTrait;
@@ -19,6 +20,14 @@ use Da\User\Event\FormEvent;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use frontend\models\Historicalfact;
+use frontend\models\HistoricalfactSearch;
+use yii\data\ActiveDataProvider;
+use frontend\models\HistoricalAssign;
+use frontend\models\Map;
+use frontend\models\MapSearch;
+use frontend\models\MapAssign;
+
 
 class ProfileController extends BaseController
 {
@@ -59,7 +68,7 @@ class ProfileController extends BaseController
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','show','updateprofile','updateaccount'],
+                        'actions' => ['index','show','updateprofile','updateaccount','myhists','mymaps'],
                         'roles' => ['@'],
                     ],
                     /*[
@@ -149,4 +158,59 @@ class ProfileController extends BaseController
             ]
         );
     }
+
+       /**
+     * Lists all my hist models with tabs to other options.
+     * @return mixed
+     */
+    public function actionMyhists($id)
+    {
+        $searchModel = new HistoricalfactSearch();
+        $searchModel->search(Yii::$app->request->queryParams);
+        $histAssign = new HistoricalAssign();
+        $user = User::findOne($id);
+        if(isset(Yii::$app->request->queryParams['HistoricalfactSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMyhists()
+                ->andFilterWhere(Yii::$app->request->queryParams['HistoricalfactSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMyhists()
+            ]);
+        return $this->render('myhists', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'user'=>$user
+        ]);
+    }
+
+    /**
+     * Lists all my Map models with tabs to other options.
+     * @return mixed
+     */
+    public function actionMymaps($id)
+    {
+        $searchModel = new MapSearch();
+        $searchModel->search(Yii::$app->request->queryParams);
+        $mapAssign = new MapAssign();
+
+        $user = User::findOne($id);
+
+        if(isset(Yii::$app->request->queryParams['MapSearch']))
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMymaps()
+                ->andFilterWhere(Yii::$app->request->queryParams['mapSearch']),
+            ]);
+        else
+            $dataProvider = new ActiveDataProvider([
+                'query' => $user->getMymaps()
+            ]);
+        return $this->render('mymaps', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'user'=>$user
+        ]);
+    }
+
 }

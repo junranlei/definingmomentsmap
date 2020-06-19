@@ -46,7 +46,7 @@ class HistoricalmapSearch extends Historicalfact
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $status=1)
     {
         $query = Historicalfact::find();
 
@@ -58,8 +58,25 @@ class HistoricalmapSearch extends Historicalfact
 
         $this->load($params);
 
-        
-        
+        //if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            //return $dataProvider;
+        //}
+
+        // grid filtering conditions
+       /* $query->andFilterWhere([
+            'id' => $this->id,
+            'date' => $this->date,
+            'dateEnded' => $this->dateEnded,
+            'timeCreated' => $this->timeCreated,
+            'mainMediaId' => $this->mainMediaId,
+        ]);
+
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'urls', $this->urls]);*/
+
         if($this->keyword!=null && trim($this->keyword)!='')
             $query->andWhere('title like "%' . $this->keyword . '%" or description like "%' . $this->keyword . '%"');
         
@@ -68,6 +85,8 @@ class HistoricalmapSearch extends Historicalfact
             $query->andWhere('date >="'.$this->date.'"');
         if($this->dateEnded!=null && trim($this->dateEnded)!='')
             $query->andWhere('dateEnded <="'.$this->dateEnded.'"');
+
+        $query->andWhere('status='.$status); //only return enabled records 
 
         return $dataProvider;
     }

@@ -16,7 +16,7 @@ use Yii;
  * @property int $visible
  * @property int $mapId
  * @property string $date
- * @property string $dateEnded
+* @property int $status
  *
  * @property Map $map
  */
@@ -32,14 +32,26 @@ class Layer extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
             [['title', 'description', 'type', 'visible', 'mapId', 'date'], 'required'],
-            [['type', 'visible', 'mapId'], 'integer'],
+            [['type', 'visible', 'mapId','status'], 'integer'],
             [['description'], 'string'],
-            [['date', 'dateEnded','externalId'], 'safe'],
+            [['date', 'externalId'], 'safe'],
             [['title', 'nameOrUrl','externalId'], 'string', 'max' => 255],
             [['mapId'], 'exist', 'skipOnError' => true, 'targetClass' => Map::className(), 'targetAttribute' => ['mapId' => 'id']],
         ];
@@ -60,7 +72,6 @@ class Layer extends \yii\db\ActiveRecord
             'visible' => 'Visible',
             'mapId' => 'Map ID',
             'date' => 'Date',
-            'dateEnded' => 'Date Ended',
         ];
     }
 

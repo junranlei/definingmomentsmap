@@ -14,6 +14,7 @@ use yii\data\ActiveDataProvider;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\db\Query;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -32,7 +33,7 @@ class HistoricalfactController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'disable' => ['POST'],
                     'unlink' => ['POST'],
                 ],
             ],
@@ -57,8 +58,16 @@ class HistoricalfactController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['update','maplistupdate','userlist','unlink','delete'],
+                        'actions' => ['update','maplistupdate','userlist','unlink'],
                         'roles' => ['updateHist'],
+                        'roleParams' => function() {
+                            return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disable'],
+                        'roles' => ['disableHist'],
                         'roleParams' => function() {
                             return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('id')])];
                         },
@@ -71,8 +80,25 @@ class HistoricalfactController extends Controller
                             return ['map' => Map::findOne(['id' => Yii::$app->request->get('mapId')])];
                         },
                     ],
-                    
+                    [
+                        'allow' => true,
+                        'actions' => ['disabledhists','enable'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ]          
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    if($action->id=="disable")
+                        $message='You are not the owner or the historical fact has been linked to more than one maps.';
+                    else if(in_array($action->id,['update','maplistupdate','userlist','unlink']))
+                        $message='You are not the owner or assigned user of the historical fact, and the historical fact is not open for everyone to edit.';
+                    throw new ForbiddenHttpException($message);
+         
+                }
             ],
         ];
     }
@@ -92,13 +118,29 @@ class HistoricalfactController extends Controller
         ]);
     }
 
+    /**
+     * Lists all disabled Historicalfact models. only sysadmin can see
+     * @return mixed
+     */
+    public function actionDisabledhists()
+    {
+        $searchModel = new HistoricalfactSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $status=0);
+
+        return $this->render('disabledhists', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
        /**
      * Lists all my hist models with tabs to other options.
      * @return mixed
      */
     public function actionMyhists()
     {
-        $searchModel = new Historicalfact();
+        $searchModel = new HistoricalfactSearch();
+        $searchModel->search(Yii::$app->request->queryParams);
         //$params = Yii::$app->request->queryParams;
         //$params['MapSearch']['publicPermission']=1;
         $histAssign = new HistoricalAssign();
@@ -125,7 +167,8 @@ class HistoricalfactController extends Controller
      */
     public function actionAssignedhists()
     {
-        $searchModel = new Historicalfact();
+        $searchModel = new HistoricalfactSearch();
+        $searchModel->search(Yii::$app->request->queryParams);
         //$params = Yii::$app->request->queryParams;
         //$params['MapSearch']['publicPermission']=1;
         $histAssign = new HistoricalAssign();
@@ -472,10 +515,28 @@ class HistoricalfactController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDisable($id)
     {
         //$this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=0;
+        $model->save();
+        return $this->redirect(['index']);
+    }
 
+    /**
+     * Enable an disabled Historicalfact model.
+     * If enabled is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEnable($id)
+    {
+        //$this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=1;
+        $model->save();
         return $this->redirect(['index']);
     }
 
@@ -489,6 +550,10 @@ class HistoricalfactController extends Controller
     protected function findModel($id)
     {
         if (($model = Historicalfact::findOne($id)) !== null) {
+            if($model->status!=1&&!\Yii::$app->user->can("SysAdmin")){
+                $message="This item has been deleted, please contact us if you would like to recover it.";        
+                throw new ForbiddenHttpException($message);
+            }
             return $model;
         }
 

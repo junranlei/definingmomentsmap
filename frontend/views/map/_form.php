@@ -27,10 +27,6 @@ use yii\web\JsExpression;
 
     <?php // $form->field($model, 'timeUpdated')->textInput() ?>
 
-    <?= Html::activeLabel($model,'right2Add') ?>
-    <?= $form->field($model, 'right2Add')->checkBox(array('label'=>'', 
-    'uncheckValue'=>0,'checked'=>($model->right2Add==1)?true:false)) ?>
-
     <?= Html::activeLabel($model,'publicPermission') ?>
     <?= $form->field($model, 'publicPermission')->checkBox(array('label'=>'', 
     'uncheckValue'=>0,'checked'=>($model->publicPermission==1)?true:false)) ?>
@@ -74,6 +70,13 @@ use yii\web\JsExpression;
     ?>
 
     <div class="form-group">
+    <?= Html::a('Delete', ['disable', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
     <?= Html::a('View', ['view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

@@ -40,7 +40,7 @@ $content="
             'visible',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+            'template' => '{update}&nbsp;{view}&nbsp',
             'urlCreator' => function( $action, $model, $key, $index ){
 
                 if ($action == "update") {
@@ -53,11 +53,11 @@ $content="
                     return Url::to(['feature/histlistview', 'id' => $model->id, 'histId' => $model->histId]);
 
                 }
-                if ($action == "delete") {
+                /*if ($action == "delete") {
 
-                    return Url::to(['feature/delete', 'id' => $model->id, 'histId' => $model->histId]);
+                    return Url::to(['feature/disable', 'id' => $model->id, 'histId' => $model->histId]);
 
-                }
+                }*/
             }],
         ],
     ])."";
@@ -104,14 +104,15 @@ echo Tabs::widget([
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId'=>$histId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id,'histId'=>$histId], [
+    <?= Html::a('Delete', ['disable', 'id' => $model->id,'histId'=>$histId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId'=>$histId], ['class' => 'btn btn-primary']) ?>
+        
     </p>
 
     <?= DetailView::widget([

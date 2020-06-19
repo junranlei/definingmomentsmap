@@ -73,6 +73,10 @@ use yii\helpers\Url;
     <?= $form->field($model, 'right2Link')->checkBox(array('label'=>'', 
     'uncheckValue'=>0,'checked'=>($model->right2Link==1)?true:false)) ?>
 
+    <?= Html::activeLabel($model,'publicPermission') ?>
+    <?= $form->field($model, 'publicPermission')->checkBox(array('label'=>'', 
+    'uncheckValue'=>0,'checked'=>($model->publicPermission==1)?true:false)) ?>
+
     <?= Html::activeLabel($model,'isMainMedia') ?>
     <?= $form->field($model, 'isMainMedia')->checkBox(array('label'=>'', 
     'uncheckValue'=>0,'checkValue'=>1, 'checked'=>($model->isMainMedia==1)?true:false)) ?>

@@ -42,7 +42,7 @@ $content="
             //'dateEnded',
 
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+                'template' => '{update}&nbsp;{view}&nbsp;',
                 'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
                     if ($action == "update") {
                         return Url::to(['layer/maplistupdate', 'id' => $model->id, 'mapId' => $mapId]);
@@ -52,10 +52,10 @@ $content="
                         return Url::to(['layer/maplistview', 'id' => $model->id, 'mapId' => $mapId]);
 
                     }
-                    if ($action == "delete") {
+                    /*if ($action == "delete") {
                         return Url::to(['layer/delete', 'id' => $model->id, 'mapId' => $mapId]);
 
-                    }
+                    }*/
 
                 }
             ],
@@ -101,14 +101,15 @@ echo Tabs::widget([
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['maplistupdate', 'id' => $model->id, 'mapId' => $mapId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'mapId' => $mapId], [
+        <?= Html::a('Delete', ['disable', 'id' => $model->id, 'mapId' => $mapId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Update', ['maplistupdate', 'id' => $model->id, 'mapId' => $mapId], ['class' => 'btn btn-primary']) ?>
+
     </p>
 
     <?= DetailView::widget([
@@ -123,7 +124,6 @@ echo Tabs::widget([
             'visible',
             //'mapId',
             'date',
-            'dateEnded',
         ],
     ]) ?>
 

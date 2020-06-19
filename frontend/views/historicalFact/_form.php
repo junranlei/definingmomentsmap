@@ -130,6 +130,13 @@ $this->registerJs($js);
     <?php // $form->field($model, 'mainMediaId')->textInput() ?>
 
     <div class="form-group">
+    <?= Html::a('Delete', ['disable', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
         <?= Html::a('View', ['view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

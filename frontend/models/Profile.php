@@ -44,7 +44,17 @@ class Profile extends BaseUser
     use ModuleAwareTrait;
     use ContainerAwareTrait;
 
-    
+    /**
+     * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
 
     /**
      * {@inheritdoc}

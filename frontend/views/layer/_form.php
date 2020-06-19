@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Layer */
@@ -29,9 +30,17 @@ use yii\widgets\ActiveForm;
 
     <?php // $form->field($model, 'mapId')->textInput() ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::classname(), [
+        
+        //'dateFormat' => 'yyyy-MM-dd',
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ],
+        
+        
+    ]) ?>
 
-    <?= $form->field($model, 'dateEnded')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

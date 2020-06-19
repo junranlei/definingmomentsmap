@@ -12,7 +12,6 @@ use Yii;
  * @property string $description
  * @property string $timeCreated
  * @property string $timeUpdated
- * @property int $right2Add
  * @property int $publicPermission
  * @property int $status
  * @property HistoricalMapLink[] $historicalMapLinks
@@ -32,12 +31,24 @@ class Map extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title', 'description', 'right2Add'], 'required'],
-            [['right2Add','publicPermission', 'status'], 'integer'],
+            [['title', 'description'], 'required'],
+            [['publicPermission', 'status'], 'integer'],
             [['description'], 'string'],
             [['timeCreated', 'timeUpdated','assignedUsers'], 'safe'],
             [['title'], 'string', 'max' => 255],
@@ -55,7 +66,6 @@ class Map extends \yii\db\ActiveRecord
             'description' => 'Description',
             'timeCreated' => 'Time Created',
             'timeUpdated' => 'Time Updated',
-            'right2Add' => 'right2Add-Others can add historical facts',
             'publicPermission'=>'Everyone Can Edit'
         ];
     }
@@ -107,6 +117,19 @@ class Map extends \yii\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Users]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers1()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id'], 
+            function($query) {
+            $query->onCondition(['type' =>1]);
+        });
     }
 
     /**

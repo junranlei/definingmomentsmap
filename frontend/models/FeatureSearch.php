@@ -36,10 +36,10 @@ class FeatureSearch extends Feature
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $status default 1 enabled
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $status=1)
     {
         $query = Feature::find();
 
@@ -67,6 +67,8 @@ class FeatureSearch extends Feature
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'geojson', $this->geojson]);
+        
+        $query->andWhere('status='.$status); //only return enabled records or specify by status
 
         return $dataProvider;
     }

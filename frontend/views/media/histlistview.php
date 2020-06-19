@@ -87,7 +87,7 @@ $content="
             //'ownerId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+            'template' => '{update}&nbsp;{view}&nbsp;',
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
                 if ($action == "update") {
                     return Url::to(['media/histlistupdate', 'id' => $model->id, 'histId' => $histId]);
@@ -97,10 +97,7 @@ $content="
                     return Url::to(['media/histlistview', 'id' => $model->id, 'histId' => $histId]);
 
                 }
-                if ($action == "delete") {
-                    return Url::to(['media/delete', 'id' => $model->id, 'histId' => $histId]);
-
-                }
+                
 
             }],
         ],
@@ -147,14 +144,15 @@ echo Tabs::widget([
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId' => $histId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id,'histId' => $histId], [
+        <?= Html::a('Delete', ['disable', 'id' => $model->id,'histId' => $histId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId' => $histId], ['class' => 'btn btn-primary']) ?>
+
     </p>
     <h2 align="center">
     <?php if($model->type==1){ ?>

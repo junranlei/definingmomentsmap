@@ -30,7 +30,7 @@ class MediaController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'disable' => ['POST'],
                 ],
             ],
             'access' => [
@@ -43,7 +43,7 @@ class MediaController extends Controller
                         'roles' => ['?','@'],
                     ],
                     [
-                        'actions' => ['histlistupdate','histlistcreate'],
+                        'actions' => ['histlistcreate'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -63,8 +63,38 @@ class MediaController extends Controller
                         'roleParams' => function() {
                             return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('histId')])];
                         },
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['histlistupdate'],
+                        'roles' => ['updateMedia'],
+                        'roleParams' => function() {
+                            return ['media' => Media::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disable'],
+                        'roles' => ['disableMedia'],
+                        'roleParams' => function() {
+                            return ['media' => Media::findOne(['id' => Yii::$app->request->get('id')])];
+                        },
                     ]
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    if($action->id=="disable")
+                        $message='You are not the owner of the media.';
+                    else if($action->id=="histlistupdate")
+                        $message='You are not the owner of the media and the media is not open for everyone to edit.';
+                    else if(in_array($action->id,['linkother','unlink']))
+                        $message='You are not the owner or assigned user of the historical fact.';
+                    throw new ForbiddenHttpException($message);
+         
+                }
             ]
         ];
     }
@@ -482,18 +512,20 @@ class MediaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDisable($id)
     {
         $model = $this->findModel($id);
         //delete associated historicalfact media links
-        $histMediaLinks = $model->historicalMediaLinks;
+        /*$histMediaLinks = $model->historicalMediaLinks;
         foreach($histMediaLinks as $histLink){
             if($histLink!=null){
                 $histLink->delete();
             }
-        }
-
-        $model->delete();
+        }*/
+        $model->status=0;
+        $model->permission2upload=1;
+        $model->save();
+        
         $histId = Yii::$app->request->queryParams["histId"];
 
         return $this->redirect(['histlist', 'histId' => $histId]);

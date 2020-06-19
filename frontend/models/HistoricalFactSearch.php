@@ -18,7 +18,7 @@ class HistoricalfactSearch extends Historicalfact
     {
         return [
             [['mainMediaId'], 'integer'],
-            [['title', 'description', 'date', 'dateEnded', 'timeCreated', 'urls'], 'safe'],
+            [['title', 'description', 'date', 'dateEnded', 'timeCreated', 'timeUpdated', 'urls'], 'safe'],
         ];
     }
 
@@ -35,10 +35,10 @@ class HistoricalfactSearch extends Historicalfact
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $status default 1 enabled
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $status=1)
     {
         $query = Historicalfact::find();
 
@@ -62,12 +62,15 @@ class HistoricalfactSearch extends Historicalfact
             'date' => $this->date,
             'dateEnded' => $this->dateEnded,
             'timeCreated' => $this->timeCreated,
+            'timeUpdated' => $this->timeUpdated,
             'mainMediaId' => $this->mainMediaId,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'urls', $this->urls]);
+        
+        $query->andWhere('status='.$status); //only return enabled records or specify by status
 
         return $dataProvider;
     }

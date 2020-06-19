@@ -40,7 +40,7 @@ $content="
             //'dateEnded',
 
             [   'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+                'template' => '{update}&nbsp;{view}',
                 'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
                     if ($action == "update") {
                         return Url::to(['layer/maplistupdate', 'id' => $model->id, 'mapId' => $mapId]);
@@ -50,10 +50,10 @@ $content="
                         return Url::to(['layer/maplistview', 'id' => $model->id, 'mapId' => $mapId]);
 
                     }
-                    if ($action == "delete") {
+                    /*if ($action == "delete") {
                         return Url::to(['layer/delete', 'id' => $model->id, 'mapId' => $mapId]);
 
-                    }
+                    }*/
 
                 }
             ],

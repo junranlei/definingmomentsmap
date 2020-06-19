@@ -25,7 +25,7 @@ class LayerController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'disable' => ['POST'],
                 ],
             ],
             'access' => [
@@ -43,8 +43,18 @@ class LayerController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['maplistupdate','delete'],
+                        'actions' => ['maplistupdate'],
                         'roles' => ['updateMap'],
+                        'roleParams' => function() {
+                            $layer=$this->findModel(Yii::$app->request->get('id'));
+                            $mapId=$layer->map->id;
+                            return ['map' => Map::findOne(['id' => $mapId])];
+                        },
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disable'],
+                        'roles' => ['disableMap'],
                         'roleParams' => function() {
                             $layer=$this->findModel(Yii::$app->request->get('id'));
                             $mapId=$layer->map->id;
@@ -53,6 +63,19 @@ class LayerController extends Controller
                     ],
                     
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    if($action->id=="disable")
+                        $message='You are not the owner of the map';
+                    else if(in_array($action->id,['maplistupdate']))
+                        $message='You are not the owner or assigned user of the map, and the map is not open for everyone to edit.';
+                    throw new ForbiddenHttpException($message);
+         
+                }
+                
             ],
         ];
     }
@@ -227,11 +250,15 @@ class LayerController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDisable($id)
     {
-        $this->findModel($id)->delete();
+        //$this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=0;
+        $model->save();
+        $mapId = Yii::$app->request->queryParams["mapId"];
 
-        return $this->redirect(['index']);
+        return $this->redirect(['maplist', 'mapId' => $mapId]);
     }
 
     /**

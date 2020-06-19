@@ -288,4 +288,14 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    /**
+     * Displays error.
+     *
+     * @return mixed
+     */
+    public function actionError()
+    {
+        return $this->render('error');
+    }
 }

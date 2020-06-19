@@ -33,9 +33,10 @@ $content="
             //'description:ntext',
             'timeCreated',
             'timeUpdated',
-            //'right2Add',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{update}&nbsp;{view}',
+            ],
         ],
     ]); 
 

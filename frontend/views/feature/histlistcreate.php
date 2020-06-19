@@ -38,7 +38,7 @@ $content="
             //'histId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{view}&nbsp;{delete}',
+            'template' => '{update}&nbsp;{view}',
             'urlCreator' => function( $action, $model, $key, $index ){
 
                 if ($action == "update") {
@@ -53,11 +53,11 @@ $content="
 
                 }
 
-                if ($action == "delete") {
+                /*if ($action == "delete") {
 
-                    return Url::to(['feature/delete', 'id' => $model->id, 'histId' => $model->histId]);
+                    return Url::to(['feature/disable', 'id' => $model->id, 'histId' => $model->histId]);
 
-                }
+                }*/
 
             }],
         ],

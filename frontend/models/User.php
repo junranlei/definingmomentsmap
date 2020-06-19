@@ -1,10 +1,35 @@
 <?php
 namespace frontend\models;
-
+use yii\behaviors\TimestampBehavior;
 use Da\User\Model\User as BaseUser;
 
 class User extends BaseUser
 {
+    /**
+     * {@inheritdoc}
+     *  
+     */
+   /* public function behaviors()
+    {
+        $behaviors = [
+            TimestampBehavior::class,
+             //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+
+        if ($this->module->enableGdprCompliance) {
+            $behaviors['GDPR'] = [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'gdpr_consent_date',
+                'updatedAtAttribute' => false
+            ];
+        }
+        return $behaviors;
+        /*return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }*/
     /**
      * Gets query for my [[Maps]].
      *

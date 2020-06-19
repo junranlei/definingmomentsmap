@@ -35,9 +35,9 @@ $content= '<br/>'.
             'timeCreated',
             'timeUpdated',
             //'publicPermission',
-            //'right2Add',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view}&nbsp{update}&nbsp;',],
         ],
     ]); ?>
 

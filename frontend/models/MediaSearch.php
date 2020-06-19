@@ -18,8 +18,8 @@ class MediaSearch extends Media
     public function rules()
     {
         return [
-            [['type', 'right2Link', 'ownerId'], 'integer'],
-            [['title', 'description', 'nameOrUrl'], 'safe'],
+            [['type', 'right2Link', 'ownerId','publicPermission'], 'integer'],
+            [['title', 'description', 'nameOrUrl','publicPermission'], 'safe'],
         ];
     }
 
@@ -64,6 +64,7 @@ class MediaSearch extends Media
             'histId' => $this->histId,
             'right2Link' => $this->right2Link,
             'ownerId' => $this->ownerId,
+            'publicPermission' => $this->publicPermission,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

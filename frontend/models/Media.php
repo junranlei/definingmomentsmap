@@ -19,6 +19,8 @@ use Yii;
  * @property int $right2Link
  * @property int $ownerId
  * @property int $isUrl
+ * @property int $publicPermission
+ * @property int $status
  * @property int $permission2upload
  * @property HistoricalMediaLink[] $historicalMediaLinks
  * @property HistoricalFact[] $hists
@@ -40,16 +42,28 @@ class Media extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
             [['title', 'type', 'right2Link', 'ownerId'], 'required'],
-            [['type', 'right2Link', 'ownerId', 'isUrl'], 'integer'],
+            [['type', 'right2Link', 'ownerId', 'isUrl', 'publicPermission','status'], 'integer'],
             [['description'], 'string'],
             [['title', 'nameOrUrl','creator','source'], 'string', 'max' => 255],
             [['files'], 'file', 'skipOnEmpty' => true],
-            [['isMainMedia','permission2upload', 'isUrl'], 'safe'],
+            [['isMainMedia','permission2upload', 'isUrl','status'], 'safe'],
             ['permission2upload', 'validatePermission', 'skipOnEmpty' => false, 'skipOnError' => false]
         ];
     }
@@ -80,6 +94,7 @@ class Media extends \yii\db\ActiveRecord
             'ownerId' => 'Owner ID',
             'isMainMedia'=>'Set as Main media',
             'creator'=>'Creator',
+            'publicPermission'=>'Everyone Can Edit',
             'permission2upload'=>'Permission to publish this media online'
         ];
     }

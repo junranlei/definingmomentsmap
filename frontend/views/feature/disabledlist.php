@@ -40,7 +40,22 @@ $content="
             //'histId',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{view}&nbsp;',
+            'template' => '{update}&nbsp;{view}&nbsp;{enable}',
+            'buttons' => [
+                'view' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url);
+                },
+                'update' => function ($url, $model) {
+
+                    return Html::a('<span class="glyphicon glyphicon-pencil" title="Update"></span>',$url);
+                },
+                'enable' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-ok" title="Enable"></span>', $url,['data' => [
+                        'confirm' => 'Are you sure you want to enable this item?',
+                        'method' => 'post',
+                    ]]);
+                },
+            ],
             'urlCreator' => function( $action, $model, $key, $index ){
 
                 if ($action == "update") {
@@ -55,11 +70,9 @@ $content="
 
                 }
 
-                /*if ($action == "delete") {
-
-                    return Url::to(['feature/disable', 'id' => $model->id, 'histId' => $model->histId]);
-
-                }*/
+                if ($action == "enable") {
+                    return Url::to(['enable', 'id' => $model->id, 'histId' => $model->histId]);
+                }
 
             }],
         ],
@@ -85,12 +98,13 @@ echo Tabs::widget([
             'items' => [
                 [
                     'label' => 'Feature',
-                    'content'=>$content,
-                    'active' => true,                    
+                    'url' => Url::to(['feature/histlist','histId'=>$searchModel->histId]),
+                   
                 ],
                 [
                     'label' => 'Disable features',
-                    'url' => Url::to(['feature/disabledlist','histId'=>$searchModel->histId]),
+                    'content'=>$content,
+                    'active' => true, 
                     
                 ],
             ]

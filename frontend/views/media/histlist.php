@@ -87,7 +87,7 @@ $content="
             //'ownerId',
             
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{view}&nbsp;{unlink}&nbsp;{delete}',
+            'template' => '{update}&nbsp;{view}&nbsp;{unlink}&nbsp;',
             'buttons' => [
                 'view' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url);
@@ -102,12 +102,7 @@ $content="
                         'method' => 'post',
                     ]]);
                 },
-                'delete' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-trash" title= "Delete"></span>', $url,['data' => [
-                        'confirm' => 'Are you sure you want to delete this item? ',
-                        'method' => 'post',
-                    ]]);
-                },
+                
             ],
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
 
@@ -126,11 +121,7 @@ $content="
                     return Url::to(['media/unlink', 'id' => $model->id, 'histId' => $histId]);
 
                 }
-                if ($action == "delete") {
-
-                    return Url::to(['media/delete', 'id' => $model->id, 'histId' => $histId]);
-
-                }
+                
 
             }],
         ],

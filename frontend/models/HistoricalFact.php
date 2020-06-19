@@ -13,6 +13,7 @@ use Yii;
  * @property string $date
  * @property string $dateEnded
  * @property string $timeCreated
+ * @property string $timeUpdated
  * @property string $urls
  * @property int $mainMediaId
  * @property int $right2Link
@@ -37,10 +38,14 @@ class HistoricalFact extends \yii\db\ActiveRecord
     {
         return 'historicalFact';
     }
-
+    /**
+     * {@inheritdoc}
+     *  
+     */
     public function behaviors()
     {
         return [
+            //add audit log
             'bedezign\yii2\audit\AuditTrailBehavior'
         ];
     }
@@ -56,7 +61,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
             ['dateEnded', 'date','format' => 'yyyy-mm-dd'],
             [['mainMediaId','right2Link','publicPermission','status'], 'integer'],
             [['description', 'urls'], 'string'],
-            [['date', 'dateEnded', 'timeCreated','assignedUsers'], 'safe'],
+            [['date', 'dateEnded', 'timeCreated','timeUpdated','assignedUsers'], 'safe'],
             [['title'], 'string', 'max' => 255],
             ['urls', 'validateUrls', 'skipOnEmpty' => true, 'skipOnError' => false]
         ];
@@ -90,6 +95,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
             'date' => 'Date',
             'dateEnded' => 'Date Ended',
             'timeCreated' => 'Time Created',
+            'timeCreated' => 'Time Updated',
             'urls' => 'URLs',
             'mainMediaId' => 'Main Media ID',
             'right2Link' => 'Others Can Link This Historical Fact',
@@ -119,7 +125,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Users]].
+     * Gets query for [[Users]] owner and assigned users.
      *
      * @return \yii\db\ActiveQuery
      */
@@ -129,7 +135,20 @@ class HistoricalFact extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Users]].
+     * Gets query for [[Users]] owner.
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers1()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('historicalAssign', ['histId' => 'id'], 
+            function($query) {
+            $query->onCondition(['type' =>1]);
+        });
+    }
+
+    /**
+     * Gets query for [[Users]] assigned users.
      *
      * @return \yii\db\ActiveQuery
      */

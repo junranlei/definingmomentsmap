@@ -7,6 +7,7 @@ use frontend\models\Feature;
 use frontend\models\FeatureSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\Historicalfact;
@@ -57,8 +58,52 @@ class FeatureController extends Controller
                             $histId=$feature->hist->id;
                             return ['hist' => Historicalfact::findOne(['id' => $histId])];
                         },
-                    ]
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disable'],
+                        'roles' => ['disableHist'],
+                        /*'denyCallback' => function ($rule, $action) {
+                            $message='You are not the owner or the historical facts has been linked to more than one maps.';
+                            throw new ForbiddenHttpException($message);
+                            //throw new NotFoundHttpException("Something unexpected happened");
+                            //$message='You are not the owner or the historical facts has been linked to more than one maps.';
+                            //$this->redirect(array('site/error'));
+                        },*/
+                        'roleParams' => function() {
+                            $feature=$this->findModel(Yii::$app->request->get('id'));
+                            $histId=$feature->hist->id;
+                            return ['hist' => Historicalfact::findOne(['id' => $histId])];
+                        }
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disabledlist','enable'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ]  
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    if($action->id=="disable")
+                        $message='You are not the owner or the historical facts has been linked to more than one maps.';
+                    else if($action->id=="histlistupdate")
+                        $message='You are not the owner or assigned user of the historical facts, and the historical fact is not open for everyone to edit.';
+                    //else {Yii::$app->user->loginRequired();return;}
+                    throw new ForbiddenHttpException($message);
+                    //Add your error handler here
+                    //if($rule==)
+                    //Yii::$app->session->setFlash('error', $rule.
+                    //'You are not the owner or the historical facts has been linked to more than one maps.');
+                    //$this->redirect(array('site/error'));
+                    //Yii::$app->user->loginRequired();   
+                    //$message = 'You are not allowed to perform this action.';
+                    //throw new \yii\web\AccessDeniedHttpException(Yii::t('yii', $message));  
+                    //throw new \Exception('You are not allowed to access this page');           
+                }
             ]
         ];
     }
@@ -95,6 +140,22 @@ class FeatureController extends Controller
         }
 
         return $this->render('histlist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Feature models from histId.
+     * @return mixed
+     */
+    public function actionDisabledlist()
+    {
+        $searchModel = new FeatureSearch();
+        $searchModel->histId=Yii::$app->request->queryParams["histId"];
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,0);
+
+        return $this->render('disabledlist', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -226,10 +287,28 @@ class FeatureController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDisable($id)
     {
-        $this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=0;
+        $model->save();
+        $histId = Yii::$app->request->queryParams["histId"];
 
+        return $this->redirect(['histlist', 'histId' => $histId]);
+    }
+
+    /**
+     * Enables an disabled Feature model.
+     * If enable is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEnable($id)
+    {
+        $model=$this->findModel($id);
+        $model->status=1;
+        $model->save();
         $histId = Yii::$app->request->queryParams["histId"];
 
         return $this->redirect(['histlist', 'histId' => $histId]);
@@ -245,6 +324,10 @@ class FeatureController extends Controller
     protected function findModel($id)
     {
         if (($model = Feature::findOne($id)) !== null) {
+            if($model->status!=1&&!\Yii::$app->user->can("SysAdmin")){
+                $message="This item has been deleted, please contact us if you would like to recover it.";        
+                throw new ForbiddenHttpException($message);
+            }
             return $model;
         }
 
