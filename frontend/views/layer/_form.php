@@ -18,7 +18,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
+    <?php // $form->field($model, 'type')->textInput() ?>
 
     <?= $form->field($model, 'nameOrUrl')->textInput(['maxlength' => true]) ?>
 

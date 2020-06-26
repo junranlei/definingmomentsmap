@@ -106,12 +106,12 @@ class HistoricalFact extends \yii\db\ActiveRecord
 
     /**
      * Gets query for [[Features]].
-     *
+     * @param int $status default 1 enabled
      * @return \yii\db\ActiveQuery
      */
-    public function getFeatures()
+    public function getFeatures($status=1)
     {
-        return $this->hasMany(Feature::className(), ['histId' => 'id']);
+        return $this->hasMany(Feature::className(), ['histId' => 'id'])->andOnCondition(['status' => $status]);
     }
 
     /**
@@ -196,12 +196,12 @@ class HistoricalFact extends \yii\db\ActiveRecord
 
     /**
      * Gets query for [[Maps]].
-     *
+     * @param int $status default 1 enabled
      * @return \yii\db\ActiveQuery
      */
-    public function getMaps()
+    public function getMaps($status=1)
     {
-        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('historicalMapLink', ['histId' => 'id']);
+        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('historicalMapLink', ['histId' => 'id'])->andOnCondition(['status' => $status]);
     }
 
     /**
@@ -216,11 +216,11 @@ class HistoricalFact extends \yii\db\ActiveRecord
 
     /**
      * Gets query for [[Media]].
-     *
+     * @param int $status default 1 enabled
      * @return \yii\db\ActiveQuery
      */
-    public function getMedia()
+    public function getMedia($status=1)
     {
-        return $this->hasMany(Media::className(), ['id' => 'mediaId'])->viaTable('historicalMediaLink', ['histId' => 'id']);
+        return $this->hasMany(Media::className(), ['id' => 'mediaId'])->viaTable('historicalMediaLink', ['histId' => 'id'])->andOnCondition(['status' => $status]);
     }
 }

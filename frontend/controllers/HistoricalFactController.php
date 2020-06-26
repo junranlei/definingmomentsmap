@@ -34,6 +34,7 @@ class HistoricalfactController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'disable' => ['POST'],
+                    'enable' => ['POST'],
                     'unlink' => ['POST'],
                 ],
             ],
@@ -158,6 +159,7 @@ class HistoricalfactController extends Controller
         return $this->render('myhists', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'histMenu'=>True,
         ]);
     }
 

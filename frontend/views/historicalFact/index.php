@@ -11,6 +11,7 @@ use yii\helpers\Url;
 
 $this->title = 'Historical Facts';
 $this->params['breadcrumbs'][] = $this->title;
+$this->params['histMenu'] = True;
 ?>
 <div class="historicalfact-index">
 

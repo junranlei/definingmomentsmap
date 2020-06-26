@@ -35,10 +35,10 @@ class MapSearch extends Map
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $status default 1 enabled
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $status=1)
     {
         $query = Map::find();
 
@@ -66,6 +66,9 @@ class MapSearch extends Map
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description]);
+
+        $query->andWhere('status='.$status); //only return enabled records or specify by status
+
 
         return $dataProvider;
     }

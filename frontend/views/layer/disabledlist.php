@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="layer-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>
+    <h1> Disabled ". Html::encode($this->title) ."</h1>
     <p>
     ".Html::a('Create Layer', ['maplistcreate','mapId'=>$searchModel->mapId], ['class' => 'btn btn-success']).
     "</p>"
@@ -31,32 +31,50 @@ $content="
             'id',
             'title',
             //'description:ntext',
-            //'type',
+            'type',
             'nameOrUrl',
             //'externalId',
             //'visible',
             //'mapId',
-            'date',
+            //'date',
             //'dateEnded',
 
             [   'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}&nbsp;{view}',
-                'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
-                    if ($action == "update") {
-                        return Url::to(['layer/maplistupdate', 'id' => $model->id, 'mapId' => $mapId]);
+            'template' => '{update}&nbsp;{view}&nbsp;{enable}',
+            'buttons' => [
+                'view' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url);
+                },
+                'update' => function ($url, $model) {
 
-                    }
-                    if ($action == "view") {
-                        return Url::to(['layer/maplistview', 'id' => $model->id, 'mapId' => $mapId]);
+                    return Html::a('<span class="glyphicon glyphicon-pencil" title="Update"></span>',$url);
+                },
+                'enable' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-ok" title="Enable"></span>', $url,['data' => [
+                        'confirm' => 'Are you sure you want to enable this item?',
+                        'method' => 'post',
+                    ]]);
+                },
+            ],
+            'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
 
-                    }
-                    /*if ($action == "delete") {
-                        return Url::to(['layer/delete', 'id' => $model->id, 'mapId' => $mapId]);
+                if ($action == "update") {
 
-                    }*/
+                    return Url::to(['layer/maplistupdate', 'id' => $model->id, 'mapId' => $mapId]);
 
                 }
-            ],
+
+                if ($action == "view") {
+
+                    return Url::to(['layer/maplistview', 'id' => $model->id, 'mapId' => $mapId]);
+
+                }
+
+                if ($action == "enable") {
+                    return Url::to(['layer/enable', 'id' => $model->id, 'mapId' => $mapId]);
+                }
+
+            }],
         ],
     ]).""; 
     
@@ -73,6 +91,7 @@ echo Tabs::widget([
             'active' => false,
 
         ],
+
         [
 
             'label' => 'Layers',
@@ -80,16 +99,18 @@ echo Tabs::widget([
             'items' => [
                 [
                     'label' => 'Layers',
-                    'content'=>$content,
-                    'active' => true,                    
+                    'url' => Url::to(['layer/maplist','mapId'=>$searchModel->mapId]),
+                   
                 ],
                 [
                     'label' => 'Disabled layers',
-                    'url' => Url::to(['layer/disabledlist','mapId'=>$searchModel->mapId]),
+                    'content'=>$content,
+                    'active' => true, 
                     
                 ],
             ]
         ],
+        
         [
 
             'label' => 'Historical Facts',

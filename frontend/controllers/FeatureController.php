@@ -27,7 +27,8 @@ class FeatureController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'disable' => ['POST'],
+                    'enable' => ['POST'],
                 ],
             ],
             'access' => [

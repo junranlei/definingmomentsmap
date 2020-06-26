@@ -48,7 +48,7 @@ class Layer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'type', 'visible', 'mapId', 'date'], 'required'],
+            [['title', 'description', 'visible', 'mapId', 'date'], 'required'],
             [['type', 'visible', 'mapId','status'], 'integer'],
             [['description'], 'string'],
             [['date', 'externalId'], 'safe'],

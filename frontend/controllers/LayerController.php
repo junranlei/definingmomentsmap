@@ -7,6 +7,7 @@ use frontend\models\Layer;
 use frontend\models\LayerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\Map;
@@ -26,6 +27,7 @@ class LayerController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'disable' => ['POST'],
+                    'enable' => ['POST'],
                 ],
             ],
             'access' => [
@@ -61,6 +63,12 @@ class LayerController extends Controller
                             return ['map' => Map::findOne(['id' => $mapId])];
                         },
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disabledlist','enable'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ] 
                     
                 ],
                 'denyCallback' => function ($rule, $action) {
@@ -113,6 +121,24 @@ class LayerController extends Controller
         }
 
         return $this->render('maplist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'mapId'=>$mapId
+        ]);
+    }
+
+    /**
+     * Lists all disabled Layer models for one map via mapId.
+     * @return mixed
+     */
+    public function actionDisabledlist()
+    {
+        $searchModel = new LayerSearch();
+        $mapId = Yii::$app->request->queryParams["mapId"];
+        $searchModel->mapId=$mapId;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,0);
+
+        return $this->render('disabledlist', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'mapId'=>$mapId
@@ -262,6 +288,24 @@ class LayerController extends Controller
     }
 
     /**
+     * Enables an disabled Layer model.
+     * If enable is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEnable($id)
+    {
+        //$this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=1;
+        $model->save();
+        $mapId = Yii::$app->request->queryParams["mapId"];
+
+        return $this->redirect(['maplist', 'mapId' => $mapId]);
+    }
+
+    /**
      * Finds the Layer model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -271,6 +315,10 @@ class LayerController extends Controller
     protected function findModel($id)
     {
         if (($model = Layer::findOne($id)) !== null) {
+            if($model->status!=1&&!\Yii::$app->user->can("SysAdmin")){
+                $message="This item has been deleted, please contact us if you would like to recover it.";        
+                throw new ForbiddenHttpException($message);
+            }
             return $model;
         }
 

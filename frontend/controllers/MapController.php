@@ -13,6 +13,7 @@ use frontend\models\User;
 use yii\db\Query;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -62,7 +63,13 @@ class MapController extends Controller
                         'roleParams' => function() {
                             return ['map' => Map::findOne(['id' => Yii::$app->request->get('id')])];
                         },
-                    ]  
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disabledmaps','enable'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ]   
                 ],
                 'denyCallback' => function ($rule, $action) {
                     if (Yii::$app->user->isGuest){
@@ -92,6 +99,23 @@ class MapController extends Controller
         $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all disabled Map models with tabs to other options.
+     * @return mixed
+     */
+    public function actionDisabledmaps()
+    {
+        $searchModel = new MapSearch();
+        $params = Yii::$app->request->queryParams;
+        //$params['MapSearch']['publicPermission']=1;
+        $dataProvider = $searchModel->search($params, $status=0);
+
+        return $this->render('disabledmaps', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -278,6 +302,22 @@ class MapController extends Controller
     }
 
     /**
+     * Enables an disabled Map model.
+     * If enable is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEnable($id)
+    {
+        //$this->findModel($id)->delete();
+        $model=$this->findModel($id);
+        $model->status=1;
+        $model->save();
+        return $this->redirect(['index']);
+    }
+
+    /**
      * list for selecting assigned user
      * @param string $q search term
      * @return array list of user id and text
@@ -316,6 +356,10 @@ class MapController extends Controller
     protected function findModel($id)
     {
         if (($model = Map::findOne($id)) !== null) {
+            if($model->status!=1&&!\Yii::$app->user->can("SysAdmin")){
+                $message="This item has been deleted, please contact us if you would like to recover it.";        
+                throw new ForbiddenHttpException($message);
+            }
             return $model;
         }
 

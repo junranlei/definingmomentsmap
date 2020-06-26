@@ -7,10 +7,10 @@ use frontend\models\Map;
 /**
  * Checks if authorID matches user passed via params
  */
-class MapupdateRule extends Rule
+class MapdisableRule extends Rule
 {
     
-    public $name = "isEditableMap";
+    public $name = "canDisableMap";
     /**
      * @param string|int $user the user ID.
      * @param Item $item the role or permission that this rule is associated with
@@ -19,17 +19,14 @@ class MapupdateRule extends Rule
      */
     public function execute($user, $item, $params)
     {
-        //return isset($params['post']) ? $params['post']->createdBy == $user : false;
         if(isset($params['map'])){
             $map=$params['map'];
             $isSysAdmin = \Yii::$app->user->can("SysAdmin");
-            //everyone can edit return true
-            if($map->publicPermission)
-                return true;
-            //is owner or assigned user or not?
-            $assignedUsers12 = $map->users;
-            //print_r('<script>alert("'.json_encode(array_column($assignedUsers12, 'id')).'");</script>');exit;      
-            return ($isSysAdmin || array_search($user, array_column($assignedUsers12, 'id'))!==FALSE);
+            //is owner or not?
+            $assignedUsers1 = $map->users1;
+            $isOwner = (array_search($user, array_column($assignedUsers1, 'id'))!==FALSE);
+            
+            return ($isSysAdmin||$isOwner);
         }else{
             return false;
         }

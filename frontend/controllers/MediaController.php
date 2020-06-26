@@ -12,6 +12,7 @@ use yii\data\ActiveDataProvider;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
@@ -31,6 +32,8 @@ class MediaController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'disable' => ['POST'],
+                    'enable' => ['POST'],
+                    'unlink' => ['POST'],
                 ],
             ],
             'access' => [
@@ -79,7 +82,13 @@ class MediaController extends Controller
                         'roleParams' => function() {
                             return ['media' => Media::findOne(['id' => Yii::$app->request->get('id')])];
                         },
-                    ]
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['disabledlist','enable'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ] 
                 ],
                 'denyCallback' => function ($rule, $action) {
                     if (Yii::$app->user->isGuest){
@@ -179,7 +188,28 @@ class MediaController extends Controller
             return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$histId]);
         }
 
+        $dataProvider->pagination->pageSize=10;
+
         return $this->render('histlist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'histId'=>$histId,
+        ]);
+    }
+
+    /**
+     * Lists all disabled Media models.
+     * @return mixed
+     */
+    public function actionDisabledlist()
+    {
+        $searchModel = new MediaSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,0);
+        $histId = Yii::$app->request->queryParams["histId"];
+
+        $dataProvider->pagination->pageSize=10;
+
+        return $this->render('disabledlist', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'histId'=>$histId,
@@ -251,6 +281,7 @@ class MediaController extends Controller
             }
             return $this->redirect(['histlistupdate', 'id' => $model->id, 'histId'=>$histId]);
         }
+        $dataProvider->pagination->pageSize=10;
 
         return $this->render('histlistcreate', [
             'searchModel' => $searchModel,
@@ -279,6 +310,7 @@ class MediaController extends Controller
                         'id',
                         $historicalFact->getMedia()->addSelect('id')])
                     ->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(['status' => 1])
                     ->andFilterWhere(Yii::$app->request->queryParams['MediaSearch']),
             ]);
         else
@@ -289,6 +321,7 @@ class MediaController extends Controller
                         'id',
                         $historicalFact->getMedia()->addSelect('id')])
                     ->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(['status' => 1])
             ]);
 
         $dataProviderLink->pagination->pageSize=10;
@@ -373,6 +406,7 @@ class MediaController extends Controller
                 'histId'=>$histId,
             ]);
         }
+        $dataProvider->pagination->pageSize=10;
 
         return $this->render('histlistupdate', [
             'searchModel' => $searchModel,
@@ -408,7 +442,7 @@ class MediaController extends Controller
         if($historicalFact->mainMediaId==$id){
             $model->isMainMedia=1;
         }
-
+        $dataProvider->pagination->pageSize=10;
         return $this->render('histlistview', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -532,6 +566,26 @@ class MediaController extends Controller
     }
 
     /**
+     * Enable an disabled Media model.
+     * If enable is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionEnable($id)
+    {
+        $model = $this->findModel($id);
+    
+        $model->status=1;
+        $model->permission2upload=1;
+        $model->save();
+        
+        $histId = Yii::$app->request->queryParams["histId"];
+
+        return $this->redirect(['histlist', 'histId' => $histId]);
+    }
+
+    /**
      * Finds the Media model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -541,6 +595,10 @@ class MediaController extends Controller
     protected function findModel($id)
     {
         if (($model = Media::findOne($id)) !== null) {
+            if($model->status!=1&&!\Yii::$app->user->can("SysAdmin")){
+                $message="This item has been deleted, please contact us if you would like to recover it.";        
+                throw new ForbiddenHttpException($message);
+            }
             return $model;
         }
 

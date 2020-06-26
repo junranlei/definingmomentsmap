@@ -148,13 +148,14 @@ foreach($hists as $hist){
     
 
     foreach($features as $feature){
-        $histLink = Html::a($hist->title.'-'.$feature->title, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
-        $featuresvar[$hist->id][$feature->id]=$feature->geojson;
-        $featureobjsvar[$hist->id][$feature->id]["geojson"]=$feature->geojson;
-        $featureobjsvar[$hist->id][$feature->id]["mainId"]=$hist->mainMediaId;
-        $featureobjsvar[$hist->id][$feature->id]["mediaHtml"]=Html::a($mediaHtml, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
-        $featureobjsvar[$hist->id][$feature->id]["histLink"]=$histLink;
-
+        if($feature->visible==1){
+            $histLink = Html::a($hist->title.'-'.$feature->title, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
+            $featuresvar[$hist->id][$feature->id]=$feature->geojson;
+            $featureobjsvar[$hist->id][$feature->id]["geojson"]=$feature->geojson;
+            $featureobjsvar[$hist->id][$feature->id]["mainId"]=$hist->mainMediaId;
+            $featureobjsvar[$hist->id][$feature->id]["mediaHtml"]=Html::a($mediaHtml, ['historicalfact/view', 'id' => $hist->id],['target'=>'_blank']);
+            $featureobjsvar[$hist->id][$feature->id]["histLink"]=$histLink;
+        }
 
         //Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
     }

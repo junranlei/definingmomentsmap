@@ -6,10 +6,10 @@ use yii\rbac\Rule;
 /**
  * Checks if authorID matches user passed via params
  */
-class HistupdateRule extends Rule
+class ProfileupdateRule extends Rule
 {
     
-    public $name = "isEditableHist";
+    public $name = "isEditableProfile";
     /**
      * @param string|int $user the user ID.
      * @param Item $item the role or permission that this rule is associated with
@@ -18,15 +18,13 @@ class HistupdateRule extends Rule
      */
     public function execute($user, $item, $params)
     {
-        if(isset($params['hist'])){
+        
+        if(isset($params['profile'])){
+            $profile=$params['profile'];
             $isSysAdmin = \Yii::$app->user->can("SysAdmin");
-            $hist=$params['hist'];
-            //everyone can edit return true
-            if($hist->publicPermission)
-                return true;
-            //is owner or assigned user or not?
-            $assignedUsers12 = $hist->users;
-            return ($isSysAdmin || array_search($user, array_column($assignedUsers12, 'id'))!==FALSE);
+            $profileId = $profile->user_id;
+            //check if user is sysadmin or the profile owner
+            return ($isSysAdmin||($user==$profileId));
         }else{
             return false;
         }

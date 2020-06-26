@@ -89,7 +89,7 @@ echo Tabs::widget([
                     'active' => true,                    
                 ],
                 [
-                    'label' => 'Disable features',
+                    'label' => 'Disabled features',
                     'url' => Url::to(['feature/disabledlist','histId'=>$searchModel->histId]),
                     
                 ],

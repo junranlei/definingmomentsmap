@@ -127,6 +127,48 @@ $content="
         ],
     ])."";
 
+if(\Yii::$app->user->can("SysAdmin"))
+echo Tabs::widget([
+    'items' => [
+        [
+            'label' => 'Historical Fact',
+            'url' => Url::to(['historicalfact/view','id'=>$histId]),
+            'active' => false,
+        ],
+        [
+            'label' => 'Feature',
+            'url' => Url::to(['feature/histlist','histId'=>$histId]),
+            'active' => false,
+        ],
+
+        [
+            'label' => 'Media',                 
+            'items' => [
+                [
+                    'label' => 'Create/update media',
+                    'content' => $content,
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Link to other media',
+                    'url' => Url::to(['media/linkother','histId'=>$histId]),
+                ],
+                [
+                    'label' => 'Disabled media',
+                    'url' => Url::to(['media/disabledlist','histId'=>$histId]),
+                ],
+            ]
+        ],
+        [
+            'label' => 'Linked Maps',
+            'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
+            'active' => false,
+        ]
+
+    ],
+
+]);
+else
 echo Tabs::widget([
     'items' => [
         [

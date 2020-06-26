@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="feature-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>
+    <h1>Disabled ". Html::encode($this->title) ."</h1>
 
     <p>
         ".Html::a('Create Feature', ['histlistcreate','histId'=>$searchModel->histId], ['class' => 'btn btn-success']) 
@@ -102,7 +102,7 @@ echo Tabs::widget([
                    
                 ],
                 [
-                    'label' => 'Disable features',
+                    'label' => 'Disabled features',
                     'content'=>$content,
                     'active' => true, 
                     

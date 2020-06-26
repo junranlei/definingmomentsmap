@@ -110,6 +110,15 @@ class Media extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOwner()
+    {
+        return $this->hasOne(User::className(), ['id' => 'ownerId']);
+    }
+    /**
      * Gets query for [[Hists]].
      *
      * @return \yii\db\ActiveQuery

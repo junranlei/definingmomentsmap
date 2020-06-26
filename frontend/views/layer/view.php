@@ -32,10 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'description:ntext',
-            'type',
+            //'type',
             'nameOrUrl',
             'visible',
-            'mapId',
+            //'mapId',
             'date',
         ],
     ]) ?>

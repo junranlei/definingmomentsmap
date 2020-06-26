@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    //'homeUrl'=>array('site/map'),
     'basePath' => dirname(__DIR__),
     //'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -21,7 +22,8 @@ return [
                 'User' => frontend\models\User::class,
                 'Profile' => frontend\models\Profile::class,
             ],
-            'administrators' => ['admin'],
+            'administratorPermissionName' => 'SysAdmin',
+            //'administrators' => ['admin'],
             'enableRegistration'=>true,
             'allowPasswordRecovery'=>true,
             'generatePasswords' => true,
@@ -30,6 +32,11 @@ return [
                 'profile' => [
                     'class' => 'frontend\controllers\ProfileController',
                 ],
+                'security' => [
+                    'class' => 'Da\User\Controller\SecurityController',
+                    'on beforeAuthenticate' => ['frontend\controllers\SocialNetworkHandler', 'beforeAuthenticate']
+                ],
+
             ]
         ],   
     ],

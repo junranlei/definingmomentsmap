@@ -91,7 +91,7 @@ class Profile extends BaseUser
     {
         return [
             'name' => Yii::t('usuario', 'Name'),
-            'public_email' => Yii::t('usuario', 'Email'),
+            'public_email' => Yii::t('usuario', 'Public Email'),
             'gravatar_email' => Yii::t('usuario', 'Gravatar email'),
             'location' => Yii::t('usuario', 'Location'),
             'website' => Yii::t('usuario', 'Website'),

@@ -7,7 +7,7 @@ use yii\db\ActiveRecord;
 //use Da\User\Model\User;
 use Da\User\Event\UserEvent;
 use Da\User\Query\UserQuery;
-use Da\User\Search\UserSearch;
+//use Da\User\Search\UserSearch;
 use Da\User\Query\ProfileQuery;
 use Da\User\Model\Profile;
 use frontend\models\User;
@@ -18,8 +18,10 @@ use Da\User\Validator\AjaxRequestModelValidator;
 use Da\User\Controller\ProfileController as BaseController;
 use Da\User\Event\FormEvent;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
+use yii\filters\VerbFilter;
 use frontend\models\Historicalfact;
 use frontend\models\HistoricalfactSearch;
 use yii\data\ActiveDataProvider;
@@ -27,6 +29,7 @@ use frontend\models\HistoricalAssign;
 use frontend\models\Map;
 use frontend\models\MapSearch;
 use frontend\models\MapAssign;
+use frontend\models\UserSearch;
 
 
 class ProfileController extends BaseController
@@ -68,15 +71,34 @@ class ProfileController extends BaseController
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','show','updateprofile','updateaccount','myhists','mymaps'],
+                        'actions' => ['myhists','mymaps'],
                         'roles' => ['@'],
                     ],
-                    /*[
+                    [
                         'allow' => true,
-                        'actions' => ['show'],
+                        'actions' => ['index','show','ranking'],
                         'roles' => ['?', '@'],
-                    ],*/
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['updateprofile','updateaccount'],
+                        'roles' => ['updateProfile'],
+                        'roleParams' => function() {
+                            return ['profile' => Profile::findOne(['user_id' => Yii::$app->request->get('id')])];
+                        },
+                    ],
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+    
+                    if(in_array($action->id,['updateprofile','updateaccount']))
+                        $message='You are not sysadmin or the owner of the profile .';
+                    throw new ForbiddenHttpException($message);
+         
+                }
             ],
         ];
     }
@@ -210,6 +232,21 @@ class ProfileController extends BaseController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'user'=>$user
+        ]);
+    }
+
+    /**
+     * Lists all my user models with ranking and links .
+     * @return mixed
+     */
+    public function actionRanking()
+    {
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('ranking', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

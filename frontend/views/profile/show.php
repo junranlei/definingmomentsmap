@@ -12,6 +12,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Tabs;
 use yii\helpers\Url;
+use frontend\models\Profile;
 
 /**
  * @var \yii\web\View          $this
@@ -73,7 +74,12 @@ $content= '<br/>
             $content= $content.'</div>
         </div>
     </div>
-</div>';
+</div><br/>';
+if(\Yii::$app->user->can("updateProfile",$params=['profile' => Profile::findOne(['user_id' => Yii::$app->request->get('id')])])){
+    $content= $content. Html::a('Update', ['updateprofile', 'id' => $profile->user_id], ['class' => 'btn btn-primary']);
+
+}
+
 ?>
 <?php
 

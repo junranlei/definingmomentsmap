@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\bootstrap\Tabs;
 use yii\helpers\Url;
-use yii\widgets\DetailView;
 
 use frontend\models\HistoricalFact;
 use frontend\models\Media;
@@ -18,19 +17,21 @@ use frontend\models\Feature;
 $this->title = 'Media';
 $this->params['breadcrumbs'][] = $this->title;
 $types=[ 1 => 'Image', 2 => 'Video' ];
+
 ?>
 <div class="media-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>  
+    <h3>All Disabled ". Html::encode($this->title) ." (including those not linked to this historical fact yet)</h3>
     <p>"
-    .Html::a('Create Media', ['histlistcreate','histId'=>$histId], ['class' => 'btn btn-success']).
-    "</p> 
+        .Html::a('Create Media', ['histlistcreate','histId'=>$histId], ['class' => 'btn btn-success']).
+    "</p>
     ". GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
             'id',
             'title',
             //'description:ntext',
@@ -43,8 +44,8 @@ $content="
             ],
             [
                 'attribute' => 'nameOrUrl',  
-                'format' => 'raw',   
-                'label' => 'Media',    
+                'format' => 'raw',  
+                'label' => 'Media',   
                 'value' => function ($data) {
                      
                     $headers = @get_headers($data['nameOrUrl']); 
@@ -79,23 +80,44 @@ $content="
                         }           
                     }   
                 },
-    
             ],
-            //'nameOrUrl',
+           // 'nameOrUrl',
             //'histId',
             //'right2Link',
             //'ownerId',
-
+            
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{update}&nbsp;{view}&nbsp;',
+            'template' => '{update}&nbsp;{view}&nbsp;{enable}&nbsp;',
+            'buttons' => [
+                'view' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url);
+                },
+                'update' => function ($url, $model) {
+
+                    return Html::a('<span class="glyphicon glyphicon-pencil" title="Update"></span>',$url);
+                },
+                'enable' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-ok" title="Enable"></span>', $url,['data' => [
+                        'confirm' => 'Are you sure you want to enable this item?',
+                        'method' => 'post',
+                    ]]);
+                },
+                
+            ],
             'urlCreator' => function( $action, $model, $key, $index )use ($histId){
+
                 if ($action == "update") {
+
                     return Url::to(['media/histlistupdate', 'id' => $model->id, 'histId' => $histId]);
 
                 }
                 if ($action == "view") {
+
                     return Url::to(['media/histlistview', 'id' => $model->id, 'histId' => $histId]);
 
+                }
+                if ($action == "enable") {
+                    return Url::to(['enable', 'id' => $model->id, 'histId' => $histId]);
                 }
                 
 
@@ -103,6 +125,7 @@ $content="
         ],
     ])."";
 
+if(\Yii::$app->user->can("SysAdmin"))
 echo Tabs::widget([
     'items' => [
         [
@@ -115,17 +138,22 @@ echo Tabs::widget([
             'url' => Url::to(['feature/histlist','histId'=>$histId]),
             'active' => false,
         ],
+
         [
-            'label' => 'Media', 
+            'label' => 'Media',                 
             'items' => [
                 [
-                    'label' => 'View media',
-                    'content' => $content,
-                    'active' => true,
+                    'label' => 'Create/update media',
+                    'url' => Url::to(['media/histlist','histId'=>$histId]),
                 ],
                 [
                     'label' => 'Link to other media',
                     'url' => Url::to(['media/linkother','histId'=>$histId]),
+                ],
+                [
+                    'label' => 'Disabled media',
+                    'content' => $content,
+                    'active' => true,
                 ],
             ]
         ],
@@ -134,55 +162,13 @@ echo Tabs::widget([
             'url' => Url::to(['map/histlinkedmaps','histId'=>$histId]),
             'active' => false,
         ]
+
     ],
+
 ]);
 
 ?>
 </div>
-<div class="media-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Delete', ['disable', 'id' => $model->id,'histId' => $histId], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-        <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId' => $histId], ['class' => 'btn btn-primary']) ?>
 
-    </p>
-    <h2 align="center">
-    <?php if($model->type==1){ ?>
-        <?= $model->getMediaUrl($width="400px") ?> 
-    <?php }else if($model->type==2){ ?>
-        <?= $model->getMediaUrl($width="320px", $height="240px") ?> 
-    <?php } ?>
-    </h2>
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'description:ntext',
-            'source',
-            'type',
-            'nameOrUrl',
-            //'right2Link',
-            [
-                'attribute'=>'Owner',
-                'format'=>'raw',
-                'value'=>function ($model)
-                {
-                    $owner=$model->owner;
-                    if($owner!=null)
-                        return Html::a($owner->username, ['user/profile', 'id' => $owner->id], ['target' => '_blank']);
-                    
-                }
-            ],
-        ],
-    ]) ?>
-
-</div>

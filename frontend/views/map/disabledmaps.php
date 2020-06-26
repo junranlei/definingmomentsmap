@@ -37,7 +37,38 @@ $content= '<br/>'.
             //'right2Add',
 
             ['class' => 'yii\grid\ActionColumn',
-            'template' => '{view}',
+            'template' => '{view}&nbsp{update}&nbsp;{enable}',
+            'buttons' => [
+                'view' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url);
+                },
+                'update' => function ($url, $model) {
+
+                    return Html::a('<span class="glyphicon glyphicon-pencil" title="Update"></span>',$url);
+                },
+                'enable' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-ok" title="Enable"></span>', $url,['data' => [
+                        'confirm' => 'Are you sure you want to enable this item?',
+                        'method' => 'post',
+                    ]]);
+                },
+            ],
+                'urlCreator' => function( $action, $model, $key, $index ) {
+                    if ($action == "view") {
+
+                        return Url::to(['view', 'id' => $model->id]);
+
+                    }
+                    if ($action == "update") {
+
+                        return Url::to(['update', 'id' => $model->id]);
+
+                    }
+                    if ($action == "enable") {
+                        return Url::to(['enable', 'id' => $model->id]);
+                    }
+                }
+                
             ],
         ],
     ]); ?>
@@ -50,8 +81,7 @@ echo Tabs::widget([
 
         [
             'label' => 'All Maps',
-            'content'=>$content,
-            'active' => true
+            'url' => Url::to(['map/index']),
 
         ],
         [
@@ -69,7 +99,8 @@ echo Tabs::widget([
         [
 
             'label' => 'Disabled Historical Facts',
-            'url' => Url::to(['map/disabledmaps']),
+            'content'=>$content,
+            'active' => true
 
         ]
 
