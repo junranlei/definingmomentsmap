@@ -31,7 +31,12 @@
         "kartik-v/yii2-widget-datepicker": "@dev",
         "bedezign/yii2-audit": "^1.0",
         "kartik-v/yii2-widget-select2": "@dev",
-        "yiisoft/yii2-authclient": "~2.1.0"
+        "yiisoft/yii2-authclient": "~2.1.0",
+        "bizley/migration": "^3.6",
+        "yiimaker/yii2-social-share": "^2.3",
+        "kartik-v/yii2-export": "*",
+        "2amigos/yii2-exportable-widget": "*",
+        "2amigos/yii2-grid-view-library": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

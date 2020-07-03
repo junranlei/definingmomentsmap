@@ -15,7 +15,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
-use frontend\models\Historicalfact;
+use frontend\models\HistoricalFact;
 use frontend\models\HistoricalmapSearch;
 
 /**
@@ -107,7 +107,15 @@ class SiteController extends Controller
         ]);
     }
 
-
+    /**
+     * Displays map2page.
+     *
+     * @return mixed
+     */
+    public function actionMap2()
+    {
+        return $this->render('map3');
+    }
     /**
      * Logs in a user.
      *

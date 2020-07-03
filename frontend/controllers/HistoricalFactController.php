@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Historicalfact;
+use frontend\models\HistoricalFact;
 use frontend\models\HistoricalfactSearch;
 use frontend\models\HistoricalMapLink;
 use frontend\models\Map;
@@ -20,7 +20,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * HistoricalfactController implements the CRUD actions for Historicalfact model.
+ * HistoricalFactController implements the CRUD actions for HistoricalFact model.
  */
 class HistoricalfactController extends Controller
 {
@@ -62,7 +62,7 @@ class HistoricalfactController extends Controller
                         'actions' => ['update','maplistupdate','userlist','unlink'],
                         'roles' => ['updateHist'],
                         'roleParams' => function() {
-                            return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('id')])];
+                            return ['hist' => HistoricalFact::findOne(['id' => Yii::$app->request->get('id')])];
                         },
                     ],
                     [
@@ -70,7 +70,7 @@ class HistoricalfactController extends Controller
                         'actions' => ['disable'],
                         'roles' => ['disableHist'],
                         'roleParams' => function() {
-                            return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('id')])];
+                            return ['hist' => HistoricalFact::findOne(['id' => Yii::$app->request->get('id')])];
                         },
                     ],
                     [
@@ -105,7 +105,7 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Lists all Historicalfact models.
+     * Lists all HistoricalFact models.
      * @return mixed
      */
     public function actionIndex()
@@ -204,14 +204,14 @@ class HistoricalfactController extends Controller
               
         if(isset(Yii::$app->request->queryParams['HistoricalfactSearch']))
             $dataProvider = new ActiveDataProvider([
-                'query' => $map->getHists()->andFilterWhere(Yii::$app->request->queryParams['HistoricalfactSearch']),
+                'query' => $map->getHists()->andFilterWhere(Yii::$app->request->queryParams['HistoricalFactSearch']),
             ]);
         else
             $dataProvider = new ActiveDataProvider([
                 'query' => $map->getHists(),
             ]);   
         //$dataProvider->pagination->pageSize=20;
-        $model = new Historicalfact();
+        $model = new HistoricalFact();
         //url multiple input box combine with ; to string 
         $POST = Yii::$app->request->post();
         if($POST!=null){
@@ -257,7 +257,7 @@ class HistoricalfactController extends Controller
         
         if(isset(Yii::$app->request->queryParams['HistoricalfactSearch']))
             $dataProviderLink = new ActiveDataProvider([
-                'query' => Historicalfact::find()                  
+                'query' => HistoricalFact::find()                  
                     ->where([
                         'not in',
                         'id',
@@ -267,7 +267,7 @@ class HistoricalfactController extends Controller
             ]);
         else
             $dataProviderLink = new ActiveDataProvider([
-                'query' => Historicalfact::find()
+                'query' => HistoricalFact::find()
                     ->where([
                         'not in',
                         'id',
@@ -375,7 +375,7 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Displays a single Historicalfact model.
+     * Displays a single HistoricalFact model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -388,13 +388,13 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Creates a new Historicalfact model.
+     * Creates a new HistoricalFact model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Historicalfact();
+        $model = new HistoricalFact();
         $userId = Yii::$app->user->identity->id;
         $POST = Yii::$app->request->post();
         if($POST!=null){
@@ -421,7 +421,7 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Updates an existing Historicalfact model.
+     * Updates an existing HistoricalFact model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -511,7 +511,7 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Deletes an existing Historicalfact model.
+     * Deletes an existing HistoricalFact model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -527,7 +527,7 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Enable an disabled Historicalfact model.
+     * Enable an disabled HistoricalFact model.
      * If enabled is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -543,15 +543,15 @@ class HistoricalfactController extends Controller
     }
 
     /**
-     * Finds the Historicalfact model based on its primary key value.
+     * Finds the HistoricalFact model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Historicalfact the loaded model
+     * @return HistoricalFact the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Historicalfact::findOne($id)) !== null) {
+        if (($model = HistoricalFact::findOne($id)) !== null) {
             if($model->status!=1&&!\Yii::$app->user->can("SysAdmin")){
                 $message="This item has been deleted, please contact us if you would like to recover it.";        
                 throw new ForbiddenHttpException($message);

@@ -22,7 +22,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
-use frontend\models\Historicalfact;
+use frontend\models\HistoricalFact;
 use frontend\models\HistoricalfactSearch;
 use yii\data\ActiveDataProvider;
 use frontend\models\HistoricalAssign;
@@ -72,7 +72,7 @@ class ProfileController extends BaseController
                     [
                         'allow' => true,
                         'actions' => ['myhists','mymaps'],
-                        'roles' => ['@'],
+                        'roles' => ['@','?'],
                     ],
                     [
                         'allow' => true,

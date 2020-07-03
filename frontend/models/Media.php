@@ -120,12 +120,12 @@ class Media extends \yii\db\ActiveRecord
     }
     /**
      * Gets query for [[Hists]].
-     *
+     * @param int $status default 1 enabled
      * @return \yii\db\ActiveQuery
      */
-    public function getHists()
+    public function getHists($status=1)
     {
-        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMediaLink', ['mediaId' => 'id']);
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMediaLink', ['mediaId' => 'id'])->andOnCondition(['status' => $status]);
     }
     /**
      * Get media display html from nameOrUrl and type fields

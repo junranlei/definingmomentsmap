@@ -14,11 +14,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 <?php
- $content= '<h3>'.Html::encode($this->title) .'</h3>
- <br/>'.
+ $content= '<div class="form-group"><div class="row"><div class="col-md-8" style="text-align:left;padding-left:10"><h3>'.
+ Html::encode($this->title) .'</h3></div>
+ <div class="col-md-4" style="text-align:right;padding-right:10"><h3>'.
+ Html::button('Reset', ['class' => 'btn btn-danger','onclick'=>'window.location="'.Url::to(['profile/ranking']).'"']).
+ '</h3></div></div></div>'.
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

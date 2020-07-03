@@ -7,10 +7,10 @@ use frontend\models\Feature;
 use frontend\models\Media;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Historicalfact */
+/* @var $model frontend\models\HistoricalFact */
 
-$this->title = 'Create Historicalfact';
-$this->params['breadcrumbs'][] = ['label' => 'Historicalfacts', 'url' => ['index']];
+$this->title = 'Create HistoricalFact';
+$this->params['breadcrumbs'][] = ['label' => 'HistoricalFacts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="historicalfact-create">

@@ -178,7 +178,7 @@ echo Tabs::widget([
                 {
                     $owner=$model->owner;
                     if($owner!=null)
-                        return Html::a($owner->username, ['user/profile', 'id' => $owner->id], ['target' => '_blank']);
+                        return Html::a($owner->username, ['user/profile/show', 'id' => $owner->id], ['target' => '_blank']);
                     
                 }
             ],

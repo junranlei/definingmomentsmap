@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Historicalfact;
+use frontend\models\HistoricalFact;
 
 /**
- * HistoricalfactSearch represents the model behind the search form of `frontend\models\Historicalfact`.
+ * HistoricalfactSearch represents the model behind the search form of `frontend\models\HistoricalFact`.
  */
-class HistoricalfactSearch extends Historicalfact
+class HistoricalfactSearch extends HistoricalFact
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,8 @@ class HistoricalfactSearch extends Historicalfact
      */
     public function search($params, $status=1)
     {
-        $query = Historicalfact::find();
+        $query = HistoricalFact::find()->joinWith('features')
+        ->groupBy(['historicalFact.id']);;
 
         // add conditions that should always apply here
 
@@ -58,19 +59,19 @@ class HistoricalfactSearch extends Historicalfact
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'date' => $this->date,
-            'dateEnded' => $this->dateEnded,
-            'timeCreated' => $this->timeCreated,
-            'timeUpdated' => $this->timeUpdated,
+            'historicalFact.id' => $this->id,
+            'historicalFact.date' => $this->date,
+            'historicalFact.dateEnded' => $this->dateEnded,
+            'historicalFact.timeCreated' => $this->timeCreated,
+            'historicalFact.timeUpdated' => $this->timeUpdated,
             'mainMediaId' => $this->mainMediaId,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description])
+        $query->andFilterWhere(['like', 'historicalFact.title', $this->title])
+            ->andFilterWhere(['like', 'historicalFact.description', $this->description])
             ->andFilterWhere(['like', 'urls', $this->urls]);
         
-        $query->andWhere('status='.$status); //only return enabled records or specify by status
+        $query->andWhere('historicalFact.status='.$status); //only return enabled records or specify by status
 
         return $dataProvider;
     }

@@ -45,7 +45,7 @@ class UserSearch extends User
         ->joinWith('map')
         ->joinWith('historicalfact')
         ->select(['user.id as id', 'username', 'profile.public_email as public_email',
-         'COUNT(distinct map.id) AS mapCount','COUNT(distinct historicalfact.id) AS histCount'])->distinct()
+         'COUNT(distinct map.id) AS mapCount','COUNT(distinct historicalFact.id) AS histCount'])->distinct()
         ->groupBy(['user.id']);
         //->orderBy('histCount desc,mapCount desc');
 

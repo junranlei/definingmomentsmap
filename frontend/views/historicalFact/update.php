@@ -8,7 +8,7 @@ use frontend\models\Feature;
 use frontend\models\Media;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Historicalfact */
+/* @var $model frontend\models\HistoricalFact */
 
 $this->title = 'Update Historical fact: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Historical Fact', 'url' => ['index']];

@@ -6,7 +6,7 @@ use yii\bootstrap\Tabs;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Historicalfact */
+/* @var $model frontend\models\HistoricalFact */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Historical Facts', 'url' => ['index']];
@@ -46,7 +46,7 @@ $content="
                     foreach($users1 as $user){
                         if($users1links!="")
                             $users1links=$users1links.",";
-                        $users1links= $users1links.Html::a($user->username, ['user/profile', 'id' => $user->id], ['target' => '_blank']);
+                        $users1links= $users1links.Html::a($user->username, ['user/profile/show', 'id' => $user->id], ['target' => '_blank']);
                     }
                     return $users1links;
                 }
@@ -62,7 +62,7 @@ $content="
                     foreach($users2 as $user){
                         if($users2links!="")
                             $users2links=$users2links.", ";
-                        $users2links= $users2links.Html::a($user->username, ['user/profile', 'id' => $user->id], ['target' => '_blank']);
+                        $users2links= $users2links.Html::a($user->username, ['user/profile/show', 'id' => $user->id], ['target' => '_blank']);
                     }
                     return $users2links;
                 }

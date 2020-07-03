@@ -64,7 +64,7 @@ class MediaController extends Controller
                         'actions' => ['linkother','unlink'],
                         'roles' => ['updateHist'],
                         'roleParams' => function() {
-                            return ['hist' => Historicalfact::findOne(['id' => Yii::$app->request->get('histId')])];
+                            return ['hist' => HistoricalFact::findOne(['id' => Yii::$app->request->get('histId')])];
                         },
                     ],
                     [
@@ -96,7 +96,7 @@ class MediaController extends Controller
                     }
                     $message="You don't have the permisison to perform this action.";
                     if($action->id=="disable")
-                        $message='You are not the owner of the media.';
+                        $message='You are not the owner of the media or the media has been linked to more than one historical facts.';
                     else if($action->id=="histlistupdate")
                         $message='You are not the owner of the media and the media is not open for everyone to edit.';
                     else if(in_array($action->id,['linkother','unlink']))

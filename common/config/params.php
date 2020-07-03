@@ -1,8 +1,8 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'support@example.com',
-    'senderEmail' => 'noreply@example.com',
-    'senderName' => 'Example.com mailer',
+    'adminEmail' => 'cdhr@anu.edu.au',
+    'supportEmail' => 'cdhr@anu.edu.au',
+    'senderEmail' => 'cdhr@anu.edu.au',
+    'senderName' => 'CDHR-Defining Moments Map',
     'user.passwordResetTokenExpire' => 3600,
 ];

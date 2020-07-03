@@ -129,7 +129,7 @@ echo Tabs::widget([
 
 <h1>Create Historical Fact</h1>
 <?php 
-//$newHist = new Historicalfact();        
+//$newHist = new HistoricalFact();        
 ?>
     <?php /* $this->render('_form', [
         'model' => $model,

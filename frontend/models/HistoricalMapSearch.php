@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Historicalfact;
+use frontend\models\HistoricalFact;
 
 /**
- * HistoricalfactSearch represents the model behind the search form of `frontend\models\Historicalfact`.
+ * HistoricalfactSearch represents the model behind the search form of `frontend\models\HistoricalFact`.
  */
-class HistoricalmapSearch extends Historicalfact
+class HistoricalmapSearch extends HistoricalFact
 {
     public $keyword;
     /**
@@ -48,7 +48,7 @@ class HistoricalmapSearch extends Historicalfact
      */
     public function search($params, $status=1)
     {
-        $query = Historicalfact::find();
+        $query = HistoricalFact::find();
 
         // add conditions that should always apply here
 

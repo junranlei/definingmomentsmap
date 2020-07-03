@@ -111,7 +111,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
      */
     public function getFeatures($status=1)
     {
-        return $this->hasMany(Feature::className(), ['histId' => 'id'])->andOnCondition(['status' => $status]);
+        return $this->hasMany(Feature::className(), ['histId' => 'id'])->andOnCondition(['feature.status' => $status]);
     }
 
     /**

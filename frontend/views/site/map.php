@@ -127,7 +127,7 @@ $geoCoderPlugin->setName("geocoder_name");
 $leafLet->installPlugin($geoCoderPlugin);
 
 //Get Data
-//$hists = (New Historicalfact)->find()->all();
+//$hists = (New HistoricalFact)->find()->all();
 $hists = $dataProvider->getModels();
 $layersvar=[];
 /*foreach($layers as $layer){

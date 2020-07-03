@@ -98,7 +98,7 @@ echo Tabs::widget([
         ],
         [
 
-            'label' => 'Disabled Historical Facts',
+            'label' => 'Disabled Maps',
             'content'=>$content,
             'active' => true
 

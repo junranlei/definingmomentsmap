@@ -40,15 +40,38 @@ return [
                         'consumerKey' => 'twitter_consumer_key',
                         'consumerSecret' => 'twitter_consumer_secret',
                 ],
-                'linkedin' => [
+                /*'linkedin' => [
                     'class' => 'Da\User\AuthClient\Linkedin',
                     'clientId' => 'linkedin_client_id',
                     'clientSecret' => 'linkedin_client_secret',
-                ]
+                ]*/
             ]
-        ]
+        ],
+        'socialShare' => [
+            'class' => \ymaker\social\share\configurators\Configurator::class,
+            'enableIcons' => true,
+            'socialNetworks' => [
+                'facebook' => [
+                    'class' => \ymaker\social\share\drivers\Facebook::class,
+                ],
+                'twitter' => [
+                    'class' => \ymaker\social\share\drivers\Twitter::class,
+                ],
+                'linkedin' => [
+                    'class' => \ymaker\social\share\drivers\LinkedIn::class,
+                ],
+                'gmail' => [
+                    'class' => \ymaker\social\share\drivers\Gmail::class,
+                ],
+            ],
+        ],
+
     ],
     'modules' => [
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+            // other module settings
+        ],
         'datecontrol' =>  [
             'class' => '\kartik\datecontrol\Module'
             

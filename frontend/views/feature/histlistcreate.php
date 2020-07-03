@@ -104,6 +104,7 @@ echo Tabs::widget([
 
     <h1>Create Feature</h1>
     <?php $newFeature = new Feature();
+        $newFeature->visible=1;
         $newFeature->histId=$searchModel->histId;
     ?>
     <?= $this->render('_form', [

@@ -29,6 +29,9 @@ return [
                 //'bedezign\yii2\audit\migrations',
             ],
         ],
+        'migration' => [
+            'class' => 'bizley\migration\controllers\MigrationController',
+        ],
     ],
     'components' => [
         'log' => [

@@ -66,7 +66,7 @@ class User extends BaseUser
      */
     public function getMymaps($status=1)
     {
-        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('MapAssign', ['userId' => 'id'], 
+        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('mapAssign', ['userId' => 'id'], 
             function($query) {
                 $query->onCondition(['type' => 1]);
             }
@@ -79,11 +79,11 @@ class User extends BaseUser
      */
     public function getMap($status=1)
     {
-        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('MapAssign', ['userId' => 'id'], 
+        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('mapAssign', ['userId' => 'id'], 
             function($query) {
-                $query->onCondition(['MapAssign.type' => 1]);
+                $query->onCondition(['mapAssign.type' => 1]);
             }
-        )->andOnCondition(['Map.status' => $status]);
+        )->andOnCondition(['map.status' => $status]);
     }
     /**
      * Gets query for my [[Maps]] count.
@@ -102,7 +102,7 @@ class User extends BaseUser
      */
     public function getAssignedmaps($status=1)
     {
-        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('MapAssign', ['userId' => 'id'], 
+        return $this->hasMany(Map::className(), ['id' => 'mapId'])->viaTable('mapAssign', ['userId' => 'id'], 
             function($query) {
                 $query->onCondition(['type' => 2]);
             }
@@ -115,7 +115,7 @@ class User extends BaseUser
      */
     public function getMyhists($status=1)
     {
-        return $this->hasMany(Historicalfact::className(), ['id' => 'histId'])->viaTable('HistoricalAssign', ['userId' => 'id'], 
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalAssign', ['userId' => 'id'], 
             function($query) {
                 $query->onCondition(['type' => 1]);
             }
@@ -129,11 +129,11 @@ class User extends BaseUser
      */
     public function getHistoricalfact($status=1)
     {
-        return $this->hasMany(Historicalfact::className(), ['id' => 'histId'])->viaTable('HistoricalAssign', ['userId' => 'id'], 
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalAssign', ['userId' => 'id'], 
             function($query) {
-                $query->onCondition(['HistoricalAssign.type' => 1]);
+                $query->onCondition(['historicalAssign.type' => 1]);
             }
-        )->andOnCondition(['Historicalfact.status' => $status]);
+        )->andOnCondition(['historicalFact.status' => $status]);
     }
      /**
      * Gets query for my [[Historicalfacts]] count.
@@ -152,7 +152,7 @@ class User extends BaseUser
      */
     public function getAssignedhists($status=1)
     {
-        return $this->hasMany(Historicalfact::className(), ['id' => 'histId'])->viaTable('HistoricalAssign', ['userId' => 'id'], 
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalAssign', ['userId' => 'id'], 
             function($query) {
                 $query->onCondition(['type' => 2]);
             }

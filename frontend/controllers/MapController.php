@@ -97,7 +97,7 @@ class MapController extends Controller
         $params = Yii::$app->request->queryParams;
         //$params['MapSearch']['publicPermission']=1;
         $dataProvider = $searchModel->search($params);
-
+        $dataProvider->pagination->pageSize=10;
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

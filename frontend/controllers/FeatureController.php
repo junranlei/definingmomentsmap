@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use frontend\models\Historicalfact;
+use frontend\models\HistoricalFact;
 
 
 /**
@@ -57,7 +57,7 @@ class FeatureController extends Controller
                         'roleParams' => function() {
                             $feature=$this->findModel(Yii::$app->request->get('id'));
                             $histId=$feature->hist->id;
-                            return ['hist' => Historicalfact::findOne(['id' => $histId])];
+                            return ['hist' => HistoricalFact::findOne(['id' => $histId])];
                         },
                     ],
                     [
@@ -74,7 +74,7 @@ class FeatureController extends Controller
                         'roleParams' => function() {
                             $feature=$this->findModel(Yii::$app->request->get('id'));
                             $histId=$feature->hist->id;
-                            return ['hist' => Historicalfact::findOne(['id' => $histId])];
+                            return ['hist' => HistoricalFact::findOne(['id' => $histId])];
                         }
                     ],
                     [

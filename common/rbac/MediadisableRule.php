@@ -24,8 +24,11 @@ class MediadisableRule extends Rule
             //is owner or not?
             //$assignedUsers1 = $media->users1;
             $ownerId = $media->ownerId;
+            // linked to more than 1 hist, check with status?
+            $mediaLinks = $media->hists;
+            $isLinkedO1 = (is_array($mediaLinks) && count($mediaLinks)>1);
             //print_r('<script>alert("'.json_encode(array_column($assignedUsers12, 'id')).'");</script>');exit;      
-            return ($isSysAdmin||($user==$ownerId));
+            return ($isSysAdmin||(($user==$ownerId) && !$isLinkedO1));
             
         }else{
             return false;

@@ -25,9 +25,9 @@ class HistdisableRule extends Rule
             //is owner or not?
             $assignedUsers1 = $hist->users1;
             $isOwner = (array_search($user, array_column($assignedUsers1, 'id'))!==FALSE);
-            // linked to more than 1 map
-            $mapLinks = $hist->historicalMapLinks;
-            $isLinkedO1 = ((is_array($mapLinks) && count($mapLinks)>1)!==FALSE);
+            // linked to more than 1 map, check with status?
+            $mapLinks = $hist->maps;
+            $isLinkedO1 = (is_array($mapLinks) && count($mapLinks)>1);
             return ($isSysAdmin || ($isOwner && !$isLinkedO1));
         }else{
             return false;

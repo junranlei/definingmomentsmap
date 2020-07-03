@@ -15,7 +15,7 @@ use frontend\models\User;
 use frontend\models\HistoricalAssign;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Historicalfact */
+/* @var $model frontend\models\HistoricalFact */
 /* @var $form yii\widgets\ActiveForm */
 ?>  
 <?php 
@@ -96,7 +96,7 @@ $this->registerJs($js);
         echo $form->field($model, 'assignedUsers')->label('Assigned Users')->widget(Select2::classname(), [
             //Select2::widget([
             'id' => 'hist-assigneds',
-            'name' => 'Historicalfact[assignedUsers]',
+            'name' => 'HistoricalFact[assignedUsers]',
             'initValueText'=> $tusers,
             'value'=> $musers,
             'maintainOrder' => true,
