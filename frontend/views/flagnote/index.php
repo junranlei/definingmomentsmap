@@ -7,15 +7,20 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\FlagnoteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Flag Notes';
+$flagtext="";
+if($searchModel->flagId!=null)
+$flagtext=' of Flag '.$searchModel->flagId;
+$this->title = 'Flag Notes'.' '.$flagtext;
 $this->params['breadcrumbs'][] = $this->title;
+
+
 ?>
 <div class="flag-note-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Flag Note', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a('Create Flag Note', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,11 +32,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'flagId',
+            //'user.username',
+            /*[
+                'label' => 'User Name',
+                'format' => 'ntext',
+                'attribute'=>'username',
+                'value' => function($model) {
+                    return $model->user->username;
+                },
+            ],*/
+            [
+                'label' => 'User Name',
+                'attribute' => 'username',
+                'format' => 'raw',
+                'value'=>function ($model) {
+                    return Html::a(Html::encode($model->user->username), ['/user/profile/show','id'=>$model->userId], ['target'=>'_blank']);
+                }
+            ],
+            //'flagId',
             'userId',
             'note',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

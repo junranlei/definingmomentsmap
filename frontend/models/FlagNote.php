@@ -17,6 +17,10 @@ use Yii;
  */
 class FlagNote extends \yii\db\ActiveRecord
 {
+    //pass model to Flag
+    public $m;
+    //pass model id to Flag
+    public $mId;
     /**
      * {@inheritdoc}
      */
@@ -31,8 +35,9 @@ class FlagNote extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['flagId', 'userId', 'note'], 'required'],
+            [['note'], 'required'],
             [['flagId', 'userId'], 'integer'],
+            [['m', 'mId'], 'safe'],
             [['note'], 'string', 'max' => 255],
             [['flagId'], 'exist', 'skipOnError' => true, 'targetClass' => Flag::className(), 'targetAttribute' => ['flagId' => 'id']],
             [['userId'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userId' => 'id']],

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use unclead\multipleinput\MultipleInput;
 use yii\web\JsExpression;
+use slavkovrn\jsoneditor\JsonEditorWidget;
 
 use kartik\datecontrol\Module;
 use kartik\datecontrol\DateControl;
@@ -32,6 +33,7 @@ SCRIPT;
 // Register tooltip/popover initialization javascript
 $this->registerJs($js);
 ?>
+
 
 <div class="historicalfact-form">
 
@@ -73,6 +75,8 @@ $this->registerJs($js);
             'todayHighlight' => true
         ],
     ])  ?>
+
+
     
     <?= Html::activeLabel($model,'right2Link') ?>
     <?= $form->field($model, 'right2Link')->checkBox(array('label'=>'', 
@@ -139,6 +143,17 @@ $this->registerJs($js);
         ]) ?>
         <?= Html::a('View', ['view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    </div>
+
+    <div class="modal remote fade" id="modaljson">
+        <div class="modal-dialog">
+            <div class="modal-content loader-lg">
+            <?= $this->render('_jsonview', [
+                'form'=>$form,
+                'model' => $model,
+            ]); ?>
+            </div>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -26,11 +26,26 @@ $this->params['breadcrumbs'][] = ['label' => 'Maps', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+<div class="modal remote fade" id="modalflag">
+        <div class="modal-dialog">
+            <div class="modal-content loader-lg"></div>
+        </div>
+</div>
 <div class="map-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>      
+    <p>  
+    <?=  Html::a('Flag',
+                    ['/flag/flagmap','id' => $model->id,'m'=>'map'], 
+                    [
+                        'title' => 'Flag',
+                        'data-toggle'=>'modal',
+                        'data-target'=>'#modalflag',
+                        'class' => 'btn btn-danger',
+                    ]
+                   );
+?>    
         
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
@@ -54,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach($users1 as $user){
                         if($users1links!="")
                             $users1links=$users1links.",";
-                        $users1links= $users1links.Html::a($user->username, ['user/profile', 'id' => $user->id], ['target' => '_blank']);
+                        $users1links= $users1links.Html::a($user->username, ['user/profile/show', 'id' => $user->id], ['target' => '_blank']);
                     }
                     return $users1links;
                 }
@@ -70,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach($users2 as $user){
                         if($users2links!="")
                             $users2links=$users2links.", ";
-                        $users2links= $users2links.Html::a($user->username, ['user/profile', 'id' => $user->id], ['target' => '_blank']);
+                        $users2links= $users2links.Html::a($user->username, ['user/profile/show', 'id' => $user->id], ['target' => '_blank']);
                     }
                     return $users2links;
                 }

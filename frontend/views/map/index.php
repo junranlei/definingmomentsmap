@@ -12,6 +12,7 @@ use dosamigos\grid\behaviors\ToolbarBehavior;
 use dosamigos\grid\buttons\ReloadButton;
 use dosamigos\exportable\helpers\TypeHelper;
 use yii\helpers\Url;
+use frontend\controllers\DeExportableService;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MapSearch */
@@ -37,11 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'id',
         'title',
         //'description:ntext',
-        [
-            'label' => 'Description',
-            'attribute' => 'description',
-            'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
-        ],
         'timeCreated',
         'timeUpdated',
         //'right2Add',
@@ -53,11 +49,33 @@ $this->params['breadcrumbs'][] = $this->title;
     $exportColumns=[
         //['class' => 'yii\grid\SerialColumn'],
 
-        'id',
-        'title',
-        'description:ntext',
-        'timeCreated',
-        'timeUpdated',
+        [
+            'label' => 'id',
+            'attribute' => 'id',
+        ],
+        [
+            'label' => 'Title',
+            'attribute' => 'title',
+        ],
+        [
+            'label' => 'Description',
+            'attribute' => 'description',
+        ],
+        [
+            'label' => 'TimeCreated',
+            'attribute' => 'timeCreated',
+        ],
+        [
+            'label' => 'TimeUpdated',
+            'attribute' => 'timeUpdated',
+        ],
+        [
+            'label' => 'Layers',
+            'attribute' => 'layers',
+            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
+            'format'=>'json',
+            'hide'=>['status']
+        ],
         //'right2Add',
 
         //['class' => 'yii\grid\ActionColumn',
@@ -74,7 +92,9 @@ $content= '<br/>'.
         'behaviors' => [
             [
                 'class' => '\dosamigos\exportable\behaviors\ExportableBehavior',
-                'filename'=>'Defining Moments Map-'.date('d-M-Y')
+                'exportableService' => new DeExportableService(),
+                'filename'=>'Defining Moments Map-'.date('d-M-Y'),
+                'columns'=>$exportColumns
             ],
             [
                 'class' => '\dosamigos\grid\behaviors\LoadingBehavior',

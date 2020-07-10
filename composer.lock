@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e4982915a9071b67d760149b383a26c",
+    "content-hash": "1d35b37ac39fb791c780b906460b075b",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -733,7 +733,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -3781,6 +3781,54 @@
                 "pdf"
             ],
             "time": "2020-04-28T12:40:35+00:00"
+        },
+        {
+            "name": "slavkovrn/yii2-jsoneditor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SlavKoVrn/yii2-jsoneditor.git",
+                "reference": "fbe553f51b65b2d5cab33d440e31a93d5e1449ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SlavKoVrn/yii2-jsoneditor/zipball/fbe553f51b65b2d5cab33d440e31a93d5e1449ea",
+                "reference": "fbe553f51b65b2d5cab33d440e31a93d5e1449ea",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "slavkovrn\\jsoneditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Viacheslav Kolesnikov",
+                    "email": "slavko.chita@gmail.com",
+                    "homepage": "http://yii2.kadastrcard.ru"
+                }
+            ],
+            "description": "Yii2 JsonEditor widget uses Json Editor plugin for jQuery",
+            "keywords": [
+                "Json Editor plugin for jQuery",
+                "Json Editor widget",
+                "yii2"
+            ],
+            "time": "2019-08-25T16:02:49+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7554,7 +7602,8 @@
         "kartik-v/yii2-datecontrol": 20,
         "kartik-v/yii2-widgets": 20,
         "kartik-v/yii2-widget-datepicker": 20,
-        "kartik-v/yii2-widget-select2": 20
+        "kartik-v/yii2-widget-select2": 20,
+        "slavkovrn/yii2-jsoneditor": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

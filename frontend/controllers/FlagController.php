@@ -8,7 +8,9 @@ use frontend\models\FlagNote;
 use frontend\models\FlagSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * FlagController implements the CRUD actions for Flag model.
@@ -25,10 +27,38 @@ class FlagController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'Flagmap' => ['POST'],
                 ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['flagmap'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ] 
+                    
+                ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    throw new ForbiddenHttpException($message);
+         
+                }
+                
             ],
         ];
     }
+
 
     /**
      * Lists all Flag models.
@@ -48,6 +78,48 @@ class FlagController extends Controller
     public function actionFlagmap()
     {
         $model = new FlagNote();
+
+        $mId = Yii::$app->request->queryParams["id"];
+        $m = Yii::$app->request->queryParams["m"];
+        $model->m = $m;
+        $model->mId = $mId;
+        if ($model->load(Yii::$app->request->post()) ) {
+            $flagModel = Flag::find()->where(['model' => $m, 'modelId'=>$mId])->one();
+            if($flagModel!=null){
+                $flagModel->times = $flagModel->times+1;
+
+            }else{
+                $flagModel=new Flag();
+                $flagModel->model = $model->m;
+                $flagModel->modelId = $model->mId;
+                $flagModel->times = 1;
+            }
+            if($flagModel->save()){
+                if($m=="map"){
+                    $map=$flagModel->modelMap;
+                    if($map!=null){
+                        $map->flag=1;
+                        $map->save();
+                    }
+                }else if($m=="historicalfact"){
+                    $hist=$flagModel->modelHist;
+                    if($hist!=null){
+                        $hist->flag=1;
+                        $hist->save();
+                    }
+                }else if($m=="media"){
+                    $media=$flagModel->modelMedia;
+                    if($media!=null){
+                        $media->flag=1;
+                        $media->save();
+                    }
+                }
+                $model->flagId = $flagModel->id;
+                $model->userId = \Yii::$app->user->id;
+                $model->save();
+            }
+            return $this->redirect(\Yii::$app->request->referrer);
+        }else
         return $this->renderAjax('_note', [
                     'model' => $model,
             ]);

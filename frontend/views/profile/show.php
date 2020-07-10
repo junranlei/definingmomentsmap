@@ -76,8 +76,8 @@ $content= '<br/>
     </div>
 </div><br/>';
 if(\Yii::$app->user->can("updateProfile",$params=['profile' => Profile::findOne(['user_id' => Yii::$app->request->get('id')])])){
-    $content= $content. Html::a('Update', ['updateprofile', 'id' => $profile->user_id], ['class' => 'btn btn-primary']);
-
+    //$content= $content. Html::a('Update', ['updateprofile', 'id' => $profile->user_id], ['class' => 'btn btn-primary']);
+    $content= $content. Html::a('Update', ['/user/settings'], ['target'=>'_blank','class' => 'btn btn-primary']);
 }
 
 ?>

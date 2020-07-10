@@ -11,6 +11,7 @@ use frontend\models\FlagNote;
  */
 class FlagnoteSearch extends FlagNote
 {
+    public $username;
     /**
      * {@inheritdoc}
      */
@@ -18,7 +19,7 @@ class FlagnoteSearch extends FlagNote
     {
         return [
             [['id', 'flagId', 'userId'], 'integer'],
-            [['note'], 'safe'],
+            [['note','username'], 'safe'],
         ];
     }
 
@@ -40,12 +41,13 @@ class FlagnoteSearch extends FlagNote
      */
     public function search($params)
     {
-        $query = FlagNote::find();
+        $query = FlagNote::find()->joinWith('user');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['attributes' => ['id', 'username', 'userId', 'note']]
         ]);
 
         $this->load($params);
@@ -61,7 +63,9 @@ class FlagnoteSearch extends FlagNote
             'id' => $this->id,
             'flagId' => $this->flagId,
             'userId' => $this->userId,
+
         ]);
+        $query->andFilterWhere(['like', 'user.username', $this->username]);
 
         $query->andFilterWhere(['like', 'note', $this->note]);
 

@@ -41,21 +41,21 @@ $this->params['histMenu'] = True;
             'attribute' => 'id',
         ],
         [
-            'label' => 'title',
+            'label' => 'Title',
             'attribute' => 'title',
         ],
         //'description:ntext',
         [
             'label' => 'URLs',
             'attribute' => 'urls',
-            'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
+            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
         ],
         [
-            'label' => 'date',
+            'label' => 'Date',
             'attribute' => 'date',
         ],
         [
-            'label' => 'dateEnded',
+            'label' => 'DateEnded',
             'attribute' => 'dateEnded',
         ],
         //'timeCreated',
@@ -63,14 +63,21 @@ $this->params['histMenu'] = True;
         [
             'label' => 'Description',
             'attribute' => 'description',
-            'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
+            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
         ],
         [
-            'label' => 'Feature',
+            'label' => 'Features',
             'attribute' => 'features',
-            'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
+            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
             'format'=>'json',
             'hide'=>['status','histId']
+        ],
+        [
+            'label' => 'Media',
+            'attribute' => 'media',
+            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
+            'format'=>'json',
+            'hide'=>['status','ownerId','permission2upload','right2Link','publicPermission']
         ],
         //'mainMediaId',
 
@@ -92,12 +99,12 @@ $this->params['histMenu'] = True;
         'dateEnded',
         //'timeCreated',
         //'urls:ntext',
-        [
+        /*[
             'label' => 'Description',
             'attribute' => 'description',
             'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
-        ],
-        [
+        ],*/
+        /*[
             'label' => 'Feature',
             'attribute' => 'features',
             'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
@@ -116,7 +123,7 @@ $this->params['histMenu'] = True;
                     //return json_encode($featureA);
                     
                 }
-        ],
+        ],*/
         //'mainMediaId',
 
         ['class' => 'yii\grid\ActionColumn',

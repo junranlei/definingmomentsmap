@@ -13,7 +13,14 @@ $this->params['breadcrumbs'][] = ['label' => 'Historical Facts', 'url' => ['inde
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+<div class="modal remote fade" id="modalflag">
+        <div class="modal-dialog">
+            <div class="modal-content loader-lg"></div>
+        </div>
+</div>
 <div class="historicalfact-view">
+
+
 <?php
 $content="
     <h1>". Html::encode($this->title) ."</h1>
@@ -21,7 +28,15 @@ $content="
     <p>
         ";
 //if (\Yii::$app->user->can('updateHist',['hist' => $model])) 
-    $content=$content.Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary'])." "
+    $content=$content.Html::a('Flag',
+    ['/flag/flagmap','id' => $model->id,'m'=>'historicalfact'], 
+    [
+        'title' => 'Flag',
+        'data-toggle'=>'modal',
+        'data-target'=>'#modalflag',
+        'class' => 'btn btn-danger',
+    ]
+   )." ".Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary'])." "
     ."
      </p>";
 

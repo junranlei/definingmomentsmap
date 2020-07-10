@@ -98,6 +98,7 @@ class UserSearch extends User
         }*/
 
         $query
+            ->andWhere(['blocked_at' => null])
             ->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'public_email', $this->public_email])
             ->andFilterHaving(['>=', 'histCount', $this->histCount])

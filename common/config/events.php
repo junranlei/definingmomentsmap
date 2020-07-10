@@ -2,6 +2,7 @@
 // events.php file
 
 use Da\User\Controller\AdminController;
+use Da\User\Controller\SettingsController;
 use Da\User\Event\UserEvent;
 use Da\User\Model\User;
 //use frontend\models\User;
@@ -30,6 +31,28 @@ Event::on(User::class, UserEvent::EVENT_AFTER_REGISTER, function (UserEvent $eve
     $auth = Yii::$app->authManager;
     $defaultRole = $auth->getRole("SysAuthor");
     $auth->assign($defaultRole, $user->id);
+
+    // ... your logic here
+});
+// This will happen at the model's level
+/*Event::on(SettingsController::class, UserEvent::EVENT_BEFORE_DELETE, function (UserEvent $event) {
+
+    $user = $event->getUser();
+    $auth = Yii::$app->authManager;
+    $defaultRole = $auth->getRole("SysAuthor");
+    $auth->revoke($defaultRole,$user->id);
+    $auth->revokeAll($user->id);
+
+    // ... your logic here
+});*/
+
+Event::on(AdminController::class, UserEvent::EVENT_BEFORE_DELETE, function (UserEvent $event) {
+
+    $user = $event->getUser();
+    $auth = Yii::$app->authManager;
+    $defaultRole = $auth->getRole("SysAuthor");
+    $auth->revoke($defaultRole,$user->id);
+    $auth->revokeAll($user->id);
 
     // ... your logic here
 });

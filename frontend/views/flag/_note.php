@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 use frontend\models\Flag;
 use frontend\models\FlagNote;
 ?>
-    <?php $form = ActiveForm::begin([ 'enableClientValidation' => true,
+    <?php $form = ActiveForm::begin([ 'enableClientValidation' => true, 'method' => 'post',
                 'options'                => [
                     'id'      => 'dynamic-form'
                  ]]);
@@ -15,9 +15,11 @@ use frontend\models\FlagNote;
         <h4 class="modal-title">Add reason to flag</h4>
       </div>
       <div class="modal-body">
-            <?php echo $form->field($model, 'note')->textArea(['maxlength' => true]) ?>
+            <?php echo $form->field($model, 'note')->textArea(['maxlength' => true]); ?>
       </div>
       <div class="modal-footer">
+       <?php echo $form->field($model, 'm')->hiddenInput()->label(false); ?>
+       <?php echo $form->field($model, 'mId')->hiddenInput()->label(false); ?>
        <?php echo Html::submitButton('Send', ['class' => 'btn btn-success']) ?>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

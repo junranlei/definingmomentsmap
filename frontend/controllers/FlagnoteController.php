@@ -7,7 +7,9 @@ use frontend\models\FlagNote;
 use frontend\models\FlagnoteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * FlagnoteController implements the CRUD actions for FlagNote model.
@@ -25,6 +27,28 @@ class FlagnoteController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['SysAdmin'],
+                        
+                    ] 
+                    
+                ],
+                'denyCallback' => function ($rule, $action) {
+                    if (Yii::$app->user->isGuest){
+                        Yii::$app->user->loginRequired();return;
+                    }
+                    $message="You don't have the permisison to perform this action.";
+                    throw new ForbiddenHttpException($message);
+         
+                }
+                
             ],
         ];
     }

@@ -139,11 +139,17 @@ echo Tabs::widget([
 
 ?>
 </div>
+<div class="modal remote fade" id="modalflag">
+        <div class="modal-dialog">
+            <div class="modal-content loader-lg"></div>
+        </div>
+</div>
 <div class="media-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        
         <?= Html::a('Delete', ['disable', 'id' => $model->id,'histId' => $histId], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -151,6 +157,16 @@ echo Tabs::widget([
                 'method' => 'post',
             ],
         ]) ?>
+         <?=  Html::a('Flag',
+                    ['/flag/flagmap','id' => $model->id,'m'=>'media'], 
+                    [
+                        'title' => 'Flag',
+                        'data-toggle'=>'modal',
+                        'data-target'=>'#modalflag',
+                        'class' => 'btn btn-danger',
+                    ]
+                   );
+?>    
         <?= Html::a('Update', ['histlistupdate', 'id' => $model->id,'histId' => $histId], ['class' => 'btn btn-primary']) ?>
 
     </p>

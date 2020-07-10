@@ -14,12 +14,14 @@ use Yii;
  * @property string $timeCreated
  * @property string $timeUpdated
  *
- * @property Map $model0
- * @property HistoricalFact $model1
+ * @property Map $modelMap
+ * @property HistoricalFact $modelHist
+ * @property Media $modelMedia
  * @property FlagNote[] $flagNotes
  */
 class Flag extends \yii\db\ActiveRecord
 {
+    //public $modelTitle;
     /**
      * {@inheritdoc}
      */
@@ -36,10 +38,11 @@ class Flag extends \yii\db\ActiveRecord
         return [
             [['model', 'modelId', 'times'], 'required'],
             [['modelId', 'times'], 'integer'],
-            [['timeCreated', 'timeUpdated'], 'safe'],
+            [['timeCreated', 'timeUpdated','modelTitle'], 'safe'],
             [['model'], 'string', 'max' => 20],
-            [['modelId'], 'exist', 'skipOnError' => true, 'targetClass' => Map::className(), 'targetAttribute' => ['modelId' => 'id']],
-            [['modelId'], 'exist', 'skipOnError' => true, 'targetClass' => HistoricalFact::className(), 'targetAttribute' => ['modelId' => 'id']],
+            //[['modelId'], 'exist', 'skipOnError' => true, 'targetClass' => Map::className(), 'targetAttribute' => ['modelId' => 'id']],
+            //[['modelId'], 'exist', 'skipOnError' => true, 'targetClass' => HistoricalFact::className(), 'targetAttribute' => ['modelId' => 'id']],
+            //[['modelId'], 'exist', 'skipOnError' => true, 'targetClass' => Media::className(), 'targetAttribute' => ['modelId' => 'id']],
         ];
     }
 
@@ -57,25 +60,41 @@ class Flag extends \yii\db\ActiveRecord
             'timeUpdated' => 'Time Updated',
         ];
     }
+    public function getModelTitle(){
+        if($this->model=="map"){
+            //$this->modelTitle = $this->modelMap->title;
+            return $this->modelMap->title;
+        }
+    }
 
     /**
-     * Gets query for [[Model0]].
+     * Gets query for [[Map]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getModel0()
+    public function getModelMap()
     {
         return $this->hasOne(Map::className(), ['id' => 'modelId']);
     }
 
     /**
-     * Gets query for [[Model1]].
+     * Gets query for [[HistoricalFact]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getModel1()
+    public function getModelHist()
     {
         return $this->hasOne(HistoricalFact::className(), ['id' => 'modelId']);
+    }
+
+     /**
+     * Gets query for [[Media]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getModelMedia()
+    {
+        return $this->hasOne(Media::className(), ['id' => 'modelId']);
     }
 
     /**
