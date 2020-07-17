@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
 use kartik\widgets\Select2;
 use frontend\models\User;
 use frontend\models\HistoricalAssign;
+use frontend\models\Apis;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\HistoricalFact */
@@ -34,10 +35,22 @@ SCRIPT;
 $this->registerJs($js);
 ?>
 
+<div class="map-view">
+
+<?=  Html::a('Copy from API',
+                    ['#','id' => $model->id], 
+                    [
+                        'title' => 'Copy from API',
+                        'data-toggle'=>'modal',
+                        'data-target'=>'#modaljson',
+                        'class' => 'btn btn-primary',
+                    ]
+                   );
+?>    
 
 <div class="historicalfact-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'updateform']); ?>
 <?php $help = "<p class='text-justify'>Label tooltip to give some usefull information for the input. </p>";
 ?>
 
@@ -76,7 +89,9 @@ $this->registerJs($js);
         ],
     ])  ?>
 
-
+    <?php /* $form->field($model, 'jsonField')->widget(JsonEditorWidget::class,[
+        'rootNodeName' => 'Results',
+    ])*/ ?>
     
     <?= Html::activeLabel($model,'right2Link') ?>
     <?= $form->field($model, 'right2Link')->checkBox(array('label'=>'', 
@@ -127,7 +142,7 @@ $this->registerJs($js);
 
     ?>
 
-    <?= $form->field($model, 'urls')->widget(MultipleInput::className())
+    <?= $form->field($model, 'urls')->widget(MultipleInput::className(),['id'=>'multiple-input'])
     //,['columns' =>[['name' => 'url','options' => ['placeholder'=>'url text']]]]) 
     ?>
 
@@ -145,18 +160,22 @@ $this->registerJs($js);
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
+
+
+    <?php ActiveForm::end(); ?>
+    <?php 
+        $apiModel = new Apis();
+    ?>
     <div class="modal remote fade" id="modaljson">
         <div class="modal-dialog">
             <div class="modal-content loader-lg">
-            <?= $this->render('_jsonview', [
+            <?=  $this->render('/apis/_histjsonview', [
                 'form'=>$form,
-                'model' => $model,
+                'apiModel'=>$apiModel
             ]); ?>
             </div>
         </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
 
 </div>
 

@@ -84,7 +84,24 @@ $content="
             ],
             //'right2Link',
             //'publicPermission',
-            'urls:ntext',
+            [
+                'attribute'=>'urls',
+                'format'=>'raw',
+                'value'=>function ($model)
+                {
+                    //return implode(', ', \yii\helpers\ArrayHelper::map($model->users1, 'id', 'username'));
+                    $urls=$model->urls;
+                    $urlslinks="";
+                    $urlsA = explode(";",$model->urls);
+                    foreach($urlsA as $url){
+                        if($urlslinks!="")
+                            $urlslinks=$urlslinks."; ";
+                        $urlslinks= $urlslinks.Html::a($url, $url, ['target' => '_blank']);
+                    }
+                    return $urlslinks;
+                }
+            ],
+            //'urls:ntext',
             //'mainMediaId',
         ],
     ])."";
@@ -115,6 +132,11 @@ echo Tabs::widget([
         [
             'label' => 'Linked Maps',
             'url' => Url::to(['map/histlinkedmaps','histId'=>$model->id]),
+        ],
+
+        [
+            'label' => 'Related Historical Fact',
+            'url' => Url::to(['match','id'=>$model->id]),
         ]
 
     ],

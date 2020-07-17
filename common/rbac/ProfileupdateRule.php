@@ -24,7 +24,8 @@ class ProfileupdateRule extends Rule
             $isSysAdmin = \Yii::$app->user->can("SysAdmin");
             $profileId = $profile->user_id;
             //check if user is sysadmin or the profile owner
-            return ($isSysAdmin||($user==$profileId));
+            //return ($isSysAdmin||($user==$profileId));
+            return ($user==$profileId);
         }else{
             return false;
         }

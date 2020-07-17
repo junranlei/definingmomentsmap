@@ -51,7 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'flagId',
             'userId',
-            'note',
+            [
+                'label' => 'Flag Reason',
+                'attribute' => 'note',
+            ]
+            //'note',
 
             //['class' => 'yii\grid\ActionColumn'],
         ],

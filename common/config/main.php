@@ -24,8 +24,9 @@ return [
                 ],
                 'google' => [
                     'class' => 'Da\User\AuthClient\Google',
-                    'clientId' => 'google_client_id',
-                    'clientSecret' => 'google_client_secret',
+                    'clientId' => '663524167954-la7ehjrusadpb661vu1fnqfd573i4r5v.apps.googleusercontent.com',
+                    'clientSecret' => 'tX1hV4P-QRD29jNQhKBimsrZ',
+                    'returnUrl' => 'http://localhost/defining2/frontend/web/index.php?r=user/security/auth&authclient=google',
                 ],
                 'github' => [
                     'class' => 'Da\User\AuthClient\GitHub',
@@ -33,12 +34,13 @@ return [
                     'clientSecret' => '4f7d3256219b30105d23b0ce8bfa0b0ecf5966aa',
                 ],
                 'twitter' => [
-                      'class' => 'yii\authclient\clients\Twitter',
-                        'attributeParams' => [
-                            'include_email' => 'true'
-                        ],
-                        'consumerKey' => 'twitter_consumer_key',
-                        'consumerSecret' => 'twitter_consumer_secret',
+                      'class' => 'Da\User\AuthClient\Twitter',
+                      'attributeParams' => [    
+                           'include_email' => 'true',   
+                       ],
+                        'consumerKey' => 'bzimDgz1OSL4vFzY9dl4Lxxro',
+                        'consumerSecret' => 'xzAyOPykzsEny8LFNt833nHmy4eCX30vt2E00l6SOafijkBmwM',
+                        //'returnUrl' => 'http://figmadaemon.com/defining2/frontend/web/index.php?r=user/security/auth&authclient=twitter',
                 ],
                 /*'linkedin' => [
                     'class' => 'Da\User\AuthClient\Linkedin',

@@ -48,7 +48,7 @@ class HistoricalfactController extends Controller
                         'roles' => ['SysAdmin'],
                     ],*/
                     [
-                        'actions' => ['view','index','maplist'],
+                        'actions' => ['view','index','maplist','match'],
                         'allow' => true,
                         'roles' => ['?','@'],
                     ],
@@ -382,7 +382,20 @@ class HistoricalfactController extends Controller
      */
     public function actionView($id)
     {
+        
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionMatch($id){
+        $matchModel = $this->findModel($id);
+        $searchModel = new HistoricalfactSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$status=1, $matchModel);
+
+        return $this->render('match', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
             'model' => $this->findModel($id),
         ]);
     }
@@ -481,6 +494,7 @@ class HistoricalfactController extends Controller
         }
         if(trim($model->urls!="")&&$model->urls!=NULL)
             $model->urls = explode(";",$model->urls);
+
         return $this->render('update', [
             'model' => $model,
         ]);

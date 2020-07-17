@@ -79,14 +79,14 @@ class ProfileController extends BaseController
                         'actions' => ['index','show','ranking'],
                         'roles' => ['?', '@'],
                     ],
-                    [
+                    /*[
                         'allow' => true,
                         'actions' => ['updateprofile','updateaccount'],
                         'roles' => ['updateProfile'],
                         'roleParams' => function() {
                             return ['profile' => Profile::findOne(['user_id' => Yii::$app->request->get('id')])];
                         },
-                    ],
+                    ],*/
                 ],
                 'denyCallback' => function ($rule, $action) {
                     if (Yii::$app->user->isGuest){

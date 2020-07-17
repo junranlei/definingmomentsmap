@@ -68,6 +68,10 @@ echo Tabs::widget([
             'label' => 'Linked Maps',
             'content'=>$content,
             'active' => true
+        ],
+        [
+            'label' => 'Related Historical Fact',
+            'url' => Url::to(['/historicalfact/match','id'=>$histId]),
         ]
 
     ],

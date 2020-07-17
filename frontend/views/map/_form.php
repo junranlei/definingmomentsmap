@@ -7,15 +7,27 @@ use kartik\widgets\Select2;
 use frontend\models\User;
 use frontend\models\MapAssign;
 use yii\web\JsExpression;
+use frontend\models\Apis;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Map */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<p/><p/>
+<?=  Html::a('Copy from API',
+                    ['#','id' => $model->id], 
+                    [
+                        'title' => 'Copy from API',
+                        'data-toggle'=>'modal',
+                        'data-target'=>'#modaljson',
+                        'class' => 'btn btn-primary',
+                    ]
+                   );
+?> 
 
 <div class="map-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'updateform']); ?>
 
     <?php // $form->field($model, 'id')->textInput() ?>
 
@@ -82,5 +94,19 @@ use yii\web\JsExpression;
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <?php 
+        $apiModel = new Apis();
+    ?>
+    <div class="modal remote fade" id="modaljson">
+        <div class="modal-dialog">
+            <div class="modal-content loader-lg">
+            <?=  $this->render('/apis/_mapjsonview', [
+                'form'=>$form,
+                'apiModel'=>$apiModel
+            ]); ?>
+            </div>
+        </div>
+    </div>
 
 </div>

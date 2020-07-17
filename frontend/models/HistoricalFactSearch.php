@@ -38,7 +38,7 @@ class HistoricalfactSearch extends HistoricalFact
      * @param int $status default 1 enabled
      * @return ActiveDataProvider
      */
-    public function search($params, $status=1)
+    public function search($params, $status=1,$matchModel=null)
     {
         $query = HistoricalFact::find()->joinWith('features')
         ->groupBy(['historicalFact.id']);;
@@ -72,7 +72,10 @@ class HistoricalfactSearch extends HistoricalFact
             ->andFilterWhere(['like', 'urls', $this->urls]);
         
         $query->andWhere('historicalFact.status='.$status); //only return enabled records or specify by status
-
+        if($matchModel!=null&&$matchModel->title!=null){
+            $query->andWhere("MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')"); 
+            $query->andWhere("historicalFact.id!=".$matchModel->id); 
+        }
         return $dataProvider;
     }
 }

@@ -67,7 +67,7 @@ class Layer extends \yii\db\ActiveRecord
             'title' => 'Display Title',
             'description' => 'Description',
             'type' => 'Type',
-            'nameOrUrl' => 'Service Url',
+            'nameOrUrl' => 'Service URL',
             'externalId' => 'Service Layer Name',
             'visible' => 'Visible',
             'mapId' => 'Map ID',

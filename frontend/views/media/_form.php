@@ -3,15 +3,17 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
+use frontend\models\Apis;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Media */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
 <div class="media-form">
 
-    <?php $form = ActiveForm::begin(['id'=>'mediaform']); ?>
+    <?php $form = ActiveForm::begin(['id' => 'updateform']); ?>
 
     <h2 align="center">
     <?php 
@@ -55,7 +57,16 @@ use yii\helpers\Url;
     
     <?php  } ?>
     </h2>
-
+    <?=  Html::a('Copy from API',
+                    ['#','id' => $model->id], 
+                    [
+                        'title' => 'Copy from API',
+                        'data-toggle'=>'modal',
+                        'data-target'=>'#modaljson',
+                        'class' => 'btn btn-primary',
+                    ]
+                   );
+?> 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
@@ -90,7 +101,7 @@ use yii\helpers\Url;
     <div class="form-group">
         <?= Html::button('Save', ['class' => 'btn btn-success','onclick' => '
         if(document.getElementById("permission2").checked)
-            document.getElementById("mediaform").submit();
+            document.getElementById("updateform").submit();
         else
             alert("You must have the permission to publish in order to save this media.");      
         '      
@@ -99,4 +110,17 @@ use yii\helpers\Url;
 
     <?php ActiveForm::end(); ?>
 
+    <?php 
+        $apiModel = new Apis();
+    ?>
+    <div class="modal remote fade" id="modaljson">
+        <div class="modal-dialog">
+            <div class="modal-content loader-lg">
+            <?=  $this->render('/apis/_mediajsonview', [
+                'form'=>$form,
+                'apiModel'=>$apiModel
+            ]); ?>
+            </div>
+        </div>
+    </div>
 </div>
