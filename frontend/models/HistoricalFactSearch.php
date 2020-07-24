@@ -36,12 +36,43 @@ class HistoricalfactSearch extends HistoricalFact
      *
      * @param array $params
      * @param int $status default 1 enabled
+     * @param int $matchModel matched model to return related models if $matchModel is not null (default null return all models), $related ==1 or return unrelated models if related==0
+     * @param int $related if $matchModel is not null return related models or unrelated model according to $related value.
+     * @param int $manual manual related or not
      * @return ActiveDataProvider
      */
-    public function search($params, $status=1,$matchModel=null)
+    public function search($params, $status=1,$matchModel=null,$related=1,$manual=0)
     {
-        $query = HistoricalFact::find()->joinWith('features')
-        ->groupBy(['historicalFact.id']);;
+        if($matchModel!=null){
+            if($related){
+                if($manual){
+                    $query = HistoricalFact::find()->joinWith('features')
+                    ->innerJoin('historicalRelated',"(historicalFact.id=historicalRelated.histId2 and historicalRelated.histId1=".$matchModel->id.") or (historicalFact.id=historicalRelated.histId1 and historicalRelated.histId2=".$matchModel->id.")")
+                    ->groupBy(['historicalFact.id']);
+                }else{
+                    $query = HistoricalFact::find()->joinWith('features')
+                    //moved to where condition
+                    //->innerJoin('historicalRelated',"MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')")
+                    ->groupBy(['historicalFact.id']);
+
+                }
+            }else{
+                //if no related no manual or auto
+                //if($manual){
+                    $query = HistoricalFact::find()->joinWith('features')
+                    ->leftJoin('historicalRelated',"((historicalFact.id=historicalRelated.histId2 and historicalRelated.histId1=".$matchModel->id.") or (historicalFact.id=historicalRelated.histId1 and historicalRelated.histId2=".$matchModel->id."))")
+                    ->groupBy(['historicalFact.id']);
+                //}else{
+                    //$query = HistoricalFact::find()->joinWith('features')
+                    //->innerJoin("!MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')")
+                    //->groupBy(['historicalFact.id']);
+
+                //}
+            }
+        }else{
+            $query = HistoricalFact::find()->joinWith('features')
+            ->groupBy(['historicalFact.id']);
+        }
 
         // add conditions that should always apply here
 
@@ -73,8 +104,19 @@ class HistoricalfactSearch extends HistoricalFact
         
         $query->andWhere('historicalFact.status='.$status); //only return enabled records or specify by status
         if($matchModel!=null&&$matchModel->title!=null){
-            $query->andWhere("MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')"); 
-            $query->andWhere("historicalFact.id!=".$matchModel->id); 
+            if($related){
+                if(!$manual){
+                    $query->andWhere("MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')");
+                }
+                $query->andWhere("historicalFact.id!=".$matchModel->id); 
+            }else{
+                //exluded auto matched below
+                //$query->andWhere("historicalRelated.histId1 is null and !MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')"); 
+                // not excluded auto matched 
+                $query->andWhere("historicalRelated.histId1 is null"); 
+                $query->andWhere("historicalFact.id!=".$matchModel->id); 
+
+            }
         }
         return $dataProvider;
     }

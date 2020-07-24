@@ -118,7 +118,7 @@ $content= '<br/>'.
                             ],
                             'types' =>[
                                 TypeHelper::JSON => 'Export JSON <span class="label label-default">.json</span>',
-                                TypeHelper::CSV => 'Export CSV <span class="label label-default">.csv</span>',               
+                                //TypeHelper::CSV => 'Export CSV <span class="label label-default">.csv</span>',               
                             
                             ]
                         ]

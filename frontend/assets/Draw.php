@@ -91,40 +91,31 @@ class Draw extends Plugin
                 featureGroup: drawnItems
             }});
             {$this->map}.addControl(drawControl);
-            //draw existing geojson
 
-            //var geojsonFeature = {$this->existingGeojson};
+            //draw existing geojson
             var geojsonLayer=null;
-            //if(geojsonFeature!=null&&geojsonFeature!=''){
                 geojsonLayer = L.geoJson({$this->existingGeojson});
                 geojsonLayer.eachLayer(
                     function(l){
                         drawnItems.addLayer(l);
                 });
-            //}
 
             {$this->map}.on('draw:created', function (e) {
-                //var type = e.layerType,
-                //    layer = e.layer;
 
-                /* if (type === 'marker') {
-                    layer.bindPopup('A popup!');
-                } */
                 var layer = e.layer,
                 feature = layer.feature = layer.feature || {}; // Intialize layer.feature
 
                 feature.type = feature.type || 'Feature'; // Intialize feature.type
                 var props = feature.properties = feature.properties || {}; // Intialize feature.properties
-                //props.title = 'my title';
-                //props.content = 'my content';
+
                 drawnItems.addLayer(layer);
             });
+            //action for save button on the page
             if(document.getElementById('Save')!=null)
             document.getElementById('Save').onclick = function(e) {
                 // Extract GeoJson from featureGroup
                 var data = drawnItems.toGeoJSON();
                 // Stringify the GeoJson
-                //var convertedData = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
                 var convertedData = JSON.stringify(data);
                 document.getElementById('geojson').value=convertedData;
                 

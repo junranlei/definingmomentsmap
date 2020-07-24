@@ -20,6 +20,7 @@ use Yii;
  * @property int $publicPermission
  * @property string $assignedUsers
  * @property int $status
+ * @property string $jsonField
  *
  * @property Feature[] $features
  * @property HistoricalAssign[] $historicalAssigns
@@ -28,9 +29,14 @@ use Yii;
  * @property Map[] $maps
  * @property HistoricalMediaLink[] $historicalMediaLinks
  * @property Media[] $media
+ * @property HistoricalRelated[] $historicalRelateds 
+ * @property HistoricalRelated[] $historicalRelateds0 
+ * @property HistoricalFact[] $histId2s 
+ * @property HistoricalFact[] $histId1s 
  */
 class HistoricalFact extends \yii\db\ActiveRecord
 {
+    public $jsonField;
     /**
      * {@inheritdoc}
      */
@@ -223,4 +229,52 @@ class HistoricalFact extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Media::className(), ['id' => 'mediaId'])->viaTable('historicalMediaLink', ['histId' => 'id'])->andOnCondition(['status' => $status]);
     }
+   /**
+    * Gets query for [[HistoricalRelateds]].
+    *
+    * @return \yii\db\ActiveQuery
+    */
+    public function getHistoricalRelateds()
+    {
+        return $this->hasMany(HistoricalRelated::className(), ['histId1' => 'id']);
+    }
+    
+    /**
+     * Gets query for [[HistoricalRelateds0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHistoricalRelateds0()
+    {
+        return $this->hasMany(HistoricalRelated::className(), ['histId2' => 'id']);
+    }
+    
+    /**
+     * Gets query for [[HistId2s]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHistId2s()
+    {
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId2'])->viaTable('historicalRelated', ['histId1' => 'id']);
+    }
+    
+    /**
+     * Gets query for [[HistId1s]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHistId1s()
+    {
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId1'])->viaTable('historicalRelated', ['histId2' => 'id']);
+    }
+
+    public function getRelatableHists(){
+        //get histId1s and 2s 
+        //if(\Yii::$app->user->can("updatehist",$params=['hist' 
+        //or is sysadmin return all, is editable publicpermission or owner/assigned is current user, getUsers, link mulit tables?
+        //check historicalfactsearch usersearch
+
+    }
 }
+    

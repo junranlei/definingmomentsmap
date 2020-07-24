@@ -10,6 +10,7 @@ use frontend\models\Map;
 use frontend\models\MapAssign;
 use frontend\models\User;
 use frontend\models\HistoricalAssign;
+use frontend\models\HistoricalRelated;
 use yii\data\ActiveDataProvider;
 
 use yii\web\Controller;
@@ -53,13 +54,13 @@ class HistoricalfactController extends Controller
                         'roles' => ['?','@'],
                     ],
                     [
-                        'actions' => ['myhists','assignedhists','create'],
+                        'actions' => ['myhists','assignedhists','create','manualmatch'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['update','maplistupdate','userlist','unlink'],
+                        'actions' => ['update','maplistupdate','userlist','unlinkrelated'],
                         'roles' => ['updateHist'],
                         'roleParams' => function() {
                             return ['hist' => HistoricalFact::findOne(['id' => Yii::$app->request->get('id')])];
@@ -75,7 +76,7 @@ class HistoricalfactController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['linkother'],
+                        'actions' => ['linkother','unlink'],
                         'roles' => ['updateMap'],
                         'roleParams' => function() {
                             return ['map' => Map::findOne(['id' => Yii::$app->request->get('mapId')])];
@@ -262,7 +263,8 @@ class HistoricalfactController extends Controller
                         'not in',
                         'id',
                         $map->getHists()->addSelect('id')])
-                    //->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(['status' => 1])
                     ->andFilterWhere(Yii::$app->request->queryParams['HistoricalfactSearch']),
             ]);
         else
@@ -272,7 +274,8 @@ class HistoricalfactController extends Controller
                         'not in',
                         'id',
                         $map->getHists()->addSelect('id')])
-                    //->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(['right2Link' => 1])
+                    ->andFilterWhere(['status' => 1])
             ]);
 
             
@@ -363,6 +366,7 @@ class HistoricalfactController extends Controller
                 ->orderBy('username')
                 //->where(['like', 'name', $q])
                 ->where('username like :q', [':q' => '%'.$q.'%'])
+                ->where('blocked_at is null')
                 ->limit(20);
             $command = $query->createCommand();
             $data = $command->queryAll();
@@ -387,13 +391,50 @@ class HistoricalfactController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
+    /**
+     * Lists all related hist models.
+     * @return mixed
+     */
     public function actionMatch($id){
         $matchModel = $this->findModel($id);
         $searchModel = new HistoricalfactSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$status=1, $matchModel);
-
+        $dataProviderAuto = $searchModel->search(Yii::$app->request->queryParams,$status=1, $matchModel,$related=1,$manual=0);
+        $dataProviderManual = $searchModel->search(Yii::$app->request->queryParams,$status=1, $matchModel,$related=1,$manual=1);
         return $this->render('match', [
+            'searchModel' => $searchModel,
+            'dataProviderAuto' => $dataProviderAuto,
+            'dataProviderManual' => $dataProviderManual,
+            'model' => $this->findModel($id),
+            'histId'=>$id
+        ]);
+    }
+    /**
+     * manually link other related hist models.
+     * @return mixed
+     */
+    public function actionManualmatch($id){
+        $matchModel = $this->findModel($id);
+        if($matchModel!=null){
+            $searchModel = new HistoricalfactSearch();
+            //return unrelated $related=0
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$status=1, $matchModel,$related=0);
+
+            $selection = (array)Yii::$app->request->post('selection'); 
+            foreach ($selection as $item) {
+                //item is other hists id
+                //check if relation exists
+                $histRelatedLink1 = HistoricalRelated::findOne(['histId1'=>$item,'histId2'=>$id]);
+                $histRelatedLink2 = HistoricalRelated::findOne(['histId2'=>$item,'histId1'=>$id]);
+                if($histRelatedLink1==null&&$histRelatedLink2==null){
+                    $histMediaLink = new HistoricalRelated();
+                    $histMediaLink->histId1 = $matchModel->id;
+                    $histMediaLink->histId2 = $item;
+                    $histMediaLink->save();
+                    
+                }
+            }
+        }
+        return $this->render('manualmatch', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $this->findModel($id),
@@ -498,6 +539,32 @@ class HistoricalfactController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+    /**
+     * unlink a related hist model from hist.
+     * If unlink is successful, the browser will be redirected to the 'match' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUnlinkrelated($id)
+    {
+        $model = $this->findModel($id);
+        $histId = Yii::$app->request->queryParams["histId"];
+        //delete associated historicalfact media link
+        $histRelatedLink1 = HistoricalRelated::findOne(['histId1'=>$id,'histId2'=>$histId]);
+
+        if($histRelatedLink1!=null){
+            $histRelatedLink1->delete();
+        }
+
+        $histRelatedLink2 = HistoricalRelated::findOne(['histId2'=>$id,'histId1'=>$histId]);
+
+        if($histRelatedLink2!=null){
+            $histRelatedLink2->delete();
+        }  
+
+        return $this->redirect(['match', 'id' => $histId]);
     }
     /**
      * unlink an hist model from map.

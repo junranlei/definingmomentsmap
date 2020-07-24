@@ -84,9 +84,9 @@ class Map extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getLayers()
+    public function getLayers($status=1)
     {
-        return $this->hasMany(Layer::className(), ['mapId' => 'id']);
+        return $this->hasMany(Layer::className(), ['mapId' => 'id'])->andOnCondition(['layer.status' => $status]);
     }
 
     /**
@@ -94,9 +94,9 @@ class Map extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getHists()
+    public function getHists($status=1)
     {
-        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMapLink', ['mapId' => 'id']);
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMapLink', ['mapId' => 'id'])->andOnCondition(['historicalFact.status' => $status]);
     }
 
     /**

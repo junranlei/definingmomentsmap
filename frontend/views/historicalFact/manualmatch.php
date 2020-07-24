@@ -14,62 +14,16 @@ use frontend\models\Feature;
 /* @var $searchModel app\models\FeatureSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Related Historical Facts';
+$this->title = 'Link to other Historical Facts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feature-index">
 <?php
 $content="
-    <h1>". Html::encode($this->title) ."</h1>
-    <h3>Linked Manually</h3>
-
+    <h1>". Html::encode($this->title) ."</h1>"
+    .Html::beginForm(['manualmatch','id'=>$model->id], 'post')."
     ". GridView::widget([
-        'dataProvider' => $dataProviderManual,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'title',
-            //'description:ntext',
-            'date',
-            'dateEnded',
-            //'timeCreated',
-            //'urls:ntext',
-            //'mainMediaId',
-            ['class' => 'yii\grid\ActionColumn',
-            'template' => '{view}&nbsp;{unlink}',
-            'buttons' => [
-                'view' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url, ['target' => "_blank"]);
-                },
-                'unlink' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-link" title= "Unlink"></span>', $url,['data' => [
-                        'confirm' => 'Are you sure you want to unlink this item? ',
-                        'method' => 'post',
-                    ]]);
-                },
-            ],
-            'urlCreator' => function( $action, $model, $key, $index )use ($histId){
-
-                if ($action == "view") {
-
-                    return Url::to(['view', 'id' => $model->id]);
-
-                } 
-                if ($action == "unlink") {
-
-                    return Url::to(['unlinkrelated', 'id' => $model->id, 'histId' => $histId]);
-
-                }           
-
-            }],
-
-        ],
-    ])."<h3>Linked Automatically</h3>
-
-    ". GridView::widget([
-        'dataProvider' => $dataProviderAuto,
+        'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -88,7 +42,6 @@ $content="
                 'view' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url, ['target' => "_blank"]);
                 }
-                
             ],
             'urlCreator' => function( $action, $model, $key, $index ){
 
@@ -99,9 +52,11 @@ $content="
                 }            
 
             }],
+            ['class' => 'yii\grid\CheckboxColumn'],
 
         ],
-    ])."";
+    ]).Html::submitButton('Link', ['class' => 'btn btn-success', 'id' =>'link']).""
+    .Html::endForm()."";
 
 
 
@@ -141,13 +96,13 @@ echo Tabs::widget([
             'items' => [
                 [
                     'label' => 'Related Historical Fact',
-                    'content'=>$content,
-                    'active' => true, 
+                    'url' => Url::to(['match','id'=>$model->id]),
+                    'active' => false, 
                 ],
                 [
-                    'label' => 'Link to other Historical Facts',
-                    'url' => Url::to(['manualmatch','id'=>$model->id]),
-                    'active' => false,
+                    'label' => 'Link to other Historical Facts',                   
+                    'content'=>$content,
+                    'active' => true,
                 ],
             ]
         ]

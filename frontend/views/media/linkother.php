@@ -61,6 +61,22 @@ $content="
             //'ownerId',
             
             //['class' => 'yii\grid\ActionColumn',
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view}',
+            'buttons' => [
+                'view' => function ($url, $model) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>', $url, ['target' => "_blank"]);
+                }
+            ],
+            'urlCreator' => function( $action, $model, $key, $index )use ($histId){
+
+                if ($action == "view") {
+
+                    return Url::to(['media/histlistview', 'id' => $model->id, 'histId' => $histId]);
+
+                }            
+
+            }],
             ['class' => 'yii\grid\CheckboxColumn'],
 
             /*[

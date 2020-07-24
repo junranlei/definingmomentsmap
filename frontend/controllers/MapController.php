@@ -335,6 +335,7 @@ class MapController extends Controller
                 ->orderBy('username')
                 //->where(['like', 'name', $q])
                 ->where('username like :q', [':q' => '%'.$q.'%'])
+                ->where('blocked_at is null')
                 ->limit(20);
             $command = $query->createCommand();
             $data = $command->queryAll();

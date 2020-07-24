@@ -54,9 +54,10 @@ $this->registerJs($js);
 <?php $help = "<p class='text-justify'>Label tooltip to give some usefull information for the input. </p>";
 ?>
 
-    <?= $form->field($model, 'title',['labelOptions' =>['title'=>'This is a test tooltip',
+    <?php /* $form->field($model, 'title',['labelOptions' =>['title'=>'This is a test tooltip',
     'data-toggle'=>'tooltip',
-    'class' => 'tooltipstyle']])->textInput(['maxlength' => true]) ?>
+    'class' => 'tooltipstyle']])->textInput(['maxlength' => true])*/ ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 <?php //->textInput(['maxlength' => true,'placeholder'=>"title text"])?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= Html::dropDownList(
@@ -78,10 +79,10 @@ $this->registerJs($js);
         
     ]) ?>
 
-    <?=  $form->field($model, 'dateEnded',['labelOptions' =>['title'=>'This is a test tooltip',
+    <?php /*  $form->field($model, 'dateEnded',['labelOptions' =>['title'=>'This is a test tooltip',
         'data-toggle'=>'tooltip',
-        'class' => 'tooltipstyle']])->widget(DatePicker::classname(), [
-        
+        'class' => 'tooltipstyle']])->widget(DatePicker::classname(), [ */ ?>
+    <?= $form->field($model, 'dateEnded')->widget(DatePicker::classname(), [    
         //'dateFormat' => 'yyyy-MM-dd',
         'pluginOptions' => [
             'format' => 'yyyy-mm-dd',
