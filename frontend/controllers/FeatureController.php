@@ -64,6 +64,7 @@ class FeatureController extends Controller
                         'allow' => true,
                         'actions' => ['disable'],
                         'roles' => ['disableHist'],
+                        //other handler: denycallback in each allow condition
                         /*'denyCallback' => function ($rule, $action) {
                             $message='You are not the owner or the historical facts has been linked to more than one maps.';
                             throw new ForbiddenHttpException($message);
@@ -95,7 +96,7 @@ class FeatureController extends Controller
                         $message='You are not the owner or assigned user of the historical facts, and the historical fact is not open for everyone to edit.';
                     //else {Yii::$app->user->loginRequired();return;}
                     throw new ForbiddenHttpException($message);
-                    //Add your error handler here
+                    //Add your error handler here, other handlers:
                     //if($rule==)
                     //Yii::$app->session->setFlash('error', $rule.
                     //'You are not the owner or the historical facts has been linked to more than one maps.');

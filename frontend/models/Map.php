@@ -145,7 +145,7 @@ class Map extends \yii\db\ActiveRecord
         });
     }
 
-        /**
+    /**
      * @return string
      */
     public function getAssignedUsers()

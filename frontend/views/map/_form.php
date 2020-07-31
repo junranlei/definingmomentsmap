@@ -52,7 +52,6 @@ use frontend\models\Apis;
         $model->assignedUsers = $musers;
         $url = \yii\helpers\Url::to(['map/userlist','id'=>$model->id]);
         echo $form->field($model, 'assignedUsers')->label('Assigned Users')->widget(Select2::classname(), [
-            //Select2::widget([
             'id' => 'map-assigneds',
             'name' => 'Map[assignedUsers]',
             'initValueText'=> $tusers,

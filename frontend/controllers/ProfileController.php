@@ -79,11 +79,12 @@ class ProfileController extends BaseController
                         'actions' => ['index','show','ranking'],
                         'roles' => ['?', '@'],
                     ],
-                    /*[
+                    /* //user setting instead
+                    [
                         'allow' => true,
                         'actions' => ['updateprofile','updateaccount'],
                         'roles' => ['updateProfile'],
-                        'roleParams' => function() {
+                        'roleParams' => function() { 
                             return ['profile' => Profile::findOne(['user_id' => Yii::$app->request->get('id')])];
                         },
                     ],*/

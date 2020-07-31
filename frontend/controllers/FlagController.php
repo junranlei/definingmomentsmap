@@ -95,6 +95,7 @@ class FlagController extends Controller
                 $flagModel->times = 1;
             }
             if($flagModel->save()){
+                //check model type to get model via model function
                 if($m=="map"){
                     $map=$flagModel->modelMap;
                     if($map!=null){

@@ -157,7 +157,6 @@ foreach($hists as $hist){
             $featureobjsvar[$hist->id][$feature->id]["histLink"]=$histLink;
         }
 
-        //Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
     }
     
 }
@@ -217,6 +216,7 @@ $this->registerJs(<<<JS
     var observer = new MutationObserver(function (mutations, me) {
         var map2 = mapsPlaceholder.pop();
         if (map2) {
+            //default layers
             /*if(i){
                 L.control.layers(basemaps2).addTo(map2);
                 basemaps2[key1].addTo(map2);
@@ -265,7 +265,6 @@ $this->registerJs(<<<JS
         initialize: function (latlngs, options) {
             this._originalInitialize(latlngs, options);
             this._latlng = this.getBounds().getCenter(); // Define the "center".
-            //alert(this._latlng);
         },
 
         getLatLng: function () {
@@ -346,7 +345,7 @@ echo $leafLet->widget(['options' => ['id'=>'map','style' => 'min-height: 500px']
 ?>
 <br/><br/>
 <p>
-        <?= Html::a('Create Historical Fact', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Historical Fact', ['/historicalfact/create'], ['class' => 'btn btn-success']) ?>
  </p>
 <?= GridView::widget([
         'dataProvider' => $listDataProvider,

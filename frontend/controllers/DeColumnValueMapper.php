@@ -92,7 +92,7 @@ class DeColumnValueMapper extends ColumnValueMapper
             //ture json into sub row           
             foreach($features as $feature){
                 $row=$feature->toArray();
-                //unset hide sub column
+                //unset hidden sub column
                 foreach($hide as $h){
                     if($feature->hasAttribute($h)){
                         unset($row[$h]);
@@ -114,8 +114,7 @@ class DeColumnValueMapper extends ColumnValueMapper
                 //array_push($featureA,$feature->toArray());
                 $f = $feature->toArray();
                 foreach($f as $key=>$val){
-                    // hide sub column
-                    
+                    // hide sub column             
                     if(!in_array($key,$hide)){
                         $value = $value.$key.":".$val." ";
                     }
@@ -183,7 +182,6 @@ class DeColumnValueMapper extends ColumnValueMapper
      */
     protected function getColumnHeader($column)
     {
-        //$header = $column->renderHeaderCell();
         $header = $column['label'];
         //if (!$this->isHtml) {
             //$header = strip_tags($header);

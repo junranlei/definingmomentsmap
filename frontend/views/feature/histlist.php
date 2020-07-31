@@ -55,12 +55,6 @@ $content="
 
                 }
 
-                /*if ($action == "delete") {
-
-                    return Url::to(['feature/disable', 'id' => $model->id, 'histId' => $model->histId]);
-
-                }*/
-
             }],
         ],
     ])."";

@@ -43,7 +43,7 @@ GridView::widget([
 
                     return Html::a('<span class="glyphicon glyphicon-map-marker" title="Update more"></span>',$url, ['target' => "_blank"]);
                 },
-                 /*       'delete' => function ($url, $model) {
+                 /*'delete' => function ($url, $model) {
                     return Html::a('<span class="glyphicon glyphicon-trash" title= "Delete"></span>', $url);
                 },*/
             ],

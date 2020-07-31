@@ -95,7 +95,6 @@ class MapController extends Controller
     {
         $searchModel = new MapSearch();
         $params = Yii::$app->request->queryParams;
-        //$params['MapSearch']['publicPermission']=1;
         $dataProvider = $searchModel->search($params);
         //$dataProvider->pagination->pageSize=10;
         return $this->render('index', [
@@ -112,9 +111,7 @@ class MapController extends Controller
     {
         $searchModel = new MapSearch();
         $params = Yii::$app->request->queryParams;
-        //$params['MapSearch']['publicPermission']=1;
         $dataProvider = $searchModel->search($params, $status=0);
-
         return $this->render('disabledmaps', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -157,8 +154,6 @@ class MapController extends Controller
     public function actionAssignedmaps()
     {
         $searchModel = new MapSearch();
-        //$params = Yii::$app->request->queryParams;
-        //$params['MapSearch']['publicPermission']=1;
         $mapAssign = new MapAssign();
         $userId = Yii::$app->user->identity->id;
         $user = User::findOne($userId);
@@ -310,7 +305,6 @@ class MapController extends Controller
      */
     public function actionEnable($id)
     {
-        //$this->findModel($id)->delete();
         $model=$this->findModel($id);
         $model->status=1;
         $model->save();
@@ -325,7 +319,6 @@ class MapController extends Controller
      */
 
     public function actionUserlist($q = null, $id = null){
-        //$visitors = ArrayHelper::map(Visitor::find()->orderBy('name')->all(),'id', 'name'); 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $out = ['results' => ['id' => '', 'text' => '']];
         if (!is_null($q)) {

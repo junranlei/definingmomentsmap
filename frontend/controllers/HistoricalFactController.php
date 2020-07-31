@@ -41,13 +41,8 @@ class HistoricalfactController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                //'only' => ['update'],
                 'rules' => [
-                    /*[
-                        'actions' => ['update'],
-                        'allow' => true,
-                        'roles' => ['SysAdmin'],
-                    ],*/
+                    
                     [
                         'actions' => ['view','index','maplist','match'],
                         'allow' => true,
@@ -172,8 +167,6 @@ class HistoricalfactController extends Controller
     {
         $searchModel = new HistoricalfactSearch();
         $searchModel->search(Yii::$app->request->queryParams);
-        //$params = Yii::$app->request->queryParams;
-        //$params['MapSearch']['publicPermission']=1;
         $histAssign = new HistoricalAssign();
         $userId = Yii::$app->user->identity->id;
         $user = User::findOne($userId);
@@ -356,7 +349,6 @@ class HistoricalfactController extends Controller
      */
 
     public function actionUserlist($q = null, $id = null){
-        //$visitors = ArrayHelper::map(Visitor::find()->orderBy('name')->all(),'id', 'name'); 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $out = ['results' => ['id' => '', 'text' => '']];
         if (!is_null($q)) {
@@ -529,8 +521,7 @@ class HistoricalfactController extends Controller
             }
 
             //assigned user block
-
-            
+           
             return $this->redirect(['update', 'id' => $model->id]);
         }
         if(trim($model->urls!="")&&$model->urls!=NULL)
@@ -583,11 +574,7 @@ class HistoricalfactController extends Controller
         if($histMapLink!=null){
             $histMapLink->delete();
         }
-
-
-        //$model->delete();
         
-
         return $this->redirect(['maplist', 'mapId' => $mapId]);
     }
 
@@ -616,7 +603,6 @@ class HistoricalfactController extends Controller
      */
     public function actionEnable($id)
     {
-        //$this->findModel($id)->delete();
         $model=$this->findModel($id);
         $model->status=1;
         $model->save();

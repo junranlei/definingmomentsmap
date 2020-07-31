@@ -39,7 +39,6 @@ $this->params['breadcrumbs'][] = 'Historical Facts';
         [
             'label' => 'URLs',
             'attribute' => 'urls',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
         ],
         [
             'label' => 'Date',
@@ -54,19 +53,16 @@ $this->params['breadcrumbs'][] = 'Historical Facts';
         [
             'label' => 'Description',
             'attribute' => 'description',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
         ],
         [
             'label' => 'Features',
             'attribute' => 'features',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
             'format'=>'json',
             'hide'=>['status','histId']
         ],
         [
             'label' => 'Media',
             'attribute' => 'media',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
             'format'=>'json',
             'hide'=>['status','ownerId','permission2upload','right2Link','publicPermission']
         ],

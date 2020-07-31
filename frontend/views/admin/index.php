@@ -18,30 +18,5 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= Html::a('Flag Reports', ['/flag'], ['target'=>'_blank','class' => 'btn btn-primary']) ?>
 
 <?= Html::a('APIs List', ['/apis'], ['target'=>'_blank','class' => 'btn btn-primary']) ?>
-<?php
-/*$content="";
-    echo Tabs::widget([
 
-        'items' => [
-
-            [
-                'label' => 'API',
-                'content'=>$content,
-                'active' => true
-
-            ],
-            [
-
-                'label' => 'Flag',
-                'url' => Url::to(['/flag']),
-                'linkOptions' => ['target'=>'_blank'],
-
-            ],
-            
-
-        ],
-
-    ]);
-*/
-?>
 </div>

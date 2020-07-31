@@ -21,6 +21,7 @@ use frontend\models\Apis;
 /* @var $form yii\widgets\ActiveForm */
 ?>  
 <?php 
+//tooltip script
 $js = <<<SCRIPT
 /* To initialize BS3 tooltips set this below */
 $(function () { 
@@ -89,10 +90,6 @@ $this->registerJs($js);
             'todayHighlight' => true
         ],
     ])  ?>
-
-    <?php /* $form->field($model, 'jsonField')->widget(JsonEditorWidget::class,[
-        'rootNodeName' => 'Results',
-    ])*/ ?>
     
     <?= Html::activeLabel($model,'right2Link') ?>
     <?= $form->field($model, 'right2Link')->checkBox(array('label'=>'', 
@@ -105,6 +102,7 @@ $this->registerJs($js);
     <?php //= $form->field($model, 'timeCreated')->textInput() ?>
 
     <?php 
+    // assigned users field and list
         $users = ArrayHelper::map(User::find()->orderBy('username')->all(),'id', 'username'); 
         $musers = ArrayHelper::getColumn($model->users2,'id'); 
         if(sizeof($musers)==0)
@@ -182,7 +180,7 @@ $this->registerJs($js);
 
 
 <script>
-
+//functions to control date formats
 function changeDateVal(e,obj){
 
     var newDate = document.getElementById('historicalfact-date').value;

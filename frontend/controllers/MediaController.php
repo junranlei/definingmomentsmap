@@ -50,15 +50,6 @@ class MediaController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    /*
-                    [
-                        'allow' => true,
-                        'actions' => ['histlistkupdate'],
-                        'roles' => ['updateMedia'],
-                        'roleParams' => function() {
-                            return ['media' => Media::findOne(['id' => $id])];
-                        },
-                    ],*/
                     [
                         'allow' => true,
                         'actions' => ['linkother','unlink'],
@@ -144,7 +135,6 @@ class MediaController extends Controller
                 'query' => $historicalFact->getMedia(),
             ]);   
         //$dataProvider->pagination->pageSize=20;
-
 
         $model = new Media();
         if(Yii::$app->user->identity!=null&&Yii::$app->user->identity->id!=null)
@@ -238,7 +228,6 @@ class MediaController extends Controller
                 'query' => $historicalFact->getMedia(),
             ]);   
         //$dataProvider->pagination->pageSize=20;
-
 
         $model = new Media();
         if(Yii::$app->user->identity!=null&&Yii::$app->user->identity->id!=null)
@@ -435,8 +424,6 @@ class MediaController extends Controller
                 'query' => $historicalFact->getMedia(),
             ]);
        
-        //echo serialize(Yii::$app->request->post()); return;
-
         $model = $this->findModel($id);
         //check if this is mainmedia
         if($historicalFact->mainMediaId==$id){
@@ -549,7 +536,7 @@ class MediaController extends Controller
     public function actionDisable($id)
     {
         $model = $this->findModel($id);
-        //delete associated historicalfact media links
+        //delete associated historicalfact media links when delete, comment out here for disable
         /*$histMediaLinks = $model->historicalMediaLinks;
         foreach($histMediaLinks as $histLink){
             if($histLink!=null){

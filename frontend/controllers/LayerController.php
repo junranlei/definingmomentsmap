@@ -296,7 +296,6 @@ class LayerController extends Controller
      */
     public function actionEnable($id)
     {
-        //$this->findModel($id)->delete();
         $model=$this->findModel($id);
         $model->status=1;
         $model->save();

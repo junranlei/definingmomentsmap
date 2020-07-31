@@ -21,7 +21,6 @@ use Yii;
  */
 class Flag extends \yii\db\ActiveRecord
 {
-    //public $modelTitle;
     /**
      * {@inheritdoc}
      */
@@ -62,7 +61,6 @@ class Flag extends \yii\db\ActiveRecord
     }
     public function getModelTitle(){
         if($this->model=="map"){
-            //$this->modelTitle = $this->modelMap->title;
             return $this->modelMap->title;
         }
     }

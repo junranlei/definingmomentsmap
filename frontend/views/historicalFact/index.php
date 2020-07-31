@@ -48,7 +48,6 @@ $this->params['histMenu'] = True;
         [
             'label' => 'URLs',
             'attribute' => 'urls',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
         ],
         [
             'label' => 'Date',
@@ -63,7 +62,6 @@ $this->params['histMenu'] = True;
         [
             'label' => 'Description',
             'attribute' => 'description',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
         ],
         [
             'label' => 'Features',
@@ -75,15 +73,9 @@ $this->params['histMenu'] = True;
         [
             'label' => 'Media',
             'attribute' => 'media',
-            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
             'format'=>'json',
             'hide'=>['status','ownerId','permission2upload','right2Link','publicPermission']
         ],
-        //'mainMediaId',
-
-        //['class' => 'yii\grid\ActionColumn',
-        //'template' => '{view}',
-        //],
     ];
     $gridColumns=[
         ['class' => 'yii\grid\SerialColumn'],
@@ -99,31 +91,6 @@ $this->params['histMenu'] = True;
         'dateEnded',
         //'timeCreated',
         //'urls:ntext',
-        /*[
-            'label' => 'Description',
-            'attribute' => 'description',
-            'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
-        ],*/
-        /*[
-            'label' => 'Feature',
-            'attribute' => 'features',
-            'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
-            'format'=>'raw',
-            'value'=>function ($model)
-                {
-                    $features=$model->features;
-                    $featureA=[];
-                    $featureS="";
-                    foreach($features as $feature){
-                        array_push($featureA,$feature->toArray());
-                        $featureS=$featureS.json_encode($feature->toArray(),JSON_FORCE_OBJECT);
-                    }
-                    $featureS=preg_replace('/"([a-zA-Z]+[a-zA-Z0-9_]*)":/','$1:',$featureS);
-                    return $featureS;
-                    //return json_encode($featureA);
-                    
-                }
-        ],*/
         //'mainMediaId',
 
         ['class' => 'yii\grid\ActionColumn',

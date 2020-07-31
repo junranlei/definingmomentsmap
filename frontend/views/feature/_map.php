@@ -27,8 +27,7 @@ document.getElementById("Save2").onclick = function(e) {
         //merge two geojson
         concatGeojson = concatGeoJSON(tempjson[0], data);
     }
-    // Stringify the GeoJson
-   
+    // Stringify the GeoJson 
     document.getElementById("geojson").value=JSON.stringify(concatGeojson);
     
 };
@@ -53,8 +52,6 @@ function concatGeoJSON(g1, g2){
     $geoCoderPlugin = new GeoCoder([
         'service' => $nominatim,
         'clientOptions' => [
-            // we could leave it to allocate a marker automatically
-            // but I want to have some fun
             'showMarker' => true
         ]
     ]);
@@ -98,8 +95,6 @@ function concatGeoJSON(g1, g2){
         ]
     ]);
 
-    
-
 	// init the 2amigos leaflet plugin provided by the package
     $drawFeature = new \davidjeddy\leaflet\plugins\draw\Draw();
 	// optional config array for leadlet.draw
@@ -125,32 +120,31 @@ function concatGeoJSON(g1, g2){
 
     //Create JS
 $this->registerJs(<<<JS
-var mapsPlaceholder = [];
+    var mapsPlaceholder = [];
 
-L.Map.addInitHook(function () {
-    mapsPlaceholder.push(this); // Use whatever global scope variable you like.
-});
+    L.Map.addInitHook(function () {
+        mapsPlaceholder.push(this); // Use whatever global scope variable you like.
+    });
 
-// set up the mutation observer observe when map is ready
-var observer = new MutationObserver(function (mutations, me) {
-    var map2 = mapsPlaceholder.pop();
-    if (map2) {
-        //placeholder on map search bar
-        geocoder_inputs = document.getElementsByClassName('leaflet-geocoder-input');
-        for (var i = 0; i < geocoder_inputs.length; i++) {
-            geocoder_inputs[i].placeholder='place name or lat,lng';
-        } 
-        me.disconnect(); // stop observing
-        return;
-    }
-});
-// start observing
-observer.observe(document, {
-    childList: true,
-    subtree: true
-});
+    // set up the mutation observer observe when map is ready
+    var observer = new MutationObserver(function (mutations, me) {
+        var map2 = mapsPlaceholder.pop();
+        if (map2) {
+            //placeholder on map search bar
+            geocoder_inputs = document.getElementsByClassName('leaflet-geocoder-input');
+            for (var i = 0; i < geocoder_inputs.length; i++) {
+                geocoder_inputs[i].placeholder='place name or lat,lng';
+            } 
+            me.disconnect(); // stop observing
+            return;
+        }
+    });
+    // start observing
+    observer.observe(document, {
+        childList: true,
+        subtree: true
+    });
 JS
 );
-    // we could also do
     echo $leaflet->widget(['options' => ['style' => 'min-height: 500px']]);
     ?>

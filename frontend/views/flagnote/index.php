@@ -33,14 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             //'user.username',
-            /*[
-                'label' => 'User Name',
-                'format' => 'ntext',
-                'attribute'=>'username',
-                'value' => function($model) {
-                    return $model->user->username;
-                },
-            ],*/
             [
                 'label' => 'User Name',
                 'attribute' => 'username',

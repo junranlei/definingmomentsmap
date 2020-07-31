@@ -26,10 +26,7 @@ use slavkovrn\jsoneditor\JsonEditorWidget;
              <?=  Html::hiddenInput('view', '_featurejsonview') ?>
             <?= Html::input('text', 'querystring', Yii::$app->request->post('querystring'), ['size'=>'60']) ?>
             <?= Html::submitButton('Search', ['class' => 'je-val-input', 'name' => 'search-button']) ?>
-            <?php /* Html::input($model, 'jsonField')->widget(JsonEditorWidget::class,[
-                'rootNodeName' => 'Results',
-            ])->label(false)*/?>
-
+            
             <?=  JsonEditorWidget::widget([
                   'model' => $apiModel,
                   'attribute' => 'jsonField',
@@ -37,9 +34,7 @@ use slavkovrn\jsoneditor\JsonEditorWidget;
               ])
               
             ?>
-            <?php /* $form->field($model, 'jsonField')->widget(JsonEditorWidget::class,[
-                'rootNodeName' => 'Results',
-            ])->label(false)*/ ?>
+
       <?= Html::endForm() ?>
       <?php Pjax::end(); ?>
       </div>

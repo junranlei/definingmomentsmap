@@ -53,11 +53,7 @@ $content="
                     return Url::to(['feature/histlistview', 'id' => $model->id, 'histId' => $model->histId]);
 
                 }
-                /*if ($action == "delete") {
 
-                    return Url::to(['feature/disable', 'id' => $model->id, 'histId' => $model->histId]);
-
-                }*/
             }],
         ],
     ])."";

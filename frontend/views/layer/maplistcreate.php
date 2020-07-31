@@ -48,11 +48,6 @@ $content="
                         return Url::to(['layer/maplistview', 'id' => $model->id, 'mapId' => $mapId]);
 
                     }
-                    /*if ($action == "delete") {
-                        return Url::to(['layer/delete', 'id' => $model->id, 'mapId' => $mapId]);
-
-                    }*/
-
                 }
             ],
         ],

@@ -104,8 +104,6 @@ $nominatim = new ServiceNominatim();
 $geoCoderPlugin = new GeoCoder([
     'service' => $nominatim,
     'clientOptions' => [
-        // we could leave it to allocate a marker automatically
-        // but I want to have some fun
         'showMarker' => true
     ]
 ]);
@@ -190,7 +188,6 @@ foreach($hists as $hist){
             $featureobjsvar[$hist->id][$feature->id]["histLink"]=$histLink;
         }
 
-        //Html::img(Url::base().'/uploads/'.$data['id'].'/'.$data['nameOrUrl'],['width' => '80px', 'style'=>'display:block; margin:0 auto;']);
     }
     
 }
@@ -206,7 +203,6 @@ $this->registerJs(
 
 // creater JS 
 $this->registerJs(<<<JS
-//alert(JSON.stringify(featureobjsvar));alert(histsvar[0]["id"]);
     var mapsPlaceholder = [];
 
     L.Map.addInitHook(function () {
@@ -286,10 +282,9 @@ $this->registerJs(<<<JS
         initialize: function (latlngs, options) {
             this._originalInitialize(latlngs, options);
             this._latlng = this.getBounds().getCenter(); // Define the polygon "center".
-            //alert(this._latlng);
         },
 
-        getLatLng: function () {//alert(this._latlng);
+        getLatLng: function () {
             //this._latlng = this.getBounds().getCenter(); 
             return this._latlng;
         },
@@ -305,7 +300,6 @@ $this->registerJs(<<<JS
         initialize: function (latlngs, options) {
             this._originalInitialize(latlngs, options);
             this._latlng = this.getBounds().getCenter(); // Define the "center".
-            //alert(this._latlng);
         },
 
         getLatLng: function () {

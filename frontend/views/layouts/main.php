@@ -40,7 +40,6 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        //['label' => 'Home', 'url' => ['/site/map']],
         ['label' => 'Historical Facts', 'url' => ['/historicalfact/index'],'active'=>$histMenu],
         ['label' => 'Maps', 'url' => ['/map/index']],
         ['label' => 'Rankings', 'url' => ['/user/profile/ranking']],

@@ -269,12 +269,5 @@ class HistoricalFact extends \yii\db\ActiveRecord
         return $this->hasMany(HistoricalFact::className(), ['id' => 'histId1'])->viaTable('historicalRelated', ['histId2' => 'id']);
     }
 
-    public function getRelatableHists(){
-        //get histId1s and 2s 
-        //if(\Yii::$app->user->can("updatehist",$params=['hist' 
-        //or is sysadmin return all, is editable publicpermission or owner/assigned is current user, getUsers, link mulit tables?
-        //check historicalfactsearch usersearch
-
-    }
 }
     

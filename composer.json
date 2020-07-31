@@ -20,7 +20,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "kartik-v/yii2-datecontrol": "@dev",
         "kartik-v/yii2-widgets": "@dev",
-        "davidjeddy/yii2-leaflet-draw-plugin": "*",
+        "davidjeddy/yii2-leaflet-draw-plugin": "1.0.12.x-dev",
         "2amigos/yii2-leaflet-geosearch-plugin": "~1.0",
         "2amigos/yii2-leaflet-geocoder-plugin": "~1.0",
         "unclead/yii2-multiple-input": "~2.0",
@@ -33,7 +33,7 @@
         "kartik-v/yii2-widget-select2": "@dev",
         "yiisoft/yii2-authclient": "~2.1.0",
         "bizley/migration": "^3.6",
-        "yiimaker/yii2-social-share": "^2.3",
+        "yiimaker/yii2-social-share": "1.0.12.x-dev",
         "kartik-v/yii2-export": "*",
         "2amigos/yii2-exportable-widget": "*",
         "2amigos/yii2-grid-view-library": "~1.0",
@@ -68,6 +68,14 @@
         {
             "type": "vcs",
             "url": "https://github.com/junranlei/yii2-leaflet-markercluster-plugin"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/junranlei/yii2-leaflet-draw-plugin"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/junranlei/yii2-social-share"
         }
     ]
 }

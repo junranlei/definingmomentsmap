@@ -79,26 +79,6 @@ $content="
             }],
             ['class' => 'yii\grid\CheckboxColumn'],
 
-            /*[
-                'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function($data) {         
-                    return ['value' => $data['id']];               
-                },        
-            ]*/
-            /*'template' => '{update}&nbsp;{delete}',
-            'urlCreator' => function( $action, $model, $key, $index )use ($histId){
-
-                if ($action == "update") {
-
-                    return Url::to(['media/histlistupdate', 'id' => $model->id, 'histId' => $histId]);
-
-                }
-                if ($action == "delete") {
-
-                    return Url::to(['media/delete', 'id' => $model->id, 'histId' => $histId]);
-
-                }
-
-            }],*/
         ],
     ]).Html::submitButton('Link', ['class' => 'btn btn-success', 'id' =>'link']).""
     .Html::endForm()."";

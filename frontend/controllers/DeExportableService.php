@@ -29,6 +29,7 @@ class DeExportableService implements ExportableServiceInterface
     {
         /** @var BaseDataProvider $dataProvider */
         $dataProvider = $grid->dataProvider;
+        //$keys = $dataProvider->keys;
         
         $mapper = new DeColumnValueMapper($columns, array(), $type === TypeHelper::HTML, $type);
         
@@ -45,6 +46,7 @@ class DeExportableService implements ExportableServiceInterface
         }
         
         foreach ($source as $data) {
+            //$dataType=\yii\helpers\ArrayHelper::map($data, 'id', 'title');
             $writer->addRow($data);
         }
         $writer->close();

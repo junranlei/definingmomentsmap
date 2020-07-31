@@ -38,9 +38,7 @@ GridView::widget([
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{view}&nbsp{unlink}&nbsp;',
             'buttons' => [
-                /*'view' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-pencil" title="Update"></span>', $url);
-                },*/
+
                 'view' => function ($url, $model) {
 
                     return Html::a('<span class="glyphicon glyphicon-eye-open" title="View"></span>',$url, ['target' => "_blank"]);
@@ -51,17 +49,9 @@ GridView::widget([
                         'method' => 'post',
                     ]]);
                 }
-                /*        'delete' => function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-trash" title= "Delete"></span>', $url);
-                },*/
+
             ],
             'urlCreator' => function( $action, $model, $key, $index )use ($mapId){
-
-                /*if ($action == "view") {
-
-                    return Url::to(['maplistupdate', 'id' => $model->id, 'mapId'=>$mapId]);
-
-                }*/
 
                 if ($action == "view") {
 
@@ -73,12 +63,6 @@ GridView::widget([
                     return Url::to(['historicalfact/unlink', 'id' => $model->id, 'mapId' => $mapId]);
 
                 }
-
-                /*if ($action == "delete") {
-
-                    return Url::to(['delete', 'id' => $model->id]);
-
-                }*/
 
             }],
         ],
@@ -125,14 +109,3 @@ echo Tabs::widget([
 ?>
 </div>
 
-<!--<div class="historicalfact-create">
-
-<h1>Create Historical Fact</h1>
-<?php 
-//$newHist = new HistoricalFact();        
-?>
-    <?php /* $this->render('_form', [
-        'model' => $model,
-    ]) */ ?>
-
-</div>-->
