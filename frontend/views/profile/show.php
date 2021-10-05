@@ -52,7 +52,7 @@ $content= '<br/>
                             '. Html::a(Html::encode($profile->website), Html::encode($profile->website)) .'
                         </li>';
                     endif; 
-                    if (!empty($profile->public_email)): 
+                    /*if (!empty($profile->public_email)): 
                         $content= $content.'<li>
                             <i class="glyphicon glyphicon-envelope text-muted"></i>
                             '. Html::a(
@@ -62,7 +62,7 @@ $content= '<br/>
                             ).'
                             
                         </li>';
-                    endif; 
+                    endif; */
                     $content= $content.'<li>
                         <i class="glyphicon glyphicon-time text-muted"></i>
                         '.Yii::t('usuario', 'Joined on {0, date}', $profile->user->created_at) .'

@@ -61,12 +61,15 @@ $this->registerJs($js);
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 <?php //->textInput(['maxlength' => true,'placeholder'=>"title text"])?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'source')->textInput(['maxlength' => true]) ?>
+    
     <?= Html::dropDownList(
         'selectFormat', //name
         'date',  //select
         ['date'=>'Select Date below (eg, 2020-01-01)', 'months'=>'Select Month only (will include the whole month)','years'=>'Select Year only (will include the whole year)'], //items
         ['id'=>'selectFormat','onchange'=>'changeDropdown(this)'] //options
     )?>
+   
     <?= $form->field($model, 'date')->widget(DatePicker::classname(), [
         
         //'dateFormat' => 'yyyy-MM-dd',

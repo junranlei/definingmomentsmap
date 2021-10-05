@@ -34,7 +34,12 @@ $content="
             'id',
             'title',
             //'description:ntext',
-            'visible',
+             //'visible',
+            [
+                'format' => 'boolean',           
+                'attribute' => 'visible',             
+                'filter' => [0=>'No',1=>'Yes'],             
+            ],
 
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{update}&nbsp;{view}&nbsp;',

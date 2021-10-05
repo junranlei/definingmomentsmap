@@ -146,5 +146,5 @@ $this->registerJs(<<<JS
     });
 JS
 );
-    echo $leaflet->widget(['options' => ['style' => 'min-height: 500px']]);
+    echo $leaflet->widget(['options' => ['style' => 'min-height: 600px']]);
     ?>

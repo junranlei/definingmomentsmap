@@ -34,7 +34,12 @@ $content="
             'title',
             //'description:ntext',
             //'geojson:ntext',
-            'visible',
+             //'visible',
+            [
+                'format' => 'boolean',           
+                'attribute' => 'visible',             
+                'filter' => [0=>'No',1=>'Yes'],             
+            ],
             //'histId',
 
             ['class' => 'yii\grid\ActionColumn',

@@ -33,11 +33,14 @@ $content="
             'title',
             //'description:ntext',
             [
-                'label' => 'Type',          
+                'label' => 'Type',   
+                'format' => 'raw',  
+                'attribute' => 'type',      
                 'value' => function ($model, $key, $index, $column) use ($types)
                 {
                     return $types[$model->type];
-                }  
+                },
+                'filter'=>$types
             ],
             [
                 'attribute' => 'nameOrUrl',  

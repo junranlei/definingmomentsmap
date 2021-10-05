@@ -68,7 +68,7 @@ class HistoricalFact extends \yii\db\ActiveRecord
             [['mainMediaId','right2Link','publicPermission','status'], 'integer'],
             [['description', 'urls'], 'string'],
             [['date', 'dateEnded', 'timeCreated','timeUpdated','assignedUsers'], 'safe'],
-            [['title'], 'string', 'max' => 255],
+            [['title','source'], 'string', 'max' => 255],
             ['urls', 'validateUrls', 'skipOnEmpty' => true, 'skipOnError' => false]
         ];
     }

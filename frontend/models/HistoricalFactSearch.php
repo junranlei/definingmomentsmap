@@ -106,15 +106,18 @@ class HistoricalfactSearch extends HistoricalFact
         if($matchModel!=null&&$matchModel->title!=null){
             if($related){
                 if(!$manual){
-                    $query->andWhere("MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')");
+                    $query->andWhere('MATCH(historicalFact.title) AGAINST(:matchtitle)');
+                    $query->addParams([':matchtitle' => trim($matchModel->title)]);
                 }
-                $query->andWhere("historicalFact.id!=".$matchModel->id); 
+                $query->andWhere("historicalFact.id!=:modelId"); 
+                $query->addParams([':modelId' => $matchModel->id]);
             }else{
                 //exluded auto matched below
                 //$query->andWhere("historicalRelated.histId1 is null and !MATCH(historicalFact.title) AGAINST('".trim($matchModel->title)."')"); 
                 // not excluded auto matched 
                 $query->andWhere("historicalRelated.histId1 is null"); 
-                $query->andWhere("historicalFact.id!=".$matchModel->id); 
+                $query->andWhere("historicalFact.id!=:modelId"); 
+                $query->addParams([':modelId' => $matchModel->id]);
 
             }
         }

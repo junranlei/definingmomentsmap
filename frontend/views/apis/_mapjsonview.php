@@ -6,6 +6,9 @@ use frontend\models\Apis;
 use yii\widgets\Pjax;
 
 use slavkovrn\jsoneditor\JsonEditorWidget;
+
+$selectfield=isset($selectfield)?$selectfield:null;
+$selectapi=isset($selectapi)?$selectapi:null;
 ?>
 
 
@@ -16,12 +19,12 @@ use slavkovrn\jsoneditor\JsonEditorWidget;
       <div class="modal-body">
       <?php Pjax::begin(['enablePushState' => false]); ?>
       <?= Html::beginForm(['apis/searchapi'], 'post', ['data-pjax' => '','id' => 'selectform','class' => 'form-inline']); ?>
-            <?= Html::label('Select Field').' '.Html::dropDownList('selectfield',null,
+            <?= Html::label('Select Field').' '.Html::dropDownList('selectfield',$selectfield,
             ['map-title' => 'Title', 'map-description' => 'Description',
             ],
             ['id' => 'selectfield'])
              ?>
-             <?= Html::label('Select API').' '.Html::dropDownList('selectapi',null,
+             <?= Html::label('Select API').' '.Html::dropDownList('selectapi',$selectapi,
               ArrayHelper::map(Apis::find()->orderBy("name")->all(), 'id', 'name')) ?>
              <?=  Html::hiddenInput('view', '_mapjsonview') ?>
             <?= Html::input('text', 'querystring', Yii::$app->request->post('querystring'), ['size'=>'60']) ?>

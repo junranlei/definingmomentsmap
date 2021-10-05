@@ -85,6 +85,7 @@ class ApisController extends Controller
         $searchurl="";
         $querystring = Yii::$app->request->post('querystring')!=null?Yii::$app->request->post('querystring'):"";
         $selectapi = Yii::$app->request->post('selectapi')!=null?Yii::$app->request->post('selectapi'):"";
+        $selectfield = Yii::$app->request->post('selectapi')!=null?Yii::$app->request->post('selectfield'):"";
         $view = Yii::$app->request->post('view')!='_jsonview'?Yii::$app->request->post('view'):"";
         if($selectapi!=null&&($selectapi)!=""){
             $api=$this->findModel($selectapi);
@@ -95,12 +96,19 @@ class ApisController extends Controller
         }
         $model = new Apis();
         if($searchurl!=""){
-            $data = file_get_contents($searchurl);           
+            $data = file_get_contents($searchurl);  
             $model->jsonField=$data;
+            //$json_array  = json_decode($data, true);
+            //$elementCount  = count($json_array); 
+            //check return length for results
+            $jsonlen = strlen($data);          
         }
 
         return $this->renderAjax($view, [
             'apiModel' => $model,
+            'selectapi'=>$selectapi,
+            'selectfield'=>$selectfield,
+            'jsonlen'=>$jsonlen
         ]);
     }
 

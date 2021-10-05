@@ -45,6 +45,7 @@ $content="
         'attributes' => [
             'id',
             'title',
+            'source',
             'description:ntext',
             'date',
             'dateEnded',

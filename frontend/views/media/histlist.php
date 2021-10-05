@@ -16,7 +16,7 @@ use frontend\models\Feature;
 
 $this->title = 'Media';
 $this->params['breadcrumbs'][] = $this->title;
-$types=[ 1 => 'Image', 2 => 'Video' ];
+$types=[ "1" => 'Image', "2" => 'Video' ];
 
 ?>
 <div class="media-index">
@@ -36,11 +36,14 @@ $content="
             'title',
             //'description:ntext',
             [
-                'label' => 'Type',          
+                'label' => 'Type',   
+                'format' => 'raw',  
+                'attribute' => 'type',      
                 'value' => function ($model, $key, $index, $column) use ($types)
                 {
                     return $types[$model->type];
-                }  
+                },
+                'filter'=>$types
             ],
             [
                 'attribute' => 'nameOrUrl',  

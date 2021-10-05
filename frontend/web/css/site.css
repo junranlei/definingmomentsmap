@@ -8,10 +8,22 @@ body {
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
+    
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    width: 100%;
+    /*top: 0;*/
+    left: 0;
+    margin: 0;
+    padding: 70px 10px 20px;
+}
+
+.wrap > .navbar > .container{
+    width: 100%;
+    /*top: 0;*/
+    left: 0;
+    margin: 0;
 }
 
 .footer {
@@ -130,4 +142,47 @@ form div.required label.control-label:after {
 form div.required .tooltipstyle:after {
     content:" * ";
     color:red;
+}
+
+/**customise map popup and cluster **/
+.popup {
+    width:100%;
+    min-height: 100px;
+    margin:0px;
+    padding:2px;
+}
+.popupTitle {
+    min-width: 200px;
+    height: 100%;
+}
+.popupImage {
+    float:left; 
+    margin:0px 2px 2px 0px;
+    padding:2px;
+}
+.popupText {
+    margin:0px;
+    padding:2px;
+}
+
+
+.marker-cluster-small {
+background-color: rgba(241, 210, 87, 0.5);
+}
+.marker-cluster-small div {
+background-color: rgba(240, 194, 12, 0.5);
+}
+
+.marker-cluster-medium {
+background-color: rgba(253, 156, 115, 0.5);
+}
+.marker-cluster-medium div {
+background-color: rgba(241, 128, 23, 0.5);
+}
+
+.marker-cluster-large {
+background-color: rgba(218, 94, 94, 0.5);
+}
+.marker-cluster-large div {
+background-color: rgba(226, 36, 36, 0.5);
 }

@@ -374,7 +374,7 @@ $this->registerJs(<<<JS
 JS
 );
 // run the widget (you can also use dosamigos\leaflet\widgets\Map::widget([...]))
-echo $leafLet->widget(['options' => ['id'=>'map','style' => 'min-height: 500px']]);
+echo $leafLet->widget(['options' => ['id'=>'map','style' => 'min-height: 600px']]);
 
 
 ?>
