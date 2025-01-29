@@ -17,16 +17,18 @@ The component diagram below illustrates the connections between the map, places,
 Please find further details in the "Defining Map System for Collaborative Map Creation and Data Reuse" paper.
 
 # Requirements
-Yii 2.0
-PHP 5.6+
-MYSQL 5.5+
+Yii 2.0 <br/>
+PHP 5.6+ <br/>
+MYSQL 5.5+ <br/>
 
 # Installation
 The system was built with the Yii framework (http://www.yiiframework.com/) and Yii Advanced Project Template (https://www.yiiframework.com/extension/yiisoft/yii2-app-advanced). 
 
 ## Composer
-The installation involves running 'composer install' 
-Please refer to Yii 2.0 (https://www.yiiframework.com/doc/guide/2.0/en/start-installation) and extensions (https://www.yiiframework.com/doc/guide/2.0/en/structure-extensions) installation steps. 
+```
+composer install
+```
+Please refer to Yii 2.0 (https://www.yiiframework.com/doc/guide/2.0/en/start-installation) and extensions (https://www.yiiframework.com/doc/guide/2.0/en/structure-extensions) for their installation steps. 
 
 ## Vagrant and Docker
 Please refer to https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md
@@ -35,14 +37,23 @@ For customisation or configuration, please refer to the Yii guide (https://www.y
 
 # Update
 
-## Minor Update single extension
+## Minor Update single extension or core
+```
 composer require extension-name-version
+```
+Example:
+```
+composer require "yiisoft/yii2:~2.0.50" 
+```
 ## Major update for all extensions and core
+```
 composer update 
+```
 ## Check and audit extension version and security
+```
 composer show
 composer audit
-
+```
 <br/><br/>
 
 Zenodo DOI: (https://zenodo.org/uploads/14759341)
