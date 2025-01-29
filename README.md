@@ -22,7 +22,7 @@ The installation involves running 'composer install' (https://www.yiiframework.c
 
 For customisation or configuration, please refer to the Yii guide (https://www.yiiframework.com/doc/guide/2.0/) and Yii Advanced Template guide (https://github.com/yiisoft/yii2-app-advanced).
 
-<br/<br/>
+<br/><br/>
 
 
 <a href="https://fairsoftwarechecklist.net/v0.2?f=21&a=31112&i=31222&r=123">
