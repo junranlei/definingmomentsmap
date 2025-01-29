@@ -1,41 +1,61 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\bootstrap\Tabs;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Map */
 
-$this->title = $model->title;
+$this->title = 'View Map: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Maps', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'View';
+
+
 ?>
-<div class="map-view">
+<?= \ymaker\social\share\widgets\SocialShare::widget([
+    'configurator' => 'socialShare',
+    'url'          => Yii::$app->request->absoluteUrl,
+    'title'        => $model->title,
+    'description'  => $model->description,
+    'containerOptions'=>['tag' => 'span', 'class' => 'social-share'],
+    'linkContainerOptions'=>['tag' => 'span'],
+    'imageUrl'     => \yii\helpers\Url::to('absolute/route/to/image.png', true),
+]); ?>
+<div class="map-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+<?php
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'description:ntext',
-            'timeCreated',
-            'timeUpdated',
-            'right2Add',
+echo Tabs::widget([
+
+    'items' => [
+
+        [
+            'label' => 'Map',
+            'content' => $this->render('_view', [
+                'model' => $model,
+            ]),
+            'active' => true
+
         ],
-    ]) ?>
+        [
 
+            'label' => 'Layers',
+            'url' => Url::to(['layer/maplist','mapId'=>$model->id]),
+
+        ],
+        [
+
+            'label' => 'Historical Facts',
+            'url' => Url::to(['historicalfact/maplist','mapId'=>$model->id]),
+
+        ],
+
+    ],
+
+]);
+
+?>
 </div>

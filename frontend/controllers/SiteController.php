@@ -15,6 +15,9 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use frontend\models\HistoricalFact;
+use frontend\models\HistoricalmapSearch;
+
 /**
  * Site controller
  */
@@ -74,7 +77,34 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //return $this->render('index');
+        $searchModel = new HistoricalmapSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $listDataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $listDataProvider->pagination->pageSize=10;
+        return $this->render('map', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'listDataProvider'=>$listDataProvider
+        ]);
+    }
+
+    /**
+     * Displays mappage.
+     *
+     * @return mixed
+     */
+    public function actionMap()
+    {
+        $searchModel = new HistoricalmapSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $listDataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $listDataProvider->pagination->pageSize=10;
+        return $this->render('map', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'listDataProvider'=>$listDataProvider
+        ]);
     }
 
     /**
@@ -256,5 +286,15 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+    /**
+     * Displays error.
+     *
+     * @return mixed
+     */
+    public function actionError()
+    {
+        return $this->render('error');
     }
 }

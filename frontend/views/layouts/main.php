@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -28,6 +29,8 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+    
+    $histMenu=(isset($this->params['histMenu']))?$this->params['histMenu']:FALSE;
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -37,13 +40,21 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Historical Facts', 'url' => ['/historicalfact/index'],'active'=>$histMenu],
+        ['label' => 'Maps', 'url' => ['/map/index']],
+        ['label' => 'Rankings', 'url' => ['/user/profile/ranking']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
+    if(\Yii::$app->user->can("SysAdmin")){
+        $menuItems[] = ['label' => 'Admin', 'url' => ['/admin/index']];
+    }
+
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/registration/register']];
+        $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
     } else {
+        $menuItems[] = ['label' => 'Profile', 'url' => ['/user/profile']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -73,7 +84,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><?php //= Yii::powered() ?></p>
     </div>
 </footer>
 

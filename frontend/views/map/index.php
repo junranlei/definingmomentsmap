@@ -1,7 +1,18 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
+use yii\bootstrap\Tabs;
+use dosamigos\exportable\ExportableButton; 
+use dosamigos\exportable\behaviors\ExportableBehavior; 
+use dosamigos\grid\GridView;
+use dosamigos\grid\behaviors\LoadingBehavior;
+use dosamigos\grid\behaviors\ResizableColumnsBehavior;
+use dosamigos\grid\behaviors\ToolbarBehavior;
+use dosamigos\grid\buttons\ReloadButton;
+use dosamigos\exportable\helpers\TypeHelper;
+use yii\helpers\Url;
+use frontend\controllers\DeExportableService;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MapSearch */
@@ -19,23 +30,167 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php
+    $POST = Yii::$app->request->post();
+    $gridColumns=[
+        ['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
+        'id',
+        'title',
+        //'description:ntext',
+        'timeCreated',
+        'timeUpdated',
+        //'right2Add',
+
+        ['class' => 'yii\grid\ActionColumn',
+        'template' => '{view}',
+        ],
+    ];
+    $exportColumns=[
+        //['class' => 'yii\grid\SerialColumn'],
+
+        [
+            'label' => 'id',
+            'attribute' => 'id',
+        ],
+        [
+            'label' => 'Title',
+            'attribute' => 'title',
+        ],
+        [
+            'label' => 'Description',
+            'attribute' => 'description',
+        ],
+        [
+            'label' => 'TimeCreated',
+            'attribute' => 'timeCreated',
+        ],
+        [
+            'label' => 'TimeUpdated',
+            'attribute' => 'timeUpdated',
+        ],
+        [
+            'label' => 'Layers',
+            'attribute' => 'layers',
+            //'visible' => isset($POST['export'])&&$POST['export'] ? true : false,
+            'format'=>'json',
+            'hide'=>['status']
+        ],
+        //'right2Add',
+
+        //['class' => 'yii\grid\ActionColumn',
+        //'template' => '{view}',
+        //],
+    ];
+
+$content= '<br/>'.
+
+ \dosamigos\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        'columns' => $gridColumns,
+        'behaviors' => [
+            [
+                'class' => '\dosamigos\exportable\behaviors\ExportableBehavior',
+                'exportableService' => new DeExportableService(),
+                'filename'=>'Defining Moments Map-'.date('d-M-Y'),
+                'columns'=>$exportColumns
+            ],
+            [
+                'class' => '\dosamigos\grid\behaviors\LoadingBehavior',
+                'type' => 'bars'
+            ],
+            [
+                'class' => '\dosamigos\grid\behaviors\ToolbarBehavior',
+                'options' => ['style' => 'margin-bottom: 5px'],
+                'encodeLabels' => false, // like this we will be able to display HTML on our buttons
+                'buttons' => [
+                    ['label' => '<i class="glyphicon glyphicon-refresh"></i>', 'options' => ['class' => 'btn-success','onclick'=>'window.location="'.Url::to(['map/index']).'"']],
+                    //ReloadButton::widget(['options' => ['class' => 'btn-success']]),
+                    '-',
+                    ExportableButton::widget(
+                        [
+                            'label' => '<i class="glyphicon glyphicon-export"></i>',
+                            'options' => ['class' => 'btn-default'],
+                            //'url' => Url::to(['export/export']), 
+                            'dropdown' => [
+                                'options' => ['class' => 'dropdown-menu-right']
+                            ],
+                            'types' =>[
+                                TypeHelper::JSON => 'Export JSON <span class="label label-default">.json</span>',
+                                //TypeHelper::CSV => 'Export CSV <span class="label label-default">.csv</span>',               
+                            
+                            ]
+                        ]
+                    )
+                ]
+            ]
 
-            'id',
-            'title',
-            'description:ntext',
-            'timeCreated',
-            'timeUpdated',
-            //'right2Add',
-
-            ['class' => 'yii\grid\ActionColumn'],
         ],
+        'layout' => "{toolbar}\n{summary}\n{items}\n{pager}",
     ]); ?>
 
+<?php
+if(\Yii::$app->user->can("SysAdmin"))
+echo Tabs::widget([
 
+    'items' => [
+
+        [
+            'label' => 'All Maps',
+            'content'=>$content,
+            'active' => true
+
+        ],
+        [
+
+            'label' => 'My Maps',
+            'url' => Url::to(['map/mymaps']),
+
+        ],
+        [
+
+            'label' => 'Assigned Maps',
+            'url' => Url::to(['map/assignedmaps']),
+
+        ],
+        [
+
+            'label' => 'Disabled Maps',
+            'url' => Url::to(['map/disabledmaps']),
+
+        ]
+
+    ],
+
+]);
+else
+echo Tabs::widget([
+
+    'items' => [
+
+        [
+            'label' => 'All Maps',
+            'content'=>$content,
+            'active' => true
+
+        ],
+        [
+
+            'label' => 'My Maps',
+            'url' => Url::to(['map/mymaps']),
+
+        ],
+        [
+
+            'label' => 'Assigned Maps',
+            'url' => Url::to(['map/assignedmaps']),
+
+        ],
+
+    ],
+
+]);
+
+?>
 </div>

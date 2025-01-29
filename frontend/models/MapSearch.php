@@ -17,8 +17,8 @@ class MapSearch extends Map
     public function rules()
     {
         return [
-            [['id', 'right2Add'], 'integer'],
-            [['title', 'description', 'timeCreated', 'timeUpdated'], 'safe'],
+            [['publicPermission'], 'integer'],
+            [['title', 'description', 'timeCreated', 'timeUpdated','publicPermission'], 'safe'],
         ];
     }
 
@@ -35,10 +35,10 @@ class MapSearch extends Map
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $status default 1 enabled
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $status=1)
     {
         $query = Map::find();
 
@@ -61,11 +61,14 @@ class MapSearch extends Map
             'id' => $this->id,
             'timeCreated' => $this->timeCreated,
             'timeUpdated' => $this->timeUpdated,
-            'right2Add' => $this->right2Add,
+            'publicPermission' => $this->publicPermission,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description]);
+
+        $query->andWhere('status='.$status); //only return enabled records or specify by status
+
 
         return $dataProvider;
     }

@@ -29,11 +29,23 @@ class MapAssign extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['mapId', 'userId', 'updatedTime', 'type', 'qrCode'], 'required'],
+            [['mapId', 'userId', 'type'], 'required'],
             [['mapId', 'userId', 'type'], 'integer'],
             [['assignedTime', 'updatedTime'], 'safe'],
             [['qrCode'], 'string', 'max' => 255],
@@ -67,6 +79,8 @@ class MapAssign extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Map::className(), ['id' => 'mapId']);
     }
+
+
 
     /**
      * Gets query for [[User]].

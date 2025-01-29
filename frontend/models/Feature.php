@@ -13,17 +13,31 @@ use Yii;
  * @property string $geojson
  * @property int $visible
  * @property int $histId
+ * @property int $status
  *
  * @property HistoricalFact $hist
  */
 class Feature extends \yii\db\ActiveRecord
 {
+    
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'feature';
+    }
+    
+    /**
+     * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
     }
 
     /**
@@ -32,11 +46,10 @@ class Feature extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'geojson', 'visible', 'histId'], 'required'],
-            [['id', 'visible', 'histId'], 'integer'],
+            [['title', 'visible', 'histId'], 'required'],
+            [['visible', 'histId','status'], 'integer'],
             [['description', 'geojson'], 'string'],
             [['title'], 'string', 'max' => 255],
-            [['id'], 'unique'],
             [['histId'], 'exist', 'skipOnError' => true, 'targetClass' => HistoricalFact::className(), 'targetAttribute' => ['histId' => 'id']],
         ];
     }

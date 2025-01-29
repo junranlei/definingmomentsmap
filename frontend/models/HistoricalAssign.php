@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\models;
+use Da\User\Model\User;
 
 use Yii;
 
@@ -29,11 +30,23 @@ class HistoricalAssign extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['histId', 'userId', 'updatedTime', 'type', 'notes'], 'required'],
+            [['histId', 'userId', 'type'], 'required'],
             [['histId', 'userId', 'type'], 'integer'],
             [['assignedTime', 'updatedTime'], 'safe'],
             [['notes'], 'string'],

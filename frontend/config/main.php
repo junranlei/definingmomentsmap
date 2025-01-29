@@ -8,18 +8,68 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    //'homeUrl'=>array('site/map'),
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    //'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    //usuario
+    'bootstrap' => ['user'],
+    'modules' => [
+        //usuario
+        'user' => [
+            'class' => Da\User\Module::className(),
+            'classMap' => [
+                'User' => frontend\models\User::class,
+                'Profile' => frontend\models\Profile::class,
+            ],
+            'administratorPermissionName' => 'SysAdmin',
+            //'administrators' => ['admin'],
+            'enableGdprCompliance'=>true,
+            'gdprPrivacyPolicyUrl'=>'',
+            'allowAccountDelete'=>false,
+            'gdprAnonymizePrefix'=>'DeletedUser',
+            'gdprExportProperties'=>[
+                'email',
+                'username',
+                'profile.public_email',
+                'profile.name',
+                'profile.gravatar_email',
+                'profile.location',
+                'profile.website',
+                'profile.bio'
+            ],
+            'enableRegistration'=>true,
+            'allowPasswordRecovery'=>true,
+            'generatePasswords' => true,
+            'enableEmailConfirmation'=>true,
+            'controllerMap' => [
+                'profile' => [
+                    'class' => 'frontend\controllers\ProfileController',
+                ],
+                'security' => [
+                    'class' => 'Da\User\Controller\SecurityController',
+                    'on beforeAuthenticate' => ['frontend\controllers\SocialNetworkHandler', 'beforeAuthenticate']
+                ],
+
+            ]
+        ],   
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        'user' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@Da/User/resources/views/profile' => '@app/views/profile',
+                ],
+            ],
+        ],
+        /*'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-        ],
+        ],*/
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',

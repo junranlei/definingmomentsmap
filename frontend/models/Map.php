@@ -12,8 +12,8 @@ use Yii;
  * @property string $description
  * @property string $timeCreated
  * @property string $timeUpdated
- * @property int $right2Add
- *
+ * @property int $publicPermission
+ * @property int $status
  * @property HistoricalMapLink[] $historicalMapLinks
  * @property HistoricalFact[] $hists
  * @property MapAssign[] $mapAssigns
@@ -31,16 +31,27 @@ class Map extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
+     *  
+     */
+    public function behaviors()
+    {
+        return [
+            //add audit log
+            'bedezign\yii2\audit\AuditTrailBehavior'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'title', 'description', 'timeUpdated', 'right2Add'], 'required'],
-            [['id', 'right2Add'], 'integer'],
+            [['title', 'description'], 'required'],
+            [['publicPermission', 'status'], 'integer'],
             [['description'], 'string'],
-            [['timeCreated', 'timeUpdated'], 'safe'],
+            [['timeCreated', 'timeUpdated','assignedUsers'], 'safe'],
             [['title'], 'string', 'max' => 255],
-            [['id'], 'unique'],
         ];
     }
 
@@ -55,7 +66,7 @@ class Map extends \yii\db\ActiveRecord
             'description' => 'Description',
             'timeCreated' => 'Time Created',
             'timeUpdated' => 'Time Updated',
-            'right2Add' => 'Right2 Add',
+            'publicPermission'=>'Everyone Can Edit'
         ];
     }
 
@@ -68,15 +79,24 @@ class Map extends \yii\db\ActiveRecord
     {
         return $this->hasMany(HistoricalMapLink::className(), ['mapId' => 'id']);
     }
+    /**
+     * Gets query for [[Layers]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLayers($status=1)
+    {
+        return $this->hasMany(Layer::className(), ['mapId' => 'id'])->andOnCondition(['layer.status' => $status]);
+    }
 
     /**
      * Gets query for [[Hists]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getHists()
+    public function getHists($status=1)
     {
-        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMapLink', ['mapId' => 'id']);
+        return $this->hasMany(HistoricalFact::className(), ['id' => 'histId'])->viaTable('historicalMapLink', ['mapId' => 'id'])->andOnCondition(['historicalFact.status' => $status]);
     }
 
     /**
@@ -97,5 +117,55 @@ class Map extends \yii\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Users]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers1()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id'], 
+            function($query) {
+            $query->onCondition(['type' =>1]);
+        });
+    }
+
+    /**
+     * Gets query for [[Users]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers2()
+    {
+        return $this->hasMany(User::className(), ['id' => 'userId'])->viaTable('mapAssign', ['mapId' => 'id'], 
+            function($query) {
+            $query->onCondition(['type' =>2]);
+        });
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssignedUsers()
+    {
+        $users =  $this->users2;
+        $ds = "";
+        foreach($users as $user){
+            if($user!=null&&$user->username!=null){
+                if($ds!="")$ds=$ds.",";
+                $ds = $ds.$user->username;
+            }
+        }
+        return $ds;
+    }
+    
+    /**
+     * @return string
+     */
+    public function setAssignedUsers($ds)
+    {
+        $this->assignedUsers = $ds;
     }
 }

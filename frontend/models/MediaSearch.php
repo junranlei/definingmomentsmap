@@ -11,14 +11,15 @@ use frontend\models\Media;
  */
 class MediaSearch extends Media
 {
+    public $histId;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'type', 'histId', 'right2Link', 'ownerId'], 'integer'],
-            [['title', 'description', 'nameOrUrl'], 'safe'],
+            [['type', 'right2Link', 'ownerId','publicPermission'], 'integer'],
+            [['title', 'description', 'nameOrUrl','publicPermission'], 'safe'],
         ];
     }
 
@@ -35,10 +36,10 @@ class MediaSearch extends Media
      * Creates data provider instance with search query applied
      *
      * @param array $params
-     *
+     * @param int $status default 1 enabled
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $status=1)
     {
         $query = Media::find();
 
@@ -63,11 +64,14 @@ class MediaSearch extends Media
             'histId' => $this->histId,
             'right2Link' => $this->right2Link,
             'ownerId' => $this->ownerId,
+            'publicPermission' => $this->publicPermission,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'nameOrUrl', $this->nameOrUrl]);
+        
+        $query->andWhere('status='.$status); //only return enabled records or specify by status
 
         return $dataProvider;
     }
