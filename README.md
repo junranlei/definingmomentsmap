@@ -16,14 +16,36 @@ The component diagram below illustrates the connections between the map, places,
 
 Please find further details in the "Defining Map System for Collaborative Map Creation and Data Reuse" paper.
 
+# Requirements
+Yii 2.0
+PHP 5.6+
+MYSQL 5.5+
+
+# Installation
 The system was built with the Yii framework (http://www.yiiframework.com/) and Yii Advanced Project Template (https://www.yiiframework.com/extension/yiisoft/yii2-app-advanced). 
 
-The installation involves running 'composer install' (https://www.yiiframework.com/doc/guide/2.0/en/structure-extensions).
+## Composer
+The installation involves running 'composer install' 
+Please refer to Yii 2.0 (https://www.yiiframework.com/doc/guide/2.0/en/start-installation) and extensions (https://www.yiiframework.com/doc/guide/2.0/en/structure-extensions) installation steps. 
+
+## Vagrant and Docker
+Please refer to https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md
 
 For customisation or configuration, please refer to the Yii guide (https://www.yiiframework.com/doc/guide/2.0/) and Yii Advanced Template guide (https://github.com/yiisoft/yii2-app-advanced).
 
+# Update
+
+## Minor Update single extension
+composer require extension-name-version
+## Major update for all extensions and core
+composer update 
+## Check and audit extension version and security
+composer show
+composer audit
+
 <br/><br/>
 
+Zenodo DOI: (https://zenodo.org/uploads/14759341)
 
 <a href="https://fairsoftwarechecklist.net/v0.2?f=21&a=31112&i=31222&r=123">
   <img src="https://fairsoftwarechecklist.net/badge.svg" alt="FAIR checklist badge">
