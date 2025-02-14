@@ -54,10 +54,11 @@ composer update
 composer show
 composer audit
 ```
-<br/><br/>
+<br/>
 
 DOI: (http://doi.org/10.5281/zenodo.14759341)
 
+<br/>
 <a href="https://fairsoftwarechecklist.net/v0.2?f=21&a=31112&i=31222&r=123">
   <img src="https://fairsoftwarechecklist.net/badge.svg" alt="FAIR checklist badge">
 </a>
