@@ -6,7 +6,7 @@
     <br>
 </p>
 
-The defining mapping system is an application designed for collaborative map creation for research or community projects with mapping requirements. The system offers features that are limited or restricted in other mapping applications, such as collaborative mapping and the ability to reuse data. It is designed to facilitate seamless collaborations between different users who could include researchers, students, curators, and community members to develop datasets and project material via a shared interface.
+The defining map system is an application designed for collaborative map creation for research or community projects with mapping requirements. The system offers features that are limited or restricted in other mapping applications, such as collaborative mapping and the ability to reuse data. It is designed to facilitate seamless collaborations between different users who could include researchers, students, curators, and community members to develop datasets and project material via a shared interface.
 
 The architecture of the defining map system is illustrated in the diagram below. At the foundation, data are stored in a relational database such as MySQL or PostgreSQL; media such as images and videos are stored in file storage. The system’s base map uses the OpenStreetMap service (https://www.openstreetmap.org/). Layers can be added to the map from an external layer service such as MapWarper (https://mapwarper.net/). External media and links can also be added to the place for a map. The top level of the system is comprised of the Yii framework (https://www.yiiframework.com/) and other essential libraries, such as Leaflet (https://leafletjs.com/). Users can use their social media accounts to create accounts and log in to access the system. System user accounts can also be created without social media accounts. External APIs can be added and utilised for content creation. Both map and place lists can be selected and exported as JSON files. The point, line, and polygon features of places will be included in the JSON file in the open standard GeoJSON format (https://en.wikipedia.org/wiki/GeoJSON)) for interoperability with other platforms. <br/>
 <img src="./diagram_architecture.png" height="500px">
@@ -56,7 +56,7 @@ composer audit
 ```
 <br/><br/>
 
-Zenodo DOI: (https://zenodo.org/uploads/14759341)
+DOI: (http://doi.org/10.5281/zenodo.14759341)
 
 <a href="https://fairsoftwarechecklist.net/v0.2?f=21&a=31112&i=31222&r=123">
   <img src="https://fairsoftwarechecklist.net/badge.svg" alt="FAIR checklist badge">
