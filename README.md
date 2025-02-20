@@ -56,9 +56,6 @@ composer audit
 ```
 <br/>
 
-
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14759341.svg)](https://doi.org/10.5281/zenodo.14759341)
-
 <br/>
 [![FAIR checklist badge](https://fairsoftwarechecklist.net/badge.svg)](https://fairsoftwarechecklist.net/v0.2?f=31&a=32113&i=31222&r=123)
