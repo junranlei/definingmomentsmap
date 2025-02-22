@@ -30,6 +30,13 @@ composer install
 ```
 Please refer to Yii 2.0 (https://www.yiiframework.com/doc/guide/2.0/en/start-installation) and extensions (https://www.yiiframework.com/doc/guide/2.0/en/structure-extensions) for their installation steps. 
 
+
+## Apply Migration
+```
+yii migrate
+```
+Please refer to Yii 2.0 Migration (https://www.yiiframework.com/doc/guide/2.0/en/db-migrations#applying-migrations), or use SQL file. 
+
 ## Vagrant and Docker
 Please refer to https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md
 

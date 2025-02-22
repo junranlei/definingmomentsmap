@@ -591,7 +591,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `auth_key`, `unconfirmed_email`, `registration_ip`, `flags`, `confirmed_at`, `blocked_at`, `updated_at`, `created_at`, `last_login_at`, `last_login_ip`, `auth_tf_key`, `auth_tf_enabled`, `password_changed_at`, `gdpr_consent`, `gdpr_consent_date`, `gdpr_deleted`) VALUES
-(1, 'admin', 'junran.lei@anu.edu.au', '$2y$10$HPcLZhd7R8vq62XrcI7EmO4IsMDP9MFLjr0bdOEVmnysgCAcIul3G', '25uhPISwi73Se15v25g0LqpZvQIX836e', NULL, '::1', 0, 1589855462, NULL, 1589864848, 1589855437, 1633476485, '127.0.0.1', '', 0, 1589864848, 0, NULL, 0);
+(1, 'admin', 'admin@test.com', '$2y$10$HPcLZhd7R8vq62XrcI7EmO4IsMDP9MFLjr0bdOEVmnysgCAcIul3G', '25uhPISwi73Se15v25g0LqpZvQIX836e', NULL, '::1', 0, 1589855462, NULL, 1589864848, 1589855437, 1633476485, '127.0.0.1', '', 0, 1589864848, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
