@@ -14,7 +14,7 @@ The architecture of the defining map system is illustrated in the diagram below.
 The component diagram below illustrates the connections between the map, places, media, layers, and users. The map comprises both places and layers. Features like points, lines, areas, or polygons on the map, as well as media types such as images and videos, can be associated with a place. A single map can contain multiple places or layers, and a place can accommodate various features or media items. Users have the flexibility to create maps or places, assign them to collaborators, or designate them as editable and linkable for all. <br/>
 <img src="./diagram_component.png" height="500px">
 
-Please find further details in the "Defining Map System for Collaborative Map Creation and Data Reuse" paper.
+Please find further details in the "Defining Map System for Collaborative Map Creation and Data Reuse" paper, [Demo](https://cdhr-enki.anu.edu.au/defining/frontend/web/), and[Docs](docs/index.html).
 
 # Requirements
 Yii 2.0 <br/>
