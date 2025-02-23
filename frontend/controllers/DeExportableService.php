@@ -20,6 +20,9 @@ use Yii;
 use yii\data\BaseDataProvider;
 use yii\grid\GridView;
 
+/**
+ * Custmoised ExportableServiceInterface for export
+ */
 class DeExportableService implements ExportableServiceInterface
 {
     /**

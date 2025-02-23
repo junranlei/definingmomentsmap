@@ -27,6 +27,7 @@ use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
 use Da\User\Model\User;
 
+
 /**
  * @property int $user_id
  * @property string $name
@@ -39,6 +40,11 @@ use Da\User\Model\User;
  * @property string $timezone
  * @property User $user
  */
+
+/**
+ * This is the model class for table "Profile". (User rofile)
+ */
+
 class Profile extends BaseUser
 {
     use ModuleAwareTrait;

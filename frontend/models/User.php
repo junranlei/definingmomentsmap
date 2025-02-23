@@ -6,6 +6,9 @@ use Da\User\Model\User as BaseUser;
 * @property int $publicPermission
 * @property int $status
 */
+/**
+ * User model
+ */
 class User extends BaseUser
 {
     public $mapCount;

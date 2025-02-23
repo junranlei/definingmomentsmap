@@ -7,7 +7,9 @@ use Yii;
 use dosamigos\exportable\services\DownloadService;
 use yii\web\Controller;
 
-
+/**
+ * ExportController use the dosamigos modules for export functions.
+ */
 class ExportController extends Controller {
 
     // ...

@@ -7,6 +7,9 @@ use Yii;
 use common\models\User;
 use yii\base\Model;
 
+/**
+ * ResendVerificationEmailForm form
+ */
 class ResendVerificationEmailForm extends Model
 {
     /**

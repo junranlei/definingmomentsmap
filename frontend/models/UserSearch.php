@@ -7,6 +7,10 @@ use frontend\modelsUser;
 * @property int $publicPermission
 * @property string $public_email
 */
+
+/**
+ * UserSearch represents the model behind the search form of `frontend\models\User`.
+ */
 class UserSearch extends User
 {
     

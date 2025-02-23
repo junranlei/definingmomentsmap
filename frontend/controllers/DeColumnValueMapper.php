@@ -19,6 +19,9 @@ use yii\helpers\ArrayHelper;
 use dosamigos\exportable\helpers\TypeHelper;
 use dosamigos\exportable\mappers\ColumnValueMapper;
 
+/**
+ * Custmoised ColumnValueMapper for places and features export
+ */
 class DeColumnValueMapper extends ColumnValueMapper
 {
     /**

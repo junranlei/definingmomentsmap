@@ -32,6 +32,9 @@ use frontend\models\MapAssign;
 use frontend\models\UserSearch;
 
 
+/**
+ * ProfileController implements the CRUD actions for Profile model.
+ */
 class ProfileController extends BaseController
 {
     use ContainerAwareTrait;

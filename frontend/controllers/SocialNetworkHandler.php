@@ -9,6 +9,9 @@ use Da\User\Service\UserCreateService;
 use Yii;
 use yii\base\BaseObject;
 
+/**
+ * SocialNetworkHandler handles the social network authentication events.
+ */
 class SocialNetworkHandler extends BaseObject
 {
     /**
