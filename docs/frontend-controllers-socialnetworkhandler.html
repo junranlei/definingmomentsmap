@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>SocialNetworkHandler, frontend\controllers\SocialNetworkHandler - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w2" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w2-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w2-collapse" class="collapse navbar-collapse"><ul id="w3" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-0" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-0" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item active" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item" href="#navigation-1" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-1" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\controllers\SocialNetworkHandler</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-controllers-socialnetworkhandler.html">frontend\controllers\SocialNetworkHandler</a> &raquo;
+yii\base\BaseObject</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>SocialNetworkHandler handles the social network authentication events.</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="beforeAuthenticate()" class="">
+                    <td><a href="frontend-controllers-socialnetworkhandler.html#beforeAuthenticate()-detail">beforeAuthenticate()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-socialnetworkhandler.html">frontend\controllers\SocialNetworkHandler</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="beforeAuthenticate()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-socialnetworkhandler.html#beforeAuthenticate()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                beforeAuthenticate()
+
+                <span class="detail-header-tag small">
+                    public                                        static                    method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-socialnetworkhandler.html#beforeAuthenticate()-detail">beforeAuthenticate</a></strong> ( <span style="color: #0000BB">$event</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$event</span></td>
+                            <td class="param-type-col">\Da\User\Event\SocialNetworkAuthEvent</td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseBeforeAuthenticate" role="button"
+           aria-expanded="false" aria-controls="collapseBeforeAuthenticate">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseBeforeAuthenticate">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">beforeAuthenticate</span><span class="hljs-params">($event)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $event-&gt;account-&gt;save(<span class="hljs-keyword">false</span>);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:58 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

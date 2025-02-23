@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>SiteController, frontend\controllers\SiteController - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w58" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w58-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w58-collapse" class="collapse navbar-collapse"><ul id="w59" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-56" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-56" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item active" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item" href="#navigation-57" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-57" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\controllers\SiteController</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a> &raquo;
+yii\web\Controller</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>Site controller</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="actionAbout()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionAbout()-detail">actionAbout()</a></td>
+                    <td>Displays about page.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionContact()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionContact()-detail">actionContact()</a></td>
+                    <td>Displays contact page.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionError()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionError()-detail">actionError()</a></td>
+                    <td>Displays error.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionIndex()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionIndex()-detail">actionIndex()</a></td>
+                    <td>Displays homepage.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionLogin()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionLogin()-detail">actionLogin()</a></td>
+                    <td>Logs in a user.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionLogout()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionLogout()-detail">actionLogout()</a></td>
+                    <td>Logs out the current user.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionMap()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionMap()-detail">actionMap()</a></td>
+                    <td>Displays mappage.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionRequestPasswordReset()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionRequestPasswordReset()-detail">actionRequestPasswordReset()</a></td>
+                    <td>Requests password reset.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionResendVerificationEmail()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionResendVerificationEmail()-detail">actionResendVerificationEmail()</a></td>
+                    <td>Resend verification email</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionResetPassword()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionResetPassword()-detail">actionResetPassword()</a></td>
+                    <td>Resets password.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionSignup()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionSignup()-detail">actionSignup()</a></td>
+                    <td>Signs user up.</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actionVerifyEmail()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actionVerifyEmail()-detail">actionVerifyEmail()</a></td>
+                    <td>Verify email address</td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="actions()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#actions()-detail">actions()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                                                <tr id="behaviors()" class="">
+                    <td><a href="frontend-controllers-sitecontroller.html#behaviors()-detail">behaviors()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-sitecontroller.html">frontend\controllers\SiteController</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="actionAbout()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionAbout()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionAbout()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Displays about page.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionAbout()-detail">actionAbout</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionAbout" role="button"
+           aria-expanded="false" aria-controls="collapseActionAbout">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionAbout">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionAbout</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'about'</span>);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionContact()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionContact()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionContact()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Displays contact page.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionContact()-detail">actionContact</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionContact" role="button"
+           aria-expanded="false" aria-controls="collapseActionContact">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionContact">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionContact</span><span class="hljs-params">()</span>
+</span>{
+    $model = <span class="hljs-keyword">new</span> ContactForm();
+    <span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post()) &amp;&amp; $model-&gt;validate()) {
+        <span class="hljs-keyword">if</span> ($model-&gt;sendEmail(Yii::$app-&gt;params[<span class="hljs-string">'adminEmail'</span>])) {
+            Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'Thank you for contacting us. We will respond to you as soon as possible.'</span>);
+        } <span class="hljs-keyword">else</span> {
+            Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'error'</span>, <span class="hljs-string">'There was an error sending your message.'</span>);
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;refresh();
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'contact'</span>, [
+            <span class="hljs-string">'model'</span> =&gt; $model,
+        ]);
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionError()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionError()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionError()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Displays error.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionError()-detail">actionError</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionError" role="button"
+           aria-expanded="false" aria-controls="collapseActionError">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionError">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionError</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'error'</span>);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionIndex()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionIndex()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionIndex()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Displays homepage.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionIndex()-detail">actionIndex</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionIndex" role="button"
+           aria-expanded="false" aria-controls="collapseActionIndex">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionIndex">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionIndex</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">//return $this-&gt;render('index');</span>
+    $searchModel = <span class="hljs-keyword">new</span> HistoricalmapSearch();
+    $dataProvider = $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    $listDataProvider = $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    $listDataProvider-&gt;pagination-&gt;pageSize=<span class="hljs-number">10</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'map'</span>, [
+        <span class="hljs-string">'searchModel'</span> =&gt; $searchModel,
+        <span class="hljs-string">'dataProvider'</span> =&gt; $dataProvider,
+        <span class="hljs-string">'listDataProvider'</span>=&gt;$listDataProvider
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionLogin()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionLogin()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionLogin()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Logs in a user.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionLogin()-detail">actionLogin</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionLogin" role="button"
+           aria-expanded="false" aria-controls="collapseActionLogin">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionLogin">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionLogin</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (!Yii::$app-&gt;user-&gt;isGuest) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+    }
+    $model = <span class="hljs-keyword">new</span> LoginForm();
+    <span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post()) &amp;&amp; $model-&gt;login()) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goBack();
+    } <span class="hljs-keyword">else</span> {
+        $model-&gt;password = <span class="hljs-string">''</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'login'</span>, [
+            <span class="hljs-string">'model'</span> =&gt; $model,
+        ]);
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionLogout()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionLogout()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionLogout()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Logs out the current user.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionLogout()-detail">actionLogout</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionLogout" role="button"
+           aria-expanded="false" aria-controls="collapseActionLogout">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionLogout">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionLogout</span><span class="hljs-params">()</span>
+</span>{
+    Yii::$app-&gt;user-&gt;logout();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionMap()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionMap()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionMap()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Displays mappage.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionMap()-detail">actionMap</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionMap" role="button"
+           aria-expanded="false" aria-controls="collapseActionMap">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionMap">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionMap</span><span class="hljs-params">()</span>
+</span>{
+    $searchModel = <span class="hljs-keyword">new</span> HistoricalmapSearch();
+    $dataProvider = $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    $listDataProvider = $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    $listDataProvider-&gt;pagination-&gt;pageSize=<span class="hljs-number">10</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'map'</span>, [
+        <span class="hljs-string">'searchModel'</span> =&gt; $searchModel,
+        <span class="hljs-string">'dataProvider'</span> =&gt; $dataProvider,
+        <span class="hljs-string">'listDataProvider'</span>=&gt;$listDataProvider
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionRequestPasswordReset()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionRequestPasswordReset()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionRequestPasswordReset()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Requests password reset.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionRequestPasswordReset()-detail">actionRequestPasswordReset</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionRequestPasswordReset" role="button"
+           aria-expanded="false" aria-controls="collapseActionRequestPasswordReset">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionRequestPasswordReset">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionRequestPasswordReset</span><span class="hljs-params">()</span>
+</span>{
+    $model = <span class="hljs-keyword">new</span> PasswordResetRequestForm();
+    <span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post()) &amp;&amp; $model-&gt;validate()) {
+        <span class="hljs-keyword">if</span> ($model-&gt;sendEmail()) {
+            Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'Check your email for further instructions.'</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+        } <span class="hljs-keyword">else</span> {
+            Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'error'</span>, <span class="hljs-string">'Sorry, we are unable to reset password for the provided email address.'</span>);
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'requestPasswordResetToken'</span>, [
+        <span class="hljs-string">'model'</span> =&gt; $model,
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionResendVerificationEmail()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionResendVerificationEmail()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionResendVerificationEmail()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Resend verification email</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionResendVerificationEmail()-detail">actionResendVerificationEmail</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionResendVerificationEmail" role="button"
+           aria-expanded="false" aria-controls="collapseActionResendVerificationEmail">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionResendVerificationEmail">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionResendVerificationEmail</span><span class="hljs-params">()</span>
+</span>{
+    $model = <span class="hljs-keyword">new</span> ResendVerificationEmailForm();
+    <span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post()) &amp;&amp; $model-&gt;validate()) {
+        <span class="hljs-keyword">if</span> ($model-&gt;sendEmail()) {
+            Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'Check your email for further instructions.'</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+        }
+        Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'error'</span>, <span class="hljs-string">'Sorry, we are unable to resend verification email for the provided email address.'</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'resendVerificationEmail'</span>, [
+        <span class="hljs-string">'model'</span> =&gt; $model
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionResetPassword()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionResetPassword()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionResetPassword()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Resets password.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionResetPassword()-detail">actionResetPassword</a></strong> ( <span style="color: #0000BB">$token</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$token</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                            <tr>
+                            <th class="param-name-col">throws</th>
+                            <td class="param-type-col">\yii\web\BadRequestHttpException</td>
+                            <td class="param-desc-col">
+                                                            </td>
+                        </tr>
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionResetPassword" role="button"
+           aria-expanded="false" aria-controls="collapseActionResetPassword">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionResetPassword">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionResetPassword</span><span class="hljs-params">($token)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $model = <span class="hljs-keyword">new</span> ResetPasswordForm($token);
+    } <span class="hljs-keyword">catch</span> (InvalidArgumentException $e) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadRequestHttpException($e-&gt;getMessage());
+    }
+    <span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post()) &amp;&amp; $model-&gt;validate() &amp;&amp; $model-&gt;resetPassword()) {
+        Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'New password saved.'</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'resetPassword'</span>, [
+        <span class="hljs-string">'model'</span> =&gt; $model,
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionSignup()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionSignup()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionSignup()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Signs user up.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-sitecontroller.html#actionSignup()-detail">actionSignup</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionSignup" role="button"
+           aria-expanded="false" aria-controls="collapseActionSignup">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionSignup">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionSignup</span><span class="hljs-params">()</span>
+</span>{
+    $model = <span class="hljs-keyword">new</span> SignupForm();
+    <span class="hljs-keyword">if</span> ($model-&gt;load(Yii::$app-&gt;request-&gt;post()) &amp;&amp; $model-&gt;signup()) {
+        Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'Thank you for registration. Please check your inbox for verification email.'</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'signup'</span>, [
+        <span class="hljs-string">'model'</span> =&gt; $model,
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionVerifyEmail()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actionVerifyEmail()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionVerifyEmail()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Verify email address</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\frontend\controllers\yii\web\Response</span> <strong><a href="frontend-controllers-sitecontroller.html#actionVerifyEmail()-detail">actionVerifyEmail</a></strong> ( <span style="color: #0000BB">$token</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$token</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                            <tr>
+                            <th class="param-name-col">throws</th>
+                            <td class="param-type-col">\yii\web\BadRequestHttpException</td>
+                            <td class="param-desc-col">
+                                                            </td>
+                        </tr>
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionVerifyEmail" role="button"
+           aria-expanded="false" aria-controls="collapseActionVerifyEmail">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionVerifyEmail">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionVerifyEmail</span><span class="hljs-params">($token)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $model = <span class="hljs-keyword">new</span> VerifyEmailForm($token);
+    } <span class="hljs-keyword">catch</span> (InvalidArgumentException $e) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadRequestHttpException($e-&gt;getMessage());
+    }
+    <span class="hljs-keyword">if</span> ($user = $model-&gt;verifyEmail()) {
+        <span class="hljs-keyword">if</span> (Yii::$app-&gt;user-&gt;login($user)) {
+            Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'success'</span>, <span class="hljs-string">'Your email has been confirmed!'</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+        }
+    }
+    Yii::$app-&gt;session-&gt;setFlash(<span class="hljs-string">'error'</span>, <span class="hljs-string">'Sorry, we are unable to verify your account with provided token.'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;goHome();
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actions()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#actions()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actions()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-sitecontroller.html#actions()-detail">actions</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActions" role="button"
+           aria-expanded="false" aria-controls="collapseActions">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActions">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actions</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'error'</span> =&gt; [
+            <span class="hljs-string">'class'</span> =&gt; <span class="hljs-string">'yii\web\ErrorAction'</span>,
+        ],
+        <span class="hljs-string">'captcha'</span> =&gt; [
+            <span class="hljs-string">'class'</span> =&gt; <span class="hljs-string">'yii\captcha\CaptchaAction'</span>,
+            <span class="hljs-string">'fixedVerifyCode'</span> =&gt; YII_ENV_TEST ? <span class="hljs-string">'testme'</span> : <span class="hljs-keyword">null</span>,
+        ],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="behaviors()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-sitecontroller.html#behaviors()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                behaviors()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-sitecontroller.html#behaviors()-detail">behaviors</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseBehaviors" role="button"
+           aria-expanded="false" aria-controls="collapseBehaviors">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseBehaviors">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">behaviors</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'access'</span> =&gt; [
+            <span class="hljs-string">'class'</span> =&gt; AccessControl::className(),
+            <span class="hljs-string">'only'</span> =&gt; [<span class="hljs-string">'logout'</span>, <span class="hljs-string">'signup'</span>],
+            <span class="hljs-string">'rules'</span> =&gt; [
+                [
+                    <span class="hljs-string">'actions'</span> =&gt; [<span class="hljs-string">'signup'</span>],
+                    <span class="hljs-string">'allow'</span> =&gt; <span class="hljs-keyword">true</span>,
+                    <span class="hljs-string">'roles'</span> =&gt; [<span class="hljs-string">'?'</span>],
+                ],
+                [
+                    <span class="hljs-string">'actions'</span> =&gt; [<span class="hljs-string">'logout'</span>],
+                    <span class="hljs-string">'allow'</span> =&gt; <span class="hljs-keyword">true</span>,
+                    <span class="hljs-string">'roles'</span> =&gt; [<span class="hljs-string">'@'</span>],
+                ],
+            ],
+        ],
+        <span class="hljs-string">'verbs'</span> =&gt; [
+            <span class="hljs-string">'class'</span> =&gt; VerbFilter::className(),
+            <span class="hljs-string">'actions'</span> =&gt; [
+                <span class="hljs-string">'logout'</span> =&gt; [<span class="hljs-string">'post'</span>],
+            ],
+        ],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:58 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>FlagnoteSearch, frontend\models\FlagnoteSearch - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w62" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w62-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w62-collapse" class="collapse navbar-collapse"><ul id="w63" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-60" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-60" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item active" href="#navigation-61" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-61" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item active" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\models\FlagnoteSearch</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-models-flagnotesearch.html">frontend\models\FlagnoteSearch</a> &raquo;
+<a href="frontend-models-flagnote.html">frontend\models\FlagNote</a> &raquo;
+yii\db\ActiveRecord</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>FlagnoteSearch represents the model behind the search form of <code>frontend\models\FlagNote</code>.</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<div class="doc-property summary toggle-target-container">
+    <h2>Public Properties</h2>
+
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-property" />
+            <col class="col-type" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="$flag" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$flag-detail">$flag</a></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$flagId" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$flagId-detail">$flagId</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$id" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$id-detail">$id</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$m" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$m-detail">$m</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$mId" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$mId-detail">$mId</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$note" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$note-detail">$note</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$user" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$user-detail">$user</a></td>
+                    <td><a href="frontend-models-user.html">frontend\models\User</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$userId" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#$userId-detail">$userId</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="$username" class="">
+                    <td><a href="frontend-models-flagnotesearch.html#$username-detail">$username</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnotesearch.html">frontend\models\FlagnoteSearch</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="attributeLabels()" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#attributeLabels()-detail">attributeLabels()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="getFlag()" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#getFlag()-detail">getFlag()</a></td>
+                    <td>Gets query for <a href="frontend-models-flag.html">frontend\models\Flag</a>.</td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="getUser()" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#getUser()-detail">getUser()</a></td>
+                    <td>Gets query for <a href="frontend-models-user.html">frontend\models\User</a>.</td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                                                <tr id="rules()" class="">
+                    <td><a href="frontend-models-flagnotesearch.html#rules()-detail">rules()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnotesearch.html">frontend\models\FlagnoteSearch</a></td>
+                </tr>
+                                                <tr id="scenarios()" class="">
+                    <td><a href="frontend-models-flagnotesearch.html#scenarios()-detail">scenarios()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnotesearch.html">frontend\models\FlagnoteSearch</a></td>
+                </tr>
+                                                <tr id="search()" class="">
+                    <td><a href="frontend-models-flagnotesearch.html#search()-detail">search()</a></td>
+                    <td>Creates data provider instance with search query applied</td>
+                    <td><a href="frontend-models-flagnotesearch.html">frontend\models\FlagnoteSearch</a></td>
+                </tr>
+                                                <tr id="tableName()" class="inherited">
+                    <td><a href="frontend-models-flagnotesearch.html#tableName()-detail">tableName()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Property Details</h2>
+
+<div class="property-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+            <div id="$username-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#$username-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $username
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"></span> <a href="frontend-models-flagnotesearch.html#$username-detail">$username</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+    </div>
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="attributeLabels()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#attributeLabels()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                attributeLabels()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flagnote.html#attributeLabels()-detail">frontend\models\FlagNote::attributeLabels()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flagnote.html#attributeLabels()-detail">attributeLabels</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributeLabels" role="button"
+           aria-expanded="false" aria-controls="collapseAttributeLabels">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseAttributeLabels">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attributeLabels</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'ID'</span>,
+        <span class="hljs-string">'flagId'</span> =&gt; <span class="hljs-string">'Flag ID'</span>,
+        <span class="hljs-string">'userId'</span> =&gt; <span class="hljs-string">'User ID'</span>,
+        <span class="hljs-string">'note'</span> =&gt; <span class="hljs-string">'Note'</span>,
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getFlag()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#getFlag()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getFlag()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flagnote.html#getFlag()-detail">frontend\models\FlagNote::getFlag()</a>                    </p>
+                
+                <p><strong>Gets query for <a href="frontend-models-flag.html">frontend\models\Flag</a>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-flagnote.html#getFlag()-detail">getFlag</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetFlag" role="button"
+           aria-expanded="false" aria-controls="collapseGetFlag">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetFlag">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFlag</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(Flag::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'flagId'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getUser()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#getUser()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getUser()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flagnote.html#getUser()-detail">frontend\models\FlagNote::getUser()</a>                    </p>
+                
+                <p><strong>Gets query for <a href="frontend-models-user.html">frontend\models\User</a>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-flagnote.html#getUser()-detail">getUser</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetUser" role="button"
+           aria-expanded="false" aria-controls="collapseGetUser">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetUser">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUser</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(User::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'userId'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="rules()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#rules()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                rules()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flagnotesearch.html#rules()-detail">rules</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseRules" role="button"
+           aria-expanded="false" aria-controls="collapseRules">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseRules">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rules</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        [[<span class="hljs-string">'id'</span>, <span class="hljs-string">'flagId'</span>, <span class="hljs-string">'userId'</span>], <span class="hljs-string">'integer'</span>],
+        [[<span class="hljs-string">'note'</span>,<span class="hljs-string">'username'</span>], <span class="hljs-string">'safe'</span>],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="scenarios()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#scenarios()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                scenarios()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flagnotesearch.html#scenarios()-detail">scenarios</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseScenarios" role="button"
+           aria-expanded="false" aria-controls="collapseScenarios">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseScenarios">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scenarios</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// bypass scenarios() implementation in the parent class</span>
+    <span class="hljs-keyword">return</span> Model::scenarios();
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="search()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#search()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                search()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Creates data provider instance with search query applied</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\data\ActiveDataProvider</span> <strong><a href="frontend-models-flagnotesearch.html#search()-detail">search</a></strong> ( <span style="color: #0000BB">$params</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$params</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.array">array</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseSearch" role="button"
+           aria-expanded="false" aria-controls="collapseSearch">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseSearch">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span><span class="hljs-params">($params)</span>
+</span>{
+    $query = FlagNote::find()-&gt;joinWith(<span class="hljs-string">'user'</span>);
+    <span class="hljs-comment">// add conditions that should always apply here</span>
+    $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+        <span class="hljs-string">'query'</span> =&gt; $query,
+        <span class="hljs-string">'sort'</span> =&gt; [<span class="hljs-string">'attributes'</span> =&gt; [<span class="hljs-string">'id'</span>, <span class="hljs-string">'username'</span>, <span class="hljs-string">'userId'</span>, <span class="hljs-string">'note'</span>]]
+    ]);
+    <span class="hljs-keyword">$this</span>-&gt;load($params);
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">$this</span>-&gt;validate()) {
+        <span class="hljs-comment">// uncomment the following line if you do not want to return any records when validation fails</span>
+        <span class="hljs-comment">// $query-&gt;where('0=1');</span>
+        <span class="hljs-keyword">return</span> $dataProvider;
+    }
+    <span class="hljs-comment">// grid filtering conditions</span>
+    $query-&gt;andFilterWhere([
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;id,
+        <span class="hljs-string">'flagId'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;flagId,
+        <span class="hljs-string">'userId'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;userId,
+    ]);
+    $query-&gt;andFilterWhere([<span class="hljs-string">'like'</span>, <span class="hljs-string">'user.username'</span>, <span class="hljs-keyword">$this</span>-&gt;username]);
+    $query-&gt;andFilterWhere([<span class="hljs-string">'like'</span>, <span class="hljs-string">'note'</span>, <span class="hljs-keyword">$this</span>-&gt;note]);
+    <span class="hljs-keyword">return</span> $dataProvider;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="tableName()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagnotesearch.html#tableName()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                tableName()
+
+                <span class="detail-header-tag small">
+                    public                                        static                    method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flagnote.html#tableName()-detail">frontend\models\FlagNote::tableName()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flagnote.html#tableName()-detail">tableName</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseTableName" role="button"
+           aria-expanded="false" aria-controls="collapseTableName">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseTableName">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tableName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'flagNote'</span>;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:58 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

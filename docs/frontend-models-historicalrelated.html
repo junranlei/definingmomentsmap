@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>HistoricalRelated, frontend\models\HistoricalRelated - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w170" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w170-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w170-collapse" class="collapse navbar-collapse"><ul id="w171" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-168" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-168" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item active" href="#navigation-169" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-169" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item active" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\models\HistoricalRelated</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a> &raquo;
+yii\db\ActiveRecord</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>This is the model class for table "historicalRelated".</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<div class="doc-property summary toggle-target-container">
+    <h2>Public Properties</h2>
+
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-property" />
+            <col class="col-type" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="$histId1" class="">
+                    <td><a href="frontend-models-historicalrelated.html#$histId1-detail">$histId1</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="$histId10" class="">
+                    <td><a href="frontend-models-historicalrelated.html#$histId10-detail">$histId10</a></td>
+                    <td><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="$histId2" class="">
+                    <td><a href="frontend-models-historicalrelated.html#$histId2-detail">$histId2</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="$histId20" class="">
+                    <td><a href="frontend-models-historicalrelated.html#$histId20-detail">$histId20</a></td>
+                    <td><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="attributeLabels()" class="">
+                    <td><a href="frontend-models-historicalrelated.html#attributeLabels()-detail">attributeLabels()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="getHistId10()" class="">
+                    <td><a href="frontend-models-historicalrelated.html#getHistId10()-detail">getHistId10()</a></td>
+                    <td>Gets query for <span class="broken-link">HistId10</span>.</td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="getHistId20()" class="">
+                    <td><a href="frontend-models-historicalrelated.html#getHistId20()-detail">getHistId20()</a></td>
+                    <td>Gets query for <span class="broken-link">HistId20</span>.</td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="rules()" class="">
+                    <td><a href="frontend-models-historicalrelated.html#rules()-detail">rules()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                                                <tr id="tableName()" class="">
+                    <td><a href="frontend-models-historicalrelated.html#tableName()-detail">tableName()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-historicalrelated.html">frontend\models\HistoricalRelated</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Property Details</h2>
+
+<div class="property-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+            <div id="$histId1-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#$histId1-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $histId1
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.integer">integer</a></span> <a href="frontend-models-historicalrelated.html#$histId1-detail">$histId1</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$histId10-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#$histId10-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $histId10
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a></span> <a href="frontend-models-historicalrelated.html#$histId10-detail">$histId10</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$histId2-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#$histId2-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $histId2
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.integer">integer</a></span> <a href="frontend-models-historicalrelated.html#$histId2-detail">$histId2</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$histId20-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#$histId20-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $histId20
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a></span> <a href="frontend-models-historicalrelated.html#$histId20-detail">$histId20</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+    </div>
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="attributeLabels()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#attributeLabels()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                attributeLabels()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-historicalrelated.html#attributeLabels()-detail">attributeLabels</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributeLabels" role="button"
+           aria-expanded="false" aria-controls="collapseAttributeLabels">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseAttributeLabels">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attributeLabels</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'histId1'</span> =&gt; <span class="hljs-string">'Hist Id1'</span>,
+        <span class="hljs-string">'histId2'</span> =&gt; <span class="hljs-string">'Hist Id2'</span>,
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getHistId10()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#getHistId10()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getHistId10()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">HistId10</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-historicalrelated.html#getHistId10()-detail">getHistId10</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetHistId10" role="button"
+           aria-expanded="false" aria-controls="collapseGetHistId10">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetHistId10">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHistId10</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(HistoricalFact::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'histId1'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getHistId20()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#getHistId20()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getHistId20()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">HistId20</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-historicalrelated.html#getHistId20()-detail">getHistId20</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetHistId20" role="button"
+           aria-expanded="false" aria-controls="collapseGetHistId20">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetHistId20">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHistId20</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(HistoricalFact::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'histId2'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="rules()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#rules()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                rules()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-historicalrelated.html#rules()-detail">rules</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseRules" role="button"
+           aria-expanded="false" aria-controls="collapseRules">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseRules">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rules</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        [[<span class="hljs-string">'histId1'</span>, <span class="hljs-string">'histId2'</span>], <span class="hljs-string">'required'</span>],
+        [[<span class="hljs-string">'histId1'</span>, <span class="hljs-string">'histId2'</span>], <span class="hljs-string">'integer'</span>],
+        [[<span class="hljs-string">'histId1'</span>, <span class="hljs-string">'histId2'</span>], <span class="hljs-string">'unique'</span>, <span class="hljs-string">'targetAttribute'</span> =&gt; [<span class="hljs-string">'histId1'</span>, <span class="hljs-string">'histId2'</span>]],
+        [[<span class="hljs-string">'histId1'</span>], <span class="hljs-string">'exist'</span>, <span class="hljs-string">'skipOnError'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'targetClass'</span> =&gt; HistoricalFact::className(), <span class="hljs-string">'targetAttribute'</span> =&gt; [<span class="hljs-string">'histId1'</span> =&gt; <span class="hljs-string">'id'</span>]],
+        [[<span class="hljs-string">'histId2'</span>], <span class="hljs-string">'exist'</span>, <span class="hljs-string">'skipOnError'</span> =&gt; <span class="hljs-keyword">true</span>, <span class="hljs-string">'targetClass'</span> =&gt; HistoricalFact::className(), <span class="hljs-string">'targetAttribute'</span> =&gt; [<span class="hljs-string">'histId2'</span> =&gt; <span class="hljs-string">'id'</span>]],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="tableName()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-historicalrelated.html#tableName()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                tableName()
+
+                <span class="detail-header-tag small">
+                    public                                        static                    method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="frontend-models-historicalrelated.html#tableName()-detail">tableName</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseTableName" role="button"
+           aria-expanded="false" aria-controls="collapseTableName">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseTableName">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tableName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'historicalRelated'</span>;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:59 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

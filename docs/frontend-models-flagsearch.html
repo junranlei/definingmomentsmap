@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>FlagSearch, frontend\models\FlagSearch - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w174" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w174-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w174-collapse" class="collapse navbar-collapse"><ul id="w175" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-172" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-172" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item active" href="#navigation-173" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-173" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item active" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\models\FlagSearch</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-models-flagsearch.html">frontend\models\FlagSearch</a> &raquo;
+<a href="frontend-models-flag.html">frontend\models\Flag</a> &raquo;
+yii\db\ActiveRecord</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>FlagSearch represents the model behind the search form of <code>frontend\models\Flag</code>.</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<div class="doc-property summary toggle-target-container">
+    <h2>Public Properties</h2>
+
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-property" />
+            <col class="col-type" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="$flagNotes" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$flagNotes-detail">$flagNotes</a></td>
+                    <td><a href="frontend-models-flagnote.html">frontend\models\FlagNote</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$id" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$id-detail">$id</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$model" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$model-detail">$model</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$modelHist" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$modelHist-detail">$modelHist</a></td>
+                    <td><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$modelId" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$modelId-detail">$modelId</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$modelMap" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$modelMap-detail">$modelMap</a></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$modelMedia" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$modelMedia-detail">$modelMedia</a></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$timeCreated" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$timeCreated-detail">$timeCreated</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$timeUpdated" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$timeUpdated-detail">$timeUpdated</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="$times" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#$times-detail">$times</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="attributeLabels()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#attributeLabels()-detail">attributeLabels()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="getFlagNotes()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#getFlagNotes()-detail">getFlagNotes()</a></td>
+                    <td>Gets query for <span class="broken-link">FlagNotes</span>.</td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="getModelHist()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#getModelHist()-detail">getModelHist()</a></td>
+                    <td>Gets query for <a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a>.</td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="getModelMap()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#getModelMap()-detail">getModelMap()</a></td>
+                    <td>Gets query for <a href="frontend-models-map.html">frontend\models\Map</a>.</td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="getModelMedia()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#getModelMedia()-detail">getModelMedia()</a></td>
+                    <td>Gets query for <a href="frontend-models-media.html">frontend\models\Media</a>.</td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="getModelTitle()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#getModelTitle()-detail">getModelTitle()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                                                <tr id="rules()" class="">
+                    <td><a href="frontend-models-flagsearch.html#rules()-detail">rules()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagsearch.html">frontend\models\FlagSearch</a></td>
+                </tr>
+                                                <tr id="scenarios()" class="">
+                    <td><a href="frontend-models-flagsearch.html#scenarios()-detail">scenarios()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flagsearch.html">frontend\models\FlagSearch</a></td>
+                </tr>
+                                                <tr id="search()" class="">
+                    <td><a href="frontend-models-flagsearch.html#search()-detail">search()</a></td>
+                    <td>Creates data provider instance with search query applied</td>
+                    <td><a href="frontend-models-flagsearch.html">frontend\models\FlagSearch</a></td>
+                </tr>
+                                                <tr id="tableName()" class="inherited">
+                    <td><a href="frontend-models-flagsearch.html#tableName()-detail">tableName()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-flag.html">frontend\models\Flag</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="attributeLabels()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#attributeLabels()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                attributeLabels()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#attributeLabels()-detail">frontend\models\Flag::attributeLabels()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flag.html#attributeLabels()-detail">attributeLabels</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributeLabels" role="button"
+           aria-expanded="false" aria-controls="collapseAttributeLabels">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseAttributeLabels">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attributeLabels</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'ID'</span>,
+        <span class="hljs-string">'model'</span> =&gt; <span class="hljs-string">'Model'</span>,
+        <span class="hljs-string">'modelId'</span> =&gt; <span class="hljs-string">'Model ID'</span>,
+        <span class="hljs-string">'times'</span> =&gt; <span class="hljs-string">'Times'</span>,
+        <span class="hljs-string">'timeCreated'</span> =&gt; <span class="hljs-string">'Time Created'</span>,
+        <span class="hljs-string">'timeUpdated'</span> =&gt; <span class="hljs-string">'Time Updated'</span>,
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getFlagNotes()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#getFlagNotes()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getFlagNotes()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#getFlagNotes()-detail">frontend\models\Flag::getFlagNotes()</a>                    </p>
+                
+                <p><strong>Gets query for <span class="broken-link">FlagNotes</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-flag.html#getFlagNotes()-detail">getFlagNotes</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetFlagNotes" role="button"
+           aria-expanded="false" aria-controls="collapseGetFlagNotes">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetFlagNotes">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFlagNotes</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(FlagNote::className(), [<span class="hljs-string">'flagId'</span> =&gt; <span class="hljs-string">'id'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getModelHist()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#getModelHist()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getModelHist()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#getModelHist()-detail">frontend\models\Flag::getModelHist()</a>                    </p>
+                
+                <p><strong>Gets query for <a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-flag.html#getModelHist()-detail">getModelHist</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetModelHist" role="button"
+           aria-expanded="false" aria-controls="collapseGetModelHist">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetModelHist">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getModelHist</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(HistoricalFact::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'modelId'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getModelMap()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#getModelMap()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getModelMap()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#getModelMap()-detail">frontend\models\Flag::getModelMap()</a>                    </p>
+                
+                <p><strong>Gets query for <a href="frontend-models-map.html">frontend\models\Map</a>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-flag.html#getModelMap()-detail">getModelMap</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetModelMap" role="button"
+           aria-expanded="false" aria-controls="collapseGetModelMap">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetModelMap">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getModelMap</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(Map::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'modelId'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getModelMedia()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#getModelMedia()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getModelMedia()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#getModelMedia()-detail">frontend\models\Flag::getModelMedia()</a>                    </p>
+                
+                <p><strong>Gets query for <a href="frontend-models-media.html">frontend\models\Media</a>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-flag.html#getModelMedia()-detail">getModelMedia</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetModelMedia" role="button"
+           aria-expanded="false" aria-controls="collapseGetModelMedia">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetModelMedia">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getModelMedia</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(Media::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'modelId'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getModelTitle()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#getModelTitle()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getModelTitle()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#getModelTitle()-detail">frontend\models\Flag::getModelTitle()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flag.html#getModelTitle()-detail">getModelTitle</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetModelTitle" role="button"
+           aria-expanded="false" aria-controls="collapseGetModelTitle">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetModelTitle">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getModelTitle</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;model==<span class="hljs-string">"map"</span>){
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;modelMap-&gt;title;
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="rules()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#rules()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                rules()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flagsearch.html#rules()-detail">rules</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseRules" role="button"
+           aria-expanded="false" aria-controls="collapseRules">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseRules">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rules</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        [[<span class="hljs-string">'id'</span>, <span class="hljs-string">'modelId'</span>, <span class="hljs-string">'times'</span>], <span class="hljs-string">'integer'</span>],
+        [[<span class="hljs-string">'model'</span>, <span class="hljs-string">'timeCreated'</span>, <span class="hljs-string">'timeUpdated'</span>], <span class="hljs-string">'safe'</span>],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="scenarios()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#scenarios()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                scenarios()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flagsearch.html#scenarios()-detail">scenarios</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseScenarios" role="button"
+           aria-expanded="false" aria-controls="collapseScenarios">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseScenarios">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scenarios</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// bypass scenarios() implementation in the parent class</span>
+    <span class="hljs-keyword">return</span> Model::scenarios();
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="search()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#search()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                search()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Creates data provider instance with search query applied</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\data\ActiveDataProvider</span> <strong><a href="frontend-models-flagsearch.html#search()-detail">search</a></strong> ( <span style="color: #0000BB">$params</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$params</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.array">array</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseSearch" role="button"
+           aria-expanded="false" aria-controls="collapseSearch">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseSearch">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span><span class="hljs-params">($params)</span>
+</span>{
+    $query = Flag::find();
+    <span class="hljs-comment">// add conditions that should always apply here</span>
+    $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+        <span class="hljs-string">'query'</span> =&gt; $query,
+    ]);
+    <span class="hljs-keyword">$this</span>-&gt;load($params);
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">$this</span>-&gt;validate()) {
+        <span class="hljs-comment">// uncomment the following line if you do not want to return any records when validation fails</span>
+        <span class="hljs-comment">// $query-&gt;where('0=1');</span>
+        <span class="hljs-keyword">return</span> $dataProvider;
+    }
+    <span class="hljs-comment">// grid filtering conditions</span>
+    $query-&gt;andFilterWhere([
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;id,
+        <span class="hljs-string">'modelId'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;modelId,
+        <span class="hljs-string">'times'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;times,
+        <span class="hljs-string">'timeCreated'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;timeCreated,
+        <span class="hljs-string">'timeUpdated'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;timeUpdated,
+    ]);
+    $query-&gt;andFilterWhere([<span class="hljs-string">'like'</span>, <span class="hljs-string">'model'</span>, <span class="hljs-keyword">$this</span>-&gt;model]);
+    <span class="hljs-keyword">return</span> $dataProvider;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="tableName()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-flagsearch.html#tableName()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                tableName()
+
+                <span class="detail-header-tag small">
+                    public                                        static                    method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-flag.html#tableName()-detail">frontend\models\Flag::tableName()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="frontend-models-flag.html#tableName()-detail">tableName</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseTableName" role="button"
+           aria-expanded="false" aria-controls="collapseTableName">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseTableName">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tableName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'flag'</span>;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:59 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

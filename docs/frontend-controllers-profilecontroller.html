@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>ProfileController, frontend\controllers\ProfileController - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w26" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w26-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w26-collapse" class="collapse navbar-collapse"><ul id="w27" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-24" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-24" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item active" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item" href="#navigation-25" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-25" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\controllers\ProfileController</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a> &raquo;
+Da\User\Controller\ProfileController</td></tr>
+                        <tr><th>Uses Traits</th><td>Da\User\Traits\ContainerAwareTrait, Da\User\Traits\ModuleAwareTrait</td></tr>
+                            </table>
+
+<div class="class-description">
+    <p><strong>ProfileController implements the CRUD actions for Profile model.</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<div class="doc-property summary toggle-target-container">
+    <h2>Protected Properties</h2>
+
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-property" />
+            <col class="col-type" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="$profileQuery" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#$profileQuery-detail">$profileQuery</a></td>
+                    <td>\Da\User\Query\ProfileQuery</td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="$userQuery" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#$userQuery-detail">$userQuery</a></td>
+                    <td>\Da\User\Query\UserQuery</td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="__construct()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#__construct()-detail">__construct()</a></td>
+                    <td>ProfileController constructor.</td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionIndex()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionIndex()-detail">actionIndex()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionMyhists()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionMyhists()-detail">actionMyhists()</a></td>
+                    <td>Lists all my hist models with tabs to other options.</td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionMymaps()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionMymaps()-detail">actionMymaps()</a></td>
+                    <td>Lists all my Map models with tabs to other options.</td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionRanking()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionRanking()-detail">actionRanking()</a></td>
+                    <td>Lists all my user models with ranking and links .</td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionShow()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionShow()-detail">actionShow()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionUpdateaccount()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionUpdateaccount()-detail">actionUpdateaccount()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="actionUpdateprofile()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#actionUpdateprofile()-detail">actionUpdateprofile()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                                                <tr id="behaviors()" class="">
+                    <td><a href="frontend-controllers-profilecontroller.html#behaviors()-detail">behaviors()</a></td>
+                    <td></td>
+                    <td><a href="frontend-controllers-profilecontroller.html">frontend\controllers\ProfileController</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Property Details</h2>
+
+<div class="property-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+            <div id="$profileQuery-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#$profileQuery-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $profileQuery
+                <span class="detail-header-tag small">
+                    protected                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">protected</span> <span class="signature-type">\Da\User\Query\ProfileQuery</span> <a href="frontend-controllers-profilecontroller.html#$profileQuery-detail">$profileQuery</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$userQuery-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#$userQuery-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $userQuery
+                <span class="detail-header-tag small">
+                    protected                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">protected</span> <span class="signature-type">\Da\User\Query\UserQuery</span> <a href="frontend-controllers-profilecontroller.html#$userQuery-detail">$userQuery</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+    </div>
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="__construct()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#__construct()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                __construct()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>ProfileController constructor.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-profilecontroller.html#__construct()-detail">__construct</a></strong> ( <span style="color: #0000BB">$id</span>, <span class="signature-type">\yii\base\Module</span> <span style="color: #0000BB">$module</span>, <span class="signature-type">\Da\User\Query\ProfileQuery</span> <span style="color: #0000BB">$profileQuery</span>, <span class="signature-type"><a href="https://www.php.net/language.types.array">array</a></span> <span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">=&nbsp;[]</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.string">string</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$module</span></td>
+                            <td class="param-type-col">\yii\base\Module</td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$profileQuery</span></td>
+                            <td class="param-type-col">\Da\User\Query\ProfileQuery</td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$config</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.array">array</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse__construct" role="button"
+           aria-expanded="false" aria-controls="collapse__construct">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapse__construct">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($id, Module $module, ProfileQuery $profileQuery, array $config = [])</span>
+</span>{
+    <span class="hljs-keyword">$this</span>-&gt;profileQuery = $profileQuery;
+    <span class="hljs-keyword">$this</span>-&gt;userQuery = <span class="hljs-keyword">new</span> UserQuery(User::class);
+    <span class="hljs-keyword">parent</span>::__construct($id, $module, $profileQuery,$config);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionIndex()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionIndex()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionIndex()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-profilecontroller.html#actionIndex()-detail">actionIndex</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionIndex" role="button"
+           aria-expanded="false" aria-controls="collapseActionIndex">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionIndex">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionIndex</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;redirect([<span class="hljs-string">'show'</span>, <span class="hljs-string">'id'</span> =&gt; Yii::$app-&gt;user-&gt;getId()]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionMyhists()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionMyhists()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionMyhists()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Lists all my hist models with tabs to other options.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-profilecontroller.html#actionMyhists()-detail">actionMyhists</a></strong> ( <span style="color: #0000BB">$id</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionMyhists" role="button"
+           aria-expanded="false" aria-controls="collapseActionMyhists">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionMyhists">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionMyhists</span><span class="hljs-params">($id)</span>
+</span>{
+    $searchModel = <span class="hljs-keyword">new</span> HistoricalfactSearch();
+    $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    $histAssign = <span class="hljs-keyword">new</span> HistoricalAssign();
+    $user = User::findOne($id);
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(Yii::$app-&gt;request-&gt;queryParams[<span class="hljs-string">'HistoricalfactSearch'</span>]))
+        $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+            <span class="hljs-string">'query'</span> =&gt; $user-&gt;getMyhists()
+            -&gt;andFilterWhere(Yii::$app-&gt;request-&gt;queryParams[<span class="hljs-string">'HistoricalfactSearch'</span>]),
+        ]);
+    <span class="hljs-keyword">else</span>
+        $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+            <span class="hljs-string">'query'</span> =&gt; $user-&gt;getMyhists()
+        ]);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'myhists'</span>, [
+        <span class="hljs-string">'searchModel'</span> =&gt; $searchModel,
+        <span class="hljs-string">'dataProvider'</span> =&gt; $dataProvider,
+        <span class="hljs-string">'user'</span>=&gt;$user
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionMymaps()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionMymaps()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionMymaps()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Lists all my Map models with tabs to other options.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-profilecontroller.html#actionMymaps()-detail">actionMymaps</a></strong> ( <span style="color: #0000BB">$id</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionMymaps" role="button"
+           aria-expanded="false" aria-controls="collapseActionMymaps">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionMymaps">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionMymaps</span><span class="hljs-params">($id)</span>
+</span>{
+    $searchModel = <span class="hljs-keyword">new</span> MapSearch();
+    $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    $mapAssign = <span class="hljs-keyword">new</span> MapAssign();
+    $user = User::findOne($id);
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(Yii::$app-&gt;request-&gt;queryParams[<span class="hljs-string">'MapSearch'</span>]))
+        $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+            <span class="hljs-string">'query'</span> =&gt; $user-&gt;getMymaps()
+            -&gt;andFilterWhere(Yii::$app-&gt;request-&gt;queryParams[<span class="hljs-string">'mapSearch'</span>]),
+        ]);
+    <span class="hljs-keyword">else</span>
+        $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+            <span class="hljs-string">'query'</span> =&gt; $user-&gt;getMymaps()
+        ]);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'mymaps'</span>, [
+        <span class="hljs-string">'searchModel'</span> =&gt; $searchModel,
+        <span class="hljs-string">'dataProvider'</span> =&gt; $dataProvider,
+        <span class="hljs-string">'user'</span>=&gt;$user
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionRanking()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionRanking()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionRanking()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Lists all my user models with ranking and links .</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">mixed</span> <strong><a href="frontend-controllers-profilecontroller.html#actionRanking()-detail">actionRanking</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionRanking" role="button"
+           aria-expanded="false" aria-controls="collapseActionRanking">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionRanking">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionRanking</span><span class="hljs-params">()</span>
+</span>{
+    $searchModel = <span class="hljs-keyword">new</span> UserSearch();
+    $dataProvider = $searchModel-&gt;search(Yii::$app-&gt;request-&gt;queryParams);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'ranking'</span>, [
+        <span class="hljs-string">'searchModel'</span> =&gt; $searchModel,
+        <span class="hljs-string">'dataProvider'</span> =&gt; $dataProvider,
+    ]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionShow()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionShow()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionShow()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-profilecontroller.html#actionShow()-detail">actionShow</a></strong> ( <span style="color: #0000BB">$id</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionShow" role="button"
+           aria-expanded="false" aria-controls="collapseActionShow">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionShow">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionShow</span><span class="hljs-params">($id)</span>
+</span>{
+    $profile = <span class="hljs-keyword">$this</span>-&gt;profileQuery-&gt;whereUserId($id)-&gt;one();
+    <span class="hljs-keyword">if</span> ($profile === <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotFoundHttpException();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(
+        <span class="hljs-string">'show'</span>,
+        [
+            <span class="hljs-string">'profile'</span> =&gt; $profile,
+        ]
+    );
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionUpdateaccount()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionUpdateaccount()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionUpdateaccount()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-profilecontroller.html#actionUpdateaccount()-detail">actionUpdateaccount</a></strong> ( <span style="color: #0000BB">$id</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionUpdateaccount" role="button"
+           aria-expanded="false" aria-controls="collapseActionUpdateaccount">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionUpdateaccount">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionUpdateaccount</span><span class="hljs-params">($id)</span>
+</span>{
+    $user = <span class="hljs-keyword">$this</span>-&gt;userQuery-&gt;where([<span class="hljs-string">'id'</span> =&gt; $id])-&gt;one();
+    $user-&gt;setScenario(<span class="hljs-string">'update'</span>);
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> UserEvent $event */</span>
+    $event = <span class="hljs-keyword">$this</span>-&gt;make(UserEvent::class, [$user]);
+    <span class="hljs-keyword">$this</span>-&gt;make(AjaxRequestModelValidator::class, [$user])-&gt;validate();
+    <span class="hljs-keyword">if</span> ($user-&gt;load(Yii::$app-&gt;request-&gt;post())) {
+        <span class="hljs-keyword">$this</span>-&gt;trigger(UserEvent::EVENT_BEFORE_ACCOUNT_UPDATE, $event);
+        <span class="hljs-keyword">if</span> ($user-&gt;save()) {
+            Yii::$app-&gt;getSession()-&gt;setFlash(<span class="hljs-string">'success'</span>, Yii::t(<span class="hljs-string">'usuario'</span>, <span class="hljs-string">'Account details have been updated'</span>));
+            <span class="hljs-keyword">$this</span>-&gt;trigger(UserEvent::EVENT_AFTER_ACCOUNT_UPDATE, $event);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;refresh();
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'_account'</span>, [<span class="hljs-string">'user'</span> =&gt; $user]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="actionUpdateprofile()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#actionUpdateprofile()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                actionUpdateprofile()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-profilecontroller.html#actionUpdateprofile()-detail">actionUpdateprofile</a></strong> ( <span style="color: #0000BB">$id</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$id</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseActionUpdateprofile" role="button"
+           aria-expanded="false" aria-controls="collapseActionUpdateprofile">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseActionUpdateprofile">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionUpdateprofile</span><span class="hljs-params">($id)</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> User $user */</span>
+    $user = <span class="hljs-keyword">$this</span>-&gt;userQuery-&gt;where([<span class="hljs-string">'id'</span> =&gt; $id])-&gt;one();
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Profile $profile */</span>
+    $profile = $user-&gt;profile;
+    <span class="hljs-keyword">if</span> ($profile === <span class="hljs-keyword">null</span>) {
+        $profile = <span class="hljs-keyword">$this</span>-&gt;make(Profile::class);
+        $profile-&gt;link(<span class="hljs-string">'user'</span>, $user);
+    }
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> UserEvent $event */</span>
+    $event = <span class="hljs-keyword">$this</span>-&gt;make(UserEvent::class, [$user]);
+    <span class="hljs-keyword">$this</span>-&gt;make(AjaxRequestModelValidator::class, [$profile])-&gt;validate();
+    <span class="hljs-keyword">if</span> ($profile-&gt;load(Yii::$app-&gt;request-&gt;post())) {
+        <span class="hljs-keyword">if</span> ($profile-&gt;save()) {
+            <span class="hljs-keyword">$this</span>-&gt;trigger(UserEvent::EVENT_BEFORE_PROFILE_UPDATE, $event);
+            Yii::$app-&gt;getSession()-&gt;setFlash(<span class="hljs-string">'success'</span>, Yii::t(<span class="hljs-string">'usuario'</span>, <span class="hljs-string">'Profile details have been updated'</span>));
+            <span class="hljs-keyword">$this</span>-&gt;trigger(UserEvent::EVENT_AFTER_PROFILE_UPDATE, $event);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;refresh();
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(
+        <span class="hljs-string">'_profile'</span>,
+        [
+            <span class="hljs-string">'user'</span> =&gt; $user,
+            <span class="hljs-string">'profile'</span> =&gt; $profile,
+        ]
+    );
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="behaviors()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-controllers-profilecontroller.html#behaviors()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                behaviors()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-controllers-profilecontroller.html#behaviors()-detail">behaviors</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseBehaviors" role="button"
+           aria-expanded="false" aria-controls="collapseBehaviors">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseBehaviors">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">behaviors</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'access'</span> =&gt; [
+            <span class="hljs-string">'class'</span> =&gt; AccessControl::class,
+            <span class="hljs-string">'rules'</span> =&gt; [
+                [
+                    <span class="hljs-string">'allow'</span> =&gt; <span class="hljs-keyword">true</span>,
+                    <span class="hljs-string">'actions'</span> =&gt; [<span class="hljs-string">'myhists'</span>,<span class="hljs-string">'mymaps'</span>],
+                    <span class="hljs-string">'roles'</span> =&gt; [<span class="hljs-string">'@'</span>,<span class="hljs-string">'?'</span>],
+                ],
+                [
+                    <span class="hljs-string">'allow'</span> =&gt; <span class="hljs-keyword">true</span>,
+                    <span class="hljs-string">'actions'</span> =&gt; [<span class="hljs-string">'index'</span>,<span class="hljs-string">'show'</span>,<span class="hljs-string">'ranking'</span>],
+                    <span class="hljs-string">'roles'</span> =&gt; [<span class="hljs-string">'?'</span>, <span class="hljs-string">'@'</span>],
+                ],
+                <span class="hljs-comment">/* //user setting instead
+                [
+                    'allow' =&gt; true,
+                    'actions' =&gt; ['updateprofile','updateaccount'],
+                    'roles' =&gt; ['updateProfile'],
+                    'roleParams' =&gt; function() { 
+                        return ['profile' =&gt; Profile::findOne(['user_id' =&gt; Yii::$app-&gt;request-&gt;get('id')])];
+                    },
+                ],*/</span>
+            ],
+            <span class="hljs-string">'denyCallback'</span> =&gt; <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($rule, $action)</span> </span>{
+                <span class="hljs-keyword">if</span> (Yii::$app-&gt;user-&gt;isGuest){
+                    Yii::$app-&gt;user-&gt;loginRequired();<span class="hljs-keyword">return</span>;
+                }
+                $message=<span class="hljs-string">"You don't have the permisison to perform this action."</span>;
+
+                <span class="hljs-keyword">if</span>(in_array($action-&gt;id,[<span class="hljs-string">'updateprofile'</span>,<span class="hljs-string">'updateaccount'</span>]))
+                    $message=<span class="hljs-string">'You are not sysadmin or the owner of the profile .'</span>;
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ForbiddenHttpException($message);
+     
+            }
+        ],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:58 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

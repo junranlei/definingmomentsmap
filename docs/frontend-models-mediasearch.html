@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>MediaSearch, frontend\models\MediaSearch - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w114" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w114-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w114-collapse" class="collapse navbar-collapse"><ul id="w115" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-112" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-112" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item active" href="#navigation-113" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-113" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item active" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\models\MediaSearch</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-models-mediasearch.html">frontend\models\MediaSearch</a> &raquo;
+<a href="frontend-models-media.html">frontend\models\Media</a> &raquo;
+yii\db\ActiveRecord</td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>MediaSearch represents the model behind the search form of <code>app\models\Media</code>.</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<div class="doc-property summary toggle-target-container">
+    <h2>Public Properties</h2>
+
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-property" />
+            <col class="col-type" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="$creator" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$creator-detail">$creator</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$description" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$description-detail">$description</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$files" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$files-detail">$files</a></td>
+                    <td></td>
+                    <td>Upload files</td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$histId" class="">
+                    <td><a href="frontend-models-mediasearch.html#$histId-detail">$histId</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="frontend-models-mediasearch.html">frontend\models\MediaSearch</a></td>
+                </tr>
+                                                <tr id="$historicalMediaLinks" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$historicalMediaLinks-detail">$historicalMediaLinks</a></td>
+                    <td><a href="frontend-models-historicalmedialink.html">frontend\models\HistoricalMediaLink</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$hists" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$hists-detail">$hists</a></td>
+                    <td><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$id" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$id-detail">$id</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$isMainMedia" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$isMainMedia-detail">$isMainMedia</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$isUrl" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$isUrl-detail">$isUrl</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$nameOrUrl" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$nameOrUrl-detail">$nameOrUrl</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$ownerId" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$ownerId-detail">$ownerId</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$permission2upload" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$permission2upload-detail">$permission2upload</a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$publicPermission" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$publicPermission-detail">$publicPermission</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$right2Link" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$right2Link-detail">$right2Link</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$source" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$source-detail">$source</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$status" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$status-detail">$status</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$title" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$title-detail">$title</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="$type" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#$type-detail">$type</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="attributeLabels()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#attributeLabels()-detail">attributeLabels()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="behaviors()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#behaviors()-detail">behaviors()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="getHistoricalMediaLinks()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#getHistoricalMediaLinks()-detail">getHistoricalMediaLinks()</a></td>
+                    <td>Gets query for <span class="broken-link">HistoricalMediaLinks</span>.</td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="getHists()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#getHists()-detail">getHists()</a></td>
+                    <td>Gets query for <span class="broken-link">Hists</span>.</td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="getMediaUrl()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#getMediaUrl()-detail">getMediaUrl()</a></td>
+                    <td>Get media display html from nameOrUrl and type fields</td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="getOwner()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#getOwner()-detail">getOwner()</a></td>
+                    <td>Gets query for <a href="frontend-models-user.html">frontend\models\User</a>.</td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="rules()" class="">
+                    <td><a href="frontend-models-mediasearch.html#rules()-detail">rules()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-mediasearch.html">frontend\models\MediaSearch</a></td>
+                </tr>
+                                                <tr id="scenarios()" class="">
+                    <td><a href="frontend-models-mediasearch.html#scenarios()-detail">scenarios()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-mediasearch.html">frontend\models\MediaSearch</a></td>
+                </tr>
+                                                <tr id="search()" class="">
+                    <td><a href="frontend-models-mediasearch.html#search()-detail">search()</a></td>
+                    <td>Creates data provider instance with search query applied</td>
+                    <td><a href="frontend-models-mediasearch.html">frontend\models\MediaSearch</a></td>
+                </tr>
+                                                <tr id="tableName()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#tableName()-detail">tableName()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                                                <tr id="validatePermission()" class="inherited">
+                    <td><a href="frontend-models-mediasearch.html#validatePermission()-detail">validatePermission()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-media.html">frontend\models\Media</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Property Details</h2>
+
+<div class="property-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+            <div id="$histId-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#$histId-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $histId
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"></span> <a href="frontend-models-mediasearch.html#$histId-detail">$histId</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+    </div>
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="attributeLabels()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#attributeLabels()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                attributeLabels()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#attributeLabels()-detail">frontend\models\Media::attributeLabels()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-media.html#attributeLabels()-detail">attributeLabels</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributeLabels" role="button"
+           aria-expanded="false" aria-controls="collapseAttributeLabels">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseAttributeLabels">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attributeLabels</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'ID'</span>,
+        <span class="hljs-string">'title'</span> =&gt; <span class="hljs-string">'Title'</span>,
+        <span class="hljs-string">'description'</span> =&gt; <span class="hljs-string">'Description'</span>,
+        <span class="hljs-string">'Source'</span>=&gt;<span class="hljs-string">'Source'</span>,
+        <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'Media Type'</span>,
+        <span class="hljs-string">'nameOrUrl'</span> =&gt; <span class="hljs-string">'Name Or Url'</span>,
+        <span class="hljs-string">'right2Link'</span> =&gt; <span class="hljs-string">'Others Can Link This Media'</span>,
+        <span class="hljs-string">'ownerId'</span> =&gt; <span class="hljs-string">'Owner ID'</span>,
+        <span class="hljs-string">'isMainMedia'</span>=&gt;<span class="hljs-string">'Set as Main media'</span>,
+        <span class="hljs-string">'creator'</span>=&gt;<span class="hljs-string">'Creator'</span>,
+        <span class="hljs-string">'publicPermission'</span>=&gt;<span class="hljs-string">'Everyone Can Edit'</span>,
+        <span class="hljs-string">'permission2upload'</span>=&gt;<span class="hljs-string">'Permission to publish this media online'</span>
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="behaviors()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#behaviors()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                behaviors()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#behaviors()-detail">frontend\models\Media::behaviors()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-media.html#behaviors()-detail">behaviors</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseBehaviors" role="button"
+           aria-expanded="false" aria-controls="collapseBehaviors">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseBehaviors">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">behaviors</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-comment">//add audit log</span>
+        <span class="hljs-string">'bedezign\yii2\audit\AuditTrailBehavior'</span>
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getHistoricalMediaLinks()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#getHistoricalMediaLinks()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getHistoricalMediaLinks()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#getHistoricalMediaLinks()-detail">frontend\models\Media::getHistoricalMediaLinks()</a>                    </p>
+                
+                <p><strong>Gets query for <span class="broken-link">HistoricalMediaLinks</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-media.html#getHistoricalMediaLinks()-detail">getHistoricalMediaLinks</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetHistoricalMediaLinks" role="button"
+           aria-expanded="false" aria-controls="collapseGetHistoricalMediaLinks">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetHistoricalMediaLinks">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHistoricalMediaLinks</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(HistoricalMediaLink::className(), [<span class="hljs-string">'mediaId'</span> =&gt; <span class="hljs-string">'id'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getHists()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#getHists()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getHists()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#getHists()-detail">frontend\models\Media::getHists()</a>                    </p>
+                
+                <p><strong>Gets query for <span class="broken-link">Hists</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-media.html#getHists()-detail">getHists</a></strong> ( <span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$status</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.integer">integer</a></td>
+                            <td class="param-desc-col">
+                               <p>Default 1 enabled</p>
+                            </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetHists" role="button"
+           aria-expanded="false" aria-controls="collapseGetHists">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetHists">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHists</span><span class="hljs-params">($status=<span class="hljs-number">1</span>)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(HistoricalFact::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'histId'</span>])-&gt;viaTable(<span class="hljs-string">'historicalMediaLink'</span>, [<span class="hljs-string">'mediaId'</span> =&gt; <span class="hljs-string">'id'</span>])-&gt;andOnCondition([<span class="hljs-string">'historicalFact.status'</span> =&gt; $status]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getMediaUrl()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#getMediaUrl()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getMediaUrl()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#getMediaUrl()-detail">frontend\models\Media::getMediaUrl()</a>                    </p>
+                
+                <p><strong>Get media display html from nameOrUrl and type fields</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="frontend-models-media.html#getMediaUrl()-detail">getMediaUrl</a></strong> ( <span style="color: #0000BB">$width&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"80"</span>, <span style="color: #0000BB">$height&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"60"</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$width</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$height</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetMediaUrl" role="button"
+           aria-expanded="false" aria-controls="collapseGetMediaUrl">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetMediaUrl">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMediaUrl</span><span class="hljs-params">($width=<span class="hljs-string">"80"</span>, $height=<span class="hljs-string">"60"</span>)</span></span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;type==<span class="hljs-number">1</span>){
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;isUrl){     
+            <span class="hljs-keyword">return</span> Html::img(<span class="hljs-keyword">$this</span>-&gt;nameOrUrl,
+            [<span class="hljs-string">'width'</span> =&gt; $width, <span class="hljs-string">'style'</span>=&gt;<span class="hljs-string">'display:block; margin:0 auto;'</span>]);
+        
+        }<span class="hljs-keyword">else</span>{
+    
+            <span class="hljs-keyword">return</span> Html::img(Url::base().<span class="hljs-string">'/uploads/'</span>.<span class="hljs-keyword">$this</span>-&gt;id.<span class="hljs-string">'/'</span>.<span class="hljs-keyword">$this</span>-&gt;nameOrUrl,
+            [<span class="hljs-string">'width'</span> =&gt; $width, <span class="hljs-string">'style'</span>=&gt;<span class="hljs-string">'display:block; margin:0 auto;'</span>]); 
+        }
+               
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;type==<span class="hljs-number">2</span>){ 
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;isUrl){     
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;video width='</span>.$width.<span class="hljs-string">' height='</span>.$height.<span class="hljs-string">' controls style="display:block; margin:0 auto;"&gt;
+            &lt;source src="'</span>.<span class="hljs-keyword">$this</span>-&gt;nameOrUrl .<span class="hljs-string">'" type="video/mp4"&gt;
+            &lt;/video&gt; '</span>;
+        
+        }<span class="hljs-keyword">else</span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;video width='</span>.$width.<span class="hljs-string">' height='</span>.$height.<span class="hljs-string">' controls style="display:block; margin:0 auto;"&gt;
+            &lt;source src="'</span>.Url::base().<span class="hljs-string">'/uploads/'</span>.<span class="hljs-keyword">$this</span>-&gt;id.<span class="hljs-string">'/'</span>.<span class="hljs-keyword">$this</span>-&gt;nameOrUrl .<span class="hljs-string">'" type="video/mp4"&gt;
+            &lt;/video&gt; '</span>;
+        
+        }           
+    } 
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;  
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getOwner()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#getOwner()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getOwner()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#getOwner()-detail">frontend\models\Media::getOwner()</a>                    </p>
+                
+                <p><strong>Gets query for <a href="frontend-models-user.html">frontend\models\User</a>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-media.html#getOwner()-detail">getOwner</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetOwner" role="button"
+           aria-expanded="false" aria-controls="collapseGetOwner">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetOwner">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOwner</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasOne(User::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'ownerId'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="rules()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#rules()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                rules()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-mediasearch.html#rules()-detail">rules</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseRules" role="button"
+           aria-expanded="false" aria-controls="collapseRules">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseRules">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rules</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        [[<span class="hljs-string">'type'</span>, <span class="hljs-string">'right2Link'</span>, <span class="hljs-string">'ownerId'</span>,<span class="hljs-string">'publicPermission'</span>], <span class="hljs-string">'integer'</span>],
+        [[<span class="hljs-string">'title'</span>, <span class="hljs-string">'description'</span>, <span class="hljs-string">'nameOrUrl'</span>,<span class="hljs-string">'publicPermission'</span>], <span class="hljs-string">'safe'</span>],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="scenarios()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#scenarios()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                scenarios()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-mediasearch.html#scenarios()-detail">scenarios</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseScenarios" role="button"
+           aria-expanded="false" aria-controls="collapseScenarios">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseScenarios">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scenarios</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-comment">// bypass scenarios() implementation in the parent class</span>
+    <span class="hljs-keyword">return</span> Model::scenarios();
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="search()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#search()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                search()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Creates data provider instance with search query applied</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\data\ActiveDataProvider</span> <strong><a href="frontend-models-mediasearch.html#search()-detail">search</a></strong> ( <span style="color: #0000BB">$params</span>, <span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$params</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.array">array</a></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$status</span></td>
+                            <td class="param-type-col"><a href="https://www.php.net/language.types.integer">integer</a></td>
+                            <td class="param-desc-col">
+                               <p>Default 1 enabled</p>
+                            </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseSearch" role="button"
+           aria-expanded="false" aria-controls="collapseSearch">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseSearch">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">search</span><span class="hljs-params">($params, $status=<span class="hljs-number">1</span>)</span>
+</span>{
+    $query = Media::find();
+    <span class="hljs-comment">// add conditions that should always apply here</span>
+    $dataProvider = <span class="hljs-keyword">new</span> ActiveDataProvider([
+        <span class="hljs-string">'query'</span> =&gt; $query,
+    ]);
+    <span class="hljs-keyword">$this</span>-&gt;load($params);
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">$this</span>-&gt;validate()) {
+        <span class="hljs-comment">// uncomment the following line if you do not want to return any records when validation fails</span>
+        <span class="hljs-comment">// $query-&gt;where('0=1');</span>
+        <span class="hljs-keyword">return</span> $dataProvider;
+    }
+    <span class="hljs-comment">// grid filtering conditions</span>
+    $query-&gt;andFilterWhere([
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;id,
+        <span class="hljs-string">'type'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;type,
+        <span class="hljs-string">'histId'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;histId,
+        <span class="hljs-string">'right2Link'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;right2Link,
+        <span class="hljs-string">'ownerId'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;ownerId,
+        <span class="hljs-string">'publicPermission'</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;publicPermission,
+    ]);
+    $query-&gt;andFilterWhere([<span class="hljs-string">'like'</span>, <span class="hljs-string">'title'</span>, <span class="hljs-keyword">$this</span>-&gt;title])
+        -&gt;andFilterWhere([<span class="hljs-string">'like'</span>, <span class="hljs-string">'description'</span>, <span class="hljs-keyword">$this</span>-&gt;description])
+        -&gt;andFilterWhere([<span class="hljs-string">'like'</span>, <span class="hljs-string">'nameOrUrl'</span>, <span class="hljs-keyword">$this</span>-&gt;nameOrUrl]);
+    
+    $query-&gt;andWhere(<span class="hljs-string">'status='</span>.$status); <span class="hljs-comment">//only return enabled records or specify by status</span>
+    <span class="hljs-keyword">return</span> $dataProvider;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="tableName()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#tableName()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                tableName()
+
+                <span class="detail-header-tag small">
+                    public                                        static                    method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#tableName()-detail">frontend\models\Media::tableName()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="frontend-models-media.html#tableName()-detail">tableName</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseTableName" role="button"
+           aria-expanded="false" aria-controls="collapseTableName">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseTableName">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tableName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'media'</span>;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="validatePermission()-detail"
+             class="inherited">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-mediasearch.html#validatePermission()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                validatePermission()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                                    <p>
+                        <strong>Defined in:</strong>
+                        <a href="frontend-models-media.html#validatePermission()-detail">frontend\models\Media::validatePermission()</a>                    </p>
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-media.html#validatePermission()-detail">validatePermission</a></strong> ( <span style="color: #0000BB">$attribute</span>, <span style="color: #0000BB">$params</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$attribute</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$params</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseValidatePermission" role="button"
+           aria-expanded="false" aria-controls="collapseValidatePermission">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseValidatePermission">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validatePermission</span><span class="hljs-params">($attribute, $params)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;$attribute!=<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">$this</span>-&gt;addError($attribute, <span class="hljs-string">'You must have the permission to publish in order to save this media.'</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:58 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        
+<link href="./assets/9aba1303/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/fade8569/solarized-light.css" rel="stylesheet">
+<link href="./assets/4e8b683c/style.css" rel="stylesheet">
+<script src="./assets/9518be3f/jquery.js"></script>
+<script src="./assets/9aba1303/js/bootstrap.js"></script>
+<script src="./assets/d294c0ce/jssearch.js"></script>    <title>Map, frontend\models\Map - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w122" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w122-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w122-collapse" class="collapse navbar-collapse"><ul id="w123" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-120" data-toggle="collapse" data-parent="#navigation">frontend\controllers <b class="caret"></b></a><div id="navigation-120" class="submenu panel-collapse collapse"><a class="list-group-item" href="./frontend-controllers-admincontroller.html">AdminController</a>
+<a class="list-group-item" href="./frontend-controllers-apiscontroller.html">ApisController</a>
+<a class="list-group-item" href="./frontend-controllers-decolumnvaluemapper.html">DeColumnValueMapper</a>
+<a class="list-group-item" href="./frontend-controllers-deexportableservice.html">DeExportableService</a>
+<a class="list-group-item" href="./frontend-controllers-exportcontroller.html">ExportController</a>
+<a class="list-group-item" href="./frontend-controllers-featurecontroller.html">FeatureController</a>
+<a class="list-group-item" href="./frontend-controllers-flagcontroller.html">FlagController</a>
+<a class="list-group-item" href="./frontend-controllers-flagnotecontroller.html">FlagnoteController</a>
+<a class="list-group-item" href="./frontend-controllers-historicalfactcontroller.html">HistoricalfactController</a>
+<a class="list-group-item" href="./frontend-controllers-layercontroller.html">LayerController</a>
+<a class="list-group-item" href="./frontend-controllers-mapcontroller.html">MapController</a>
+<a class="list-group-item" href="./frontend-controllers-mediacontroller.html">MediaController</a>
+<a class="list-group-item" href="./frontend-controllers-profilecontroller.html">ProfileController</a>
+<a class="list-group-item" href="./frontend-controllers-sitecontroller.html">SiteController</a>
+<a class="list-group-item" href="./frontend-controllers-socialnetworkhandler.html">SocialNetworkHandler</a></div>
+<a class="list-group-item active" href="#navigation-121" data-toggle="collapse" data-parent="#navigation">frontend\models <b class="caret"></b></a><div id="navigation-121" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./frontend-models-apis.html">Apis</a>
+<a class="list-group-item" href="./frontend-models-apissearch.html">ApisSearch</a>
+<a class="list-group-item" href="./frontend-models-contactform.html">ContactForm</a>
+<a class="list-group-item" href="./frontend-models-feature.html">Feature</a>
+<a class="list-group-item" href="./frontend-models-featuresearch.html">FeatureSearch</a>
+<a class="list-group-item" href="./frontend-models-flag.html">Flag</a>
+<a class="list-group-item" href="./frontend-models-flagnote.html">FlagNote</a>
+<a class="list-group-item" href="./frontend-models-flagsearch.html">FlagSearch</a>
+<a class="list-group-item" href="./frontend-models-flagnotesearch.html">FlagnoteSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalassign.html">HistoricalAssign</a>
+<a class="list-group-item" href="./frontend-models-historicalfact.html">HistoricalFact</a>
+<a class="list-group-item" href="./frontend-models-historicalmaplink.html">HistoricalMapLink</a>
+<a class="list-group-item" href="./frontend-models-historicalmedialink.html">HistoricalMediaLink</a>
+<a class="list-group-item" href="./frontend-models-historicalrelated.html">HistoricalRelated</a>
+<a class="list-group-item" href="./frontend-models-historicalfactsearch.html">HistoricalfactSearch</a>
+<a class="list-group-item" href="./frontend-models-historicalmapsearch.html">HistoricalmapSearch</a>
+<a class="list-group-item" href="./frontend-models-layer.html">Layer</a>
+<a class="list-group-item" href="./frontend-models-layersearch.html">LayerSearch</a>
+<a class="list-group-item active" href="./frontend-models-map.html">Map</a>
+<a class="list-group-item" href="./frontend-models-mapassign.html">MapAssign</a>
+<a class="list-group-item" href="./frontend-models-mapsearch.html">MapSearch</a>
+<a class="list-group-item" href="./frontend-models-media.html">Media</a>
+<a class="list-group-item" href="./frontend-models-mediasearch.html">MediaSearch</a>
+<a class="list-group-item" href="./frontend-models-othermediasearch.html">OtherMediaSearch</a>
+<a class="list-group-item" href="./frontend-models-passwordresetrequestform.html">PasswordResetRequestForm</a>
+<a class="list-group-item" href="./frontend-models-profile.html">Profile</a>
+<a class="list-group-item" href="./frontend-models-resendverificationemailform.html">ResendVerificationEmailForm</a>
+<a class="list-group-item" href="./frontend-models-resetpasswordform.html">ResetPasswordForm</a>
+<a class="list-group-item" href="./frontend-models-signupform.html">SignupForm</a>
+<a class="list-group-item" href="./frontend-models-user.html">User</a>
+<a class="list-group-item" href="./frontend-models-usersearch.html">UserSearch</a>
+<a class="list-group-item" href="./frontend-models-verifyemailform.html">VerifyEmailForm</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main"><h1>Class frontend\models\Map</h1>
+<div class="top-nav">
+    <a href="index">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="frontend-models-map.html">frontend\models\Map</a> &raquo;
+yii\db\ActiveRecord</td></tr>
+                            <tr><th>Subclasses</th><td><a href="frontend-models-mapsearch.html">frontend\models\MapSearch</a></td></tr>
+                        </table>
+
+<div class="class-description">
+    <p><strong>This is the model class for table "map".</strong></p>
+    
+    </div>
+
+
+
+<a id="properties"></a>
+
+<div class="doc-property summary toggle-target-container">
+    <h2>Public Properties</h2>
+
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-property" />
+            <col class="col-type" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="$description" class="">
+                    <td><a href="frontend-models-map.html#$description-detail">$description</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$historicalMapLinks" class="">
+                    <td><a href="frontend-models-map.html#$historicalMapLinks-detail">$historicalMapLinks</a></td>
+                    <td><a href="frontend-models-historicalmaplink.html">frontend\models\HistoricalMapLink</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$hists" class="">
+                    <td><a href="frontend-models-map.html#$hists-detail">$hists</a></td>
+                    <td><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$id" class="">
+                    <td><a href="frontend-models-map.html#$id-detail">$id</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$mapAssigns" class="">
+                    <td><a href="frontend-models-map.html#$mapAssigns-detail">$mapAssigns</a></td>
+                    <td><a href="frontend-models-mapassign.html">frontend\models\MapAssign</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$publicPermission" class="">
+                    <td><a href="frontend-models-map.html#$publicPermission-detail">$publicPermission</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$status" class="">
+                    <td><a href="frontend-models-map.html#$status-detail">$status</a></td>
+                    <td><a href="https://www.php.net/language.types.integer">integer</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$timeCreated" class="">
+                    <td><a href="frontend-models-map.html#$timeCreated-detail">$timeCreated</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$timeUpdated" class="">
+                    <td><a href="frontend-models-map.html#$timeUpdated-detail">$timeUpdated</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$title" class="">
+                    <td><a href="frontend-models-map.html#$title-detail">$title</a></td>
+                    <td><a href="https://www.php.net/language.types.string">string</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="$users" class="">
+                    <td><a href="frontend-models-map.html#$users-detail">$users</a></td>
+                    <td><a href="frontend-models-user.html">frontend\models\User</a>[]</td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="doc-method summary toggle-target-container">
+    <h2>Public Methods</h2>
+
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+        <colgroup>
+            <col class="col-method" />
+            <col class="col-description" />
+            <col class="col-defined" />
+        </colgroup>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Defined By</th>
+        </tr>
+
+                                    <tr id="attributeLabels()" class="">
+                    <td><a href="frontend-models-map.html#attributeLabels()-detail">attributeLabels()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="behaviors()" class="">
+                    <td><a href="frontend-models-map.html#behaviors()-detail">behaviors()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getAssignedUsers()" class="">
+                    <td><a href="frontend-models-map.html#getAssignedUsers()-detail">getAssignedUsers()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getHistoricalMapLinks()" class="">
+                    <td><a href="frontend-models-map.html#getHistoricalMapLinks()-detail">getHistoricalMapLinks()</a></td>
+                    <td>Gets query for <span class="broken-link">HistoricalMapLinks</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getHists()" class="">
+                    <td><a href="frontend-models-map.html#getHists()-detail">getHists()</a></td>
+                    <td>Gets query for <span class="broken-link">Hists</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getLayers()" class="">
+                    <td><a href="frontend-models-map.html#getLayers()-detail">getLayers()</a></td>
+                    <td>Gets query for <span class="broken-link">Layers</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getMapAssigns()" class="">
+                    <td><a href="frontend-models-map.html#getMapAssigns()-detail">getMapAssigns()</a></td>
+                    <td>Gets query for <span class="broken-link">MapAssigns</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getUsers()" class="">
+                    <td><a href="frontend-models-map.html#getUsers()-detail">getUsers()</a></td>
+                    <td>Gets query for <span class="broken-link">Users</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getUsers1()" class="">
+                    <td><a href="frontend-models-map.html#getUsers1()-detail">getUsers1()</a></td>
+                    <td>Gets query for <span class="broken-link">Users</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="getUsers2()" class="">
+                    <td><a href="frontend-models-map.html#getUsers2()-detail">getUsers2()</a></td>
+                    <td>Gets query for <span class="broken-link">Users</span>.</td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="rules()" class="">
+                    <td><a href="frontend-models-map.html#rules()-detail">rules()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="setAssignedUsers()" class="">
+                    <td><a href="frontend-models-map.html#setAssignedUsers()-detail">setAssignedUsers()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                                                <tr id="tableName()" class="">
+                    <td><a href="frontend-models-map.html#tableName()-detail">tableName()</a></td>
+                    <td></td>
+                    <td><a href="frontend-models-map.html">frontend\models\Map</a></td>
+                </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+
+<h2>Property Details</h2>
+
+<div class="property-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+            <div id="$description-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$description-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $description
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <a href="frontend-models-map.html#$description-detail">$description</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$historicalMapLinks-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$historicalMapLinks-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $historicalMapLinks
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="frontend-models-historicalmaplink.html">frontend\models\HistoricalMapLink</a>[]</span> <a href="frontend-models-map.html#$historicalMapLinks-detail">$historicalMapLinks</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$hists-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$hists-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $hists
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="frontend-models-historicalfact.html">frontend\models\HistoricalFact</a>[]</span> <a href="frontend-models-map.html#$hists-detail">$hists</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$id-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$id-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $id
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.integer">integer</a></span> <a href="frontend-models-map.html#$id-detail">$id</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$mapAssigns-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$mapAssigns-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $mapAssigns
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="frontend-models-mapassign.html">frontend\models\MapAssign</a>[]</span> <a href="frontend-models-map.html#$mapAssigns-detail">$mapAssigns</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$publicPermission-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$publicPermission-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $publicPermission
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.integer">integer</a></span> <a href="frontend-models-map.html#$publicPermission-detail">$publicPermission</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$status-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$status-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $status
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.integer">integer</a></span> <a href="frontend-models-map.html#$status-detail">$status</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$timeCreated-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$timeCreated-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $timeCreated
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <a href="frontend-models-map.html#$timeCreated-detail">$timeCreated</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$timeUpdated-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$timeUpdated-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $timeUpdated
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <a href="frontend-models-map.html#$timeUpdated-detail">$timeUpdated</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$title-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$title-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $title
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <a href="frontend-models-map.html#$title-detail">$title</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+            <div id="$users-detail">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#$users-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                $users
+                <span class="detail-header-tag small">
+                    public                                                                                property
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                                            </div>
+
+            <div class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="frontend-models-user.html">frontend\models\User</a>[]</span> <a href="frontend-models-map.html#$users-detail">$users</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+            
+            
+        </div>
+    </div>
+
+<h2>Method Details</h2>
+
+<div class="method-doc toggle-target-container">
+    <p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+            <div id="attributeLabels()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#attributeLabels()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                attributeLabels()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-map.html#attributeLabels()-detail">attributeLabels</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributeLabels" role="button"
+           aria-expanded="false" aria-controls="collapseAttributeLabels">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseAttributeLabels">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attributeLabels</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'ID'</span>,
+        <span class="hljs-string">'title'</span> =&gt; <span class="hljs-string">'Title'</span>,
+        <span class="hljs-string">'description'</span> =&gt; <span class="hljs-string">'Description'</span>,
+        <span class="hljs-string">'timeCreated'</span> =&gt; <span class="hljs-string">'Time Created'</span>,
+        <span class="hljs-string">'timeUpdated'</span> =&gt; <span class="hljs-string">'Time Updated'</span>,
+        <span class="hljs-string">'publicPermission'</span>=&gt;<span class="hljs-string">'Everyone Can Edit'</span>
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="behaviors()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#behaviors()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                behaviors()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-map.html#behaviors()-detail">behaviors</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseBehaviors" role="button"
+           aria-expanded="false" aria-controls="collapseBehaviors">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseBehaviors">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">behaviors</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-comment">//add audit log</span>
+        <span class="hljs-string">'bedezign\yii2\audit\AuditTrailBehavior'</span>
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getAssignedUsers()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getAssignedUsers()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getAssignedUsers()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="frontend-models-map.html#getAssignedUsers()-detail">getAssignedUsers</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetAssignedUsers" role="button"
+           aria-expanded="false" aria-controls="collapseGetAssignedUsers">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetAssignedUsers">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAssignedUsers</span><span class="hljs-params">()</span>
+</span>{
+    $users =  <span class="hljs-keyword">$this</span>-&gt;users2;
+    $ds = <span class="hljs-string">""</span>;
+    <span class="hljs-keyword">foreach</span>($users <span class="hljs-keyword">as</span> $user){
+        <span class="hljs-keyword">if</span>($user!=<span class="hljs-keyword">null</span>&amp;&amp;$user-&gt;username!=<span class="hljs-keyword">null</span>){
+            <span class="hljs-keyword">if</span>($ds!=<span class="hljs-string">""</span>)$ds=$ds.<span class="hljs-string">","</span>;
+            $ds = $ds.$user-&gt;username;
+        }
+    }
+    <span class="hljs-keyword">return</span> $ds;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getHistoricalMapLinks()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getHistoricalMapLinks()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getHistoricalMapLinks()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">HistoricalMapLinks</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getHistoricalMapLinks()-detail">getHistoricalMapLinks</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetHistoricalMapLinks" role="button"
+           aria-expanded="false" aria-controls="collapseGetHistoricalMapLinks">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetHistoricalMapLinks">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHistoricalMapLinks</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(HistoricalMapLink::className(), [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getHists()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getHists()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getHists()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">Hists</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getHists()-detail">getHists</a></strong> ( <span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$status</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetHists" role="button"
+           aria-expanded="false" aria-controls="collapseGetHists">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetHists">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHists</span><span class="hljs-params">($status=<span class="hljs-number">1</span>)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(HistoricalFact::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'histId'</span>])-&gt;viaTable(<span class="hljs-string">'historicalMapLink'</span>, [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>])-&gt;andOnCondition([<span class="hljs-string">'historicalFact.status'</span> =&gt; $status]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getLayers()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getLayers()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getLayers()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">Layers</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getLayers()-detail">getLayers</a></strong> ( <span style="color: #0000BB">$status&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$status</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetLayers" role="button"
+           aria-expanded="false" aria-controls="collapseGetLayers">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetLayers">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLayers</span><span class="hljs-params">($status=<span class="hljs-number">1</span>)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(Layer::className(), [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>])-&gt;andOnCondition([<span class="hljs-string">'layer.status'</span> =&gt; $status]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getMapAssigns()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getMapAssigns()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getMapAssigns()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">MapAssigns</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getMapAssigns()-detail">getMapAssigns</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetMapAssigns" role="button"
+           aria-expanded="false" aria-controls="collapseGetMapAssigns">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetMapAssigns">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMapAssigns</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(MapAssign::className(), [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getUsers()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getUsers()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getUsers()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">Users</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getUsers()-detail">getUsers</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetUsers" role="button"
+           aria-expanded="false" aria-controls="collapseGetUsers">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetUsers">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUsers</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(User::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'userId'</span>])-&gt;viaTable(<span class="hljs-string">'mapAssign'</span>, [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>]);
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getUsers1()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getUsers1()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getUsers1()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">Users</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getUsers1()-detail">getUsers1</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetUsers1" role="button"
+           aria-expanded="false" aria-controls="collapseGetUsers1">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetUsers1">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUsers1</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(User::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'userId'</span>])-&gt;viaTable(<span class="hljs-string">'mapAssign'</span>, [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>], 
+        <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($query)</span> </span>{
+        $query-&gt;onCondition([<span class="hljs-string">'type'</span> =&gt;<span class="hljs-number">1</span>]);
+    });
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="getUsers2()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#getUsers2()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                getUsers2()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong>Gets query for <span class="broken-link">Users</span>.</strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\db\ActiveQuery</span> <strong><a href="frontend-models-map.html#getUsers2()-detail">getUsers2</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseGetUsers2" role="button"
+           aria-expanded="false" aria-controls="collapseGetUsers2">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseGetUsers2">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUsers2</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;hasMany(User::className(), [<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'userId'</span>])-&gt;viaTable(<span class="hljs-string">'mapAssign'</span>, [<span class="hljs-string">'mapId'</span> =&gt; <span class="hljs-string">'id'</span>], 
+        <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($query)</span> </span>{
+        $query-&gt;onCondition([<span class="hljs-string">'type'</span> =&gt;<span class="hljs-number">2</span>]);
+    });
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="rules()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#rules()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                rules()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">void</span> <strong><a href="frontend-models-map.html#rules()-detail">rules</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseRules" role="button"
+           aria-expanded="false" aria-controls="collapseRules">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseRules">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rules</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        [[<span class="hljs-string">'title'</span>, <span class="hljs-string">'description'</span>], <span class="hljs-string">'required'</span>],
+        [[<span class="hljs-string">'publicPermission'</span>, <span class="hljs-string">'status'</span>], <span class="hljs-string">'integer'</span>],
+        [[<span class="hljs-string">'description'</span>], <span class="hljs-string">'string'</span>],
+        [[<span class="hljs-string">'timeCreated'</span>, <span class="hljs-string">'timeUpdated'</span>,<span class="hljs-string">'assignedUsers'</span>], <span class="hljs-string">'safe'</span>],
+        [[<span class="hljs-string">'title'</span>], <span class="hljs-string">'string'</span>, <span class="hljs-string">'max'</span> =&gt; <span class="hljs-number">255</span>],
+    ];
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="setAssignedUsers()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#setAssignedUsers()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                setAssignedUsers()
+
+                <span class="detail-header-tag small">
+                    public                                                            method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="https://www.php.net/language.types.string">string</a></span> <strong><a href="frontend-models-map.html#setAssignedUsers()-detail">setAssignedUsers</a></strong> ( <span style="color: #0000BB">$ds</span> )</td></tr>
+
+                                                            <tr>
+                            <td class="param-name-col"><span style="color: #0000BB">$ds</span></td>
+                            <td class="param-type-col"></td>
+                            <td class="param-desc-col">
+                                                           </td>
+                        </tr>
+                    
+                    
+                                                </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseSetAssignedUsers" role="button"
+           aria-expanded="false" aria-controls="collapseSetAssignedUsers">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseSetAssignedUsers">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAssignedUsers</span><span class="hljs-params">($ds)</span>
+</span>{
+    <span class="hljs-keyword">$this</span>-&gt;assignedUsers = $ds;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+            <div id="tableName()-detail"
+             class="">
+            <div class="detail-header h3">
+                <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                <a class="tool-link hash" href="frontend-models-map.html#tableName()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+                
+                tableName()
+
+                <span class="detail-header-tag small">
+                    public                                        static                    method
+                                    </span>
+            </div>
+
+            
+            <div class="doc-description">
+                
+                <p><strong></strong></p>
+                                            </div>
+
+            <table class="detail-table table table-striped table-bordered table-hover">
+                <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">void</span> <strong><a href="frontend-models-map.html#tableName()-detail">tableName</a></strong> ( )</td></tr>
+
+                            </table>
+
+            
+            
+
+    <p>
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseTableName" role="button"
+           aria-expanded="false" aria-controls="collapseTableName">
+            Source code
+        </a>
+    </p>
+    <div class="collapse" id="collapseTableName">
+        <div class="card card-body">
+            <pre>
+                <code class="hljs php language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tableName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'map'</span>;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $('a.toggle').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents('.toggle-target-container').find('.inherited').show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents('.toggle-target-container').find('.inherited').hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Sun, 23 Feb 2025 01:50:58 +0000</small></p>
+    Powered by <a href="https://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
